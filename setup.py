@@ -1,17 +1,19 @@
-from setuptools import setup, Extension
+from setuptools import setup
+from setuptools.extension import Extension
+from Cython.Build import cythonize
 
+examples_extension=[
+        Extension(
+            'pyexamples',
+            sources=['pyexamples.pyx'],
+             libraries=["examples"],
+            library_dirs=["lib"],
+            include_dirs=["lib"],
+        ),
+    ]
 
 setup(
-    # ...
-    setup_requires=[
-        # Setuptools 18.0 properly handles Cython extensions.
-        'setuptools>=18.0',
-        'cython',
-    ],
-    ext_modules=[
-        Extension(
-            'mylib',
-            sources=['pyexamples.pyx'],
-        ),
-    ],
+    name="pyexamples",
+    ext_modules=cythonize(examples_extension)
+    
 )

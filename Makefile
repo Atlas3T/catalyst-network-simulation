@@ -1,12 +1,9 @@
-CC = gcc
+LIB_DIR = lib
 
-default: libexamples.a
+default: pyexamples
 
-libexamples.a: examples.o
-	ar rcs $@ $^
-    
-examples.o: examples.c
-	$(CC) -c $<
+pyexamples: setup.py pyexamples.pyx $(LIB_DIR)/libexamples.a
+	python3 setup.py build_ext --inplace && rm -f pyexamples.c && rm -Rf build
 
-clean:
-	rm *.o *.a
+$(LIB_DIR)/libexamples.a:
+	make -C $(LIB_DIR) libexamples.a
