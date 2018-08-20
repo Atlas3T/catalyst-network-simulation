@@ -1,9 +1,15 @@
-LIB_DIR = lib
+CPPS := $(wildcard *.cpp)
+HS := $(wildcard *.h)
+INC := ../..
+CXXFLAGS = -O0 -g -std=c++17
 
-default: pyexamples
+.PHONY: all
 
-pyexamples: setup.py pyexamples.pyx $(LIB_DIR)/libexamples.a
-	python3 setup.py build_ext --inplace && rm -f pyexamples.c && rm -Rf build
+all: simulation
 
-$(LIB_DIR)/libexamples.a:
-	make -C $(LIB_DIR) libexamples.a
+simulation: ${HS} ${CPPS}
+	g++ ${CXXFLAGS} -I${INC} ${CPPS} -lusgov -L/usr/lib -L../gov -o simulation
+
+clean:
+	rm -f simulation
+	find . -name "*.o" -delete

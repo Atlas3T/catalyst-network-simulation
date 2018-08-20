@@ -1,3 +1,5 @@
-*.so
-*.a
 *.o
+*.class
+*.a
+python/.eggs
+.vscode
