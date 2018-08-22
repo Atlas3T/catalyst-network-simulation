@@ -1,33 +1,37 @@
 #include "random_peers.h"
-#include "algorithm"
+#include <algorithm>
 #include <array>
+#include <random>
 
 using simulation::random_peers;
 using namespace std;
+using nid_t = simulation::types::nid_t;
+
+random_peers::random_peers(Inodes & nodes, size_t peer_count) : nodes(nodes), peer_count(peer_count){
+    set_peer_relationships();
+}
 
 void random_peers::set_peer_relationships()
 {
+    vector<nid_t> node_ids = nodes.get_node_ids();
     peers.clear();
-    map<int, vector<int>> peers;
-    // fill array with [min value, max_value] sequence
-    array<int, node_count> nodes{};
-    iota(nodes.begin(), nodes.end(), 0);
 
-    vector<int> temp_peers;
-    for (int i = 0; i < node_count; i++)
+    size_t node_count = size(node_ids);
+    vector<nid_t> temp_peers;
+
+    for (size_t i = 0; i < node_count; i++)
     {
-        temp_peers = sample nodes.begin(), nodes.end(), temp_peers.begin(), peer_count, std::mt19937{std::random_device{}()});
-        peers.insert(pair<int,vector<int>>(i,temp_peers)
+        sample(node_ids.begin(), node_ids.end(), std::back_inserter(temp_peers), peer_count, std::default_random_engine{std::random_device{}()});
+        peers.insert(make_pair(node_ids[i],temp_peers));
     }
 
 }
 
-vector<int> random_peers::get_peers(int node_id)
-{
-    return peers[node_count];
+vector<nid_t> random_peers::get_peers(nid_t node_id){
+    return peers[node_id];
 }
 
-int random_peers::get_random_peer(int node_id)
+nid_t random_peers::get_random_peer(nid_t node_id)
 {
     return 5;
 }

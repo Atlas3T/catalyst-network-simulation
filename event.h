@@ -5,18 +5,22 @@
 
 namespace simulation{
 
+
+  
   class event {
+    using t_t = types::t_t;
+
   public:
     
-    event (types::time_t t) : time (t)
+    event (t_t t) : time (t)
       { }
-    types::time_t time;
+    t_t time;
     // Execute event by invoking this method.
     void process_event ();
 
   protected:
     virtual void main_event()=0;
-    virtual void post_event()=0;
+    virtual void post_event(){};
   };
 
 

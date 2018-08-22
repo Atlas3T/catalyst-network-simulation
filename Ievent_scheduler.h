@@ -5,10 +5,13 @@
 #include "types.h"
 
 namespace simulation{
+
     class Ievent_scheduler{
+
         public:
             virtual void schedule_event(event*) = 0;
-            virtual types::time_t get_time() = 0;
+            virtual types::t_t get_time() = 0;
+            
     };
 }
 

@@ -1,7 +1,7 @@
 #include "sync_manager.h"
 
 #include "sync_event.h"
-#include "schedule.h"
+#include "Ievent_scheduler.h"
 #include <iterator>
 
 using simulation::sync_manager;

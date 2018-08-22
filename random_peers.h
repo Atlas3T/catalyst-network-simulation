@@ -2,22 +2,24 @@
 #define USGOV_62a6e0d9bee7fa8b8b1ae9fd817f92c22c728496d1031a525a4de0a5c77b6968
 
 #include "Ipeer.h"
+#include "Inodes.h"
 #include <random>
 #include <map>
 #include <vector>
+#include "types.h"
 
 namespace simulation {
 
-    class random_peers : public virtual Ipeer {
-        
+    class random_peers : public Ipeer {
+        using nid_t = types::nid_t;
         public:
-            random_peers(size_t node_count, int peer_count) : node_count(node_count), peer_count(peer_count){};
-            std::vector<int> get_peers(int node_id);
-            int get_random_peer(int node_id);
+            random_peers(Inodes & , size_t);
+            std::vector<nid_t> get_peers(nid_t);
+            nid_t get_random_peer(nid_t);
         private:
-            size_t node_count;
-            int peer_count;
-            std::map<int,std::vector<int>> peers;
+            Inodes & nodes;
+            size_t peer_count;
+            std::map<nid_t, std::vector<nid_t>> peers;
             void set_peer_relationships();
             
     };

@@ -4,7 +4,8 @@
 namespace simulation{
     
     namespace types{
-        typedef unsigned int time_t;
+       using t_t = unsigned int;   //time type
+       using nid_t = unsigned int; //node id type
     }
 
 }

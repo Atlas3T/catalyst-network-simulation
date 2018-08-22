@@ -5,11 +5,12 @@
 #include "types.h"
 
 namespace simulation{
-
     class single_latency : public virtual Ilatency{
+        using t_t = types::t_t;
+        using nid_t = types::nid_t;
         public:
             single_latency(){};
-            types::time_t get_latency(int from_node_id, int to_node_id);
+            t_t get_latency(nid_t from_node_id, nid_t to_node_id);
 
     };
 

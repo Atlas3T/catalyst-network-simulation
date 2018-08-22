@@ -6,8 +6,12 @@
 namespace simulation {
 
     class Ilatency{
+        using t_t = types::t_t;
+        using nid_t = types::nid_t;
+
         public:
-            virtual types::time_t get_latency(int, int) = 0;
+            virtual t_t get_latency(nid_t, nid_t) = 0;
+        
         
     };
 

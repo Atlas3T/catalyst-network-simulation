@@ -2,6 +2,7 @@
 #include <iostream>
 
 using simulation::schedule;
+using t_t = simulation::types::t_t;
 
 void schedule::run () {
 
@@ -33,7 +34,7 @@ void schedule::schedule_event(std::vector<event *> new_events) {
             for(auto const& value: new_events) { event_queue.push (value);}
 }
 
-simulation::types::time_t schedule::get_time(){
+t_t schedule::get_time(){
   return time;
 }
 

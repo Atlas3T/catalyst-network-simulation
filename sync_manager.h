@@ -3,18 +3,23 @@
 
 #include <vector>
 #include "Ievent_scheduler.h"
+#include "Ievent_manager.h"
 #include "types.h"
 
 namespace simulation{
-    class sync_manager {
+    class sync_manager : Ievent_manager{
+        using t_t = types::t_t;
+        
         public:
-        sync_manager (Ievent_scheduler & s) : sched(s) {};
-        void schedule_initial_events();
+        sync_manager (Ievent_scheduler & s) : sched(s){};
+        void schedule_initial_events() override;
 
         private:
             Ievent_scheduler & sched;
-            unsigned int sync_period = 60;  
-             std::vector<types::time_t> sync_times = {2, 20, 59, 55};     
+            t_t sync_period = 60;  
+            std::vector<t_t> sync_times = {2, 20, 59, 55};  
+
+
     };
 }
 

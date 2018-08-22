@@ -3,13 +3,16 @@
 
 #include "event.h"
 #include "Ievent_scheduler.h"
+#include "types.h"
 
 namespace simulation{
+    class Ievent_manager;
     class sync_event : public event {
+        using t_t = types::t_t;
         public:
-            sync_event(Ievent_scheduler & s, types::time_t t, unsigned int p) : event (t), sched(s), period(p) {};
+            sync_event(t_t t, Ievent_scheduler & s, unsigned int p) : event (t), sched(s), period(p) {};
         protected:
-            types::time_t period;
+            t_t period;
             Ievent_scheduler & sched;
             void main_event();
             void post_event();
