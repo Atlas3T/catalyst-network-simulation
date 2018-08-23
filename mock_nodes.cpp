@@ -1,14 +1,15 @@
 #include "mock_nodes.h"
-#include <numeric>
 
 using simulation::mock_nodes;
 using nid_t = simulation::types::nid_t;
 
-std::vector<nid_t> mock_nodes::get_node_ids(){
+std::vector<nid_t> mock_nodes::add_nodes(size_t node_count){
 
-    nid_t first_id =1;
-    std::vector<nid_t> node_ids(node_count);
-    std::iota(node_ids.begin(), node_ids.end(), first_id);
+    for(int i = 0; i< node_count; i++){
+        nid_t next_id = nodes.length();
+        nodes.insert(make_pair(next_id, new simple_node()))
+    }
+    
     return node_ids;
 }
 

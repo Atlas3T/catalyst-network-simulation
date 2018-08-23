@@ -1,26 +1,25 @@
 #ifndef USGOV_97a4cf1e0b6a7c076fc6e248e82e4f91d6a63c48fd28388868e198187b69875d
 #define USGOV_97a4cf1e0b6a7c076fc6e248e82e4f91d6a63c48fd28388868e198187b69875d
 
-#include "event.h"
+#include "message_event.h"
+#include "message.h"
 #include "types.h"
 #include "Inodes.h"
+#include "unique_id_generator.h"
 #include <vector>
 
 namespace simulation{
 
     class data_event_manager;
-    class recv_data_event : public event {
+    class recv_event : public message_event {
         using t_t = types::t_t;
-        using nid_t = types::nid_t;
+        using uid_t = unique_id_generator::uid_t;
 
         public:
-            recv_data_event(t_t t, nid_t from_node_id, nid_t to_node_id, std::vector<unsigned char> data): event(t), node_id(node_id), data(data){};
+            recv_event(t_t t, message m, uid_t from_node_id, uid_t to_node_id, Inodes & nodes): message_event(t, m, from_node_id, to_node_id), nodes(nodes) {};
         private:
-            std::vector<unsigned char> data;
+            
             Inodes & nodes;
-            nid_t from_node_id;
-            nid_t to_node_id;
-            data_event_manager * manager;
             void main_event() override;
     };
 }

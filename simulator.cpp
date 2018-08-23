@@ -1,7 +1,11 @@
 #include "simulator.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
+
+#include "network_manager.h"
+#include "sync_manager.h"
 
 //concrete implementations of interfaces
 #include "single_latency.h"
@@ -20,7 +24,7 @@ using t_t = simulation::types::t_t;
         // change concrete implementations here:
 
         
-        //stores nodes. Can use any class that implements Inodes.
+        //stores nodes for lookup by id. Can use any class that implements Inodes.
         mock_nodes nodes(node_count);
         
         //peer relationships implementation. Can be changed to any concrete class that implements Ipeer.
@@ -33,10 +37,9 @@ using t_t = simulation::types::t_t;
 
         //event_managers
         sync_manager s_manager(sched);
-        data_event_manager d_manager(sched, latency, peers);
+        network_manager net_manager(sched, latency, mock_nodes);
 
         s_manager.schedule_initial_events();
-        d_manager.schedule_initial_events();
 
         sched.run();
     }

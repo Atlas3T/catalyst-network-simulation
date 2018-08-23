@@ -4,5 +4,5 @@ using simulation::send_data_event;
 
 void send_data_event::main_event(){
 
-    manager.process_send_event(eve)
+    net_manager->process_send_event(time, data, from_node_id, to_node_id);
 }

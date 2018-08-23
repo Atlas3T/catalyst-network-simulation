@@ -7,15 +7,12 @@
 
 namespace simulation {
 
-    class mock_nodes : public Inodes {
+    class mock_nodes : public node_container {
 
         using nid_t = types::nid_t;
         public:
-            mock_nodes(size_t node_count) : node_count(node_count){};
-            std::vector<nid_t> get_node_ids() override;
-
-            private:
-                size_t node_count;
+            void add_nodes(size_t) override;
+  
     };
 
 }

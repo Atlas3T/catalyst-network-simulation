@@ -1,7 +1,6 @@
 #ifndef USGOV_4ab53a7ad069fa11c00ffd2d34688a994ddfa92d0fa6ab38ddbdd239c6fead83
 #define USGOV_4ab53a7ad069fa11c00ffd2d34688a994ddfa92d0fa6ab38ddbdd239c6fead83
 
-#include "types.h"
 #include "data_event_manager"
 
 namespace simulation {
