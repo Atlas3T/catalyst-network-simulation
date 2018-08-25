@@ -1,8 +1,8 @@
 #ifndef USGOV_e970bcd5b075bee17ebe9e2ac8bca634e77c0bd5fd30042403169a4c345921d1
 #define USGOV_e970bcd5b075bee17ebe9e2ac8bca634e77c0bd5fd30042403169a4c345921d1
 
-#include "Inode.h"
 #include "Ipeers.h"
+#include "Inode.h"
 
 namespace simulation {
 
@@ -13,7 +13,7 @@ namespace simulation {
         
         public:
             simple_node(Ipeers & peers, t_t delay) : peers(peers), delay(delay){};
-            void process_recieved_data(types::t_t time, std::vector<unsigned char> data, types::nid_t from_node_id) override;
+            void process_recieved_data(types::t_t time, message m, uid_t from_node_id) override;
         private:
             Ipeers & peers;
             t_t delay;

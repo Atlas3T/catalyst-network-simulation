@@ -5,22 +5,22 @@
 #include <vector>
 #include "types.h"
 #include "message.h"
-#include "unique_id_generator.h"
 
 namespace simulation {
 
     class message_event : public event {
+        
+        protected:
 
-        using t_t = types::t_t;
-        using uid_t = unique_id_generator::uid_t;
-
-        public:
-            message_event(t_t time, message m, uid_t from_node_id, uid_t to_node_id): m(m), from_node_id(from_node_id), to_node_id(to_node_id), event(time){};
-        private:
+            using uid_t = types::uid_t;
+            
             message m;
             uid_t from_node_id;
             uid_t to_node_id;
-            virtual void main_event() = 0;
+           
+        public:
+            message_event(t_t time, message m, uid_t from_node_id, uid_t to_node_id): m(m), from_node_id(from_node_id), to_node_id(to_node_id), event(time){};
+        
 
     };
 

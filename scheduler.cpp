@@ -2,7 +2,6 @@
 #include <iostream>
 
 using simulation::scheduler;
-using t_t = simulation::scheduler::t_t;
 
 void scheduler::run () {
 
@@ -33,7 +32,7 @@ void scheduler::schedule_event(std::vector<event *> new_events) {
             for(auto const& new_event: new_events) { schedule_event(new_event);}
 }
 
-t_t scheduler::get_time(){
+scheduler::t_t scheduler::get_time(){
   return time;
 }
 

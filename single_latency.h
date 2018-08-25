@@ -7,10 +7,10 @@
 namespace simulation{
     class single_latency : public virtual Ilatency{
         using t_t = types::t_t;
-        using nid_t = types::nid_t;
+        using uid_t = types::uid_t;
         public:
             single_latency(){};
-            t_t get_latency(nid_t from_node_id, nid_t to_node_id);
+            t_t get_latency(uid_t from_node_id, uid_t to_node_id);
 
     };
 

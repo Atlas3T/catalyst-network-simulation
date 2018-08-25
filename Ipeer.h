@@ -7,9 +7,10 @@
 namespace simulation {
 
     class Ipeer{
-        using nid_t = types::nid_t;
+        protected:
+            using uid_t = types::uid_t;
         public:
-            virtual std::vector<nid_t> get_peers(nid_t) = 0;
+            virtual std::vector<uid_t> get_peers(uid_t) = 0;
         
     };
 

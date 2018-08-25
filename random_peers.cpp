@@ -5,7 +5,7 @@
 
 using simulation::random_peers;
 using namespace std;
-using nid_t = simulation::types::nid_t;
+using uid_t = simulation::types::uid_t;
 
 random_peers::random_peers(Inodes & nodes, size_t peer_count) : nodes(nodes), peer_count(peer_count){
     set_peer_relationships();
@@ -13,11 +13,11 @@ random_peers::random_peers(Inodes & nodes, size_t peer_count) : nodes(nodes), pe
 
 void random_peers::set_peer_relationships()
 {
-    vector<nid_t> node_ids = nodes.get_node_ids();
+    vector<uid_t> node_ids = nodes.get_node_ids();
     peers.clear();
 
     size_t node_count = size(node_ids);
-    vector<nid_t> temp_peers;
+    vector<uid_t> temp_peers;
 
     for (size_t i = 0; i < node_count; i++)
     {
@@ -27,11 +27,11 @@ void random_peers::set_peer_relationships()
 
 }
 
-vector<nid_t> random_peers::get_peers(nid_t node_id){
+vector<uid_t> random_peers::get_peers(uid_t node_id){
     return peers[node_id];
 }
 
-nid_t random_peers::get_random_peer(nid_t node_id)
+uid_t random_peers::get_random_peer(uid_t node_id)
 {
     return 5;
 }

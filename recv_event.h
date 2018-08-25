@@ -4,23 +4,21 @@
 #include "message_event.h"
 #include "message.h"
 #include "types.h"
-#include "Inodes.h"
-#include "unique_id_generator.h"
+#include "node_manager.h"
 #include <vector>
+#include "Inode.h"
 
 namespace simulation{
 
     class data_event_manager;
     class recv_event : public message_event {
-        using t_t = types::t_t;
-        using uid_t = unique_id_generator::uid_t;
-
+        
         public:
-            recv_event(t_t t, message m, uid_t from_node_id, uid_t to_node_id, Inodes & nodes): message_event(t, m, from_node_id, to_node_id), nodes(nodes) {};
+            recv_event(t_t t, message m, uid_t from_node_id, uid_t to_node_id, node_manager & nodes): message_event(t, m, from_node_id, to_node_id), nodes(nodes) {};
         private:
             
-            Inodes & nodes;
-            void main_event() override;
+            node_manager & nodes;
+            void process_event() override;
     };
 }
 
