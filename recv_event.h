@@ -14,7 +14,7 @@ namespace simulation{
     class recv_event : public message_event {
         
         public:
-            recv_event(t_t t, message m, uid_t from_node_id, uid_t to_node_id, node_manager & nodes): message_event(t, m, from_node_id, to_node_id), nodes(nodes) {};
+            recv_event(t_t t, message m, uid_t from_node_id, std::vector<uid_t> to_node_ids, node_manager & nodes): message_event(t, m, from_node_id, to_node_ids), nodes(nodes) {};
         private:
             
             node_manager & nodes;

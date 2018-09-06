@@ -16,10 +16,11 @@ namespace simulation {
             
             message m;
             uid_t from_node_id;
-            uid_t to_node_id;
+            std::vector<uid_t> to_node_ids;
+            
            
         public:
-            message_event(t_t time, message m, uid_t from_node_id, uid_t to_node_id): m(m), from_node_id(from_node_id), to_node_id(to_node_id), event(time){};
+            message_event(t_t time, message m, uid_t from_node_id, uid_t to_node_id): m(m), from_node_id(from_node_id), to_node_ids(to_node_ids), event(time){};
         
 
     };
