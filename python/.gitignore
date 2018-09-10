@@ -1,0 +1,7 @@
+*.so
+*.a
+*.o
+*.class
+python/.eggs
+/python_to_c
+/algorithms
