@@ -97,11 +97,11 @@ def sendToPeers(peers,messageDist,time):
 
 def getFilePathRoot():
     #return os.path.normpath("C:/Users/fran/PycharmProjects/Distributions/")
-    return os.path.normpath("/home/fran/PycharmProjects/PeerDistribution/Results/")
+    return os.path.normpath("/home/engr/Results/")
 
 
 def getPeerDistFilePath(N,p, s):
-    return getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(s)
+    return os.path.normpath(getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(s))
 
 def getProbDistFilePath(N,p, x, i):
     return getFilePathRoot() + '/prob_dist_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i)
@@ -110,10 +110,11 @@ def savePeerDist(N,p,x):
 
     peers = numpy.zeros((N,p))
 
-    for n in range(0, x):
+    for n in range(2, x):
         peers = getPeerDistOrDieTrying(N,p)
         fileName = getPeerDistFilePath(N,p,n)
         scipy.io.savemat(fileName, {"peers" : peers}, appendmat=True)
+        print("saved " + str(fileName))
 
 def loadPeerDist(N,p,n):
         fileName = getPeerDistFilePath(N, p, n)
