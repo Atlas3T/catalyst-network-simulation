@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function update_environment {
+	conda env update -f environment.yml
+}
+
+function start_environment {
+	conda activate SciBase
+}
+cmd=$1
+if [ "_$cmd" == "_env_u" ]; then
+	update_environment;
+fi
