@@ -1,109 +1,55 @@
-import pyximport; pyxinstall()
-import numpy
+import numpy as numpy
 import scipy.io
 from numpy.core.multiarray import ndarray
 from scipy.special import factorial
+from functools import partial
 import os.path
 import profile
 import time
-numpy.set_printoptions(threshold=numpy.inf)
-
-def getfileSubsetSize():
-    return 1
-
-def getPeerDist(N, p):
-
-    peers = numpy.zeros((N, N),dtype = bool)
-    nodes = numpy.arange(N)  # array to randomly shuffle each iteration to give us potential peers in different order
-    for i in range(0,N):
-
-        peersNeeded = p - sum(peers[i,:])
-        maxIndices = N-1     #Using as part of Fisher-Yates algorithm to provide unique random options for peers efficiently.
-        while(peersNeeded > 0 and maxIndices > 0):
-
-            #selects option for peer and ensures that we won't see it again for this node via Fisher Yates
-            randPeerIndex = numpy.random.randint(0,maxIndices)
-            potPeer = nodes[randPeerIndex]
-            nodes[maxIndices], nodes[randPeerIndex] = nodes[randPeerIndex], nodes[maxIndices]
-            maxIndices -= 1
-
-            if potPeer != i and peers[potPeer,i]!=1:
-                peersNeededByPeer = p - sum(peers[:,potPeer])
-                if peersNeededByPeer > 0:
-                    peers[i,potPeer] = 1
-                    peers[potPeer,i] = 1
-                    peersNeeded-=1
-        if peersNeeded > 0:
-            return []
-    return peers
-
-def getPeerDistFaster(N, p):
-    peers = numpy.full((N, p), -1, dtype = int)
-    nodes = numpy.arange(N)  # array to randomly shuffle each iteration to give us potential peers in different order
-    for i in range(0,N):
-
-        peersNeeded =  p - numpy.count_nonzero(peers[i,:]>=0)
-
-        maxIndices = N-1     #Using as part of Fisher-Yates algorithm to provide unique random options for peers efficiently.
-        while(peersNeeded > 0 and maxIndices > 0):
-
-            randPeerIndex = numpy.random.randint(0,maxIndices)
-
-            potPeer = nodes[randPeerIndex]
-
-            nodes[maxIndices], nodes[randPeerIndex] = nodes[randPeerIndex], nodes[maxIndices]
-            maxIndices -= 1
-
-            if potPeer != i and not any(peers[potPeer,:]==i):
-
-                peersNeededByPeer = p - numpy.count_nonzero(peers[potPeer,:] >= 0)
-                
-                if peersNeededByPeer > 0:
-                    peers[potPeer,p - peersNeededByPeer] = i
-                    peers[i, p - peersNeeded] = potPeer
-                    
-                    peersNeeded-=1
-        if peersNeeded > 0:
-            return []
-    return peers
 
 def getPeerDistEvenFaster(N, p):
-    peers = numpy.full((N, p), -1, dtype = int)
+    peers =  numpy.full((N, p), -1, dtype = int)
     nodes = numpy.arange(N)  # array to randomly shuffle each iteration to give us potential peers in different order
     rand = numpy.random.randint
-    def peersNeededfunc(n):
-        return p - numpy.count_nonzero(peers[n,:] >= 0)
-    def findPeersForNode(i,peersNeededfunc,randfunc):
-        maxIndices = N-1   #Using as part of Fisher-Yates algorithm to provide unique random options for peers efficiently.
-        peersNeeded =  peersNeededfunc(i)
     
-        while(peersNeeded > 0 and maxIndices > 0):
+    #pn = partial(peersNeededfunc,peers,p)
+    #fvp =partial(findPeersForNode,peers,nodes,pn,rand,N,p)
 
-            randPeerIndex = rand(0,maxIndices)
-
-            potPeer = nodes[randPeerIndex]
-
-            nodes[maxIndices], nodes[randPeerIndex] = nodes[randPeerIndex], nodes[maxIndices]
-            maxIndices -= 1
-
-            if potPeer != i and not any(peers[potPeer,:]==i):
-
-                peersNeededByPeer = peersNeededfunc(potPeer)
-                
-                if peersNeededByPeer > 0:
-                    peers[potPeer,p - peersNeededByPeer] = i
-                    peers[i, p - peersNeeded] = potPeer
-                    peersNeeded-=1
-        if peersNeeded > 0:
-            return True
-        else:
-            return False
-    
     pn = peersNeededfunc
-    fvp = findPeersForNode
-    if any(fvp(i,pn,rand) for i in range(0,N)):
-        yield []
+    fvp =findPeersForNode
+    if any(fvp(peers, nodes, peersNeededfunc,rand, N, p, i) for i in range(0,N)):
+        return []
     yield peers
+
+def peersNeededfunc(peers,p,n):
+        return p - numpy.count_nonzero(peers[n,:] >= 0)
+
+def findPeersForNode(peers, nodes, peersNeededfunc,randfunc, N, p, i):
+    cdef int maxIndices = N-1   #Using as part of Fisher-Yates algorithm to provide unique random options for peers efficiently.
+    cdef int peersNeeded =  peersNeededfunc(peers,p,i)
+    cdef int randPeerIndex
+    cdef int potPeer
+    while(peersNeeded > 0 and maxIndices > 0):
+
+        randPeerIndex = randfunc(0,maxIndices)
+
+        potPeer = nodes[randPeerIndex]
+
+        nodes[maxIndices], nodes[randPeerIndex] = nodes[randPeerIndex], nodes[maxIndices]
+        maxIndices -= 1
+
+        if potPeer != i and not any(peers[potPeer,:]==i):
+
+            peersNeededByPeer = peersNeededfunc(peers,p,potPeer)
+            
+            if peersNeededByPeer > 0:
+                peers[potPeer,p - peersNeededByPeer] = i
+                peers[i, p - peersNeeded] = potPeer
+                peersNeeded-=1
+    if peersNeeded > 0:
+        return True
+    else:
+        return False
 
 def isValid(peers,N,p):
     if peers == []:
@@ -114,14 +60,15 @@ def isValid(peers,N,p):
             return False
     return True
 
-def speedTest(N,p,n):
+def generatePeerDist(N,p,n):
     start = time.time()
     item_start = start
     i = 0
-    for item in getPeerDistOrDieTrying(N,p):
+    for peerDist in getPeerDistOrDieTrying(N,p):
         time_now = time.time()
-        print("one found in: " + str(time_now - item_start))
         i+=1
+        print("found one in " + str(time_now-item_start))
+        savePeerDist(N,p,peerDist,i+4)
         if(i==n):
             av_time = (time_now - start)/n
             print("time taken: " +  str(av_time))
@@ -149,19 +96,15 @@ def getFilePathRoot():
     return os.path.normpath("/home/engr/Results/")
 
 
-def getPeerDistFilePath(N,p, s):
+def getPeerDistFilePath(N,p,s):
     return os.path.normpath(getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(s))
 
 def getProbDistFilePath(N,p, x, i):
     return getFilePathRoot() + '/prob_dist_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i)
 
-def savePeerDist(N,p,x):
+def savePeerDist(N,p,peers,i):
 
-    peers = numpy.zeros((N,p))
-
-    for n in range(4, x):
-        peers = getPeerDistOrDieTrying(N,p)
-        fileName = getPeerDistFilePath(N,p,n)
+        fileName = getPeerDistFilePath(N,p,i)
         scipy.io.savemat(fileName, {"peers" : peers}, appendmat=True)
         print("saved " + str(fileName) + "at" + str(time.time()))
 
