@@ -1,12 +1,19 @@
 import numpy
+import scipy.stats
 
 def get_latency_relationships(peers):
     N = len(peers[:,0])
-    print(N)
     p = len(peers[0,:])
-    print(p)
 
-    return numpy.random.normal(0.5,1.5,(N,p))
+    lower = 10
+    upper = 300
+    mu = 30
+    sigma = 10
+
+    samples = scipy.stats.truncnorm.rvs(
+        (lower-mu)/sigma,(upper-mu)/sigma,loc=mu,scale=sigma,size=N*p)
+
+    return numpy.reshape(samples,(N,p))
 
 
 
