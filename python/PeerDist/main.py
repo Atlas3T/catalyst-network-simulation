@@ -6,9 +6,9 @@ import profile
 def main():
 
     start = time.time()
-    N=1000000;
+    N=10000000;
     p=10;
-    x=20;
+    x=1;
     #Propagation.savePeerDist(N,p,x)
     propagation.generatePeerDist(N,p,x)
     if False:

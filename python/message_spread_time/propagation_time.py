@@ -1,3 +1,7 @@
+import matplotlib as mpl
+mpl.use('Agg')
+import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy
 import scipy.io
 from numpy.core.multiarray import ndarray
@@ -23,7 +27,7 @@ def getPeerDistFilePath(N,p, s):
     return os.path.normpath(getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(s))
 
 def getProbDistFilePath(N,p, x, i):
-    return os.path.normpath(getFilePathRoot() + '/Prob_dist_time/prob_dist_time_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i))
+    return os.path.normpath(getFilePathRoot() + '/prob_dist_time/prob_dist_time_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i))
 
 def loadPeerDist(N,p,n):
         fileName = getPeerDistFilePath(N, p, n)
@@ -36,50 +40,59 @@ def hasMessageSpreadToAllNodes(messageDist):
 
 def disperseMessage(peers,s):
     N = len(peers[:,0])
-    messageDist = numpy.full(N,-1)
-    messageDist[s] = 0
+    messageDist = numpy.full(N,-1, dtype='float')
     latencies = latency_generator.get_latency_relationships(peers)
-    edges = numpy.full((N), -1)
+    #edges are nodes whose peer has already recieved the message.
+    edges = numpy.full((N), -1, dtype='float')
     edges[s] = 0
     while (hasMessageSpreadToAllNodes(messageDist)==False):
-        value,position = min(((b,a) for a,b in enumerate(edges) if b>=0))
-        print('position')
-        print(position)
-        messageDist[position]=value
-        edges[position]=0
-        print('ends')
-        print(edges)
-        p=peers[position,:]
-        print(p)
-        l=latencies[position,:]
-        print(l)
-        edges[p[:]] = numpy.where(edges[p[:]] >= 0 and l[:] + value < edges[p[:]],l[:],edges[p[:]])
         
+        #records delay for 'edge' node with shortest latency. 
+        #We can only 'deliver' one per loop because the new edges may reveal a shorter path.
+        edge_value,edge_position = min(((b,a) for a,b in enumerate(edges) if b >= 0))
+        messageDist[edge_position]=edge_value
+        edges[edge_position]=-1
+        #making a fake change
+        #peers are new edges
+        p=peers[edge_position,:]
+        l=latencies[edge_position,:]
+        new_values = l[:]+ edge_value
+        edges[p[:]] = numpy.where( edges[p[:]] < 0 | (new_values < edges[p[:]]) , new_values, edges[p[:]] ) 
+        edges[p[:]] = numpy.where( messageDist[p[:]]==-1, edges[p[:]], -1)
+
     return messageDist
 
-def saveDisperseMessageDist(N,p,x,iterations_startNode):
-    probDist = dict()
+def saveDisperseMessageDist(N,p,x,iterations):
     delays = []
     for ii in range(0,x):
         peers = loadPeerDist(N,p,ii)
         nodes = numpy.arange(N)
         maxIndices = N-1
-        for i in range(0,iterations_startNode):
+        for i in range(0,iterations):
             randStartNodeIndex = numpy.random.randint(0, N-1)
             randNode = nodes[randStartNodeIndex]
             nodes[maxIndices], nodes[randStartNodeIndex] = nodes[randStartNodeIndex], nodes[maxIndices]
-            numpy.append(delays,disperseMessage(peers,randNode))
-            
-    fileName = getProbDistFilePath(N, p, x, iterations_startNode)
-    scipy.io.savemat(fileName, {"probDist": delays}, appendmat=True)
-    print(delays)
+            delays.extend(disperseMessage(peers,randNode))
+    results = numpy.array(delays)
+    plotDelayDist(results)
+    fileName = getProbDistFilePath(N, p, x, iterations)
+    scipy.io.savemat(fileName, {"delays": results}, appendmat=True)
 
-def loadDisperseMessageDist(N,p,x,iterations_startNode):
+def loadPlotDelayDist(N,p,x,iterations):
+    delays = loadDisperseMessageDist(N,p,x,iterations)
+    plotDelayDist(delays)
 
-    fileName = getProbDistFilePath(N, p, x, iterations_startNode)
+def plotDelayDist(delays):
+    snsplot = sns.distplot(delays)
+    snsplot.figure.savefig(getProbDistFilePath + '_plot.png')
+
+def loadDisperseMessageDist(N,p,x,iterations):
+
+    fileName = getProbDistFilePath(N, p, x, iterations)
     contents = scipy.io.loadmat(fileName,  appendmat=True)
-    probDist = contents['probDist']
+    probDist = contents['delays']
     return probDist
+
 
 
 

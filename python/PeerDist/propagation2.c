@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "propagation",
+        "name": "propagation2",
         "sources": [
-            "propagation.pyx"
+            "propagation2.pyx"
         ]
     },
-    "module_name": "propagation"
+    "module_name": "propagation2"
 }
 END: Cython Metadata */
 
@@ -570,8 +570,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__propagation
-#define __PYX_HAVE_API__propagation
+#define __PYX_HAVE__propagation2
+#define __PYX_HAVE_API__propagation2
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -776,23 +776,23 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "propagation.pyx",
+  "propagation2.pyx",
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster;
-struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr;
-struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever;
-struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying;
+struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster;
+struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr;
+struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever;
+struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying;
 
-/* "propagation.pyx":10
+/* "propagation2.pyx":10
  * import time
  * 
  * def getPeerDistEvenFaster(N, p):             # <<<<<<<<<<<<<<
  *     peers =  numpy.full((N, p), -1, dtype = int)
  *     nodes = numpy.arange(N)  # array to randomly shuffle each iteration to give us potential peers in different order
  */
-struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster {
+struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster {
   PyObject_HEAD
   PyObject *__pyx_v_N;
   PyObject *__pyx_v_fvp;
@@ -805,42 +805,42 @@ struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster {
 };
 
 
-/* "propagation.pyx":20
+/* "propagation2.pyx":20
  *     pn = peersNeededfunc
  *     fvp =findPeersForNode
  *     if any(fvp(peers, nodes, peersNeededfunc,rand, N, p, i) for i in range(0,N)):             # <<<<<<<<<<<<<<
  *         return []
  *     yield peers
  */
-struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr {
+struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr {
   PyObject_HEAD
-  struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *__pyx_outer_scope;
+  struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *__pyx_outer_scope;
   PyObject *__pyx_v_i;
 };
 
 
-/* "propagation.pyx":79
+/* "propagation2.pyx":79
  * 
  * 
  * def getPeerDistForever(N,p):             # <<<<<<<<<<<<<<
  *     while True:
  *         yield from getPeerDistEvenFaster(N,p)
  */
-struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever {
+struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever {
   PyObject_HEAD
   PyObject *__pyx_v_N;
   PyObject *__pyx_v_p;
 };
 
 
-/* "propagation.pyx":83
+/* "propagation2.pyx":83
  *         yield from getPeerDistEvenFaster(N,p)
  * 
  * def getPeerDistOrDieTrying(N,p):             # <<<<<<<<<<<<<<
  *     for item in getPeerDistForever(N,p):
  *         if isValid(item,N,p):
  */
-struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying {
+struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying {
   PyObject_HEAD
   PyObject *__pyx_v_N;
   PyObject *__pyx_v_item;
@@ -1335,16 +1335,16 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'propagation' */
-static PyTypeObject *__pyx_ptype_11propagation___pyx_scope_struct__getPeerDistEvenFaster = 0;
-static PyTypeObject *__pyx_ptype_11propagation___pyx_scope_struct_1_genexpr = 0;
-static PyTypeObject *__pyx_ptype_11propagation___pyx_scope_struct_2_getPeerDistForever = 0;
-static PyTypeObject *__pyx_ptype_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying = 0;
-#define __Pyx_MODULE_NAME "propagation"
-extern int __pyx_module_is_main_propagation;
-int __pyx_module_is_main_propagation = 0;
+/* Module declarations from 'propagation2' */
+static PyTypeObject *__pyx_ptype_12propagation2___pyx_scope_struct__getPeerDistEvenFaster = 0;
+static PyTypeObject *__pyx_ptype_12propagation2___pyx_scope_struct_1_genexpr = 0;
+static PyTypeObject *__pyx_ptype_12propagation2___pyx_scope_struct_2_getPeerDistForever = 0;
+static PyTypeObject *__pyx_ptype_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying = 0;
+#define __Pyx_MODULE_NAME "propagation2"
+extern int __pyx_module_is_main_propagation2;
+int __pyx_module_is_main_propagation2 = 0;
 
-/* Implementation of 'propagation' */
+/* Implementation of 'propagation2' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_any;
 static const char __pyx_k_N[] = "N";
@@ -1430,10 +1430,10 @@ static const char __pyx_k_maxIndices[] = "maxIndices";
 static const char __pyx_k_time_taken[] = "time taken: ";
 static const char __pyx_k_messageDist[] = "messageDist";
 static const char __pyx_k_peersNeeded[] = "peersNeeded";
-static const char __pyx_k_propagation[] = "propagation";
 static const char __pyx_k_sendToPeers[] = "sendToPeers";
 static const char __pyx_k_found_one_in[] = "found one in ";
 static const char __pyx_k_loadPeerDist[] = "loadPeerDist";
+static const char __pyx_k_propagation2[] = "propagation2";
 static const char __pyx_k_savePeerDist[] = "savePeerDist";
 static const char __pyx_k_count_nonzero[] = "count_nonzero";
 static const char __pyx_k_randPeerIndex[] = "randPeerIndex";
@@ -1443,10 +1443,10 @@ static const char __pyx_k_counts_elements[] = "counts_elements";
 static const char __pyx_k_disperseMessage[] = "disperseMessage";
 static const char __pyx_k_getFilePathRoot[] = "getFilePathRoot";
 static const char __pyx_k_peersNeededfunc[] = "peersNeededfunc";
-static const char __pyx_k_propagation_pyx[] = "propagation.pyx";
 static const char __pyx_k_unique_elements[] = "unique_elements";
 static const char __pyx_k_findPeersForNode[] = "findPeersForNode";
 static const char __pyx_k_generatePeerDist[] = "generatePeerDist";
+static const char __pyx_k_propagation2_pyx[] = "propagation2.pyx";
 static const char __pyx_k_home_engr_Results[] = "/home/engr/Results/";
 static const char __pyx_k_peersNeededByPeer[] = "peersNeededByPeer";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
@@ -1544,8 +1544,8 @@ static PyObject *__pyx_n_s_probDist;
 static PyObject *__pyx_kp_s_prob_dist;
 static PyObject *__pyx_n_s_probs;
 static PyObject *__pyx_n_s_profile;
-static PyObject *__pyx_n_s_propagation;
-static PyObject *__pyx_kp_s_propagation_pyx;
+static PyObject *__pyx_n_s_propagation2;
+static PyObject *__pyx_kp_s_propagation2_pyx;
 static PyObject *__pyx_n_s_rand;
 static PyObject *__pyx_n_s_randNode;
 static PyObject *__pyx_n_s_randPeerIndex;
@@ -1577,34 +1577,33 @@ static PyObject *__pyx_n_s_v;
 static PyObject *__pyx_n_s_where;
 static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_11propagation_21getPeerDistEvenFaster_genexpr(PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_11propagation_getPeerDistEvenFaster(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p); /* proto */
-static PyObject *__pyx_pf_11propagation_3peersNeededfunc(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_p, PyObject *__pyx_v_n); /* proto */
-static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_nodes, PyObject *__pyx_v_peersNeededfunc, PyObject *__pyx_v_randfunc, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_i); /* proto */
-static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_N, PyObject *__pyx_v_p); /* proto */
-static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_n); /* proto */
-static PyObject *__pyx_pf_11propagation_11getPeerDistForever(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p); /* proto */
-static PyObject *__pyx_pf_11propagation_14getPeerDistOrDieTrying(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p); /* proto */
-static PyObject *__pyx_pf_11propagation_17sendToPeers(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_messageDist, PyObject *__pyx_v_time); /* proto */
-static PyObject *__pyx_pf_11propagation_19getFilePathRoot(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_11propagation_21getPeerDistFilePath(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_s); /* proto */
-static PyObject *__pyx_pf_11propagation_23getProbDistFilePath(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_i); /* proto */
-static PyObject *__pyx_pf_11propagation_25savePeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_peers, PyObject *__pyx_v_i); /* proto */
-static PyObject *__pyx_pf_11propagation_27loadPeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_n); /* proto */
-static PyObject *__pyx_pf_11propagation_29hasMessageSpreadToAllNodes(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_messageDist); /* proto */
-static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_s); /* proto */
-static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_iterations_startNode); /* proto */
-static PyObject *__pyx_pf_11propagation_35loadDisperseMessageDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_iterations_startNode); /* proto */
-static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct__getPeerDistEvenFaster(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct_1_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct_2_getPeerDistForever(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_pf_12propagation2_21getPeerDistEvenFaster_genexpr(PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_12propagation2_getPeerDistEvenFaster(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p); /* proto */
+static PyObject *__pyx_pf_12propagation2_3peersNeededfunc(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_p, PyObject *__pyx_v_n); /* proto */
+static PyObject *__pyx_pf_12propagation2_5findPeersForNode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_nodes, PyObject *__pyx_v_peersNeededfunc, PyObject *__pyx_v_randfunc, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_i); /* proto */
+static PyObject *__pyx_pf_12propagation2_7isValid(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_N, PyObject *__pyx_v_p); /* proto */
+static PyObject *__pyx_pf_12propagation2_9generatePeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_n); /* proto */
+static PyObject *__pyx_pf_12propagation2_11getPeerDistForever(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p); /* proto */
+static PyObject *__pyx_pf_12propagation2_14getPeerDistOrDieTrying(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p); /* proto */
+static PyObject *__pyx_pf_12propagation2_17sendToPeers(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_messageDist, PyObject *__pyx_v_time); /* proto */
+static PyObject *__pyx_pf_12propagation2_19getFilePathRoot(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_12propagation2_21getPeerDistFilePath(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_s); /* proto */
+static PyObject *__pyx_pf_12propagation2_23getProbDistFilePath(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_i); /* proto */
+static PyObject *__pyx_pf_12propagation2_25savePeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_peers, PyObject *__pyx_v_i); /* proto */
+static PyObject *__pyx_pf_12propagation2_27loadPeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_n); /* proto */
+static PyObject *__pyx_pf_12propagation2_29hasMessageSpreadToAllNodes(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_messageDist); /* proto */
+static PyObject *__pyx_pf_12propagation2_31disperseMessage(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_s); /* proto */
+static PyObject *__pyx_pf_12propagation2_33saveDisperseMessageDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_iterations_startNode); /* proto */
+static PyObject *__pyx_pf_12propagation2_35loadDisperseMessageDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_iterations_startNode); /* proto */
+static PyObject *__pyx_tp_new_12propagation2___pyx_scope_struct__getPeerDistEvenFaster(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_12propagation2___pyx_scope_struct_1_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_12propagation2___pyx_scope_struct_2_getPeerDistForever(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_items = {0, &__pyx_n_s_items, 0, 0, 0};
 static __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_keys = {0, &__pyx_n_s_keys, 0, 0, 0};
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_2;
-static PyObject *__pyx_int_3;
 static PyObject *__pyx_int_neg_1;
 static PyObject *__pyx_codeobj_;
 static PyObject *__pyx_slice__2;
@@ -1649,9 +1648,9 @@ static PyObject *__pyx_codeobj__39;
 static PyObject *__pyx_codeobj__41;
 static PyObject *__pyx_codeobj__43;
 /* Late includes */
-static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_12propagation2_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "propagation.pyx":10
+/* "propagation2.pyx":10
  * import time
  * 
  * def getPeerDistEvenFaster(N, p):             # <<<<<<<<<<<<<<
@@ -1660,9 +1659,9 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_1getPeerDistEvenFaster(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_1getPeerDistEvenFaster = {"getPeerDistEvenFaster", (PyCFunction)__pyx_pw_11propagation_1getPeerDistEvenFaster, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_1getPeerDistEvenFaster(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_1getPeerDistEvenFaster(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_1getPeerDistEvenFaster = {"getPeerDistEvenFaster", (PyCFunction)__pyx_pw_12propagation2_1getPeerDistEvenFaster, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_1getPeerDistEvenFaster(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_N = 0;
   PyObject *__pyx_v_p = 0;
   PyObject *__pyx_r = 0;
@@ -1710,19 +1709,19 @@ static PyObject *__pyx_pw_11propagation_1getPeerDistEvenFaster(PyObject *__pyx_s
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("getPeerDistEvenFaster", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 10, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.getPeerDistEvenFaster", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getPeerDistEvenFaster", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_getPeerDistEvenFaster(__pyx_self, __pyx_v_N, __pyx_v_p);
+  __pyx_r = __pyx_pf_12propagation2_getPeerDistEvenFaster(__pyx_self, __pyx_v_N, __pyx_v_p);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_11propagation_21getPeerDistEvenFaster_2generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_12propagation2_21getPeerDistEvenFaster_2generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "propagation.pyx":20
+/* "propagation2.pyx":20
  *     pn = peersNeededfunc
  *     fvp =findPeersForNode
  *     if any(fvp(peers, nodes, peersNeededfunc,rand, N, p, i) for i in range(0,N)):             # <<<<<<<<<<<<<<
@@ -1730,24 +1729,24 @@ static PyObject *__pyx_gb_11propagation_21getPeerDistEvenFaster_2generator3(__py
  *     yield peers
  */
 
-static PyObject *__pyx_pf_11propagation_21getPeerDistEvenFaster_genexpr(PyObject *__pyx_self) {
-  struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr *__pyx_cur_scope;
+static PyObject *__pyx_pf_12propagation2_21getPeerDistEvenFaster_genexpr(PyObject *__pyx_self) {
+  struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr *)__pyx_tp_new_11propagation___pyx_scope_struct_1_genexpr(__pyx_ptype_11propagation___pyx_scope_struct_1_genexpr, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr *)__pyx_tp_new_12propagation2___pyx_scope_struct_1_genexpr(__pyx_ptype_12propagation2___pyx_scope_struct_1_genexpr, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 20, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
-  __pyx_cur_scope->__pyx_outer_scope = (struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *) __pyx_self;
+  __pyx_cur_scope->__pyx_outer_scope = (struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *) __pyx_self;
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11propagation_21getPeerDistEvenFaster_2generator3, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_getPeerDistEvenFaster_locals_gen, __pyx_n_s_propagation); if (unlikely(!gen)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_12propagation2_21getPeerDistEvenFaster_2generator3, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_getPeerDistEvenFaster_locals_gen, __pyx_n_s_propagation2); if (unlikely(!gen)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -1755,7 +1754,7 @@ static PyObject *__pyx_pf_11propagation_21getPeerDistEvenFaster_genexpr(PyObject
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("propagation.getPeerDistEvenFaster.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getPeerDistEvenFaster.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
   __Pyx_XGIVEREF(__pyx_r);
@@ -1763,9 +1762,9 @@ static PyObject *__pyx_pf_11propagation_21getPeerDistEvenFaster_genexpr(PyObject
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_11propagation_21getPeerDistEvenFaster_2generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_12propagation2_21getPeerDistEvenFaster_2generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr *__pyx_cur_scope = ((struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr *)__pyx_generator->closure);
+  struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr *__pyx_cur_scope = ((struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -1953,7 +1952,7 @@ static PyObject *__pyx_gb_11propagation_21getPeerDistEvenFaster_2generator3(__py
   return __pyx_r;
 }
 
-/* "propagation.pyx":10
+/* "propagation2.pyx":10
  * import time
  * 
  * def getPeerDistEvenFaster(N, p):             # <<<<<<<<<<<<<<
@@ -1961,14 +1960,14 @@ static PyObject *__pyx_gb_11propagation_21getPeerDistEvenFaster_2generator3(__py
  *     nodes = numpy.arange(N)  # array to randomly shuffle each iteration to give us potential peers in different order
  */
 
-static PyObject *__pyx_pf_11propagation_getPeerDistEvenFaster(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p) {
-  struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *__pyx_cur_scope;
+static PyObject *__pyx_pf_12propagation2_getPeerDistEvenFaster(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p) {
+  struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("getPeerDistEvenFaster", 0);
-  __pyx_cur_scope = (struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *)__pyx_tp_new_11propagation___pyx_scope_struct__getPeerDistEvenFaster(__pyx_ptype_11propagation___pyx_scope_struct__getPeerDistEvenFaster, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *)__pyx_tp_new_12propagation2___pyx_scope_struct__getPeerDistEvenFaster(__pyx_ptype_12propagation2___pyx_scope_struct__getPeerDistEvenFaster, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 10, __pyx_L1_error)
   } else {
@@ -1981,7 +1980,7 @@ static PyObject *__pyx_pf_11propagation_getPeerDistEvenFaster(CYTHON_UNUSED PyOb
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_p);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_p);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11propagation_2generator, __pyx_codeobj_, (PyObject *) __pyx_cur_scope, __pyx_n_s_getPeerDistEvenFaster, __pyx_n_s_getPeerDistEvenFaster, __pyx_n_s_propagation); if (unlikely(!gen)) __PYX_ERR(0, 10, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_12propagation2_2generator, __pyx_codeobj_, (PyObject *) __pyx_cur_scope, __pyx_n_s_getPeerDistEvenFaster, __pyx_n_s_getPeerDistEvenFaster, __pyx_n_s_propagation2); if (unlikely(!gen)) __PYX_ERR(0, 10, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -1989,7 +1988,7 @@ static PyObject *__pyx_pf_11propagation_getPeerDistEvenFaster(CYTHON_UNUSED PyOb
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("propagation.getPeerDistEvenFaster", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getPeerDistEvenFaster", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
   __Pyx_XGIVEREF(__pyx_r);
@@ -1997,9 +1996,9 @@ static PyObject *__pyx_pf_11propagation_getPeerDistEvenFaster(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_12propagation2_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *__pyx_cur_scope = ((struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *)__pyx_generator->closure);
+  struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *__pyx_cur_scope = ((struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -2018,7 +2017,7 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
   __pyx_L3_first_run:;
   if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 10, __pyx_L1_error)
 
-  /* "propagation.pyx":11
+  /* "propagation2.pyx":11
  * 
  * def getPeerDistEvenFaster(N, p):
  *     peers =  numpy.full((N, p), -1, dtype = int)             # <<<<<<<<<<<<<<
@@ -2058,7 +2057,7 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
   __pyx_cur_scope->__pyx_v_peers = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "propagation.pyx":12
+  /* "propagation2.pyx":12
  * def getPeerDistEvenFaster(N, p):
  *     peers =  numpy.full((N, p), -1, dtype = int)
  *     nodes = numpy.arange(N)  # array to randomly shuffle each iteration to give us potential peers in different order             # <<<<<<<<<<<<<<
@@ -2117,7 +2116,7 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
   __pyx_cur_scope->__pyx_v_nodes = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "propagation.pyx":13
+  /* "propagation2.pyx":13
  *     peers =  numpy.full((N, p), -1, dtype = int)
  *     nodes = numpy.arange(N)  # array to randomly shuffle each iteration to give us potential peers in different order
  *     rand = numpy.random.randint             # <<<<<<<<<<<<<<
@@ -2136,7 +2135,7 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
   __pyx_cur_scope->__pyx_v_rand = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "propagation.pyx":18
+  /* "propagation2.pyx":18
  *     #fvp =partial(findPeersForNode,peers,nodes,pn,rand,N,p)
  * 
  *     pn = peersNeededfunc             # <<<<<<<<<<<<<<
@@ -2149,7 +2148,7 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
   __pyx_cur_scope->__pyx_v_pn = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "propagation.pyx":19
+  /* "propagation2.pyx":19
  * 
  *     pn = peersNeededfunc
  *     fvp =findPeersForNode             # <<<<<<<<<<<<<<
@@ -2162,14 +2161,14 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
   __pyx_cur_scope->__pyx_v_fvp = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "propagation.pyx":20
+  /* "propagation2.pyx":20
  *     pn = peersNeededfunc
  *     fvp =findPeersForNode
  *     if any(fvp(peers, nodes, peersNeededfunc,rand, N, p, i) for i in range(0,N)):             # <<<<<<<<<<<<<<
  *         return []
  *     yield peers
  */
-  __pyx_t_4 = __pyx_pf_11propagation_21getPeerDistEvenFaster_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_4 = __pyx_pf_12propagation2_21getPeerDistEvenFaster_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = __Pyx_Generator_Next(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -2178,7 +2177,7 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_5) {
 
-    /* "propagation.pyx":21
+    /* "propagation2.pyx":21
  *     fvp =findPeersForNode
  *     if any(fvp(peers, nodes, peersNeededfunc,rand, N, p, i) for i in range(0,N)):
  *         return []             # <<<<<<<<<<<<<<
@@ -2193,7 +2192,7 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "propagation.pyx":20
+    /* "propagation2.pyx":20
  *     pn = peersNeededfunc
  *     fvp =findPeersForNode
  *     if any(fvp(peers, nodes, peersNeededfunc,rand, N, p, i) for i in range(0,N)):             # <<<<<<<<<<<<<<
@@ -2202,7 +2201,7 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
  */
   }
 
-  /* "propagation.pyx":22
+  /* "propagation2.pyx":22
  *     if any(fvp(peers, nodes, peersNeededfunc,rand, N, p, i) for i in range(0,N)):
  *         return []
  *     yield peers             # <<<<<<<<<<<<<<
@@ -2221,7 +2220,7 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
   if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 22, __pyx_L1_error)
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "propagation.pyx":10
+  /* "propagation2.pyx":10
  * import time
  * 
  * def getPeerDistEvenFaster(N, p):             # <<<<<<<<<<<<<<
@@ -2247,7 +2246,7 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
   return __pyx_r;
 }
 
-/* "propagation.pyx":24
+/* "propagation2.pyx":24
  *     yield peers
  * 
  * def peersNeededfunc(peers,p,n):             # <<<<<<<<<<<<<<
@@ -2256,9 +2255,9 @@ static PyObject *__pyx_gb_11propagation_2generator(__pyx_CoroutineObject *__pyx_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_4peersNeededfunc(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_4peersNeededfunc = {"peersNeededfunc", (PyCFunction)__pyx_pw_11propagation_4peersNeededfunc, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_4peersNeededfunc(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_4peersNeededfunc(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_4peersNeededfunc = {"peersNeededfunc", (PyCFunction)__pyx_pw_12propagation2_4peersNeededfunc, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_4peersNeededfunc(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_peers = 0;
   PyObject *__pyx_v_p = 0;
   PyObject *__pyx_v_n = 0;
@@ -2317,18 +2316,18 @@ static PyObject *__pyx_pw_11propagation_4peersNeededfunc(PyObject *__pyx_self, P
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("peersNeededfunc", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 24, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.peersNeededfunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.peersNeededfunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_3peersNeededfunc(__pyx_self, __pyx_v_peers, __pyx_v_p, __pyx_v_n);
+  __pyx_r = __pyx_pf_12propagation2_3peersNeededfunc(__pyx_self, __pyx_v_peers, __pyx_v_p, __pyx_v_n);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_3peersNeededfunc(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_p, PyObject *__pyx_v_n) {
+static PyObject *__pyx_pf_12propagation2_3peersNeededfunc(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_p, PyObject *__pyx_v_n) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2338,7 +2337,7 @@ static PyObject *__pyx_pf_11propagation_3peersNeededfunc(CYTHON_UNUSED PyObject 
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("peersNeededfunc", 0);
 
-  /* "propagation.pyx":25
+  /* "propagation2.pyx":25
  * 
  * def peersNeededfunc(peers,p,n):
  *         return p - numpy.count_nonzero(peers[n,:] >= 0)             # <<<<<<<<<<<<<<
@@ -2417,7 +2416,7 @@ static PyObject *__pyx_pf_11propagation_3peersNeededfunc(CYTHON_UNUSED PyObject 
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "propagation.pyx":24
+  /* "propagation2.pyx":24
  *     yield peers
  * 
  * def peersNeededfunc(peers,p,n):             # <<<<<<<<<<<<<<
@@ -2432,7 +2431,7 @@ static PyObject *__pyx_pf_11propagation_3peersNeededfunc(CYTHON_UNUSED PyObject 
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("propagation.peersNeededfunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.peersNeededfunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2440,7 +2439,7 @@ static PyObject *__pyx_pf_11propagation_3peersNeededfunc(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "propagation.pyx":27
+/* "propagation2.pyx":27
  *         return p - numpy.count_nonzero(peers[n,:] >= 0)
  * 
  * def findPeersForNode(peers, nodes, peersNeededfunc,randfunc, N, p, i):             # <<<<<<<<<<<<<<
@@ -2449,9 +2448,9 @@ static PyObject *__pyx_pf_11propagation_3peersNeededfunc(CYTHON_UNUSED PyObject 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_6findPeersForNode(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_6findPeersForNode = {"findPeersForNode", (PyCFunction)__pyx_pw_11propagation_6findPeersForNode, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_6findPeersForNode(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_6findPeersForNode(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_6findPeersForNode = {"findPeersForNode", (PyCFunction)__pyx_pw_12propagation2_6findPeersForNode, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_6findPeersForNode(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_peers = 0;
   PyObject *__pyx_v_nodes = 0;
   PyObject *__pyx_v_peersNeededfunc = 0;
@@ -2554,18 +2553,18 @@ static PyObject *__pyx_pw_11propagation_6findPeersForNode(PyObject *__pyx_self, 
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("findPeersForNode", 1, 7, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 27, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.findPeersForNode", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.findPeersForNode", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_5findPeersForNode(__pyx_self, __pyx_v_peers, __pyx_v_nodes, __pyx_v_peersNeededfunc, __pyx_v_randfunc, __pyx_v_N, __pyx_v_p, __pyx_v_i);
+  __pyx_r = __pyx_pf_12propagation2_5findPeersForNode(__pyx_self, __pyx_v_peers, __pyx_v_nodes, __pyx_v_peersNeededfunc, __pyx_v_randfunc, __pyx_v_N, __pyx_v_p, __pyx_v_i);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_nodes, PyObject *__pyx_v_peersNeededfunc, PyObject *__pyx_v_randfunc, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_i) {
+static PyObject *__pyx_pf_12propagation2_5findPeersForNode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_nodes, PyObject *__pyx_v_peersNeededfunc, PyObject *__pyx_v_randfunc, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_i) {
   int __pyx_v_maxIndices;
   int __pyx_v_peersNeeded;
   int __pyx_v_randPeerIndex;
@@ -2584,7 +2583,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
   int __pyx_t_9;
   __Pyx_RefNannySetupContext("findPeersForNode", 0);
 
-  /* "propagation.pyx":28
+  /* "propagation2.pyx":28
  * 
  * def findPeersForNode(peers, nodes, peersNeededfunc,randfunc, N, p, i):
  *     cdef int maxIndices = N-1   #Using as part of Fisher-Yates algorithm to provide unique random options for peers efficiently.             # <<<<<<<<<<<<<<
@@ -2597,7 +2596,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_maxIndices = __pyx_t_2;
 
-  /* "propagation.pyx":29
+  /* "propagation2.pyx":29
  * def findPeersForNode(peers, nodes, peersNeededfunc,randfunc, N, p, i):
  *     cdef int maxIndices = N-1   #Using as part of Fisher-Yates algorithm to provide unique random options for peers efficiently.
  *     cdef int peersNeeded =  peersNeededfunc(peers,p,i)             # <<<<<<<<<<<<<<
@@ -2657,7 +2656,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_peersNeeded = __pyx_t_2;
 
-  /* "propagation.pyx":32
+  /* "propagation2.pyx":32
  *     cdef int randPeerIndex
  *     cdef int potPeer
  *     while(peersNeeded > 0 and maxIndices > 0):             # <<<<<<<<<<<<<<
@@ -2676,7 +2675,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
     __pyx_L5_bool_binop_done:;
     if (!__pyx_t_6) break;
 
-    /* "propagation.pyx":34
+    /* "propagation2.pyx":34
  *     while(peersNeeded > 0 and maxIndices > 0):
  * 
  *         randPeerIndex = randfunc(0,maxIndices)             # <<<<<<<<<<<<<<
@@ -2737,7 +2736,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_randPeerIndex = __pyx_t_2;
 
-    /* "propagation.pyx":36
+    /* "propagation2.pyx":36
  *         randPeerIndex = randfunc(0,maxIndices)
  * 
  *         potPeer = nodes[randPeerIndex]             # <<<<<<<<<<<<<<
@@ -2750,7 +2749,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_potPeer = __pyx_t_2;
 
-    /* "propagation.pyx":38
+    /* "propagation2.pyx":38
  *         potPeer = nodes[randPeerIndex]
  * 
  *         nodes[maxIndices], nodes[randPeerIndex] = nodes[randPeerIndex], nodes[maxIndices]             # <<<<<<<<<<<<<<
@@ -2766,7 +2765,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
     if (unlikely(__Pyx_SetItemInt(__pyx_v_nodes, __pyx_v_randPeerIndex, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "propagation.pyx":39
+    /* "propagation2.pyx":39
  * 
  *         nodes[maxIndices], nodes[randPeerIndex] = nodes[randPeerIndex], nodes[maxIndices]
  *         maxIndices -= 1             # <<<<<<<<<<<<<<
@@ -2775,7 +2774,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
  */
     __pyx_v_maxIndices = (__pyx_v_maxIndices - 1);
 
-    /* "propagation.pyx":41
+    /* "propagation2.pyx":41
  *         maxIndices -= 1
  * 
  *         if potPeer != i and not any(peers[potPeer,:]==i):             # <<<<<<<<<<<<<<
@@ -2818,7 +2817,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_6) {
 
-      /* "propagation.pyx":43
+      /* "propagation2.pyx":43
  *         if potPeer != i and not any(peers[potPeer,:]==i):
  * 
  *             peersNeededByPeer = peersNeededfunc(peers,p,potPeer)             # <<<<<<<<<<<<<<
@@ -2881,7 +2880,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
       __Pyx_XDECREF_SET(__pyx_v_peersNeededByPeer, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "propagation.pyx":45
+      /* "propagation2.pyx":45
  *             peersNeededByPeer = peersNeededfunc(peers,p,potPeer)
  * 
  *             if peersNeededByPeer > 0:             # <<<<<<<<<<<<<<
@@ -2893,7 +2892,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (__pyx_t_6) {
 
-        /* "propagation.pyx":46
+        /* "propagation2.pyx":46
  * 
  *             if peersNeededByPeer > 0:
  *                 peers[potPeer,p - peersNeededByPeer] = i             # <<<<<<<<<<<<<<
@@ -2915,7 +2914,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
         if (unlikely(PyObject_SetItem(__pyx_v_peers, __pyx_t_4, __pyx_v_i) < 0)) __PYX_ERR(0, 46, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "propagation.pyx":47
+        /* "propagation2.pyx":47
  *             if peersNeededByPeer > 0:
  *                 peers[potPeer,p - peersNeededByPeer] = i
  *                 peers[i, p - peersNeeded] = potPeer             # <<<<<<<<<<<<<<
@@ -2941,7 +2940,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "propagation.pyx":48
+        /* "propagation2.pyx":48
  *                 peers[potPeer,p - peersNeededByPeer] = i
  *                 peers[i, p - peersNeeded] = potPeer
  *                 peersNeeded-=1             # <<<<<<<<<<<<<<
@@ -2950,7 +2949,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
  */
         __pyx_v_peersNeeded = (__pyx_v_peersNeeded - 1);
 
-        /* "propagation.pyx":45
+        /* "propagation2.pyx":45
  *             peersNeededByPeer = peersNeededfunc(peers,p,potPeer)
  * 
  *             if peersNeededByPeer > 0:             # <<<<<<<<<<<<<<
@@ -2959,7 +2958,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
  */
       }
 
-      /* "propagation.pyx":41
+      /* "propagation2.pyx":41
  *         maxIndices -= 1
  * 
  *         if potPeer != i and not any(peers[potPeer,:]==i):             # <<<<<<<<<<<<<<
@@ -2969,7 +2968,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
     }
   }
 
-  /* "propagation.pyx":49
+  /* "propagation2.pyx":49
  *                 peers[i, p - peersNeeded] = potPeer
  *                 peersNeeded-=1
  *     if peersNeeded > 0:             # <<<<<<<<<<<<<<
@@ -2979,7 +2978,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
   __pyx_t_6 = ((__pyx_v_peersNeeded > 0) != 0);
   if (__pyx_t_6) {
 
-    /* "propagation.pyx":50
+    /* "propagation2.pyx":50
  *                 peersNeeded-=1
  *     if peersNeeded > 0:
  *         return True             # <<<<<<<<<<<<<<
@@ -2991,7 +2990,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
     __pyx_r = Py_True;
     goto __pyx_L0;
 
-    /* "propagation.pyx":49
+    /* "propagation2.pyx":49
  *                 peers[i, p - peersNeeded] = potPeer
  *                 peersNeeded-=1
  *     if peersNeeded > 0:             # <<<<<<<<<<<<<<
@@ -3000,7 +2999,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
  */
   }
 
-  /* "propagation.pyx":52
+  /* "propagation2.pyx":52
  *         return True
  *     else:
  *         return False             # <<<<<<<<<<<<<<
@@ -3014,7 +3013,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
     goto __pyx_L0;
   }
 
-  /* "propagation.pyx":27
+  /* "propagation2.pyx":27
  *         return p - numpy.count_nonzero(peers[n,:] >= 0)
  * 
  * def findPeersForNode(peers, nodes, peersNeededfunc,randfunc, N, p, i):             # <<<<<<<<<<<<<<
@@ -3029,7 +3028,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("propagation.findPeersForNode", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.findPeersForNode", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_peersNeededByPeer);
@@ -3038,7 +3037,7 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "propagation.pyx":54
+/* "propagation2.pyx":54
  *         return False
  * 
  * def isValid(peers,N,p):             # <<<<<<<<<<<<<<
@@ -3047,9 +3046,9 @@ static PyObject *__pyx_pf_11propagation_5findPeersForNode(CYTHON_UNUSED PyObject
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_8isValid(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_8isValid = {"isValid", (PyCFunction)__pyx_pw_11propagation_8isValid, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_8isValid(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_8isValid(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_8isValid = {"isValid", (PyCFunction)__pyx_pw_12propagation2_8isValid, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_8isValid(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_peers = 0;
   PyObject *__pyx_v_N = 0;
   PyObject *__pyx_v_p = 0;
@@ -3108,18 +3107,18 @@ static PyObject *__pyx_pw_11propagation_8isValid(PyObject *__pyx_self, PyObject 
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("isValid", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 54, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.isValid", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.isValid", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_7isValid(__pyx_self, __pyx_v_peers, __pyx_v_N, __pyx_v_p);
+  __pyx_r = __pyx_pf_12propagation2_7isValid(__pyx_self, __pyx_v_peers, __pyx_v_N, __pyx_v_p);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_N, PyObject *__pyx_v_p) {
+static PyObject *__pyx_pf_12propagation2_7isValid(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_N, PyObject *__pyx_v_p) {
   PyObject *__pyx_v_b = NULL;
   PyObject *__pyx_v_i = NULL;
   PyObject *__pyx_r = NULL;
@@ -3135,7 +3134,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
   PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("isValid", 0);
 
-  /* "propagation.pyx":55
+  /* "propagation2.pyx":55
  * 
  * def isValid(peers,N,p):
  *     if peers == []:             # <<<<<<<<<<<<<<
@@ -3150,7 +3149,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_3) {
 
-    /* "propagation.pyx":56
+    /* "propagation2.pyx":56
  * def isValid(peers,N,p):
  *     if peers == []:
  *         return False             # <<<<<<<<<<<<<<
@@ -3162,7 +3161,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
     __pyx_r = Py_False;
     goto __pyx_L0;
 
-    /* "propagation.pyx":55
+    /* "propagation2.pyx":55
  * 
  * def isValid(peers,N,p):
  *     if peers == []:             # <<<<<<<<<<<<<<
@@ -3171,7 +3170,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
  */
   }
 
-  /* "propagation.pyx":57
+  /* "propagation2.pyx":57
  *     if peers == []:
  *         return False
  *     b = peers.flatten()             # <<<<<<<<<<<<<<
@@ -3201,7 +3200,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_v_b = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "propagation.pyx":58
+  /* "propagation2.pyx":58
  *         return False
  *     b = peers.flatten()
  *     for i in range(0,N):             # <<<<<<<<<<<<<<
@@ -3262,7 +3261,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "propagation.pyx":59
+    /* "propagation2.pyx":59
  *     b = peers.flatten()
  *     for i in range(0,N):
  *         if numpy.count_nonzero(b==i)!=p:             # <<<<<<<<<<<<<<
@@ -3327,7 +3326,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_3) {
 
-      /* "propagation.pyx":60
+      /* "propagation2.pyx":60
  *     for i in range(0,N):
  *         if numpy.count_nonzero(b==i)!=p:
  *             return False             # <<<<<<<<<<<<<<
@@ -3340,7 +3339,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       goto __pyx_L0;
 
-      /* "propagation.pyx":59
+      /* "propagation2.pyx":59
  *     b = peers.flatten()
  *     for i in range(0,N):
  *         if numpy.count_nonzero(b==i)!=p:             # <<<<<<<<<<<<<<
@@ -3349,7 +3348,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
  */
     }
 
-    /* "propagation.pyx":58
+    /* "propagation2.pyx":58
  *         return False
  *     b = peers.flatten()
  *     for i in range(0,N):             # <<<<<<<<<<<<<<
@@ -3359,7 +3358,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":61
+  /* "propagation2.pyx":61
  *         if numpy.count_nonzero(b==i)!=p:
  *             return False
  *     return True             # <<<<<<<<<<<<<<
@@ -3371,7 +3370,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_r = Py_True;
   goto __pyx_L0;
 
-  /* "propagation.pyx":54
+  /* "propagation2.pyx":54
  *         return False
  * 
  * def isValid(peers,N,p):             # <<<<<<<<<<<<<<
@@ -3387,7 +3386,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("propagation.isValid", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.isValid", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_b);
@@ -3397,7 +3396,7 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "propagation.pyx":63
+/* "propagation2.pyx":63
  *     return True
  * 
  * def generatePeerDist(N,p,n):             # <<<<<<<<<<<<<<
@@ -3406,9 +3405,9 @@ static PyObject *__pyx_pf_11propagation_7isValid(CYTHON_UNUSED PyObject *__pyx_s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_10generatePeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_10generatePeerDist = {"generatePeerDist", (PyCFunction)__pyx_pw_11propagation_10generatePeerDist, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_10generatePeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_10generatePeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_10generatePeerDist = {"generatePeerDist", (PyCFunction)__pyx_pw_12propagation2_10generatePeerDist, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_10generatePeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_N = 0;
   PyObject *__pyx_v_p = 0;
   PyObject *__pyx_v_n = 0;
@@ -3467,18 +3466,18 @@ static PyObject *__pyx_pw_11propagation_10generatePeerDist(PyObject *__pyx_self,
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("generatePeerDist", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 63, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.generatePeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.generatePeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_9generatePeerDist(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_n);
+  __pyx_r = __pyx_pf_12propagation2_9generatePeerDist(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_n);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_n) {
+static PyObject *__pyx_pf_12propagation2_9generatePeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_n) {
   PyObject *__pyx_v_start = NULL;
   PyObject *__pyx_v_item_start = NULL;
   PyObject *__pyx_v_i = NULL;
@@ -3499,7 +3498,7 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
   int __pyx_t_10;
   __Pyx_RefNannySetupContext("generatePeerDist", 0);
 
-  /* "propagation.pyx":64
+  /* "propagation2.pyx":64
  * 
  * def generatePeerDist(N,p,n):
  *     start = time.time()             # <<<<<<<<<<<<<<
@@ -3532,7 +3531,7 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
   __pyx_v_start = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "propagation.pyx":65
+  /* "propagation2.pyx":65
  * def generatePeerDist(N,p,n):
  *     start = time.time()
  *     item_start = start             # <<<<<<<<<<<<<<
@@ -3542,7 +3541,7 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
   __Pyx_INCREF(__pyx_v_start);
   __pyx_v_item_start = __pyx_v_start;
 
-  /* "propagation.pyx":66
+  /* "propagation2.pyx":66
  *     start = time.time()
  *     item_start = start
  *     i = 0             # <<<<<<<<<<<<<<
@@ -3552,7 +3551,7 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_i = __pyx_int_0;
 
-  /* "propagation.pyx":67
+  /* "propagation2.pyx":67
  *     item_start = start
  *     i = 0
  *     for peerDist in getPeerDistOrDieTrying(N,p):             # <<<<<<<<<<<<<<
@@ -3649,7 +3648,7 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
     __Pyx_XDECREF_SET(__pyx_v_peerDist, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "propagation.pyx":68
+    /* "propagation2.pyx":68
  *     i = 0
  *     for peerDist in getPeerDistOrDieTrying(N,p):
  *         time_now = time.time()             # <<<<<<<<<<<<<<
@@ -3682,23 +3681,23 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
     __Pyx_XDECREF_SET(__pyx_v_time_now, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "propagation.pyx":69
+    /* "propagation2.pyx":69
  *     for peerDist in getPeerDistOrDieTrying(N,p):
  *         time_now = time.time()
  *         i+=1             # <<<<<<<<<<<<<<
  *         print("found one in " + str(time_now-item_start))
- *         savePeerDist(N,p,peerDist,i+3)
+ *         savePeerDist(N,p,peerDist,i+1)
  */
     __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF_SET(__pyx_v_i, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "propagation.pyx":70
+    /* "propagation2.pyx":70
  *         time_now = time.time()
  *         i+=1
  *         print("found one in " + str(time_now-item_start))             # <<<<<<<<<<<<<<
- *         savePeerDist(N,p,peerDist,i+3)
+ *         savePeerDist(N,p,peerDist,i+1)
  *         if(i==n):
  */
     __pyx_t_1 = PyNumber_Subtract(__pyx_v_time_now, __pyx_v_item_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
@@ -3712,16 +3711,16 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
     if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 70, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "propagation.pyx":71
+    /* "propagation2.pyx":71
  *         i+=1
  *         print("found one in " + str(time_now-item_start))
- *         savePeerDist(N,p,peerDist,i+3)             # <<<<<<<<<<<<<<
+ *         savePeerDist(N,p,peerDist,i+1)             # <<<<<<<<<<<<<<
  *         if(i==n):
  *             av_time = (time_now - start)/n
  */
     __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_savePeerDist); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_3, 3, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_8 = NULL;
     __pyx_t_4 = 0;
@@ -3778,9 +3777,9 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "propagation.pyx":72
+    /* "propagation2.pyx":72
  *         print("found one in " + str(time_now-item_start))
- *         savePeerDist(N,p,peerDist,i+3)
+ *         savePeerDist(N,p,peerDist,i+1)
  *         if(i==n):             # <<<<<<<<<<<<<<
  *             av_time = (time_now - start)/n
  *             print("time taken: " +  str(av_time))
@@ -3790,8 +3789,8 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_10) {
 
-      /* "propagation.pyx":73
- *         savePeerDist(N,p,peerDist,i+3)
+      /* "propagation2.pyx":73
+ *         savePeerDist(N,p,peerDist,i+1)
  *         if(i==n):
  *             av_time = (time_now - start)/n             # <<<<<<<<<<<<<<
  *             print("time taken: " +  str(av_time))
@@ -3805,7 +3804,7 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
       __pyx_v_av_time = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "propagation.pyx":74
+      /* "propagation2.pyx":74
  *         if(i==n):
  *             av_time = (time_now - start)/n
  *             print("time taken: " +  str(av_time))             # <<<<<<<<<<<<<<
@@ -3820,7 +3819,7 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
       if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "propagation.pyx":75
+      /* "propagation2.pyx":75
  *             av_time = (time_now - start)/n
  *             print("time taken: " +  str(av_time))
  *             break             # <<<<<<<<<<<<<<
@@ -3829,16 +3828,16 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
  */
       goto __pyx_L4_break;
 
-      /* "propagation.pyx":72
+      /* "propagation2.pyx":72
  *         print("found one in " + str(time_now-item_start))
- *         savePeerDist(N,p,peerDist,i+3)
+ *         savePeerDist(N,p,peerDist,i+1)
  *         if(i==n):             # <<<<<<<<<<<<<<
  *             av_time = (time_now - start)/n
  *             print("time taken: " +  str(av_time))
  */
     }
 
-    /* "propagation.pyx":76
+    /* "propagation2.pyx":76
  *             print("time taken: " +  str(av_time))
  *             break
  *         item_start = time.time()             # <<<<<<<<<<<<<<
@@ -3871,7 +3870,7 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
     __Pyx_DECREF_SET(__pyx_v_item_start, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "propagation.pyx":67
+    /* "propagation2.pyx":67
  *     item_start = start
  *     i = 0
  *     for peerDist in getPeerDistOrDieTrying(N,p):             # <<<<<<<<<<<<<<
@@ -3882,7 +3881,7 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "propagation.pyx":63
+  /* "propagation2.pyx":63
  *     return True
  * 
  * def generatePeerDist(N,p,n):             # <<<<<<<<<<<<<<
@@ -3900,7 +3899,7 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("propagation.generatePeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.generatePeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_start);
@@ -3913,9 +3912,9 @@ static PyObject *__pyx_pf_11propagation_9generatePeerDist(CYTHON_UNUSED PyObject
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_11propagation_13generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_12propagation2_13generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "propagation.pyx":79
+/* "propagation2.pyx":79
  * 
  * 
  * def getPeerDistForever(N,p):             # <<<<<<<<<<<<<<
@@ -3924,9 +3923,9 @@ static PyObject *__pyx_gb_11propagation_13generator1(__pyx_CoroutineObject *__py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_12getPeerDistForever(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_12getPeerDistForever = {"getPeerDistForever", (PyCFunction)__pyx_pw_11propagation_12getPeerDistForever, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_12getPeerDistForever(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_12getPeerDistForever(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_12getPeerDistForever = {"getPeerDistForever", (PyCFunction)__pyx_pw_12propagation2_12getPeerDistForever, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_12getPeerDistForever(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_N = 0;
   PyObject *__pyx_v_p = 0;
   PyObject *__pyx_r = 0;
@@ -3974,25 +3973,25 @@ static PyObject *__pyx_pw_11propagation_12getPeerDistForever(PyObject *__pyx_sel
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("getPeerDistForever", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 79, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.getPeerDistForever", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getPeerDistForever", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_11getPeerDistForever(__pyx_self, __pyx_v_N, __pyx_v_p);
+  __pyx_r = __pyx_pf_12propagation2_11getPeerDistForever(__pyx_self, __pyx_v_N, __pyx_v_p);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_11getPeerDistForever(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p) {
-  struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever *__pyx_cur_scope;
+static PyObject *__pyx_pf_12propagation2_11getPeerDistForever(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p) {
+  struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("getPeerDistForever", 0);
-  __pyx_cur_scope = (struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever *)__pyx_tp_new_11propagation___pyx_scope_struct_2_getPeerDistForever(__pyx_ptype_11propagation___pyx_scope_struct_2_getPeerDistForever, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever *)__pyx_tp_new_12propagation2___pyx_scope_struct_2_getPeerDistForever(__pyx_ptype_12propagation2___pyx_scope_struct_2_getPeerDistForever, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 79, __pyx_L1_error)
   } else {
@@ -4005,7 +4004,7 @@ static PyObject *__pyx_pf_11propagation_11getPeerDistForever(CYTHON_UNUSED PyObj
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_p);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_p);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11propagation_13generator1, __pyx_codeobj__4, (PyObject *) __pyx_cur_scope, __pyx_n_s_getPeerDistForever, __pyx_n_s_getPeerDistForever, __pyx_n_s_propagation); if (unlikely(!gen)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_12propagation2_13generator1, __pyx_codeobj__4, (PyObject *) __pyx_cur_scope, __pyx_n_s_getPeerDistForever, __pyx_n_s_getPeerDistForever, __pyx_n_s_propagation2); if (unlikely(!gen)) __PYX_ERR(0, 79, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -4013,7 +4012,7 @@ static PyObject *__pyx_pf_11propagation_11getPeerDistForever(CYTHON_UNUSED PyObj
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("propagation.getPeerDistForever", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getPeerDistForever", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
   __Pyx_XGIVEREF(__pyx_r);
@@ -4021,9 +4020,9 @@ static PyObject *__pyx_pf_11propagation_11getPeerDistForever(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_11propagation_13generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_12propagation2_13generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever *__pyx_cur_scope = ((struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever *)__pyx_generator->closure);
+  struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever *__pyx_cur_scope = ((struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -4042,7 +4041,7 @@ static PyObject *__pyx_gb_11propagation_13generator1(__pyx_CoroutineObject *__py
   __pyx_L3_first_run:;
   if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 79, __pyx_L1_error)
 
-  /* "propagation.pyx":80
+  /* "propagation2.pyx":80
  * 
  * def getPeerDistForever(N,p):
  *     while True:             # <<<<<<<<<<<<<<
@@ -4051,7 +4050,7 @@ static PyObject *__pyx_gb_11propagation_13generator1(__pyx_CoroutineObject *__py
  */
   while (1) {
 
-    /* "propagation.pyx":81
+    /* "propagation2.pyx":81
  * def getPeerDistForever(N,p):
  *     while True:
  *         yield from getPeerDistEvenFaster(N,p)             # <<<<<<<<<<<<<<
@@ -4127,7 +4126,7 @@ static PyObject *__pyx_gb_11propagation_13generator1(__pyx_CoroutineObject *__py
   }
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "propagation.pyx":79
+  /* "propagation2.pyx":79
  * 
  * 
  * def getPeerDistForever(N,p):             # <<<<<<<<<<<<<<
@@ -4152,9 +4151,9 @@ static PyObject *__pyx_gb_11propagation_13generator1(__pyx_CoroutineObject *__py
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_11propagation_16generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_12propagation2_16generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "propagation.pyx":83
+/* "propagation2.pyx":83
  *         yield from getPeerDistEvenFaster(N,p)
  * 
  * def getPeerDistOrDieTrying(N,p):             # <<<<<<<<<<<<<<
@@ -4163,9 +4162,9 @@ static PyObject *__pyx_gb_11propagation_16generator2(__pyx_CoroutineObject *__py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_15getPeerDistOrDieTrying(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_15getPeerDistOrDieTrying = {"getPeerDistOrDieTrying", (PyCFunction)__pyx_pw_11propagation_15getPeerDistOrDieTrying, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_15getPeerDistOrDieTrying(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_15getPeerDistOrDieTrying(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_15getPeerDistOrDieTrying = {"getPeerDistOrDieTrying", (PyCFunction)__pyx_pw_12propagation2_15getPeerDistOrDieTrying, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_15getPeerDistOrDieTrying(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_N = 0;
   PyObject *__pyx_v_p = 0;
   PyObject *__pyx_r = 0;
@@ -4213,25 +4212,25 @@ static PyObject *__pyx_pw_11propagation_15getPeerDistOrDieTrying(PyObject *__pyx
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("getPeerDistOrDieTrying", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 83, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.getPeerDistOrDieTrying", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getPeerDistOrDieTrying", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_14getPeerDistOrDieTrying(__pyx_self, __pyx_v_N, __pyx_v_p);
+  __pyx_r = __pyx_pf_12propagation2_14getPeerDistOrDieTrying(__pyx_self, __pyx_v_N, __pyx_v_p);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_14getPeerDistOrDieTrying(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p) {
-  struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying *__pyx_cur_scope;
+static PyObject *__pyx_pf_12propagation2_14getPeerDistOrDieTrying(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p) {
+  struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("getPeerDistOrDieTrying", 0);
-  __pyx_cur_scope = (struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying *)__pyx_tp_new_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying(__pyx_ptype_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying *)__pyx_tp_new_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying(__pyx_ptype_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 83, __pyx_L1_error)
   } else {
@@ -4244,7 +4243,7 @@ static PyObject *__pyx_pf_11propagation_14getPeerDistOrDieTrying(CYTHON_UNUSED P
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_p);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_p);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11propagation_16generator2, __pyx_codeobj__5, (PyObject *) __pyx_cur_scope, __pyx_n_s_getPeerDistOrDieTrying, __pyx_n_s_getPeerDistOrDieTrying, __pyx_n_s_propagation); if (unlikely(!gen)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_12propagation2_16generator2, __pyx_codeobj__5, (PyObject *) __pyx_cur_scope, __pyx_n_s_getPeerDistOrDieTrying, __pyx_n_s_getPeerDistOrDieTrying, __pyx_n_s_propagation2); if (unlikely(!gen)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -4252,7 +4251,7 @@ static PyObject *__pyx_pf_11propagation_14getPeerDistOrDieTrying(CYTHON_UNUSED P
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("propagation.getPeerDistOrDieTrying", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getPeerDistOrDieTrying", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
   __Pyx_XGIVEREF(__pyx_r);
@@ -4260,9 +4259,9 @@ static PyObject *__pyx_pf_11propagation_14getPeerDistOrDieTrying(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_11propagation_16generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_12propagation2_16generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying *__pyx_cur_scope = ((struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying *)__pyx_generator->closure);
+  struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying *__pyx_cur_scope = ((struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -4285,7 +4284,7 @@ static PyObject *__pyx_gb_11propagation_16generator2(__pyx_CoroutineObject *__py
   __pyx_L3_first_run:;
   if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 83, __pyx_L1_error)
 
-  /* "propagation.pyx":84
+  /* "propagation2.pyx":84
  * 
  * def getPeerDistOrDieTrying(N,p):
  *     for item in getPeerDistForever(N,p):             # <<<<<<<<<<<<<<
@@ -4384,7 +4383,7 @@ static PyObject *__pyx_gb_11propagation_16generator2(__pyx_CoroutineObject *__py
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "propagation.pyx":85
+    /* "propagation2.pyx":85
  * def getPeerDistOrDieTrying(N,p):
  *     for item in getPeerDistForever(N,p):
  *         if isValid(item,N,p):             # <<<<<<<<<<<<<<
@@ -4445,7 +4444,7 @@ static PyObject *__pyx_gb_11propagation_16generator2(__pyx_CoroutineObject *__py
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_9) {
 
-      /* "propagation.pyx":86
+      /* "propagation2.pyx":86
  *     for item in getPeerDistForever(N,p):
  *         if isValid(item,N,p):
  *             yield item             # <<<<<<<<<<<<<<
@@ -4472,7 +4471,7 @@ static PyObject *__pyx_gb_11propagation_16generator2(__pyx_CoroutineObject *__py
       __pyx_t_7 = __pyx_cur_scope->__pyx_t_2;
       if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 86, __pyx_L1_error)
 
-      /* "propagation.pyx":85
+      /* "propagation2.pyx":85
  * def getPeerDistOrDieTrying(N,p):
  *     for item in getPeerDistForever(N,p):
  *         if isValid(item,N,p):             # <<<<<<<<<<<<<<
@@ -4481,7 +4480,7 @@ static PyObject *__pyx_gb_11propagation_16generator2(__pyx_CoroutineObject *__py
  */
     }
 
-    /* "propagation.pyx":84
+    /* "propagation2.pyx":84
  * 
  * def getPeerDistOrDieTrying(N,p):
  *     for item in getPeerDistForever(N,p):             # <<<<<<<<<<<<<<
@@ -4492,7 +4491,7 @@ static PyObject *__pyx_gb_11propagation_16generator2(__pyx_CoroutineObject *__py
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "propagation.pyx":83
+  /* "propagation2.pyx":83
  *         yield from getPeerDistEvenFaster(N,p)
  * 
  * def getPeerDistOrDieTrying(N,p):             # <<<<<<<<<<<<<<
@@ -4519,7 +4518,7 @@ static PyObject *__pyx_gb_11propagation_16generator2(__pyx_CoroutineObject *__py
   return __pyx_r;
 }
 
-/* "propagation.pyx":89
+/* "propagation2.pyx":89
  * 
  * 
  * def sendToPeers(peers,messageDist,time):             # <<<<<<<<<<<<<<
@@ -4528,9 +4527,9 @@ static PyObject *__pyx_gb_11propagation_16generator2(__pyx_CoroutineObject *__py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_18sendToPeers(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_18sendToPeers = {"sendToPeers", (PyCFunction)__pyx_pw_11propagation_18sendToPeers, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_18sendToPeers(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_18sendToPeers(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_18sendToPeers = {"sendToPeers", (PyCFunction)__pyx_pw_12propagation2_18sendToPeers, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_18sendToPeers(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_peers = 0;
   PyObject *__pyx_v_messageDist = 0;
   PyObject *__pyx_v_time = 0;
@@ -4589,18 +4588,18 @@ static PyObject *__pyx_pw_11propagation_18sendToPeers(PyObject *__pyx_self, PyOb
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("sendToPeers", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 89, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.sendToPeers", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.sendToPeers", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_17sendToPeers(__pyx_self, __pyx_v_peers, __pyx_v_messageDist, __pyx_v_time);
+  __pyx_r = __pyx_pf_12propagation2_17sendToPeers(__pyx_self, __pyx_v_peers, __pyx_v_messageDist, __pyx_v_time);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_17sendToPeers(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_messageDist, PyObject *__pyx_v_time) {
+static PyObject *__pyx_pf_12propagation2_17sendToPeers(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_messageDist, PyObject *__pyx_v_time) {
   PyObject *__pyx_v_p = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4614,7 +4613,7 @@ static PyObject *__pyx_pf_11propagation_17sendToPeers(CYTHON_UNUSED PyObject *__
   PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("sendToPeers", 0);
 
-  /* "propagation.pyx":90
+  /* "propagation2.pyx":90
  * 
  * def sendToPeers(peers,messageDist,time):
  *     p = peers[messageDist == time,:]             # <<<<<<<<<<<<<<
@@ -4636,7 +4635,7 @@ static PyObject *__pyx_pf_11propagation_17sendToPeers(CYTHON_UNUSED PyObject *__
   __pyx_v_p = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "propagation.pyx":91
+  /* "propagation2.pyx":91
  * def sendToPeers(peers,messageDist,time):
  *     p = peers[messageDist == time,:]
  *     messageDist[p[:]]=numpy.where(messageDist[p[:]]==-1,time+1,messageDist[p[:]])             # <<<<<<<<<<<<<<
@@ -4723,7 +4722,7 @@ static PyObject *__pyx_pf_11propagation_17sendToPeers(CYTHON_UNUSED PyObject *__
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "propagation.pyx":92
+  /* "propagation2.pyx":92
  *     p = peers[messageDist == time,:]
  *     messageDist[p[:]]=numpy.where(messageDist[p[:]]==-1,time+1,messageDist[p[:]])
  *     return messageDist             # <<<<<<<<<<<<<<
@@ -4735,7 +4734,7 @@ static PyObject *__pyx_pf_11propagation_17sendToPeers(CYTHON_UNUSED PyObject *__
   __pyx_r = __pyx_v_messageDist;
   goto __pyx_L0;
 
-  /* "propagation.pyx":89
+  /* "propagation2.pyx":89
  * 
  * 
  * def sendToPeers(peers,messageDist,time):             # <<<<<<<<<<<<<<
@@ -4752,7 +4751,7 @@ static PyObject *__pyx_pf_11propagation_17sendToPeers(CYTHON_UNUSED PyObject *__
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("propagation.sendToPeers", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.sendToPeers", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_p);
@@ -4761,7 +4760,7 @@ static PyObject *__pyx_pf_11propagation_17sendToPeers(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "propagation.pyx":94
+/* "propagation2.pyx":94
  *     return messageDist
  * 
  * def getFilePathRoot():             # <<<<<<<<<<<<<<
@@ -4770,27 +4769,27 @@ static PyObject *__pyx_pf_11propagation_17sendToPeers(CYTHON_UNUSED PyObject *__
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_20getFilePathRoot(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_20getFilePathRoot = {"getFilePathRoot", (PyCFunction)__pyx_pw_11propagation_20getFilePathRoot, METH_NOARGS, 0};
-static PyObject *__pyx_pw_11propagation_20getFilePathRoot(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12propagation2_20getFilePathRoot(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_20getFilePathRoot = {"getFilePathRoot", (PyCFunction)__pyx_pw_12propagation2_20getFilePathRoot, METH_NOARGS, 0};
+static PyObject *__pyx_pw_12propagation2_20getFilePathRoot(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("getFilePathRoot (wrapper)", 0);
-  __pyx_r = __pyx_pf_11propagation_19getFilePathRoot(__pyx_self);
+  __pyx_r = __pyx_pf_12propagation2_19getFilePathRoot(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_19getFilePathRoot(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_12propagation2_19getFilePathRoot(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("getFilePathRoot", 0);
 
-  /* "propagation.pyx":96
+  /* "propagation2.pyx":96
  * def getFilePathRoot():
  *     #return os.path.normpath("C:/Users/fran/PycharmProjects/Distributions/")
  *     return os.path.normpath("/home/engr/Results/")             # <<<<<<<<<<<<<<
@@ -4813,7 +4812,7 @@ static PyObject *__pyx_pf_11propagation_19getFilePathRoot(CYTHON_UNUSED PyObject
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "propagation.pyx":94
+  /* "propagation2.pyx":94
  *     return messageDist
  * 
  * def getFilePathRoot():             # <<<<<<<<<<<<<<
@@ -4825,7 +4824,7 @@ static PyObject *__pyx_pf_11propagation_19getFilePathRoot(CYTHON_UNUSED PyObject
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("propagation.getFilePathRoot", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getFilePathRoot", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4833,7 +4832,7 @@ static PyObject *__pyx_pf_11propagation_19getFilePathRoot(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "propagation.pyx":99
+/* "propagation2.pyx":99
  * 
  * 
  * def getPeerDistFilePath(N,p,s):             # <<<<<<<<<<<<<<
@@ -4842,9 +4841,9 @@ static PyObject *__pyx_pf_11propagation_19getFilePathRoot(CYTHON_UNUSED PyObject
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_22getPeerDistFilePath(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_22getPeerDistFilePath = {"getPeerDistFilePath", (PyCFunction)__pyx_pw_11propagation_22getPeerDistFilePath, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_22getPeerDistFilePath(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_22getPeerDistFilePath(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_22getPeerDistFilePath = {"getPeerDistFilePath", (PyCFunction)__pyx_pw_12propagation2_22getPeerDistFilePath, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_22getPeerDistFilePath(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_N = 0;
   PyObject *__pyx_v_p = 0;
   PyObject *__pyx_v_s = 0;
@@ -4903,18 +4902,18 @@ static PyObject *__pyx_pw_11propagation_22getPeerDistFilePath(PyObject *__pyx_se
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("getPeerDistFilePath", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 99, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.getPeerDistFilePath", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getPeerDistFilePath", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_21getPeerDistFilePath(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_s);
+  __pyx_r = __pyx_pf_12propagation2_21getPeerDistFilePath(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_s);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_21getPeerDistFilePath(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_s) {
+static PyObject *__pyx_pf_12propagation2_21getPeerDistFilePath(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_s) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4924,7 +4923,7 @@ static PyObject *__pyx_pf_11propagation_21getPeerDistFilePath(CYTHON_UNUSED PyOb
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("getPeerDistFilePath", 0);
 
-  /* "propagation.pyx":100
+  /* "propagation2.pyx":100
  * 
  * def getPeerDistFilePath(N,p,s):
  *     return os.path.normpath(getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(s))             # <<<<<<<<<<<<<<
@@ -5037,7 +5036,7 @@ static PyObject *__pyx_pf_11propagation_21getPeerDistFilePath(CYTHON_UNUSED PyOb
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "propagation.pyx":99
+  /* "propagation2.pyx":99
  * 
  * 
  * def getPeerDistFilePath(N,p,s):             # <<<<<<<<<<<<<<
@@ -5052,7 +5051,7 @@ static PyObject *__pyx_pf_11propagation_21getPeerDistFilePath(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("propagation.getPeerDistFilePath", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getPeerDistFilePath", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5060,7 +5059,7 @@ static PyObject *__pyx_pf_11propagation_21getPeerDistFilePath(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "propagation.pyx":102
+/* "propagation2.pyx":102
  *     return os.path.normpath(getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(s))
  * 
  * def getProbDistFilePath(N,p, x, i):             # <<<<<<<<<<<<<<
@@ -5069,9 +5068,9 @@ static PyObject *__pyx_pf_11propagation_21getPeerDistFilePath(CYTHON_UNUSED PyOb
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_24getProbDistFilePath(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_24getProbDistFilePath = {"getProbDistFilePath", (PyCFunction)__pyx_pw_11propagation_24getProbDistFilePath, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_24getProbDistFilePath(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_24getProbDistFilePath(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_24getProbDistFilePath = {"getProbDistFilePath", (PyCFunction)__pyx_pw_12propagation2_24getProbDistFilePath, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_24getProbDistFilePath(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_N = 0;
   PyObject *__pyx_v_p = 0;
   PyObject *__pyx_v_x = 0;
@@ -5141,18 +5140,18 @@ static PyObject *__pyx_pw_11propagation_24getProbDistFilePath(PyObject *__pyx_se
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("getProbDistFilePath", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 102, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.getProbDistFilePath", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getProbDistFilePath", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_23getProbDistFilePath(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_x, __pyx_v_i);
+  __pyx_r = __pyx_pf_12propagation2_23getProbDistFilePath(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_x, __pyx_v_i);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_23getProbDistFilePath(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_i) {
+static PyObject *__pyx_pf_12propagation2_23getProbDistFilePath(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_i) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5160,7 +5159,7 @@ static PyObject *__pyx_pf_11propagation_23getProbDistFilePath(CYTHON_UNUSED PyOb
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("getProbDistFilePath", 0);
 
-  /* "propagation.pyx":103
+  /* "propagation2.pyx":103
  * 
  * def getProbDistFilePath(N,p, x, i):
  *     return getFilePathRoot() + '/prob_dist_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i)             # <<<<<<<<<<<<<<
@@ -5228,7 +5227,7 @@ static PyObject *__pyx_pf_11propagation_23getProbDistFilePath(CYTHON_UNUSED PyOb
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "propagation.pyx":102
+  /* "propagation2.pyx":102
  *     return os.path.normpath(getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(s))
  * 
  * def getProbDistFilePath(N,p, x, i):             # <<<<<<<<<<<<<<
@@ -5241,7 +5240,7 @@ static PyObject *__pyx_pf_11propagation_23getProbDistFilePath(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("propagation.getProbDistFilePath", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.getProbDistFilePath", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5249,7 +5248,7 @@ static PyObject *__pyx_pf_11propagation_23getProbDistFilePath(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "propagation.pyx":105
+/* "propagation2.pyx":105
  *     return getFilePathRoot() + '/prob_dist_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i)
  * 
  * def savePeerDist(N,p,peers,i):             # <<<<<<<<<<<<<<
@@ -5258,9 +5257,9 @@ static PyObject *__pyx_pf_11propagation_23getProbDistFilePath(CYTHON_UNUSED PyOb
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_26savePeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_26savePeerDist = {"savePeerDist", (PyCFunction)__pyx_pw_11propagation_26savePeerDist, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_26savePeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_26savePeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_26savePeerDist = {"savePeerDist", (PyCFunction)__pyx_pw_12propagation2_26savePeerDist, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_26savePeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_N = 0;
   PyObject *__pyx_v_p = 0;
   PyObject *__pyx_v_peers = 0;
@@ -5330,18 +5329,18 @@ static PyObject *__pyx_pw_11propagation_26savePeerDist(PyObject *__pyx_self, PyO
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("savePeerDist", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 105, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.savePeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.savePeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_25savePeerDist(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_peers, __pyx_v_i);
+  __pyx_r = __pyx_pf_12propagation2_25savePeerDist(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_peers, __pyx_v_i);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_25savePeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_peers, PyObject *__pyx_v_i) {
+static PyObject *__pyx_pf_12propagation2_25savePeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_peers, PyObject *__pyx_v_i) {
   PyObject *__pyx_v_fileName = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -5352,7 +5351,7 @@ static PyObject *__pyx_pf_11propagation_25savePeerDist(CYTHON_UNUSED PyObject *_
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("savePeerDist", 0);
 
-  /* "propagation.pyx":107
+  /* "propagation2.pyx":107
  * def savePeerDist(N,p,peers,i):
  * 
  *         fileName = getPeerDistFilePath(N,p,i)             # <<<<<<<<<<<<<<
@@ -5412,7 +5411,7 @@ static PyObject *__pyx_pf_11propagation_25savePeerDist(CYTHON_UNUSED PyObject *_
   __pyx_v_fileName = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "propagation.pyx":108
+  /* "propagation2.pyx":108
  * 
  *         fileName = getPeerDistFilePath(N,p,i)
  *         scipy.io.savemat(fileName, {"peers" : peers}, appendmat=True)             # <<<<<<<<<<<<<<
@@ -5448,7 +5447,7 @@ static PyObject *__pyx_pf_11propagation_25savePeerDist(CYTHON_UNUSED PyObject *_
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "propagation.pyx":109
+  /* "propagation2.pyx":109
  *         fileName = getPeerDistFilePath(N,p,i)
  *         scipy.io.savemat(fileName, {"peers" : peers}, appendmat=True)
  *         print("saved " + str(fileName) + "at" + str(time.time()))             # <<<<<<<<<<<<<<
@@ -5496,7 +5495,7 @@ static PyObject *__pyx_pf_11propagation_25savePeerDist(CYTHON_UNUSED PyObject *_
   if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":105
+  /* "propagation2.pyx":105
  *     return getFilePathRoot() + '/prob_dist_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i)
  * 
  * def savePeerDist(N,p,peers,i):             # <<<<<<<<<<<<<<
@@ -5512,7 +5511,7 @@ static PyObject *__pyx_pf_11propagation_25savePeerDist(CYTHON_UNUSED PyObject *_
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("propagation.savePeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.savePeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_fileName);
@@ -5521,7 +5520,7 @@ static PyObject *__pyx_pf_11propagation_25savePeerDist(CYTHON_UNUSED PyObject *_
   return __pyx_r;
 }
 
-/* "propagation.pyx":111
+/* "propagation2.pyx":111
  *         print("saved " + str(fileName) + "at" + str(time.time()))
  * 
  * def loadPeerDist(N,p,n):             # <<<<<<<<<<<<<<
@@ -5530,9 +5529,9 @@ static PyObject *__pyx_pf_11propagation_25savePeerDist(CYTHON_UNUSED PyObject *_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_28loadPeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_28loadPeerDist = {"loadPeerDist", (PyCFunction)__pyx_pw_11propagation_28loadPeerDist, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_28loadPeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_28loadPeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_28loadPeerDist = {"loadPeerDist", (PyCFunction)__pyx_pw_12propagation2_28loadPeerDist, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_28loadPeerDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_N = 0;
   PyObject *__pyx_v_p = 0;
   PyObject *__pyx_v_n = 0;
@@ -5591,18 +5590,18 @@ static PyObject *__pyx_pw_11propagation_28loadPeerDist(PyObject *__pyx_self, PyO
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("loadPeerDist", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 111, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.loadPeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.loadPeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_27loadPeerDist(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_n);
+  __pyx_r = __pyx_pf_12propagation2_27loadPeerDist(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_n);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_27loadPeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_n) {
+static PyObject *__pyx_pf_12propagation2_27loadPeerDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_n) {
   PyObject *__pyx_v_fileName = NULL;
   PyObject *__pyx_v_contents = NULL;
   PyObject *__pyx_v_peers = NULL;
@@ -5615,7 +5614,7 @@ static PyObject *__pyx_pf_11propagation_27loadPeerDist(CYTHON_UNUSED PyObject *_
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("loadPeerDist", 0);
 
-  /* "propagation.pyx":112
+  /* "propagation2.pyx":112
  * 
  * def loadPeerDist(N,p,n):
  *         fileName = getPeerDistFilePath(N, p, n)             # <<<<<<<<<<<<<<
@@ -5675,7 +5674,7 @@ static PyObject *__pyx_pf_11propagation_27loadPeerDist(CYTHON_UNUSED PyObject *_
   __pyx_v_fileName = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "propagation.pyx":113
+  /* "propagation2.pyx":113
  * def loadPeerDist(N,p,n):
  *         fileName = getPeerDistFilePath(N, p, n)
  *         contents = scipy.io.loadmat(fileName, appendmat=True)             # <<<<<<<<<<<<<<
@@ -5706,7 +5705,7 @@ static PyObject *__pyx_pf_11propagation_27loadPeerDist(CYTHON_UNUSED PyObject *_
   __pyx_v_contents = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "propagation.pyx":114
+  /* "propagation2.pyx":114
  *         fileName = getPeerDistFilePath(N, p, n)
  *         contents = scipy.io.loadmat(fileName, appendmat=True)
  *         peers = contents['peers']             # <<<<<<<<<<<<<<
@@ -5718,7 +5717,7 @@ static PyObject *__pyx_pf_11propagation_27loadPeerDist(CYTHON_UNUSED PyObject *_
   __pyx_v_peers = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "propagation.pyx":115
+  /* "propagation2.pyx":115
  *         contents = scipy.io.loadmat(fileName, appendmat=True)
  *         peers = contents['peers']
  *         return peers             # <<<<<<<<<<<<<<
@@ -5730,7 +5729,7 @@ static PyObject *__pyx_pf_11propagation_27loadPeerDist(CYTHON_UNUSED PyObject *_
   __pyx_r = __pyx_v_peers;
   goto __pyx_L0;
 
-  /* "propagation.pyx":111
+  /* "propagation2.pyx":111
  *         print("saved " + str(fileName) + "at" + str(time.time()))
  * 
  * def loadPeerDist(N,p,n):             # <<<<<<<<<<<<<<
@@ -5744,7 +5743,7 @@ static PyObject *__pyx_pf_11propagation_27loadPeerDist(CYTHON_UNUSED PyObject *_
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("propagation.loadPeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.loadPeerDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_fileName);
@@ -5755,7 +5754,7 @@ static PyObject *__pyx_pf_11propagation_27loadPeerDist(CYTHON_UNUSED PyObject *_
   return __pyx_r;
 }
 
-/* "propagation.pyx":118
+/* "propagation2.pyx":118
  * 
  * 
  * def hasMessageSpreadToAllNodes(messageDist):             # <<<<<<<<<<<<<<
@@ -5764,20 +5763,20 @@ static PyObject *__pyx_pf_11propagation_27loadPeerDist(CYTHON_UNUSED PyObject *_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_30hasMessageSpreadToAllNodes(PyObject *__pyx_self, PyObject *__pyx_v_messageDist); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_30hasMessageSpreadToAllNodes = {"hasMessageSpreadToAllNodes", (PyCFunction)__pyx_pw_11propagation_30hasMessageSpreadToAllNodes, METH_O, 0};
-static PyObject *__pyx_pw_11propagation_30hasMessageSpreadToAllNodes(PyObject *__pyx_self, PyObject *__pyx_v_messageDist) {
+static PyObject *__pyx_pw_12propagation2_30hasMessageSpreadToAllNodes(PyObject *__pyx_self, PyObject *__pyx_v_messageDist); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_30hasMessageSpreadToAllNodes = {"hasMessageSpreadToAllNodes", (PyCFunction)__pyx_pw_12propagation2_30hasMessageSpreadToAllNodes, METH_O, 0};
+static PyObject *__pyx_pw_12propagation2_30hasMessageSpreadToAllNodes(PyObject *__pyx_self, PyObject *__pyx_v_messageDist) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("hasMessageSpreadToAllNodes (wrapper)", 0);
-  __pyx_r = __pyx_pf_11propagation_29hasMessageSpreadToAllNodes(__pyx_self, ((PyObject *)__pyx_v_messageDist));
+  __pyx_r = __pyx_pf_12propagation2_29hasMessageSpreadToAllNodes(__pyx_self, ((PyObject *)__pyx_v_messageDist));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_29hasMessageSpreadToAllNodes(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_messageDist) {
+static PyObject *__pyx_pf_12propagation2_29hasMessageSpreadToAllNodes(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_messageDist) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5788,7 +5787,7 @@ static PyObject *__pyx_pf_11propagation_29hasMessageSpreadToAllNodes(CYTHON_UNUS
   int __pyx_t_6;
   __Pyx_RefNannySetupContext("hasMessageSpreadToAllNodes", 0);
 
-  /* "propagation.pyx":119
+  /* "propagation2.pyx":119
  * 
  * def hasMessageSpreadToAllNodes(messageDist):
  *     return not numpy.any(messageDist==-1)             # <<<<<<<<<<<<<<
@@ -5857,7 +5856,7 @@ static PyObject *__pyx_pf_11propagation_29hasMessageSpreadToAllNodes(CYTHON_UNUS
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "propagation.pyx":118
+  /* "propagation2.pyx":118
  * 
  * 
  * def hasMessageSpreadToAllNodes(messageDist):             # <<<<<<<<<<<<<<
@@ -5872,7 +5871,7 @@ static PyObject *__pyx_pf_11propagation_29hasMessageSpreadToAllNodes(CYTHON_UNUS
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("propagation.hasMessageSpreadToAllNodes", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.hasMessageSpreadToAllNodes", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5880,7 +5879,7 @@ static PyObject *__pyx_pf_11propagation_29hasMessageSpreadToAllNodes(CYTHON_UNUS
   return __pyx_r;
 }
 
-/* "propagation.pyx":121
+/* "propagation2.pyx":121
  *     return not numpy.any(messageDist==-1)
  * 
  * def disperseMessage(peers,s):             # <<<<<<<<<<<<<<
@@ -5889,9 +5888,9 @@ static PyObject *__pyx_pf_11propagation_29hasMessageSpreadToAllNodes(CYTHON_UNUS
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_32disperseMessage(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_32disperseMessage = {"disperseMessage", (PyCFunction)__pyx_pw_11propagation_32disperseMessage, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_32disperseMessage(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_32disperseMessage(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_32disperseMessage = {"disperseMessage", (PyCFunction)__pyx_pw_12propagation2_32disperseMessage, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_32disperseMessage(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_peers = 0;
   PyObject *__pyx_v_s = 0;
   PyObject *__pyx_r = 0;
@@ -5939,18 +5938,18 @@ static PyObject *__pyx_pw_11propagation_32disperseMessage(PyObject *__pyx_self, 
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("disperseMessage", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 121, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.disperseMessage", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.disperseMessage", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_31disperseMessage(__pyx_self, __pyx_v_peers, __pyx_v_s);
+  __pyx_r = __pyx_pf_12propagation2_31disperseMessage(__pyx_self, __pyx_v_peers, __pyx_v_s);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_s) {
+static PyObject *__pyx_pf_12propagation2_31disperseMessage(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_peers, PyObject *__pyx_v_s) {
   Py_ssize_t __pyx_v_N;
   PyObject *__pyx_v_messageDist = NULL;
   PyObject *__pyx_v_time = NULL;
@@ -5966,7 +5965,7 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
   int __pyx_t_8;
   __Pyx_RefNannySetupContext("disperseMessage", 0);
 
-  /* "propagation.pyx":122
+  /* "propagation2.pyx":122
  * 
  * def disperseMessage(peers,s):
  *     N = len(peers[:,0])             # <<<<<<<<<<<<<<
@@ -5979,7 +5978,7 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_N = __pyx_t_2;
 
-  /* "propagation.pyx":123
+  /* "propagation2.pyx":123
  * def disperseMessage(peers,s):
  *     N = len(peers[:,0])
  *     messageDist = numpy.full(N,-1)             # <<<<<<<<<<<<<<
@@ -6043,7 +6042,7 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
   __pyx_v_messageDist = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "propagation.pyx":124
+  /* "propagation2.pyx":124
  *     N = len(peers[:,0])
  *     messageDist = numpy.full(N,-1)
  *     time = 0             # <<<<<<<<<<<<<<
@@ -6053,7 +6052,7 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_time = __pyx_int_0;
 
-  /* "propagation.pyx":125
+  /* "propagation2.pyx":125
  *     messageDist = numpy.full(N,-1)
  *     time = 0
  *     messageDist[s] = time             # <<<<<<<<<<<<<<
@@ -6062,7 +6061,7 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
  */
   if (unlikely(PyObject_SetItem(__pyx_v_messageDist, __pyx_v_s, __pyx_v_time) < 0)) __PYX_ERR(0, 125, __pyx_L1_error)
 
-  /* "propagation.pyx":126
+  /* "propagation2.pyx":126
  *     time = 0
  *     messageDist[s] = time
  *     while (hasMessageSpreadToAllNodes(messageDist)==False):             # <<<<<<<<<<<<<<
@@ -6121,7 +6120,7 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (!__pyx_t_8) break;
 
-    /* "propagation.pyx":127
+    /* "propagation2.pyx":127
  *     messageDist[s] = time
  *     while (hasMessageSpreadToAllNodes(messageDist)==False):
  *         messageDist=sendToPeers(peers,messageDist,time)             # <<<<<<<<<<<<<<
@@ -6181,7 +6180,7 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
     __Pyx_DECREF_SET(__pyx_v_messageDist, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "propagation.pyx":128
+    /* "propagation2.pyx":128
  *     while (hasMessageSpreadToAllNodes(messageDist)==False):
  *         messageDist=sendToPeers(peers,messageDist,time)
  *         time += 1             # <<<<<<<<<<<<<<
@@ -6194,7 +6193,7 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
     __pyx_t_4 = 0;
   }
 
-  /* "propagation.pyx":129
+  /* "propagation2.pyx":129
  *         messageDist=sendToPeers(peers,messageDist,time)
  *         time += 1
  *     return messageDist             # <<<<<<<<<<<<<<
@@ -6206,7 +6205,7 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
   __pyx_r = __pyx_v_messageDist;
   goto __pyx_L0;
 
-  /* "propagation.pyx":121
+  /* "propagation2.pyx":121
  *     return not numpy.any(messageDist==-1)
  * 
  * def disperseMessage(peers,s):             # <<<<<<<<<<<<<<
@@ -6221,7 +6220,7 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("propagation.disperseMessage", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.disperseMessage", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_messageDist);
@@ -6231,7 +6230,7 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "propagation.pyx":131
+/* "propagation2.pyx":131
  *     return messageDist
  * 
  * def saveDisperseMessageDist(N,p,x,iterations_startNode):             # <<<<<<<<<<<<<<
@@ -6240,9 +6239,9 @@ static PyObject *__pyx_pf_11propagation_31disperseMessage(CYTHON_UNUSED PyObject
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_34saveDisperseMessageDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_34saveDisperseMessageDist = {"saveDisperseMessageDist", (PyCFunction)__pyx_pw_11propagation_34saveDisperseMessageDist, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_34saveDisperseMessageDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_34saveDisperseMessageDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_34saveDisperseMessageDist = {"saveDisperseMessageDist", (PyCFunction)__pyx_pw_12propagation2_34saveDisperseMessageDist, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_34saveDisperseMessageDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_N = 0;
   PyObject *__pyx_v_p = 0;
   PyObject *__pyx_v_x = 0;
@@ -6312,18 +6311,18 @@ static PyObject *__pyx_pw_11propagation_34saveDisperseMessageDist(PyObject *__py
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("saveDisperseMessageDist", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 131, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.saveDisperseMessageDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.saveDisperseMessageDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_33saveDisperseMessageDist(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_x, __pyx_v_iterations_startNode);
+  __pyx_r = __pyx_pf_12propagation2_33saveDisperseMessageDist(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_x, __pyx_v_iterations_startNode);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_iterations_startNode) {
+static PyObject *__pyx_pf_12propagation2_33saveDisperseMessageDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_iterations_startNode) {
   PyObject *__pyx_v_probDist = NULL;
   PyObject *__pyx_v_ii = NULL;
   PyObject *__pyx_v_peers = NULL;
@@ -6365,7 +6364,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   int __pyx_t_18;
   __Pyx_RefNannySetupContext("saveDisperseMessageDist", 0);
 
-  /* "propagation.pyx":132
+  /* "propagation2.pyx":132
  * 
  * def saveDisperseMessageDist(N,p,x,iterations_startNode):
  *     probDist = dict()             # <<<<<<<<<<<<<<
@@ -6377,7 +6376,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   __pyx_v_probDist = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "propagation.pyx":133
+  /* "propagation2.pyx":133
  * def saveDisperseMessageDist(N,p,x,iterations_startNode):
  *     probDist = dict()
  *     for ii in range(0,x):             # <<<<<<<<<<<<<<
@@ -6438,7 +6437,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_ii, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "propagation.pyx":134
+    /* "propagation2.pyx":134
  *     probDist = dict()
  *     for ii in range(0,x):
  *         peers = loadPeerDist(N,p,ii)             # <<<<<<<<<<<<<<
@@ -6498,7 +6497,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_peers, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "propagation.pyx":135
+    /* "propagation2.pyx":135
  *     for ii in range(0,x):
  *         peers = loadPeerDist(N,p,ii)
  *         nodes = numpy.arange(N)             # <<<<<<<<<<<<<<
@@ -6556,7 +6555,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_nodes, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "propagation.pyx":136
+    /* "propagation2.pyx":136
  *         peers = loadPeerDist(N,p,ii)
  *         nodes = numpy.arange(N)
  *         maxIndices = N-1             # <<<<<<<<<<<<<<
@@ -6568,7 +6567,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_maxIndices, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "propagation.pyx":138
+    /* "propagation2.pyx":138
  *         maxIndices = N-1
  * 
  *         for i in range(0,iterations_startNode):             # <<<<<<<<<<<<<<
@@ -6629,7 +6628,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "propagation.pyx":139
+      /* "propagation2.pyx":139
  * 
  *         for i in range(0,iterations_startNode):
  *             randStartNodeIndex = numpy.random.randint(0, N-1)             # <<<<<<<<<<<<<<
@@ -6696,7 +6695,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_randStartNodeIndex, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "propagation.pyx":140
+      /* "propagation2.pyx":140
  *         for i in range(0,iterations_startNode):
  *             randStartNodeIndex = numpy.random.randint(0, N-1)
  *             randNode = nodes[randStartNodeIndex]             # <<<<<<<<<<<<<<
@@ -6708,7 +6707,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_randNode, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "propagation.pyx":141
+      /* "propagation2.pyx":141
  *             randStartNodeIndex = numpy.random.randint(0, N-1)
  *             randNode = nodes[randStartNodeIndex]
  *             nodes[maxIndices], nodes[randStartNodeIndex] = nodes[randStartNodeIndex], nodes[maxIndices]             # <<<<<<<<<<<<<<
@@ -6724,7 +6723,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
       if (unlikely(PyObject_SetItem(__pyx_v_nodes, __pyx_v_randStartNodeIndex, __pyx_t_6) < 0)) __PYX_ERR(0, 141, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "propagation.pyx":142
+      /* "propagation2.pyx":142
  *             randNode = nodes[randStartNodeIndex]
  *             nodes[maxIndices], nodes[randStartNodeIndex] = nodes[randStartNodeIndex], nodes[maxIndices]
  *             messageDist = disperseMessage(peers,randNode)             # <<<<<<<<<<<<<<
@@ -6781,7 +6780,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_messageDist, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "propagation.pyx":143
+      /* "propagation2.pyx":143
  *             nodes[maxIndices], nodes[randStartNodeIndex] = nodes[randStartNodeIndex], nodes[maxIndices]
  *             messageDist = disperseMessage(peers,randNode)
  *             unique_elements, counts_elements = numpy.unique(messageDist, return_counts=True)             # <<<<<<<<<<<<<<
@@ -6857,7 +6856,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_counts_elements, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "propagation.pyx":144
+      /* "propagation2.pyx":144
  *             messageDist = disperseMessage(peers,randNode)
  *             unique_elements, counts_elements = numpy.unique(messageDist, return_counts=True)
  *             for j in range(0,len(unique_elements)):             # <<<<<<<<<<<<<<
@@ -6869,7 +6868,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
         __pyx_v_j = __pyx_t_16;
 
-        /* "propagation.pyx":145
+        /* "propagation2.pyx":145
  *             unique_elements, counts_elements = numpy.unique(messageDist, return_counts=True)
  *             for j in range(0,len(unique_elements)):
  *                 numOfHops = unique_elements[j]             # <<<<<<<<<<<<<<
@@ -6881,7 +6880,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
         __Pyx_XDECREF_SET(__pyx_v_numOfHops, __pyx_t_12);
         __pyx_t_12 = 0;
 
-        /* "propagation.pyx":146
+        /* "propagation2.pyx":146
  *             for j in range(0,len(unique_elements)):
  *                 numOfHops = unique_elements[j]
  *                 if numOfHops in probDist:             # <<<<<<<<<<<<<<
@@ -6892,7 +6891,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
         __pyx_t_18 = (__pyx_t_17 != 0);
         if (__pyx_t_18) {
 
-          /* "propagation.pyx":147
+          /* "propagation2.pyx":147
  *                 numOfHops = unique_elements[j]
  *                 if numOfHops in probDist:
  *                     probDist[numOfHops] += counts_elements[j]             # <<<<<<<<<<<<<<
@@ -6913,7 +6912,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-          /* "propagation.pyx":146
+          /* "propagation2.pyx":146
  *             for j in range(0,len(unique_elements)):
  *                 numOfHops = unique_elements[j]
  *                 if numOfHops in probDist:             # <<<<<<<<<<<<<<
@@ -6923,7 +6922,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
           goto __pyx_L11;
         }
 
-        /* "propagation.pyx":149
+        /* "propagation2.pyx":149
  *                     probDist[numOfHops] += counts_elements[j]
  *                 else:
  *                     probDist[numOfHops] = counts_elements[j]             # <<<<<<<<<<<<<<
@@ -6939,7 +6938,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
         __pyx_L11:;
       }
 
-      /* "propagation.pyx":138
+      /* "propagation2.pyx":138
  *         maxIndices = N-1
  * 
  *         for i in range(0,iterations_startNode):             # <<<<<<<<<<<<<<
@@ -6949,7 +6948,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "propagation.pyx":133
+    /* "propagation2.pyx":133
  * def saveDisperseMessageDist(N,p,x,iterations_startNode):
  *     probDist = dict()
  *     for ii in range(0,x):             # <<<<<<<<<<<<<<
@@ -6959,7 +6958,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "propagation.pyx":151
+  /* "propagation2.pyx":151
  *                     probDist[numOfHops] = counts_elements[j]
  * 
  *     for k in probDist.keys():             # <<<<<<<<<<<<<<
@@ -7011,7 +7010,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_k, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "propagation.pyx":152
+    /* "propagation2.pyx":152
  * 
  *     for k in probDist.keys():
  *         probDist[k]/=(N*iterations_startNode*x)             # <<<<<<<<<<<<<<
@@ -7035,7 +7034,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "propagation.pyx":151
+    /* "propagation2.pyx":151
  *                     probDist[numOfHops] = counts_elements[j]
  * 
  *     for k in probDist.keys():             # <<<<<<<<<<<<<<
@@ -7045,7 +7044,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":153
+  /* "propagation2.pyx":153
  *     for k in probDist.keys():
  *         probDist[k]/=(N*iterations_startNode*x)
  *     X = len(probDist.keys())             # <<<<<<<<<<<<<<
@@ -7058,7 +7057,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_X = __pyx_t_3;
 
-  /* "propagation.pyx":154
+  /* "propagation2.pyx":154
  *         probDist[k]/=(N*iterations_startNode*x)
  *     X = len(probDist.keys())
  *     probs: ndarray = numpy.zeros((2,X))             # <<<<<<<<<<<<<<
@@ -7129,7 +7128,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   __pyx_v_probs = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "propagation.pyx":155
+  /* "propagation2.pyx":155
  *     X = len(probDist.keys())
  *     probs: ndarray = numpy.zeros((2,X))
  *     jj = 0             # <<<<<<<<<<<<<<
@@ -7139,7 +7138,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_jj = __pyx_int_0;
 
-  /* "propagation.pyx":156
+  /* "propagation2.pyx":156
  *     probs: ndarray = numpy.zeros((2,X))
  *     jj = 0
  *     for k,v in probDist.items():             # <<<<<<<<<<<<<<
@@ -7239,7 +7238,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "propagation.pyx":157
+    /* "propagation2.pyx":157
  *     jj = 0
  *     for k,v in probDist.items():
  *         probs[0,jj]=k             # <<<<<<<<<<<<<<
@@ -7257,7 +7256,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
     if (unlikely(PyObject_SetItem(__pyx_v_probs, __pyx_t_2, __pyx_v_k) < 0)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "propagation.pyx":158
+    /* "propagation2.pyx":158
  *     for k,v in probDist.items():
  *         probs[0,jj]=k
  *         probs[1,jj]=v             # <<<<<<<<<<<<<<
@@ -7275,7 +7274,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
     if (unlikely(PyObject_SetItem(__pyx_v_probs, __pyx_t_2, __pyx_v_v) < 0)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "propagation.pyx":159
+    /* "propagation2.pyx":159
  *         probs[0,jj]=k
  *         probs[1,jj]=v
  *         jj+=1             # <<<<<<<<<<<<<<
@@ -7287,7 +7286,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
     __Pyx_DECREF_SET(__pyx_v_jj, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "propagation.pyx":156
+    /* "propagation2.pyx":156
  *     probs: ndarray = numpy.zeros((2,X))
  *     jj = 0
  *     for k,v in probDist.items():             # <<<<<<<<<<<<<<
@@ -7297,7 +7296,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   }
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "propagation.pyx":160
+  /* "propagation2.pyx":160
  *         probs[1,jj]=v
  *         jj+=1
  *     print(probs)             # <<<<<<<<<<<<<<
@@ -7306,7 +7305,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
  */
   if (__Pyx_PrintOne(0, __pyx_v_probs) < 0) __PYX_ERR(0, 160, __pyx_L1_error)
 
-  /* "propagation.pyx":161
+  /* "propagation2.pyx":161
  *         jj+=1
  *     print(probs)
  *     fileName = getProbDistFilePath(N, p, x, iterations_startNode)             # <<<<<<<<<<<<<<
@@ -7369,7 +7368,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   __pyx_v_fileName = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "propagation.pyx":162
+  /* "propagation2.pyx":162
  *     print(probs)
  *     fileName = getProbDistFilePath(N, p, x, iterations_startNode)
  *     scipy.io.savemat(fileName, {"probDist": probs}, appendmat=True)             # <<<<<<<<<<<<<<
@@ -7405,7 +7404,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "propagation.pyx":131
+  /* "propagation2.pyx":131
  *     return messageDist
  * 
  * def saveDisperseMessageDist(N,p,x,iterations_startNode):             # <<<<<<<<<<<<<<
@@ -7424,7 +7423,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_12);
-  __Pyx_AddTraceback("propagation.saveDisperseMessageDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.saveDisperseMessageDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_probDist);
@@ -7449,7 +7448,7 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "propagation.pyx":164
+/* "propagation2.pyx":164
  *     scipy.io.savemat(fileName, {"probDist": probs}, appendmat=True)
  * 
  * def loadDisperseMessageDist(N,p,x,iterations_startNode):             # <<<<<<<<<<<<<<
@@ -7458,9 +7457,9 @@ static PyObject *__pyx_pf_11propagation_33saveDisperseMessageDist(CYTHON_UNUSED 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11propagation_36loadDisperseMessageDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11propagation_36loadDisperseMessageDist = {"loadDisperseMessageDist", (PyCFunction)__pyx_pw_11propagation_36loadDisperseMessageDist, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11propagation_36loadDisperseMessageDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12propagation2_36loadDisperseMessageDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_12propagation2_36loadDisperseMessageDist = {"loadDisperseMessageDist", (PyCFunction)__pyx_pw_12propagation2_36loadDisperseMessageDist, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12propagation2_36loadDisperseMessageDist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_N = 0;
   PyObject *__pyx_v_p = 0;
   PyObject *__pyx_v_x = 0;
@@ -7530,18 +7529,18 @@ static PyObject *__pyx_pw_11propagation_36loadDisperseMessageDist(PyObject *__py
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("loadDisperseMessageDist", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 164, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("propagation.loadDisperseMessageDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.loadDisperseMessageDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11propagation_35loadDisperseMessageDist(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_x, __pyx_v_iterations_startNode);
+  __pyx_r = __pyx_pf_12propagation2_35loadDisperseMessageDist(__pyx_self, __pyx_v_N, __pyx_v_p, __pyx_v_x, __pyx_v_iterations_startNode);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11propagation_35loadDisperseMessageDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_iterations_startNode) {
+static PyObject *__pyx_pf_12propagation2_35loadDisperseMessageDist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_N, PyObject *__pyx_v_p, PyObject *__pyx_v_x, PyObject *__pyx_v_iterations_startNode) {
   PyObject *__pyx_v_fileName = NULL;
   PyObject *__pyx_v_contents = NULL;
   PyObject *__pyx_v_probDist = NULL;
@@ -7554,7 +7553,7 @@ static PyObject *__pyx_pf_11propagation_35loadDisperseMessageDist(CYTHON_UNUSED 
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("loadDisperseMessageDist", 0);
 
-  /* "propagation.pyx":166
+  /* "propagation2.pyx":166
  * def loadDisperseMessageDist(N,p,x,iterations_startNode):
  * 
  *     fileName = getProbDistFilePath(N, p, x, iterations_startNode)             # <<<<<<<<<<<<<<
@@ -7617,7 +7616,7 @@ static PyObject *__pyx_pf_11propagation_35loadDisperseMessageDist(CYTHON_UNUSED 
   __pyx_v_fileName = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "propagation.pyx":167
+  /* "propagation2.pyx":167
  * 
  *     fileName = getProbDistFilePath(N, p, x, iterations_startNode)
  *     contents = scipy.io.loadmat(fileName,  appendmat=True)             # <<<<<<<<<<<<<<
@@ -7648,7 +7647,7 @@ static PyObject *__pyx_pf_11propagation_35loadDisperseMessageDist(CYTHON_UNUSED 
   __pyx_v_contents = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "propagation.pyx":168
+  /* "propagation2.pyx":168
  *     fileName = getProbDistFilePath(N, p, x, iterations_startNode)
  *     contents = scipy.io.loadmat(fileName,  appendmat=True)
  *     probDist = contents['probDist']             # <<<<<<<<<<<<<<
@@ -7660,7 +7659,7 @@ static PyObject *__pyx_pf_11propagation_35loadDisperseMessageDist(CYTHON_UNUSED 
   __pyx_v_probDist = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "propagation.pyx":169
+  /* "propagation2.pyx":169
  *     contents = scipy.io.loadmat(fileName,  appendmat=True)
  *     probDist = contents['probDist']
  *     return probDist             # <<<<<<<<<<<<<<
@@ -7672,7 +7671,7 @@ static PyObject *__pyx_pf_11propagation_35loadDisperseMessageDist(CYTHON_UNUSED 
   __pyx_r = __pyx_v_probDist;
   goto __pyx_L0;
 
-  /* "propagation.pyx":164
+  /* "propagation2.pyx":164
  *     scipy.io.savemat(fileName, {"probDist": probs}, appendmat=True)
  * 
  * def loadDisperseMessageDist(N,p,x,iterations_startNode):             # <<<<<<<<<<<<<<
@@ -7686,7 +7685,7 @@ static PyObject *__pyx_pf_11propagation_35loadDisperseMessageDist(CYTHON_UNUSED 
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("propagation.loadDisperseMessageDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("propagation2.loadDisperseMessageDist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_fileName);
@@ -7697,14 +7696,14 @@ static PyObject *__pyx_pf_11propagation_35loadDisperseMessageDist(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-static struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *__pyx_freelist_11propagation___pyx_scope_struct__getPeerDistEvenFaster[8];
-static int __pyx_freecount_11propagation___pyx_scope_struct__getPeerDistEvenFaster = 0;
+static struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *__pyx_freelist_12propagation2___pyx_scope_struct__getPeerDistEvenFaster[8];
+static int __pyx_freecount_12propagation2___pyx_scope_struct__getPeerDistEvenFaster = 0;
 
-static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct__getPeerDistEvenFaster(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_12propagation2___pyx_scope_struct__getPeerDistEvenFaster(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
-  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_11propagation___pyx_scope_struct__getPeerDistEvenFaster > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster)))) {
-    o = (PyObject*)__pyx_freelist_11propagation___pyx_scope_struct__getPeerDistEvenFaster[--__pyx_freecount_11propagation___pyx_scope_struct__getPeerDistEvenFaster];
-    memset(o, 0, sizeof(struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster));
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_12propagation2___pyx_scope_struct__getPeerDistEvenFaster > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster)))) {
+    o = (PyObject*)__pyx_freelist_12propagation2___pyx_scope_struct__getPeerDistEvenFaster[--__pyx_freecount_12propagation2___pyx_scope_struct__getPeerDistEvenFaster];
+    memset(o, 0, sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else {
@@ -7714,8 +7713,8 @@ static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct__getPeerDistEvenF
   return o;
 }
 
-static void __pyx_tp_dealloc_11propagation___pyx_scope_struct__getPeerDistEvenFaster(PyObject *o) {
-  struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *p = (struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *)o;
+static void __pyx_tp_dealloc_12propagation2___pyx_scope_struct__getPeerDistEvenFaster(PyObject *o) {
+  struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *p = (struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *)o;
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->__pyx_v_N);
   Py_CLEAR(p->__pyx_v_fvp);
@@ -7725,16 +7724,16 @@ static void __pyx_tp_dealloc_11propagation___pyx_scope_struct__getPeerDistEvenFa
   Py_CLEAR(p->__pyx_v_peers);
   Py_CLEAR(p->__pyx_v_pn);
   Py_CLEAR(p->__pyx_v_rand);
-  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_11propagation___pyx_scope_struct__getPeerDistEvenFaster < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster)))) {
-    __pyx_freelist_11propagation___pyx_scope_struct__getPeerDistEvenFaster[__pyx_freecount_11propagation___pyx_scope_struct__getPeerDistEvenFaster++] = ((struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *)o);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_12propagation2___pyx_scope_struct__getPeerDistEvenFaster < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster)))) {
+    __pyx_freelist_12propagation2___pyx_scope_struct__getPeerDistEvenFaster[__pyx_freecount_12propagation2___pyx_scope_struct__getPeerDistEvenFaster++] = ((struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *)o);
   } else {
     (*Py_TYPE(o)->tp_free)(o);
   }
 }
 
-static int __pyx_tp_traverse_11propagation___pyx_scope_struct__getPeerDistEvenFaster(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_12propagation2___pyx_scope_struct__getPeerDistEvenFaster(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *p = (struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster *)o;
+  struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *p = (struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster *)o;
   if (p->__pyx_v_N) {
     e = (*v)(p->__pyx_v_N, a); if (e) return e;
   }
@@ -7762,12 +7761,12 @@ static int __pyx_tp_traverse_11propagation___pyx_scope_struct__getPeerDistEvenFa
   return 0;
 }
 
-static PyTypeObject __pyx_type_11propagation___pyx_scope_struct__getPeerDistEvenFaster = {
+static PyTypeObject __pyx_type_12propagation2___pyx_scope_struct__getPeerDistEvenFaster = {
   PyVarObject_HEAD_INIT(0, 0)
-  "propagation.__pyx_scope_struct__getPeerDistEvenFaster", /*tp_name*/
-  sizeof(struct __pyx_obj_11propagation___pyx_scope_struct__getPeerDistEvenFaster), /*tp_basicsize*/
+  "propagation2.__pyx_scope_struct__getPeerDistEvenFaster", /*tp_name*/
+  sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct__getPeerDistEvenFaster), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11propagation___pyx_scope_struct__getPeerDistEvenFaster, /*tp_dealloc*/
+  __pyx_tp_dealloc_12propagation2___pyx_scope_struct__getPeerDistEvenFaster, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -7789,7 +7788,7 @@ static PyTypeObject __pyx_type_11propagation___pyx_scope_struct__getPeerDistEven
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_11propagation___pyx_scope_struct__getPeerDistEvenFaster, /*tp_traverse*/
+  __pyx_tp_traverse_12propagation2___pyx_scope_struct__getPeerDistEvenFaster, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -7805,7 +7804,7 @@ static PyTypeObject __pyx_type_11propagation___pyx_scope_struct__getPeerDistEven
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11propagation___pyx_scope_struct__getPeerDistEvenFaster, /*tp_new*/
+  __pyx_tp_new_12propagation2___pyx_scope_struct__getPeerDistEvenFaster, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -7820,14 +7819,14 @@ static PyTypeObject __pyx_type_11propagation___pyx_scope_struct__getPeerDistEven
   #endif
 };
 
-static struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr *__pyx_freelist_11propagation___pyx_scope_struct_1_genexpr[8];
-static int __pyx_freecount_11propagation___pyx_scope_struct_1_genexpr = 0;
+static struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr *__pyx_freelist_12propagation2___pyx_scope_struct_1_genexpr[8];
+static int __pyx_freecount_12propagation2___pyx_scope_struct_1_genexpr = 0;
 
-static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct_1_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_12propagation2___pyx_scope_struct_1_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
-  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_11propagation___pyx_scope_struct_1_genexpr > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr)))) {
-    o = (PyObject*)__pyx_freelist_11propagation___pyx_scope_struct_1_genexpr[--__pyx_freecount_11propagation___pyx_scope_struct_1_genexpr];
-    memset(o, 0, sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr));
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_12propagation2___pyx_scope_struct_1_genexpr > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr)))) {
+    o = (PyObject*)__pyx_freelist_12propagation2___pyx_scope_struct_1_genexpr[--__pyx_freecount_12propagation2___pyx_scope_struct_1_genexpr];
+    memset(o, 0, sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else {
@@ -7837,21 +7836,21 @@ static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct_1_genexpr(PyTypeO
   return o;
 }
 
-static void __pyx_tp_dealloc_11propagation___pyx_scope_struct_1_genexpr(PyObject *o) {
-  struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr *)o;
+static void __pyx_tp_dealloc_12propagation2___pyx_scope_struct_1_genexpr(PyObject *o) {
+  struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr *)o;
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->__pyx_outer_scope);
   Py_CLEAR(p->__pyx_v_i);
-  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_11propagation___pyx_scope_struct_1_genexpr < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr)))) {
-    __pyx_freelist_11propagation___pyx_scope_struct_1_genexpr[__pyx_freecount_11propagation___pyx_scope_struct_1_genexpr++] = ((struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr *)o);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_12propagation2___pyx_scope_struct_1_genexpr < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr)))) {
+    __pyx_freelist_12propagation2___pyx_scope_struct_1_genexpr[__pyx_freecount_12propagation2___pyx_scope_struct_1_genexpr++] = ((struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr *)o);
   } else {
     (*Py_TYPE(o)->tp_free)(o);
   }
 }
 
-static int __pyx_tp_traverse_11propagation___pyx_scope_struct_1_genexpr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_12propagation2___pyx_scope_struct_1_genexpr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr *)o;
+  struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr *)o;
   if (p->__pyx_outer_scope) {
     e = (*v)(((PyObject *)p->__pyx_outer_scope), a); if (e) return e;
   }
@@ -7861,12 +7860,12 @@ static int __pyx_tp_traverse_11propagation___pyx_scope_struct_1_genexpr(PyObject
   return 0;
 }
 
-static PyTypeObject __pyx_type_11propagation___pyx_scope_struct_1_genexpr = {
+static PyTypeObject __pyx_type_12propagation2___pyx_scope_struct_1_genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "propagation.__pyx_scope_struct_1_genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_1_genexpr), /*tp_basicsize*/
+  "propagation2.__pyx_scope_struct_1_genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_1_genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11propagation___pyx_scope_struct_1_genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_12propagation2___pyx_scope_struct_1_genexpr, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -7888,7 +7887,7 @@ static PyTypeObject __pyx_type_11propagation___pyx_scope_struct_1_genexpr = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_11propagation___pyx_scope_struct_1_genexpr, /*tp_traverse*/
+  __pyx_tp_traverse_12propagation2___pyx_scope_struct_1_genexpr, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -7904,7 +7903,7 @@ static PyTypeObject __pyx_type_11propagation___pyx_scope_struct_1_genexpr = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11propagation___pyx_scope_struct_1_genexpr, /*tp_new*/
+  __pyx_tp_new_12propagation2___pyx_scope_struct_1_genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -7919,14 +7918,14 @@ static PyTypeObject __pyx_type_11propagation___pyx_scope_struct_1_genexpr = {
   #endif
 };
 
-static struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever *__pyx_freelist_11propagation___pyx_scope_struct_2_getPeerDistForever[8];
-static int __pyx_freecount_11propagation___pyx_scope_struct_2_getPeerDistForever = 0;
+static struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever *__pyx_freelist_12propagation2___pyx_scope_struct_2_getPeerDistForever[8];
+static int __pyx_freecount_12propagation2___pyx_scope_struct_2_getPeerDistForever = 0;
 
-static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct_2_getPeerDistForever(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_12propagation2___pyx_scope_struct_2_getPeerDistForever(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
-  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_11propagation___pyx_scope_struct_2_getPeerDistForever > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever)))) {
-    o = (PyObject*)__pyx_freelist_11propagation___pyx_scope_struct_2_getPeerDistForever[--__pyx_freecount_11propagation___pyx_scope_struct_2_getPeerDistForever];
-    memset(o, 0, sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever));
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_12propagation2___pyx_scope_struct_2_getPeerDistForever > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever)))) {
+    o = (PyObject*)__pyx_freelist_12propagation2___pyx_scope_struct_2_getPeerDistForever[--__pyx_freecount_12propagation2___pyx_scope_struct_2_getPeerDistForever];
+    memset(o, 0, sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else {
@@ -7936,21 +7935,21 @@ static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct_2_getPeerDistFore
   return o;
 }
 
-static void __pyx_tp_dealloc_11propagation___pyx_scope_struct_2_getPeerDistForever(PyObject *o) {
-  struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever *p = (struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever *)o;
+static void __pyx_tp_dealloc_12propagation2___pyx_scope_struct_2_getPeerDistForever(PyObject *o) {
+  struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever *p = (struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever *)o;
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->__pyx_v_N);
   Py_CLEAR(p->__pyx_v_p);
-  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_11propagation___pyx_scope_struct_2_getPeerDistForever < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever)))) {
-    __pyx_freelist_11propagation___pyx_scope_struct_2_getPeerDistForever[__pyx_freecount_11propagation___pyx_scope_struct_2_getPeerDistForever++] = ((struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever *)o);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_12propagation2___pyx_scope_struct_2_getPeerDistForever < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever)))) {
+    __pyx_freelist_12propagation2___pyx_scope_struct_2_getPeerDistForever[__pyx_freecount_12propagation2___pyx_scope_struct_2_getPeerDistForever++] = ((struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever *)o);
   } else {
     (*Py_TYPE(o)->tp_free)(o);
   }
 }
 
-static int __pyx_tp_traverse_11propagation___pyx_scope_struct_2_getPeerDistForever(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_12propagation2___pyx_scope_struct_2_getPeerDistForever(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever *p = (struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever *)o;
+  struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever *p = (struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever *)o;
   if (p->__pyx_v_N) {
     e = (*v)(p->__pyx_v_N, a); if (e) return e;
   }
@@ -7960,12 +7959,12 @@ static int __pyx_tp_traverse_11propagation___pyx_scope_struct_2_getPeerDistForev
   return 0;
 }
 
-static PyTypeObject __pyx_type_11propagation___pyx_scope_struct_2_getPeerDistForever = {
+static PyTypeObject __pyx_type_12propagation2___pyx_scope_struct_2_getPeerDistForever = {
   PyVarObject_HEAD_INIT(0, 0)
-  "propagation.__pyx_scope_struct_2_getPeerDistForever", /*tp_name*/
-  sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_2_getPeerDistForever), /*tp_basicsize*/
+  "propagation2.__pyx_scope_struct_2_getPeerDistForever", /*tp_name*/
+  sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_2_getPeerDistForever), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11propagation___pyx_scope_struct_2_getPeerDistForever, /*tp_dealloc*/
+  __pyx_tp_dealloc_12propagation2___pyx_scope_struct_2_getPeerDistForever, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -7987,7 +7986,7 @@ static PyTypeObject __pyx_type_11propagation___pyx_scope_struct_2_getPeerDistFor
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_11propagation___pyx_scope_struct_2_getPeerDistForever, /*tp_traverse*/
+  __pyx_tp_traverse_12propagation2___pyx_scope_struct_2_getPeerDistForever, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -8003,7 +8002,7 @@ static PyTypeObject __pyx_type_11propagation___pyx_scope_struct_2_getPeerDistFor
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11propagation___pyx_scope_struct_2_getPeerDistForever, /*tp_new*/
+  __pyx_tp_new_12propagation2___pyx_scope_struct_2_getPeerDistForever, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -8018,14 +8017,14 @@ static PyTypeObject __pyx_type_11propagation___pyx_scope_struct_2_getPeerDistFor
   #endif
 };
 
-static struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying *__pyx_freelist_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying[8];
-static int __pyx_freecount_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying = 0;
+static struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying *__pyx_freelist_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying[8];
+static int __pyx_freecount_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying = 0;
 
-static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
-  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying)))) {
-    o = (PyObject*)__pyx_freelist_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying[--__pyx_freecount_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying];
-    memset(o, 0, sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying));
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying)))) {
+    o = (PyObject*)__pyx_freelist_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying[--__pyx_freecount_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying];
+    memset(o, 0, sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else {
@@ -8035,23 +8034,23 @@ static PyObject *__pyx_tp_new_11propagation___pyx_scope_struct_3_getPeerDistOrDi
   return o;
 }
 
-static void __pyx_tp_dealloc_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying(PyObject *o) {
-  struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying *p = (struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying *)o;
+static void __pyx_tp_dealloc_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying(PyObject *o) {
+  struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying *p = (struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying *)o;
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->__pyx_v_N);
   Py_CLEAR(p->__pyx_v_item);
   Py_CLEAR(p->__pyx_v_p);
   Py_CLEAR(p->__pyx_t_0);
-  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying)))) {
-    __pyx_freelist_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying[__pyx_freecount_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying++] = ((struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying *)o);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying)))) {
+    __pyx_freelist_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying[__pyx_freecount_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying++] = ((struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying *)o);
   } else {
     (*Py_TYPE(o)->tp_free)(o);
   }
 }
 
-static int __pyx_tp_traverse_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying *p = (struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying *)o;
+  struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying *p = (struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying *)o;
   if (p->__pyx_v_N) {
     e = (*v)(p->__pyx_v_N, a); if (e) return e;
   }
@@ -8067,12 +8066,12 @@ static int __pyx_tp_traverse_11propagation___pyx_scope_struct_3_getPeerDistOrDie
   return 0;
 }
 
-static PyTypeObject __pyx_type_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying = {
+static PyTypeObject __pyx_type_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying = {
   PyVarObject_HEAD_INIT(0, 0)
-  "propagation.__pyx_scope_struct_3_getPeerDistOrDieTrying", /*tp_name*/
-  sizeof(struct __pyx_obj_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying), /*tp_basicsize*/
+  "propagation2.__pyx_scope_struct_3_getPeerDistOrDieTrying", /*tp_name*/
+  sizeof(struct __pyx_obj_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying, /*tp_dealloc*/
+  __pyx_tp_dealloc_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -8094,7 +8093,7 @@ static PyTypeObject __pyx_type_11propagation___pyx_scope_struct_3_getPeerDistOrD
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying, /*tp_traverse*/
+  __pyx_tp_traverse_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -8110,7 +8109,7 @@ static PyTypeObject __pyx_type_11propagation___pyx_scope_struct_3_getPeerDistOrD
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying, /*tp_new*/
+  __pyx_tp_new_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -8132,17 +8131,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_propagation(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_propagation2(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_propagation},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_propagation2},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "propagation",
+    "propagation2",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -8244,8 +8243,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_prob_dist, __pyx_k_prob_dist, sizeof(__pyx_k_prob_dist), 0, 0, 1, 0},
   {&__pyx_n_s_probs, __pyx_k_probs, sizeof(__pyx_k_probs), 0, 0, 1, 1},
   {&__pyx_n_s_profile, __pyx_k_profile, sizeof(__pyx_k_profile), 0, 0, 1, 1},
-  {&__pyx_n_s_propagation, __pyx_k_propagation, sizeof(__pyx_k_propagation), 0, 0, 1, 1},
-  {&__pyx_kp_s_propagation_pyx, __pyx_k_propagation_pyx, sizeof(__pyx_k_propagation_pyx), 0, 0, 1, 0},
+  {&__pyx_n_s_propagation2, __pyx_k_propagation2, sizeof(__pyx_k_propagation2), 0, 0, 1, 1},
+  {&__pyx_kp_s_propagation2_pyx, __pyx_k_propagation2_pyx, sizeof(__pyx_k_propagation2_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_rand, __pyx_k_rand, sizeof(__pyx_k_rand), 0, 0, 1, 1},
   {&__pyx_n_s_randNode, __pyx_k_randNode, sizeof(__pyx_k_randNode), 0, 0, 1, 1},
   {&__pyx_n_s_randPeerIndex, __pyx_k_randPeerIndex, sizeof(__pyx_k_randPeerIndex), 0, 0, 1, 1},
@@ -8291,7 +8290,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "propagation.pyx":25
+  /* "propagation2.pyx":25
  * 
  * def peersNeededfunc(peers,p,n):
  *         return p - numpy.count_nonzero(peers[n,:] >= 0)             # <<<<<<<<<<<<<<
@@ -8302,7 +8301,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_slice__2);
   __Pyx_GIVEREF(__pyx_slice__2);
 
-  /* "propagation.pyx":41
+  /* "propagation2.pyx":41
  *         maxIndices -= 1
  * 
  *         if potPeer != i and not any(peers[potPeer,:]==i):             # <<<<<<<<<<<<<<
@@ -8313,7 +8312,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_slice__3);
   __Pyx_GIVEREF(__pyx_slice__3);
 
-  /* "propagation.pyx":90
+  /* "propagation2.pyx":90
  * 
  * def sendToPeers(peers,messageDist,time):
  *     p = peers[messageDist == time,:]             # <<<<<<<<<<<<<<
@@ -8324,7 +8323,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_slice__6);
   __Pyx_GIVEREF(__pyx_slice__6);
 
-  /* "propagation.pyx":91
+  /* "propagation2.pyx":91
  * def sendToPeers(peers,messageDist,time):
  *     p = peers[messageDist == time,:]
  *     messageDist[p[:]]=numpy.where(messageDist[p[:]]==-1,time+1,messageDist[p[:]])             # <<<<<<<<<<<<<<
@@ -8341,7 +8340,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_slice__9);
   __Pyx_GIVEREF(__pyx_slice__9);
 
-  /* "propagation.pyx":96
+  /* "propagation2.pyx":96
  * def getFilePathRoot():
  *     #return os.path.normpath("C:/Users/fran/PycharmProjects/Distributions/")
  *     return os.path.normpath("/home/engr/Results/")             # <<<<<<<<<<<<<<
@@ -8352,7 +8351,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "propagation.pyx":122
+  /* "propagation2.pyx":122
  * 
  * def disperseMessage(peers,s):
  *     N = len(peers[:,0])             # <<<<<<<<<<<<<<
@@ -8366,7 +8365,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "propagation.pyx":10
+  /* "propagation2.pyx":10
  * import time
  * 
  * def getPeerDistEvenFaster(N, p):             # <<<<<<<<<<<<<<
@@ -8376,9 +8375,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__14 = PyTuple_Pack(9, __pyx_n_s_N, __pyx_n_s_p, __pyx_n_s_peers, __pyx_n_s_nodes, __pyx_n_s_rand, __pyx_n_s_pn, __pyx_n_s_fvp, __pyx_n_s_genexpr, __pyx_n_s_genexpr); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(2, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_getPeerDistEvenFaster, 10, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(2, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_getPeerDistEvenFaster, 10, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 10, __pyx_L1_error)
 
-  /* "propagation.pyx":24
+  /* "propagation2.pyx":24
  *     yield peers
  * 
  * def peersNeededfunc(peers,p,n):             # <<<<<<<<<<<<<<
@@ -8388,9 +8387,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__15 = PyTuple_Pack(3, __pyx_n_s_peers, __pyx_n_s_p, __pyx_n_s_n); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_peersNeededfunc, 24, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_peersNeededfunc, 24, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 24, __pyx_L1_error)
 
-  /* "propagation.pyx":27
+  /* "propagation2.pyx":27
  *         return p - numpy.count_nonzero(peers[n,:] >= 0)
  * 
  * def findPeersForNode(peers, nodes, peersNeededfunc,randfunc, N, p, i):             # <<<<<<<<<<<<<<
@@ -8400,9 +8399,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__17 = PyTuple_Pack(12, __pyx_n_s_peers, __pyx_n_s_nodes, __pyx_n_s_peersNeededfunc, __pyx_n_s_randfunc, __pyx_n_s_N, __pyx_n_s_p, __pyx_n_s_i, __pyx_n_s_maxIndices, __pyx_n_s_peersNeeded, __pyx_n_s_randPeerIndex, __pyx_n_s_potPeer, __pyx_n_s_peersNeededByPeer); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(7, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_findPeersForNode, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(7, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_findPeersForNode, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 27, __pyx_L1_error)
 
-  /* "propagation.pyx":54
+  /* "propagation2.pyx":54
  *         return False
  * 
  * def isValid(peers,N,p):             # <<<<<<<<<<<<<<
@@ -8412,9 +8411,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__19 = PyTuple_Pack(5, __pyx_n_s_peers, __pyx_n_s_N, __pyx_n_s_p, __pyx_n_s_b, __pyx_n_s_i); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_isValid, 54, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_isValid, 54, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 54, __pyx_L1_error)
 
-  /* "propagation.pyx":63
+  /* "propagation2.pyx":63
  *     return True
  * 
  * def generatePeerDist(N,p,n):             # <<<<<<<<<<<<<<
@@ -8424,9 +8423,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__21 = PyTuple_Pack(9, __pyx_n_s_N, __pyx_n_s_p, __pyx_n_s_n, __pyx_n_s_start, __pyx_n_s_item_start, __pyx_n_s_i, __pyx_n_s_peerDist, __pyx_n_s_time_now, __pyx_n_s_av_time); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(3, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_generatePeerDist, 63, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(3, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_generatePeerDist, 63, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 63, __pyx_L1_error)
 
-  /* "propagation.pyx":79
+  /* "propagation2.pyx":79
  * 
  * 
  * def getPeerDistForever(N,p):             # <<<<<<<<<<<<<<
@@ -8436,9 +8435,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__23 = PyTuple_Pack(2, __pyx_n_s_N, __pyx_n_s_p); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_getPeerDistForever, 79, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_getPeerDistForever, 79, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 79, __pyx_L1_error)
 
-  /* "propagation.pyx":83
+  /* "propagation2.pyx":83
  *         yield from getPeerDistEvenFaster(N,p)
  * 
  * def getPeerDistOrDieTrying(N,p):             # <<<<<<<<<<<<<<
@@ -8448,9 +8447,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__24 = PyTuple_Pack(3, __pyx_n_s_N, __pyx_n_s_p, __pyx_n_s_item); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_getPeerDistOrDieTrying, 83, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_getPeerDistOrDieTrying, 83, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 83, __pyx_L1_error)
 
-  /* "propagation.pyx":89
+  /* "propagation2.pyx":89
  * 
  * 
  * def sendToPeers(peers,messageDist,time):             # <<<<<<<<<<<<<<
@@ -8460,18 +8459,18 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__25 = PyTuple_Pack(4, __pyx_n_s_peers, __pyx_n_s_messageDist, __pyx_n_s_time, __pyx_n_s_p); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_sendToPeers, 89, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_sendToPeers, 89, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 89, __pyx_L1_error)
 
-  /* "propagation.pyx":94
+  /* "propagation2.pyx":94
  *     return messageDist
  * 
  * def getFilePathRoot():             # <<<<<<<<<<<<<<
  *     #return os.path.normpath("C:/Users/fran/PycharmProjects/Distributions/")
  *     return os.path.normpath("/home/engr/Results/")
  */
-  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_getFilePathRoot, 94, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_getFilePathRoot, 94, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 94, __pyx_L1_error)
 
-  /* "propagation.pyx":99
+  /* "propagation2.pyx":99
  * 
  * 
  * def getPeerDistFilePath(N,p,s):             # <<<<<<<<<<<<<<
@@ -8481,9 +8480,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__28 = PyTuple_Pack(3, __pyx_n_s_N, __pyx_n_s_p, __pyx_n_s_s); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_getPeerDistFilePath, 99, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_getPeerDistFilePath, 99, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 99, __pyx_L1_error)
 
-  /* "propagation.pyx":102
+  /* "propagation2.pyx":102
  *     return os.path.normpath(getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(s))
  * 
  * def getProbDistFilePath(N,p, x, i):             # <<<<<<<<<<<<<<
@@ -8493,9 +8492,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__30 = PyTuple_Pack(4, __pyx_n_s_N, __pyx_n_s_p, __pyx_n_s_x, __pyx_n_s_i); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_getProbDistFilePath, 102, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_getProbDistFilePath, 102, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 102, __pyx_L1_error)
 
-  /* "propagation.pyx":105
+  /* "propagation2.pyx":105
  *     return getFilePathRoot() + '/prob_dist_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i)
  * 
  * def savePeerDist(N,p,peers,i):             # <<<<<<<<<<<<<<
@@ -8505,9 +8504,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__32 = PyTuple_Pack(5, __pyx_n_s_N, __pyx_n_s_p, __pyx_n_s_peers, __pyx_n_s_i, __pyx_n_s_fileName); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(4, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_savePeerDist, 105, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(4, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_savePeerDist, 105, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 105, __pyx_L1_error)
 
-  /* "propagation.pyx":111
+  /* "propagation2.pyx":111
  *         print("saved " + str(fileName) + "at" + str(time.time()))
  * 
  * def loadPeerDist(N,p,n):             # <<<<<<<<<<<<<<
@@ -8517,9 +8516,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__34 = PyTuple_Pack(6, __pyx_n_s_N, __pyx_n_s_p, __pyx_n_s_n, __pyx_n_s_fileName, __pyx_n_s_contents, __pyx_n_s_peers); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_loadPeerDist, 111, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_loadPeerDist, 111, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 111, __pyx_L1_error)
 
-  /* "propagation.pyx":118
+  /* "propagation2.pyx":118
  * 
  * 
  * def hasMessageSpreadToAllNodes(messageDist):             # <<<<<<<<<<<<<<
@@ -8529,9 +8528,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__36 = PyTuple_Pack(1, __pyx_n_s_messageDist); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_hasMessageSpreadToAllNodes, 118, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_hasMessageSpreadToAllNodes, 118, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 118, __pyx_L1_error)
 
-  /* "propagation.pyx":121
+  /* "propagation2.pyx":121
  *     return not numpy.any(messageDist==-1)
  * 
  * def disperseMessage(peers,s):             # <<<<<<<<<<<<<<
@@ -8541,9 +8540,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__38 = PyTuple_Pack(5, __pyx_n_s_peers, __pyx_n_s_s, __pyx_n_s_N, __pyx_n_s_messageDist, __pyx_n_s_time); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__38);
   __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_disperseMessage, 121, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_disperseMessage, 121, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 121, __pyx_L1_error)
 
-  /* "propagation.pyx":131
+  /* "propagation2.pyx":131
  *     return messageDist
  * 
  * def saveDisperseMessageDist(N,p,x,iterations_startNode):             # <<<<<<<<<<<<<<
@@ -8553,9 +8552,9 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__40 = PyTuple_Pack(23, __pyx_n_s_N, __pyx_n_s_p, __pyx_n_s_x, __pyx_n_s_iterations_startNode, __pyx_n_s_probDist, __pyx_n_s_ii, __pyx_n_s_peers, __pyx_n_s_nodes, __pyx_n_s_maxIndices, __pyx_n_s_i, __pyx_n_s_randStartNodeIndex, __pyx_n_s_randNode, __pyx_n_s_messageDist, __pyx_n_s_unique_elements, __pyx_n_s_counts_elements, __pyx_n_s_j, __pyx_n_s_numOfHops, __pyx_n_s_k, __pyx_n_s_X, __pyx_n_s_probs, __pyx_n_s_jj, __pyx_n_s_v, __pyx_n_s_fileName); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__40);
   __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(4, 0, 23, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_saveDisperseMessageDist, 131, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(4, 0, 23, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_saveDisperseMessageDist, 131, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 131, __pyx_L1_error)
 
-  /* "propagation.pyx":164
+  /* "propagation2.pyx":164
  *     scipy.io.savemat(fileName, {"probDist": probs}, appendmat=True)
  * 
  * def loadDisperseMessageDist(N,p,x,iterations_startNode):             # <<<<<<<<<<<<<<
@@ -8565,7 +8564,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__42 = PyTuple_Pack(7, __pyx_n_s_N, __pyx_n_s_p, __pyx_n_s_x, __pyx_n_s_iterations_startNode, __pyx_n_s_fileName, __pyx_n_s_contents, __pyx_n_s_probDist); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__42);
   __Pyx_GIVEREF(__pyx_tuple__42);
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(4, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation_pyx, __pyx_n_s_loadDisperseMessageDist, 164, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(4, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_propagation2_pyx, __pyx_n_s_loadDisperseMessageDist, 164, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -8580,7 +8579,6 @@ static int __Pyx_InitGlobals(void) {
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_2 = PyInt_FromLong(2); if (unlikely(!__pyx_int_2)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_int_3 = PyInt_FromLong(3); if (unlikely(!__pyx_int_3)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_neg_1 = PyInt_FromLong(-1); if (unlikely(!__pyx_int_neg_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -8623,30 +8621,30 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_11propagation___pyx_scope_struct__getPeerDistEvenFaster) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
-  __pyx_type_11propagation___pyx_scope_struct__getPeerDistEvenFaster.tp_print = 0;
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_11propagation___pyx_scope_struct__getPeerDistEvenFaster.tp_dictoffset && __pyx_type_11propagation___pyx_scope_struct__getPeerDistEvenFaster.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_11propagation___pyx_scope_struct__getPeerDistEvenFaster.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  if (PyType_Ready(&__pyx_type_12propagation2___pyx_scope_struct__getPeerDistEvenFaster) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_type_12propagation2___pyx_scope_struct__getPeerDistEvenFaster.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_12propagation2___pyx_scope_struct__getPeerDistEvenFaster.tp_dictoffset && __pyx_type_12propagation2___pyx_scope_struct__getPeerDistEvenFaster.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_12propagation2___pyx_scope_struct__getPeerDistEvenFaster.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  __pyx_ptype_11propagation___pyx_scope_struct__getPeerDistEvenFaster = &__pyx_type_11propagation___pyx_scope_struct__getPeerDistEvenFaster;
-  if (PyType_Ready(&__pyx_type_11propagation___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
-  __pyx_type_11propagation___pyx_scope_struct_1_genexpr.tp_print = 0;
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_11propagation___pyx_scope_struct_1_genexpr.tp_dictoffset && __pyx_type_11propagation___pyx_scope_struct_1_genexpr.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_11propagation___pyx_scope_struct_1_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  __pyx_ptype_12propagation2___pyx_scope_struct__getPeerDistEvenFaster = &__pyx_type_12propagation2___pyx_scope_struct__getPeerDistEvenFaster;
+  if (PyType_Ready(&__pyx_type_12propagation2___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_type_12propagation2___pyx_scope_struct_1_genexpr.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_12propagation2___pyx_scope_struct_1_genexpr.tp_dictoffset && __pyx_type_12propagation2___pyx_scope_struct_1_genexpr.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_12propagation2___pyx_scope_struct_1_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  __pyx_ptype_11propagation___pyx_scope_struct_1_genexpr = &__pyx_type_11propagation___pyx_scope_struct_1_genexpr;
-  if (PyType_Ready(&__pyx_type_11propagation___pyx_scope_struct_2_getPeerDistForever) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
-  __pyx_type_11propagation___pyx_scope_struct_2_getPeerDistForever.tp_print = 0;
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_11propagation___pyx_scope_struct_2_getPeerDistForever.tp_dictoffset && __pyx_type_11propagation___pyx_scope_struct_2_getPeerDistForever.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_11propagation___pyx_scope_struct_2_getPeerDistForever.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  __pyx_ptype_12propagation2___pyx_scope_struct_1_genexpr = &__pyx_type_12propagation2___pyx_scope_struct_1_genexpr;
+  if (PyType_Ready(&__pyx_type_12propagation2___pyx_scope_struct_2_getPeerDistForever) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_type_12propagation2___pyx_scope_struct_2_getPeerDistForever.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_12propagation2___pyx_scope_struct_2_getPeerDistForever.tp_dictoffset && __pyx_type_12propagation2___pyx_scope_struct_2_getPeerDistForever.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_12propagation2___pyx_scope_struct_2_getPeerDistForever.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  __pyx_ptype_11propagation___pyx_scope_struct_2_getPeerDistForever = &__pyx_type_11propagation___pyx_scope_struct_2_getPeerDistForever;
-  if (PyType_Ready(&__pyx_type_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
-  __pyx_type_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying.tp_print = 0;
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying.tp_dictoffset && __pyx_type_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  __pyx_ptype_12propagation2___pyx_scope_struct_2_getPeerDistForever = &__pyx_type_12propagation2___pyx_scope_struct_2_getPeerDistForever;
+  if (PyType_Ready(&__pyx_type_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_type_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying.tp_dictoffset && __pyx_type_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  __pyx_ptype_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying = &__pyx_type_11propagation___pyx_scope_struct_3_getPeerDistOrDieTrying;
+  __pyx_ptype_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying = &__pyx_type_12propagation2___pyx_scope_struct_3_getPeerDistOrDieTrying;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -8704,11 +8702,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initpropagation(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initpropagation(void)
+__Pyx_PyMODINIT_FUNC initpropagation2(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initpropagation2(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_propagation(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_propagation(void)
+__Pyx_PyMODINIT_FUNC PyInit_propagation2(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_propagation2(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -8748,7 +8746,7 @@ bad:
 }
 
 
-static int __pyx_pymod_exec_propagation(PyObject *__pyx_pyinit_module)
+static int __pyx_pymod_exec_propagation2(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -8769,7 +8767,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_propagation(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_propagation2(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -8805,7 +8803,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("propagation", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("propagation2", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -8824,14 +8822,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_propagation) {
+  if (__pyx_module_is_main_propagation2) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "propagation")) {
-      if (unlikely(PyDict_SetItemString(modules, "propagation", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "propagation2")) {
+      if (unlikely(PyDict_SetItemString(modules, "propagation2", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -8852,7 +8850,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "propagation.pyx":1
+  /* "propagation2.pyx":1
  * import numpy as numpy             # <<<<<<<<<<<<<<
  * import scipy.io
  * from numpy.core.multiarray import ndarray
@@ -8862,7 +8860,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_numpy, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "propagation.pyx":2
+  /* "propagation2.pyx":2
  * import numpy as numpy
  * import scipy.io             # <<<<<<<<<<<<<<
  * from numpy.core.multiarray import ndarray
@@ -8873,7 +8871,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_scipy, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "propagation.pyx":3
+  /* "propagation2.pyx":3
  * import numpy as numpy
  * import scipy.io
  * from numpy.core.multiarray import ndarray             # <<<<<<<<<<<<<<
@@ -8894,7 +8892,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":4
+  /* "propagation2.pyx":4
  * import scipy.io
  * from numpy.core.multiarray import ndarray
  * from scipy.special import factorial             # <<<<<<<<<<<<<<
@@ -8915,7 +8913,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "propagation.pyx":5
+  /* "propagation2.pyx":5
  * from numpy.core.multiarray import ndarray
  * from scipy.special import factorial
  * from functools import partial             # <<<<<<<<<<<<<<
@@ -8936,7 +8934,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":6
+  /* "propagation2.pyx":6
  * from scipy.special import factorial
  * from functools import partial
  * import os.path             # <<<<<<<<<<<<<<
@@ -8948,7 +8946,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_os, __pyx_t_2) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":7
+  /* "propagation2.pyx":7
  * from functools import partial
  * import os.path
  * import profile             # <<<<<<<<<<<<<<
@@ -8960,7 +8958,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_profile, __pyx_t_2) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":8
+  /* "propagation2.pyx":8
  * import os.path
  * import profile
  * import time             # <<<<<<<<<<<<<<
@@ -8972,211 +8970,211 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_time, __pyx_t_2) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":10
+  /* "propagation2.pyx":10
  * import time
  * 
  * def getPeerDistEvenFaster(N, p):             # <<<<<<<<<<<<<<
  *     peers =  numpy.full((N, p), -1, dtype = int)
  *     nodes = numpy.arange(N)  # array to randomly shuffle each iteration to give us potential peers in different order
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_1getPeerDistEvenFaster, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_1getPeerDistEvenFaster, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_getPeerDistEvenFaster, __pyx_t_2) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":24
+  /* "propagation2.pyx":24
  *     yield peers
  * 
  * def peersNeededfunc(peers,p,n):             # <<<<<<<<<<<<<<
  *         return p - numpy.count_nonzero(peers[n,:] >= 0)
  * 
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_4peersNeededfunc, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_4peersNeededfunc, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_peersNeededfunc, __pyx_t_2) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":27
+  /* "propagation2.pyx":27
  *         return p - numpy.count_nonzero(peers[n,:] >= 0)
  * 
  * def findPeersForNode(peers, nodes, peersNeededfunc,randfunc, N, p, i):             # <<<<<<<<<<<<<<
  *     cdef int maxIndices = N-1   #Using as part of Fisher-Yates algorithm to provide unique random options for peers efficiently.
  *     cdef int peersNeeded =  peersNeededfunc(peers,p,i)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_6findPeersForNode, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_6findPeersForNode, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_findPeersForNode, __pyx_t_2) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":54
+  /* "propagation2.pyx":54
  *         return False
  * 
  * def isValid(peers,N,p):             # <<<<<<<<<<<<<<
  *     if peers == []:
  *         return False
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_8isValid, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_8isValid, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_isValid, __pyx_t_2) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":63
+  /* "propagation2.pyx":63
  *     return True
  * 
  * def generatePeerDist(N,p,n):             # <<<<<<<<<<<<<<
  *     start = time.time()
  *     item_start = start
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_10generatePeerDist, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_10generatePeerDist, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_generatePeerDist, __pyx_t_2) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":79
+  /* "propagation2.pyx":79
  * 
  * 
  * def getPeerDistForever(N,p):             # <<<<<<<<<<<<<<
  *     while True:
  *         yield from getPeerDistEvenFaster(N,p)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_12getPeerDistForever, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_12getPeerDistForever, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_getPeerDistForever, __pyx_t_2) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":83
+  /* "propagation2.pyx":83
  *         yield from getPeerDistEvenFaster(N,p)
  * 
  * def getPeerDistOrDieTrying(N,p):             # <<<<<<<<<<<<<<
  *     for item in getPeerDistForever(N,p):
  *         if isValid(item,N,p):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_15getPeerDistOrDieTrying, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_15getPeerDistOrDieTrying, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_getPeerDistOrDieTrying, __pyx_t_2) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":89
+  /* "propagation2.pyx":89
  * 
  * 
  * def sendToPeers(peers,messageDist,time):             # <<<<<<<<<<<<<<
  *     p = peers[messageDist == time,:]
  *     messageDist[p[:]]=numpy.where(messageDist[p[:]]==-1,time+1,messageDist[p[:]])
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_18sendToPeers, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_18sendToPeers, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_sendToPeers, __pyx_t_2) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":94
+  /* "propagation2.pyx":94
  *     return messageDist
  * 
  * def getFilePathRoot():             # <<<<<<<<<<<<<<
  *     #return os.path.normpath("C:/Users/fran/PycharmProjects/Distributions/")
  *     return os.path.normpath("/home/engr/Results/")
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_20getFilePathRoot, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_20getFilePathRoot, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_getFilePathRoot, __pyx_t_2) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":99
+  /* "propagation2.pyx":99
  * 
  * 
  * def getPeerDistFilePath(N,p,s):             # <<<<<<<<<<<<<<
  *     return os.path.normpath(getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(s))
  * 
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_22getPeerDistFilePath, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_22getPeerDistFilePath, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_getPeerDistFilePath, __pyx_t_2) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":102
+  /* "propagation2.pyx":102
  *     return os.path.normpath(getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(s))
  * 
  * def getProbDistFilePath(N,p, x, i):             # <<<<<<<<<<<<<<
  *     return getFilePathRoot() + '/prob_dist_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i)
  * 
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_24getProbDistFilePath, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_24getProbDistFilePath, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_getProbDistFilePath, __pyx_t_2) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":105
+  /* "propagation2.pyx":105
  *     return getFilePathRoot() + '/prob_dist_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i)
  * 
  * def savePeerDist(N,p,peers,i):             # <<<<<<<<<<<<<<
  * 
  *         fileName = getPeerDistFilePath(N,p,i)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_26savePeerDist, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_26savePeerDist, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_savePeerDist, __pyx_t_2) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":111
+  /* "propagation2.pyx":111
  *         print("saved " + str(fileName) + "at" + str(time.time()))
  * 
  * def loadPeerDist(N,p,n):             # <<<<<<<<<<<<<<
  *         fileName = getPeerDistFilePath(N, p, n)
  *         contents = scipy.io.loadmat(fileName, appendmat=True)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_28loadPeerDist, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_28loadPeerDist, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_loadPeerDist, __pyx_t_2) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":118
+  /* "propagation2.pyx":118
  * 
  * 
  * def hasMessageSpreadToAllNodes(messageDist):             # <<<<<<<<<<<<<<
  *     return not numpy.any(messageDist==-1)
  * 
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_30hasMessageSpreadToAllNodes, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_30hasMessageSpreadToAllNodes, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_hasMessageSpreadToAllNodes, __pyx_t_2) < 0) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":121
+  /* "propagation2.pyx":121
  *     return not numpy.any(messageDist==-1)
  * 
  * def disperseMessage(peers,s):             # <<<<<<<<<<<<<<
  *     N = len(peers[:,0])
  *     messageDist = numpy.full(N,-1)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_32disperseMessage, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_32disperseMessage, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_disperseMessage, __pyx_t_2) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":131
+  /* "propagation2.pyx":131
  *     return messageDist
  * 
  * def saveDisperseMessageDist(N,p,x,iterations_startNode):             # <<<<<<<<<<<<<<
  *     probDist = dict()
  *     for ii in range(0,x):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_34saveDisperseMessageDist, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_34saveDisperseMessageDist, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_saveDisperseMessageDist, __pyx_t_2) < 0) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":164
+  /* "propagation2.pyx":164
  *     scipy.io.savemat(fileName, {"probDist": probs}, appendmat=True)
  * 
  * def loadDisperseMessageDist(N,p,x,iterations_startNode):             # <<<<<<<<<<<<<<
  * 
  *     fileName = getProbDistFilePath(N, p, x, iterations_startNode)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11propagation_36loadDisperseMessageDist, NULL, __pyx_n_s_propagation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_12propagation2_36loadDisperseMessageDist, NULL, __pyx_n_s_propagation2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_loadDisperseMessageDist, __pyx_t_2) < 0) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "propagation.pyx":1
+  /* "propagation2.pyx":1
  * import numpy as numpy             # <<<<<<<<<<<<<<
  * import scipy.io
  * from numpy.core.multiarray import ndarray
@@ -9194,11 +9192,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init propagation", 0, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init propagation2", 0, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init propagation");
+    PyErr_SetString(PyExc_ImportError, "init propagation2");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
