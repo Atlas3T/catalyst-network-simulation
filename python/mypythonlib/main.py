@@ -2,9 +2,12 @@ import time
 import matplotlib.pyplot as plt
 import peer_dist
 import profile
+import numpy
 
 def main():
-    peer_dist.run_until_done()
+    peers = peer_dist.loadPeerDist(1000000,10,2)
+    print(numpy.shape(peers))
+    print(peers)
 
 def oldMain():
     start = time.time()

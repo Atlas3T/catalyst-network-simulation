@@ -7,19 +7,17 @@ import peer_dist
 import os.path
 import time
 
-folder = ""
-
 def sendToPeers(peers,messageDist,time):
     p = peers[messageDist == time,:]
     messageDist[p[:]]=numpy.where(messageDist[p[:]]==-1,time+1,messageDist[p[:]])
     return messageDist
 
-def getFilePathRoot(folder):
+def getFilePathRoot():
     #return os.path.normpath("C:/Users/fran/PycharmProjects/Distributions/")
-    return os.path.normpath("/home/engr/Results/" + str(folder))
+    return os.path.normpath("/home/engr/Results/")
 
 def getProbDistFilePath(N,p, x, i):
-    return getFilePathRoot() + '/prob_dist_hops/prob_dist' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i)
+    return getFilePathRoot() + '/prob_dist_hops/prob_dist_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i)
 
 
 def hasMessageSpreadToAllNodes(messageDist):
@@ -66,13 +64,13 @@ def saveDisperseMessageDist(N,p,x,iterations_startNode):
         jj+=1
     print(probs)
     fileName = getProbDistFilePath(N, p, x, iterations_startNode)
-    scipy.io.savemat(fileName, {"probDist_hops": probs}, appendmat=True)
+    scipy.io.savemat(fileName, {"probDist": probs}, appendmat=True)
 
 def loadDisperseMessageDist(N,p,x,iterations_startNode):
 
     fileName = getProbDistFilePath(N, p, x, iterations_startNode)
     contents = scipy.io.loadmat(fileName,  appendmat=True)
-    probDist = contents['probDist_hops']
+    probDist = contents['probDist']
     return probDist
 
 
