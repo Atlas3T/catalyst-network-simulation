@@ -10,7 +10,6 @@ import multiprocessing as mp
 from multiprocessing import Queue as PQueue
 import random
 from multiprocessing import Pool
-from SharedCounter import SharedCounter
 from math import sqrt
 import itertools
 
@@ -22,10 +21,12 @@ def getFilePathRoot():
 def getPeerDistEvenFaster(params):
     N = params[0]
     p = params[1]
-    i = params[2]
+    needed = params[2]
     lock = params[3]
     counter = params[4]
-    needed = params[5]
+    with lock:
+        if counter.value>=needed:
+            return False
 
     start = time.time()
 
@@ -33,7 +34,7 @@ def getPeerDistEvenFaster(params):
     
     # array to randomly shuffle each iteration to give us potential peers in different order
     nodes = numpy.arange(N)
-    rand = numpy.random.randint
+    rand = numpy.random.RandomState().randint
 
     pn = peersNeededfunc
     fvp =findPeersForNode
@@ -105,9 +106,9 @@ def getPeerDistFilePath(N,p,i):
 
 def savePeerDist(N,p,peers,i):
     start = time.time()
-    fileName = getPeerDistFilePath(N,p,i)
+    fileName = getPeerDistFilePath(N,p,i-1)
     scipy.io.savemat(fileName, {"peers" : peers}, appendmat=True)
-    print("saved " + str(fileName) + "in " + str(time.time()-start) + "secs.")
+    print("saved " + str(fileName) + " in " + str(time.time()-start) + "secs.")
 
 def loadPeerDist(N,p,i):
         fileName = getPeerDistFilePath(N, p, i)
@@ -115,28 +116,30 @@ def loadPeerDist(N,p,i):
         peers = contents['peers']
         return peers
 
-class run_until_done():
-    L = 5   # limit for performance timing 
-    N  = 5
+def create_peers(N,p,i):
+
+    before = time.time()
     m = mp.Manager()
     counter = m.Value('i',0)
     lock = m.Lock()
-    i=0
+    
     pool = Pool()
-    before = time.time()
+    
     success_count = 0
-    for result in pool.imap_unordered(getPeerDistEvenFaster, itertools.repeat([10000,10,55, lock , counter, N]), 10):
-        i+=1
-        with lock:
-            if counter.value >= N:
-                pool.close()
+    j=0
+    for result in pool.imap_unordered(getPeerDistEvenFaster, itertools.repeat([N,p,i, lock , counter]), 10):
+        j+=1
         if result:
             success_count+=1
-            if success_count>=N:
+            if success_count>=i:
                 pool.terminate()
                 break;
+        with lock:
+            if counter.value >= i:
+                pool.close()
     pool.join()
-    print("Computed %d valid distributions in %.1fms. Saved %d, took %d tries." % (counter.value, (time.time()-before)*1000.0,success_count, i))
+    print("Computed %d valid distributions in %.1f secs. Saved %d, took %d tries." % (counter.value, (time.time()-before),success_count, j))
+
 
 
 
