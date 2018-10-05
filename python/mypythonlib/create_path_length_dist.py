@@ -7,7 +7,7 @@ import peer_dist
 import prob_dist_hops
 
 def main():
-    saveDist(1000000)
+    saveDist(500)
     
 
 def saveDist(N):
