@@ -5,6 +5,6 @@
 echo "exporting current environment to environment.yml..."
 conda env export > python/environment.yml
 echo "..and adding the change to your commit.."
-git add environment.yml
+git add python/environment.yml
 
 echo "precommit complete"
