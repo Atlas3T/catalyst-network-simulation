@@ -17,5 +17,4 @@ pages:
   artifacts:
     paths:
       - public
-  only:
-    - master # this job will affect only the 'master' branch
+
