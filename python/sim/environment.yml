@@ -45,6 +45,7 @@ dependencies:
   - ncurses=6.1=hf484d3e_0
   - numpy=1.15.2=py37h1d66e8a_1
   - numpy-base=1.15.2=py37h81de0dd_1
+  - numpydoc=0.8.0=py37_0
   - openssl=1.0.2p=h14c3975_0
   - packaging=18.0=py37_0
   - pandas=0.23.4=py37h04863e7_0
@@ -70,6 +71,7 @@ dependencies:
   - six=1.11.0=py37_1
   - snowballstemmer=1.2.1=py37_0
   - sphinx=1.8.1=py37_0
+  - sphinx_rtd_theme=0.4.2=py37_0
   - sphinxcontrib=1.0=py37_1
   - sphinxcontrib-websupport=1.1.0=py37_1
   - sqlite=3.25.2=h7b6447c_0
@@ -80,5 +82,8 @@ dependencies:
   - wheel=0.32.1=py37_0
   - xz=5.2.4=h14c3975_4
   - zlib=1.2.11=ha838bed_2
+  - pip:
+    - bitarray==0.8.3
+    - mmh3==2.5.1
 prefix: /home/engr/anaconda3/envs/scibase
 
