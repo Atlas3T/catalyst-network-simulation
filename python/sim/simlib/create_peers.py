@@ -1,4 +1,4 @@
-from peers import peer_dist
+from peer_relationships import peer_dist
 
 def main():
     N = 500
