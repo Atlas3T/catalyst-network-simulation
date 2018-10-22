@@ -35,7 +35,7 @@ def plot_propagation_hops(listofN):
     lines = []
     plt.figure()
     for (N) in listofN:
-        x=prob_dist_hops.loadDisperseMessageDist(N,p,i,n)
+        x=propagation_hops.loadDisperseMessageDist(N,p,i,n)
         lines += plt.plot(x[0, :], numpy.cumsum(x[1, :]), label = "{} nodes".format(N))
     labels = [l.get_label() for l in lines]
     plt.legend(lines, labels,title = 'Network size')
