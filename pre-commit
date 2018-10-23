@@ -7,4 +7,10 @@ conda env export > python/sim/environment.yml
 echo "..and adding the change to your commit.."
 git add python/sim/environment.yml
 
+echo "updating documentation..."
+cd python/sim/docs/
+sphinx-apidoc -fMe -o ./source/_modules ../simlib/
+make html
+mv build/html ../../..public
+
 echo "precommit complete"
