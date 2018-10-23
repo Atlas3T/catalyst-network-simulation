@@ -9,7 +9,6 @@ Welcome to simulation's documentation!
 .. toctree::
    :maxdepth: 4
    :caption: Contents:
-   _modules/simlib
 
 
 Indices and tables
