@@ -1,0 +1,6 @@
+pages:
+  - mv python/sim/docs/build/html public
+  artifacts:
+        paths:
+        - public
+
