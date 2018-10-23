@@ -1,6 +1,9 @@
 pages:
+  script:
   - mv python/sim/docs/build/html public
   artifacts:
         paths:
         - public
+  only:
+  - master
 
