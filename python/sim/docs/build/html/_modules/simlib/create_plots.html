@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>simlib.create_plots &mdash; simulation  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> simulation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">simulation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>simlib.create_plots</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for simlib.create_plots</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;Agg&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">propagation_hops</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">latency_generator</span>
+<span class="kn">import</span> <span class="nn">propagation_time</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="k">import</span> <span class="n">ScalarFormatter</span>
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../simlib.create_plots.html#simlib.create_plots.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1">#list = [100, 500, 1000, 5000, 10000, 50000, 100000, 500000,1000000]</span>
+    <span class="c1">#plot_propagation_hops(list)</span>
+
+    <span class="c1">#plot_latency_dist()</span>
+    
+    <span class="n">plot_profile_set_latency</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span></div>
+    
+    <span class="c1">#plot_latency_set_prob(95)</span>
+
+    <span class="c1">#list = [100,1000,10000,100000,1000000]</span>
+    <span class="c1">#plot_propagation_time(list)</span>
+
+
+
+
+
+
+<div class="viewcode-block" id="plot_propagation_hops"><a class="viewcode-back" href="../simlib.create_plots.html#simlib.create_plots.plot_propagation_hops">[docs]</a><span class="k">def</span> <span class="nf">plot_propagation_hops</span><span class="p">(</span><span class="n">listofN</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="ow">in</span> <span class="n">listofN</span><span class="p">:</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">propagation_hops</span><span class="o">.</span><span class="n">loadDisperseMessageDist</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">lines</span> <span class="o">+=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> nodes&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Network size&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Path length (hops between nodes)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability (cummulative)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Probability distribution of transaction path length&#39;</span><span class="p">)</span>
+    <span class="n">plotfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">getPlotsFolder</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/propagation_dist_hops.pdf&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">plotfolder</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="plot_propagation_time"><a class="viewcode-back" href="../simlib.create_plots.html#simlib.create_plots.plot_propagation_time">[docs]</a><span class="k">def</span> <span class="nf">plot_propagation_time</span><span class="p">(</span><span class="n">listofN</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">listofN</span><span class="p">:</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">propagation_time</span><span class="o">.</span><span class="n">loadDisperseMessageDist</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">snsplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">hist_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;cumulative&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">kde_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;cumulative&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">hist</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> nodes&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (ms)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability (cummulative)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Probability distribution of transaction arrival time&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Network size&#39;</span><span class="p">)</span>
+    <span class="n">plotfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">getPlotsFolder</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/propagation_dist_time_all&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.pdf&#39;</span><span class="p">)</span>
+    <span class="n">snsplot</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">plotfolder</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="plot_profile_set_latency"><a class="viewcode-back" href="../simlib.create_plots.html#simlib.create_plots.plot_profile_set_latency">[docs]</a><span class="k">def</span> <span class="nf">plot_profile_set_latency</span><span class="p">(</span><span class="n">ms</span><span class="p">):</span>
+    <span class="n">p</span><span class="o">=</span><span class="mi">10</span>
+    <span class="n">x</span><span class="o">=</span><span class="mi">10</span>
+    <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">propagation_time</span><span class="o">.</span><span class="n">load_p_u_c_l</span><span class="p">(</span><span class="n">ms</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">iterations</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">newlist</span> <span class="o">=</span> <span class="p">[(</span><span class="n">elem1</span><span class="p">,</span> <span class="n">elem2</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem1</span><span class="p">,</span> <span class="n">elem2</span> <span class="ow">in</span> <span class="n">profile</span><span class="p">]</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">newlist</span><span class="p">),</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="n">elem1</span> <span class="k">for</span> <span class="n">elem1</span><span class="p">,</span> <span class="n">elem2</span> <span class="ow">in</span> <span class="n">profile</span><span class="p">])</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">ScalarFormatter</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_ticklabels</span><span class="p">()[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Network size&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Percentage&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Percentage of nodes recieving a transaction within </span><span class="si">{}</span><span class="s1"> ms&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ms</span><span class="p">))</span>
+    <span class="n">plotfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">getPlotsFolder</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/profile_latency_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ms</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;ms.pdf&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">plotfolder</span><span class="p">)</span></div>
+
+    
+
+<div class="viewcode-block" id="plot_latency_set_prob"><a class="viewcode-back" href="../simlib.create_plots.html#simlib.create_plots.plot_latency_set_prob">[docs]</a><span class="k">def</span> <span class="nf">plot_latency_set_prob</span><span class="p">(</span><span class="n">prob</span><span class="p">):</span>
+    <span class="n">p</span><span class="o">=</span><span class="mi">10</span>
+    <span class="n">x</span><span class="o">=</span><span class="mi">10</span>
+    <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">propagation_time</span><span class="o">.</span><span class="n">load_l_a_c_p</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">iterations</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">newlist</span> <span class="o">=</span> <span class="p">[(</span><span class="n">elem2</span><span class="p">,</span> <span class="n">elem1</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem1</span><span class="p">,</span> <span class="n">elem2</span> <span class="ow">in</span> <span class="n">profile</span><span class="p">]</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">newlist</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="p">]:</span>
+        <span class="n">axis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">ScalarFormatter</span><span class="p">())</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;network size&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;latency (ms)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Percentage of nodes recieving a transaction within </span><span class="si">{}</span><span class="s1"> percent&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prob</span><span class="p">))</span>
+    <span class="n">plotfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">getPlotsFolder</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/profile_percentage_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;ms.pdf&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">plotfolder</span><span class="p">)</span></div>
+
+    
+
+<div class="viewcode-block" id="plot_latency_dist"><a class="viewcode-back" href="../simlib.create_plots.html#simlib.create_plots.plot_latency_dist">[docs]</a><span class="k">def</span> <span class="nf">plot_latency_dist</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">latencies</span> <span class="o">=</span> <span class="n">latency_generator</span><span class="o">.</span><span class="n">get_latency_rvs</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+    <span class="n">snsplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">latencies</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (ms)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Probability distribution of latency between nodes&#39;</span><span class="p">)</span>
+    <span class="n">plotfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">getPlotsFolder</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/latency_dist.pdf&#39;</span><span class="p">)</span>
+    <span class="n">snsplot</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">getPlotsFolder</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/latency_distribution.pdf&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="getPlotsFolder"><a class="viewcode-back" href="../simlib.create_plots.html#simlib.create_plots.getPlotsFolder">[docs]</a><span class="k">def</span> <span class="nf">getPlotsFolder</span><span class="p">():</span>
+    <span class="c1">#return os.path.normpath(&quot;C:/Users/fran/PycharmProjects/Distributions/&quot;)</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="s2">&quot;/home/engr/Results/plots/&quot;</span><span class="p">)</span></div>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, f
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
