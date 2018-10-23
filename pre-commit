@@ -11,6 +11,8 @@ echo "updating documentation..."
 cd python/sim/docs/
 sphinx-apidoc -fMe -o ./source/_modules ../simlib/
 make html
+rm -r ../../../public
 mv build/html ../../../public
+git add ../../../public
 
 echo "precommit complete"
