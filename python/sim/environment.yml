@@ -85,5 +85,6 @@ dependencies:
   - pip:
     - bitarray==0.8.3
     - mmh3==2.5.1
+    - sphinxcontrib-fulltoc==1.2.0
 prefix: /home/engr/anaconda3/envs/scibase
 
