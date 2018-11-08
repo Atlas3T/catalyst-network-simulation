@@ -1,0 +1,2462 @@
+[
+  {
+    "City": "Adelaide",
+    "Distance": "13806km",
+    "Average": "355.25ms",
+    "% of SOLf/o": "38.89%",
+    "min": "354.18ms",
+    "max": "356.30ms",
+    "mdev": "0.66ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Albany",
+    "Distance": "7315km",
+    "Average": "125.80ms",
+    "% of SOLf/o": "58.52%",
+    "min": "124.83ms",
+    "max": "127.45ms",
+    "mdev": "0.64ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Alblasserdam",
+    "Distance": "2185km",
+    "Average": "50.72ms",
+    "% of SOLf/o": "43.70%",
+    "min": "49.84ms",
+    "max": "51.92ms",
+    "mdev": "0.52ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Albuquerque",
+    "Distance": "9359km",
+    "Average": "174.61ms",
+    "% of SOLf/o": "53.79%",
+    "min": "171.05ms",
+    "max": "211.93ms",
+    "mdev": "7.52ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Algiers",
+    "Distance": "3337km",
+    "Average": "85.41ms",
+    "% of SOLf/o": "39.26%",
+    "min": "84.60ms",
+    "max": "87.64ms",
+    "mdev": "0.73ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Amsterdam",
+    "Distance": "2163km",
+    "Average": "48.80ms",
+    "% of SOLf/o": "45.06%",
+    "min": "47.89ms",
+    "max": "50.36ms",
+    "mdev": "0.61ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Anchorage",
+    "Distance": "6994km",
+    "Average": "209.00ms",
+    "% of SOLf/o": "33.62%",
+    "min": "208.18ms",
+    "max": "209.76ms",
+    "mdev": "0.58ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Ankara",
+    "Distance": "1793km",
+    "Average": "92.83ms",
+    "% of SOLf/o": "19.49%",
+    "min": "91.76ms",
+    "max": "97.34ms",
+    "mdev": "1.17ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Antwerp",
+    "Distance": "2232km",
+    "Average": "51.97ms",
+    "% of SOLf/o": "43.76%",
+    "min": "51.01ms",
+    "max": "52.65ms",
+    "mdev": "0.47ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Arezzo",
+    "Distance": "2281km",
+    "Average": "82.16ms",
+    "% of SOLf/o": "27.82%",
+    "min": "81.64ms",
+    "max": "83.28ms",
+    "mdev": "0.41ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Asheville",
+    "Distance": "8392km",
+    "Average": "140.86ms",
+    "% of SOLf/o": "59.94%",
+    "min": "140.26ms",
+    "max": "141.68ms",
+    "mdev": "0.45ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Athens",
+    "Distance": "2233km",
+    "Average": "86.70ms",
+    "% of SOLf/o": "25.97%",
+    "min": "85.96ms",
+    "max": "87.93ms",
+    "mdev": "0.60ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Atlanta",
+    "Distance": "8654km",
+    "Average": "140.62ms",
+    "% of SOLf/o": "61.81%",
+    "min": "139.85ms",
+    "max": "143.36ms",
+    "mdev": "0.84ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Auckland",
+    "Distance": "16200km",
+    "Average": "347.14ms",
+    "% of SOLf/o": "46.69%",
+    "min": "346.31ms",
+    "max": "348.31ms",
+    "mdev": "0.83ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Austin",
+    "Distance": "9560km",
+    "Average": "166.58ms",
+    "% of SOLf/o": "57.59%",
+    "min": "159.94ms",
+    "max": "201.11ms",
+    "mdev": "9.40ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Baltimore",
+    "Distance": "7768km",
+    "Average": "127.61ms",
+    "% of SOLf/o": "61.17%",
+    "min": "126.72ms",
+    "max": "131.39ms",
+    "mdev": "0.98ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Bangalore",
+    "Distance": "5863km",
+    "Average": "178.35ms",
+    "% of SOLf/o": "32.94%",
+    "min": "177.83ms",
+    "max": "179.57ms",
+    "mdev": "0.54ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Bangkok",
+    "Distance": "7065km",
+    "Average": "212.11ms",
+    "% of SOLf/o": "33.33%",
+    "min": "211.20ms",
+    "max": "214.48ms",
+    "mdev": "0.94ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Barcelona",
+    "Distance": "3010km",
+    "Average": "72.78ms",
+    "% of SOLf/o": "41.81%",
+    "min": "72.08ms",
+    "max": "73.69ms",
+    "mdev": "0.44ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Basel",
+    "Distance": "2240km",
+    "Average": "54.16ms",
+    "% of SOLf/o": "41.48%",
+    "min": "53.46ms",
+    "max": "55.38ms",
+    "mdev": "0.60ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Belfast",
+    "Distance": "2723km",
+    "Average": "67.81ms",
+    "% of SOLf/o": "40.64%",
+    "min": "67.01ms",
+    "max": "69.59ms",
+    "mdev": "0.55ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Bergen",
+    "Distance": "1945km",
+    "Average": "58.16ms",
+    "% of SOLf/o": "33.53%",
+    "min": "57.23ms",
+    "max": "59.28ms",
+    "mdev": "0.54ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Berkeley Springs",
+    "Distance": "7811km",
+    "Average": "131.04ms",
+    "% of SOLf/o": "59.63%",
+    "min": "130.37ms",
+    "max": "132.07ms",
+    "mdev": "0.66ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Bern",
+    "Distance": "2289km",
+    "Average": "54.84ms",
+    "% of SOLf/o": "42.39%",
+    "min": "54.19ms",
+    "max": "56.31ms",
+    "mdev": "0.58ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Bogota",
+    "Distance": "10912km",
+    "Average": "223.67ms",
+    "% of SOLf/o": "48.93%",
+    "min": "222.96ms",
+    "max": "224.87ms",
+    "mdev": "0.75ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Boston",
+    "Distance": "7221km",
+    "Average": "130.56ms",
+    "% of SOLf/o": "55.55%",
+    "min": "129.51ms",
+    "max": "134.12ms",
+    "mdev": "0.97ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Brasilia",
+    "Distance": "11179km",
+    "Average": "290.64ms",
+    "% of SOLf/o": "38.55%",
+    "min": "264.07ms",
+    "max": "797.58ms",
+    "mdev": "102.97ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Bratislava",
+    "Distance": "1631km",
+    "Average": "48.58ms",
+    "% of SOLf/o": "33.98%",
+    "min": "47.94ms",
+    "max": "50.38ms",
+    "mdev": "0.55ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Brisbane",
+    "Distance": "14076km",
+    "Average": "343.31ms",
+    "% of SOLf/o": "41.04%",
+    "min": "342.67ms",
+    "max": "344.43ms",
+    "mdev": "0.86ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Bristol",
+    "Distance": "2657km",
+    "Average": "51.17ms",
+    "% of SOLf/o": "52.10%",
+    "min": "50.41ms",
+    "max": "53.05ms",
+    "mdev": "0.70ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Brno",
+    "Distance": "1589km",
+    "Average": "47.27ms",
+    "% of SOLf/o": "33.81%",
+    "min": "46.69ms",
+    "max": "49.18ms",
+    "mdev": "0.61ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Bruges",
+    "Distance": "2305km",
+    "Average": "57.06ms",
+    "% of SOLf/o": "40.44%",
+    "min": "56.37ms",
+    "max": "58.85ms",
+    "mdev": "0.53ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Brunswick",
+    "Distance": "7029km",
+    "Average": "130.13ms",
+    "% of SOLf/o": "54.07%",
+    "min": "129.31ms",
+    "max": "131.16ms",
+    "mdev": "0.61ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Brussels",
+    "Distance": "2253km",
+    "Average": "45.85ms",
+    "% of SOLf/o": "50.07%",
+    "min": "45.00ms",
+    "max": "46.93ms",
+    "mdev": "0.55ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Bucharest",
+    "Distance": "1500km",
+    "Average": "76.47ms",
+    "% of SOLf/o": "19.74%",
+    "min": "75.79ms",
+    "max": "77.07ms",
+    "mdev": "0.46ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Budapest",
+    "Distance": "1568km",
+    "Average": "61.48ms",
+    "% of SOLf/o": "25.70%",
+    "min": "60.50ms",
+    "max": "63.39ms",
+    "mdev": "0.72ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Buenos Aires",
+    "Distance": "13479km",
+    "Average": "274.22ms",
+    "% of SOLf/o": "49.19%",
+    "min": "269.40ms",
+    "max": "299.64ms",
+    "mdev": "9.80ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Buffalo",
+    "Distance": "7536km",
+    "Average": "139.54ms",
+    "% of SOLf/o": "54.22%",
+    "min": "137.06ms",
+    "max": "158.81ms",
+    "mdev": "4.99ms",
+    "Last Checked": "2018-11-01 13:19:59"
+  },
+  {
+    "City": "Bursa",
+    "Distance": "1842km",
+    "Average": "120.19ms",
+    "% of SOLf/o": "15.35%",
+    "min": "107.98ms",
+    "max": "133.94ms",
+    "mdev": "6.03ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Calgary",
+    "Distance": "7857km",
+    "Average": "222.09ms",
+    "% of SOLf/o": "35.39%",
+    "min": "221.06ms",
+    "max": "227.42ms",
+    "mdev": "1.33ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Canberra",
+    "Distance": "14487km",
+    "Average": "340.39ms",
+    "% of SOLf/o": "42.61%",
+    "min": "339.15ms",
+    "max": "351.48ms",
+    "mdev": "2.19ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Cape Town",
+    "Distance": "10145km",
+    "Average": "190.32ms",
+    "% of SOLf/o": "53.39%",
+    "min": "189.66ms",
+    "max": "191.65ms",
+    "mdev": "0.69ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Caracas",
+    "Distance": "9936km",
+    "Average": "205.84ms",
+    "% of SOLf/o": "48.47%",
+    "min": "204.52ms",
+    "max": "211.20ms",
+    "mdev": "1.29ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Cardiff",
+    "Distance": "2692km",
+    "Average": "52.59ms",
+    "% of SOLf/o": "51.77%",
+    "min": "51.47ms",
+    "max": "54.53ms",
+    "mdev": "0.74ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Carlow",
+    "Distance": "2859km",
+    "Average": "63.23ms",
+    "% of SOLf/o": "45.38%",
+    "min": "62.10ms",
+    "max": "68.93ms",
+    "mdev": "1.23ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Charlotte",
+    "Distance": "8349km",
+    "Average": "135.47ms",
+    "% of SOLf/o": "61.84%",
+    "min": "134.85ms",
+    "max": "136.65ms",
+    "mdev": "0.67ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Cheltenham",
+    "Distance": "2603km",
+    "Average": "55.89ms",
+    "% of SOLf/o": "47.33%",
+    "min": "53.91ms",
+    "max": "63.34ms",
+    "mdev": "2.32ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Chennai",
+    "Distance": "5986km",
+    "Average": "181.73ms",
+    "% of SOLf/o": "33.07%",
+    "min": "181.19ms",
+    "max": "182.84ms",
+    "mdev": "0.75ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Chicago",
+    "Distance": "8005km",
+    "Average": "146.97ms",
+    "% of SOLf/o": "54.83%",
+    "min": "146.28ms",
+    "max": "147.67ms",
+    "mdev": "0.56ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Chisinau",
+    "Distance": "1143km",
+    "Average": "58.94ms",
+    "% of SOLf/o": "19.71%",
+    "min": "58.08ms",
+    "max": "61.50ms",
+    "mdev": "0.73ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Christchurch",
+    "Distance": "16577km",
+    "Average": "342.14ms",
+    "% of SOLf/o": "48.47%",
+    "min": "341.31ms",
+    "max": "343.78ms",
+    "mdev": "0.58ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Cincinnati",
+    "Distance": "8141km",
+    "Average": "150.43ms",
+    "% of SOLf/o": "54.27%",
+    "min": "149.12ms",
+    "max": "163.50ms",
+    "mdev": "2.54ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Cleveland",
+    "Distance": "7756km",
+    "Average": "148.95ms",
+    "% of SOLf/o": "52.41%",
+    "min": "147.79ms",
+    "max": "156.80ms",
+    "mdev": "1.73ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Colorado Springs",
+    "Distance": "8912km",
+    "Average": "195.45ms",
+    "% of SOLf/o": "45.70%",
+    "min": "194.57ms",
+    "max": "198.89ms",
+    "mdev": "0.93ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Columbus",
+    "Distance": "7993km",
+    "Average": "149.27ms",
+    "% of SOLf/o": "53.64%",
+    "min": "148.37ms",
+    "max": "153.10ms",
+    "mdev": "0.97ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Copenhagen",
+    "Distance": "1560km",
+    "Average": "43.47ms",
+    "% of SOLf/o": "36.28%",
+    "min": "42.77ms",
+    "max": "44.96ms",
+    "mdev": "0.53ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Coventry",
+    "Distance": "2545km",
+    "Average": "51.91ms",
+    "% of SOLf/o": "49.90%",
+    "min": "51.18ms",
+    "max": "53.05ms",
+    "mdev": "0.41ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Cromwell",
+    "Distance": "7367km",
+    "Average": "126.51ms",
+    "% of SOLf/o": "58.47%",
+    "min": "125.33ms",
+    "max": "130.98ms",
+    "mdev": "1.43ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Dagupan",
+    "Distance": "8089km",
+    "Average": "348.54ms",
+    "% of SOLf/o": "23.24%",
+    "min": "345.93ms",
+    "max": "355.19ms",
+    "mdev": "2.77ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Dallas",
+    "Distance": "9266km",
+    "Average": "175.71ms",
+    "% of SOLf/o": "52.95%",
+    "min": "172.88ms",
+    "max": "237.43ms",
+    "mdev": "11.47ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Dar es Salaam",
+    "Distance": "6959km",
+    "Average": "183.84ms",
+    "% of SOLf/o": "38.03%",
+    "min": "182.79ms",
+    "max": "186.06ms",
+    "mdev": "0.89ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Denver",
+    "Distance": "8826km",
+    "Average": "167.80ms",
+    "% of SOLf/o": "52.85%",
+    "min": "167.02ms",
+    "max": "170.85ms",
+    "mdev": "0.82ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Des Moines",
+    "Distance": "8259km",
+    "Average": "158.65ms",
+    "% of SOLf/o": "52.27%",
+    "min": "158.05ms",
+    "max": "160.34ms",
+    "mdev": "0.70ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Detroit",
+    "Distance": "7769km",
+    "Average": "158.21ms",
+    "% of SOLf/o": "49.17%",
+    "min": "157.48ms",
+    "max": "159.26ms",
+    "mdev": "0.48ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Dhaka",
+    "Distance": "5550km",
+    "Average": "250.88ms",
+    "% of SOLf/o": "22.20%",
+    "min": "249.77ms",
+    "max": "255.40ms",
+    "mdev": "1.20ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Dronten",
+    "Distance": "2090km",
+    "Average": "42.49ms",
+    "% of SOLf/o": "49.76%",
+    "min": "41.66ms",
+    "max": "44.67ms",
+    "mdev": "0.66ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Dubai",
+    "Distance": "3716km",
+    "Average": "171.42ms",
+    "% of SOLf/o": "21.73%",
+    "min": "170.61ms",
+    "max": "172.58ms",
+    "mdev": "0.69ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Dublin",
+    "Distance": "2795km",
+    "Average": "60.99ms",
+    "% of SOLf/o": "46.58%",
+    "min": "57.24ms",
+    "max": "101.57ms",
+    "mdev": "9.22ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Dusseldorf",
+    "Distance": "2082km",
+    "Average": "48.26ms",
+    "% of SOLf/o": "43.38%",
+    "min": "47.37ms",
+    "max": "53.84ms",
+    "mdev": "1.11ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Edinburgh",
+    "Distance": "2510km",
+    "Average": "61.09ms",
+    "% of SOLf/o": "41.15%",
+    "min": "60.20ms",
+    "max": "62.85ms",
+    "mdev": "0.63ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Edmonton",
+    "Distance": "7573km",
+    "Average": "196.99ms",
+    "% of SOLf/o": "38.64%",
+    "min": "196.34ms",
+    "max": "198.22ms",
+    "mdev": "0.59ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Eindhoven",
+    "Distance": "2154km",
+    "Average": "44.22ms",
+    "% of SOLf/o": "48.95%",
+    "min": "43.37ms",
+    "max": "45.66ms",
+    "mdev": "0.58ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Falkenstein",
+    "Distance": "1773km",
+    "Average": "43.38ms",
+    "% of SOLf/o": "41.23%",
+    "min": "42.63ms",
+    "max": "46.01ms",
+    "mdev": "0.79ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Fez",
+    "Distance": "4037km",
+    "Average": "131.02ms",
+    "% of SOLf/o": "30.82%",
+    "min": "115.69ms",
+    "max": "193.56ms",
+    "mdev": "23.63ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Frankfurt",
+    "Distance": "2021km",
+    "Average": "38.48ms",
+    "% of SOLf/o": "53.18%",
+    "min": "37.84ms",
+    "max": "39.96ms",
+    "mdev": "0.54ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Fremont",
+    "Distance": "9464km",
+    "Average": "180.95ms",
+    "% of SOLf/o": "52.58%",
+    "min": "180.32ms",
+    "max": "181.59ms",
+    "mdev": "0.30ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Frosinone",
+    "Distance": "2335km",
+    "Average": "75.16ms",
+    "% of SOLf/o": "31.13%",
+    "min": "74.31ms",
+    "max": "78.06ms",
+    "mdev": "0.80ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Gdansk",
+    "Distance": "1215km",
+    "Average": "57.79ms",
+    "% of SOLf/o": "21.32%",
+    "min": "57.00ms",
+    "max": "58.83ms",
+    "mdev": "0.49ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Geneva",
+    "Distance": "2421km",
+    "Average": "56.17ms",
+    "% of SOLf/o": "43.23%",
+    "min": "54.84ms",
+    "max": "71.26ms",
+    "mdev": "3.00ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Gothenburg",
+    "Distance": "1570km",
+    "Average": "23.93ms",
+    "% of SOLf/o": "68.26%",
+    "min": "23.24ms",
+    "max": "25.28ms",
+    "mdev": "0.51ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Green Bay",
+    "Distance": "7760km",
+    "Average": "150.39ms",
+    "% of SOLf/o": "51.73%",
+    "min": "149.70ms",
+    "max": "151.70ms",
+    "mdev": "0.54ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Groningen",
+    "Distance": "2008km",
+    "Average": "49.13ms",
+    "% of SOLf/o": "40.98%",
+    "min": "48.13ms",
+    "max": "51.90ms",
+    "mdev": "0.97ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Guadalajara",
+    "Distance": "10759km",
+    "Average": "185.94ms",
+    "% of SOLf/o": "58.16%",
+    "min": "185.11ms",
+    "max": "187.72ms",
+    "mdev": "0.76ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Guatemala",
+    "Distance": "10803km",
+    "Average": "189.41ms",
+    "% of SOLf/o": "57.16%",
+    "min": "187.04ms",
+    "max": "200.88ms",
+    "mdev": "3.70ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Halifax",
+    "Distance": "6651km",
+    "Average": "157.65ms",
+    "% of SOLf/o": "42.36%",
+    "min": "156.53ms",
+    "max": "162.64ms",
+    "mdev": "1.40ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Hamburg",
+    "Distance": "1781km",
+    "Average": "46.66ms",
+    "% of SOLf/o": "38.72%",
+    "min": "45.90ms",
+    "max": "47.62ms",
+    "mdev": "0.50ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Hangzhou",
+    "Distance": "6823km",
+    "Average": "126.07ms",
+    "% of SOLf/o": "54.15%",
+    "min": "125.01ms",
+    "max": "127.33ms",
+    "mdev": "0.67ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Hanoi",
+    "Distance": "6732km",
+    "Average": "344.61ms",
+    "% of SOLf/o": "19.57%",
+    "min": "343.78ms",
+    "max": "347.99ms",
+    "mdev": "0.98ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Helsinki",
+    "Distance": "908km",
+    "Average": "75.68ms",
+    "% of SOLf/o": "12.11%",
+    "min": "74.70ms",
+    "max": "78.96ms",
+    "mdev": "0.90ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Heredia",
+    "Distance": "10956km",
+    "Average": "218.13ms",
+    "% of SOLf/o": "50.26%",
+    "min": "217.07ms",
+    "max": "222.18ms",
+    "mdev": "1.08ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Ho Chi Minh City",
+    "Distance": "7709km",
+    "Average": "225.95ms",
+    "% of SOLf/o": "34.26%",
+    "min": "225.27ms",
+    "max": "226.76ms",
+    "mdev": "0.52ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Hong Kong",
+    "Distance": "7143km",
+    "Average": "281.37ms",
+    "% of SOLf/o": "25.42%",
+    "min": "280.61ms",
+    "max": "282.32ms",
+    "mdev": "0.83ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Honolulu",
+    "Distance": "11327km",
+    "Average": "231.13ms",
+    "% of SOLf/o": "49.03%",
+    "min": "230.46ms",
+    "max": "232.73ms",
+    "mdev": "0.73ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Houston",
+    "Distance": "9517km",
+    "Average": "156.66ms",
+    "% of SOLf/o": "61.01%",
+    "min": "154.59ms",
+    "max": "176.62ms",
+    "mdev": "4.37ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Hyderabad",
+    "Distance": "5475km",
+    "Average": "179.61ms",
+    "% of SOLf/o": "30.59%",
+    "min": "178.97ms",
+    "max": "180.69ms",
+    "mdev": "0.42ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Indianapolis",
+    "Distance": "8146km",
+    "Average": "155.18ms",
+    "% of SOLf/o": "52.55%",
+    "min": "154.50ms",
+    "max": "155.83ms",
+    "mdev": "0.51ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Indore",
+    "Distance": "4823km",
+    "Average": "167.43ms",
+    "% of SOLf/o": "28.88%",
+    "min": "166.57ms",
+    "max": "171.06ms",
+    "mdev": "0.85ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Istanbul",
+    "Distance": "1756km",
+    "Average": "97.70ms",
+    "% of SOLf/o": "18.10%",
+    "min": "90.20ms",
+    "max": "116.71ms",
+    "mdev": "8.49ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Izmir",
+    "Distance": "2078km",
+    "Average": "99.71ms",
+    "% of SOLf/o": "20.99%",
+    "min": "99.14ms",
+    "max": "101.13ms",
+    "mdev": "0.63ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Jackson",
+    "Distance": "9050km",
+    "Average": "159.49ms",
+    "% of SOLf/o": "56.92%",
+    "min": "158.57ms",
+    "max": "161.07ms",
+    "mdev": "0.81ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Jacksonville",
+    "Distance": "8857km",
+    "Average": "157.97ms",
+    "% of SOLf/o": "56.41%",
+    "min": "157.19ms",
+    "max": "159.24ms",
+    "mdev": "0.60ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Jakarta",
+    "Distance": "9301km",
+    "Average": "246.70ms",
+    "% of SOLf/o": "37.81%",
+    "min": "245.44ms",
+    "max": "248.51ms",
+    "mdev": "0.87ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Jerusalem",
+    "Distance": "2674km",
+    "Average": "177.51ms",
+    "% of SOLf/o": "15.11%",
+    "min": "176.89ms",
+    "max": "178.55ms",
+    "mdev": "0.66ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Joao Pessoa",
+    "Distance": "9586km",
+    "Average": "256.21ms",
+    "% of SOLf/o": "37.45%",
+    "min": "255.63ms",
+    "max": "257.05ms",
+    "mdev": "0.38ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Johannesburg",
+    "Distance": "9160km",
+    "Average": "223.63ms",
+    "% of SOLf/o": "41.08%",
+    "min": "222.93ms",
+    "max": "224.98ms",
+    "mdev": "0.76ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Kampala",
+    "Distance": "6182km",
+    "Average": "207.39ms",
+    "% of SOLf/o": "29.86%",
+    "min": "206.43ms",
+    "max": "210.02ms",
+    "mdev": "0.82ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Kansas City",
+    "Distance": "8544km",
+    "Average": "154.34ms",
+    "% of SOLf/o": "55.48%",
+    "min": "153.40ms",
+    "max": "156.00ms",
+    "mdev": "0.67ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Karaganda",
+    "Distance": "2449km",
+    "Average": "57.26ms",
+    "% of SOLf/o": "42.96%",
+    "min": "56.64ms",
+    "max": "58.39ms",
+    "mdev": "0.52ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Kiev",
+    "Distance": "755km",
+    "Average": "50.31ms",
+    "% of SOLf/o": "15.10%",
+    "min": "49.53ms",
+    "max": "51.82ms",
+    "mdev": "0.61ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Knoxville",
+    "Distance": "8418km",
+    "Average": "147.24ms",
+    "% of SOLf/o": "57.27%",
+    "min": "145.09ms",
+    "max": "177.09ms",
+    "mdev": "5.61ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Koto",
+    "Distance": "7488km",
+    "Average": "234.23ms",
+    "% of SOLf/o": "32.00%",
+    "min": "233.47ms",
+    "max": "235.08ms",
+    "mdev": "0.78ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Ktis",
+    "Distance": "1756km",
+    "Average": "60.58ms",
+    "% of SOLf/o": "29.27%",
+    "min": "59.48ms",
+    "max": "70.37ms",
+    "mdev": "1.90ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "La Ceiba",
+    "Distance": "10529km",
+    "Average": "119.15ms",
+    "% of SOLf/o": "88.48%",
+    "min": "118.45ms",
+    "max": "120.37ms",
+    "mdev": "0.62ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Lagos",
+    "Distance": "6251km",
+    "Average": "154.83ms",
+    "% of SOLf/o": "40.59%",
+    "min": "153.68ms",
+    "max": "158.48ms",
+    "mdev": "1.23ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Lahore",
+    "Distance": "3917km",
+    "Average": "251.36ms",
+    "% of SOLf/o": "15.61%",
+    "min": "250.57ms",
+    "max": "252.58ms",
+    "mdev": "0.58ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Las Vegas",
+    "Distance": "9484km",
+    "Average": "199.15ms",
+    "% of SOLf/o": "47.66%",
+    "min": "198.51ms",
+    "max": "200.21ms",
+    "mdev": "0.60ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Lausanne",
+    "Distance": "2367km",
+    "Average": "52.25ms",
+    "% of SOLf/o": "45.52%",
+    "min": "51.23ms",
+    "max": "54.06ms",
+    "mdev": "0.66ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Liege",
+    "Distance": "2187km",
+    "Average": "53.71ms",
+    "% of SOLf/o": "41.26%",
+    "min": "52.80ms",
+    "max": "57.33ms",
+    "mdev": "0.84ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Lima",
+    "Distance": "12646km",
+    "Average": "205.20ms",
+    "% of SOLf/o": "61.69%",
+    "min": "204.43ms",
+    "max": "208.02ms",
+    "mdev": "0.86ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Limassol",
+    "Distance": "2371km",
+    "Average": "92.09ms",
+    "% of SOLf/o": "25.77%",
+    "min": "91.59ms",
+    "max": "93.16ms",
+    "mdev": "0.38ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Lincoln",
+    "Distance": "8446km",
+    "Average": "149.32ms",
+    "% of SOLf/o": "56.68%",
+    "min": "148.67ms",
+    "max": "150.23ms",
+    "mdev": "0.68ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Lisbon",
+    "Distance": "3911km",
+    "Average": "93.35ms",
+    "% of SOLf/o": "42.05%",
+    "min": "92.61ms",
+    "max": "95.26ms",
+    "mdev": "0.57ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Ljubljana",
+    "Distance": "1932km",
+    "Average": "61.89ms",
+    "% of SOLf/o": "31.67%",
+    "min": "61.13ms",
+    "max": "63.23ms",
+    "mdev": "0.65ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "London",
+    "Distance": "2499km",
+    "Average": "59.53ms",
+    "% of SOLf/o": "42.36%",
+    "min": "57.83ms",
+    "max": "63.15ms",
+    "mdev": "1.84ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Los Angeles",
+    "Distance": "9772km",
+    "Average": "182.64ms",
+    "% of SOLf/o": "53.69%",
+    "min": "181.83ms",
+    "max": "184.00ms",
+    "mdev": "0.64ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Louisville",
+    "Distance": "8277km",
+    "Average": "149.86ms",
+    "% of SOLf/o": "55.55%",
+    "min": "149.17ms",
+    "max": "152.31ms",
+    "mdev": "0.70ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Lugano",
+    "Distance": "2262km",
+    "Average": "58.02ms",
+    "% of SOLf/o": "39.00%",
+    "min": "57.06ms",
+    "max": "61.59ms",
+    "mdev": "0.89ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Luxembourg",
+    "Distance": "2205km",
+    "Average": "49.11ms",
+    "% of SOLf/o": "45.00%",
+    "min": "48.45ms",
+    "max": "51.59ms",
+    "mdev": "0.64ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Lyon",
+    "Distance": "2533km",
+    "Average": "60.45ms",
+    "% of SOLf/o": "42.22%",
+    "min": "59.66ms",
+    "max": "61.53ms",
+    "mdev": "0.44ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Madrid",
+    "Distance": "3441km",
+    "Average": "77.00ms",
+    "% of SOLf/o": "44.69%",
+    "min": "76.34ms",
+    "max": "77.89ms",
+    "mdev": "0.52ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Maidstone",
+    "Distance": "2471km",
+    "Average": "48.84ms",
+    "% of SOLf/o": "51.48%",
+    "min": "48.16ms",
+    "max": "49.79ms",
+    "mdev": "0.50ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Malaysia",
+    "Distance": "8129km",
+    "Average": "215.38ms",
+    "% of SOLf/o": "37.81%",
+    "min": "214.75ms",
+    "max": "216.13ms",
+    "mdev": "0.61ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Manchester",
+    "Distance": "2543km",
+    "Average": "55.23ms",
+    "% of SOLf/o": "46.24%",
+    "min": "53.18ms",
+    "max": "87.44ms",
+    "mdev": "6.03ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Manhattan",
+    "Distance": "7503km",
+    "Average": "137.12ms",
+    "% of SOLf/o": "54.77%",
+    "min": "136.29ms",
+    "max": "138.28ms",
+    "mdev": "0.47ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Manila",
+    "Distance": "8260km",
+    "Average": "309.71ms",
+    "% of SOLf/o": "26.73%",
+    "min": "299.47ms",
+    "max": "350.24ms",
+    "mdev": "12.41ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Marseille",
+    "Distance": "2673km",
+    "Average": "65.47ms",
+    "% of SOLf/o": "41.12%",
+    "min": "64.60ms",
+    "max": "66.33ms",
+    "mdev": "0.47ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Medellin",
+    "Distance": "10844km",
+    "Average": "231.99ms",
+    "% of SOLf/o": "46.94%",
+    "min": "229.94ms",
+    "max": "259.99ms",
+    "mdev": "5.78ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Melbourne",
+    "Distance": "14428km",
+    "Average": "292.01ms",
+    "% of SOLf/o": "49.41%",
+    "min": "291.30ms",
+    "max": "293.72ms",
+    "mdev": "0.80ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Memphis",
+    "Distance": "8761km",
+    "Average": "162.65ms",
+    "% of SOLf/o": "54.08%",
+    "min": "162.06ms",
+    "max": "164.04ms",
+    "mdev": "0.73ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Mexico",
+    "Distance": "10722km",
+    "Average": "185.57ms",
+    "% of SOLf/o": "57.96%",
+    "min": "184.80ms",
+    "max": "187.11ms",
+    "mdev": "0.72ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Miami",
+    "Distance": "9225km",
+    "Average": "154.19ms",
+    "% of SOLf/o": "59.90%",
+    "min": "153.46ms",
+    "max": "155.37ms",
+    "mdev": "0.64ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Milan",
+    "Distance": "2286km",
+    "Average": "53.36ms",
+    "% of SOLf/o": "43.13%",
+    "min": "52.43ms",
+    "max": "56.24ms",
+    "mdev": "0.87ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Milwaukee",
+    "Distance": "7899km",
+    "Average": "146.30ms",
+    "% of SOLf/o": "54.10%",
+    "min": "145.64ms",
+    "max": "147.38ms",
+    "mdev": "0.48ms",
+    "Last Checked": "2018-11-01 13:20:00"
+  },
+  {
+    "City": "Minneapolis",
+    "Distance": "7883km",
+    "Average": "153.92ms",
+    "% of SOLf/o": "51.52%",
+    "min": "151.80ms",
+    "max": "167.65ms",
+    "mdev": "3.28ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Missoula",
+    "Distance": "8303km",
+    "Average": "192.83ms",
+    "% of SOLf/o": "43.24%",
+    "min": "192.09ms",
+    "max": "194.35ms",
+    "mdev": "0.71ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Montevideo",
+    "Distance": "13371km",
+    "Average": "285.87ms",
+    "% of SOLf/o": "46.92%",
+    "min": "284.76ms",
+    "max": "291.49ms",
+    "mdev": "1.38ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Monticello",
+    "Distance": "8104km",
+    "Average": "149.35ms",
+    "% of SOLf/o": "54.39%",
+    "min": "148.63ms",
+    "max": "150.22ms",
+    "mdev": "0.50ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Montreal",
+    "Distance": "7055km",
+    "Average": "125.65ms",
+    "% of SOLf/o": "56.44%",
+    "min": "124.92ms",
+    "max": "126.55ms",
+    "mdev": "0.70ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Munich",
+    "Distance": "1961km",
+    "Average": "61.43ms",
+    "% of SOLf/o": "32.15%",
+    "min": "47.48ms",
+    "max": "149.34ms",
+    "mdev": "28.13ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Nairobi",
+    "Distance": "6344km",
+    "Average": "200.59ms",
+    "% of SOLf/o": "31.72%",
+    "min": "199.47ms",
+    "max": "201.54ms",
+    "mdev": "0.76ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "New Delhi",
+    "Distance": "4345km",
+    "Average": "311.98ms",
+    "% of SOLf/o": "13.97%",
+    "min": "309.85ms",
+    "max": "313.12ms",
+    "mdev": "0.95ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "New Orleans",
+    "Distance": "9276km",
+    "Average": "154.95ms",
+    "% of SOLf/o": "60.23%",
+    "min": "154.25ms",
+    "max": "156.07ms",
+    "mdev": "0.56ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "New York",
+    "Distance": "7494km",
+    "Average": "123.41ms",
+    "% of SOLf/o": "60.93%",
+    "min": "122.75ms",
+    "max": "124.23ms",
+    "mdev": "0.41ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Newcastle",
+    "Distance": "2446km",
+    "Average": "51.74ms",
+    "% of SOLf/o": "47.96%",
+    "min": "50.92ms",
+    "max": "53.39ms",
+    "mdev": "0.61ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Nis",
+    "Distance": "1781km",
+    "Average": "69.50ms",
+    "% of SOLf/o": "25.81%",
+    "min": "68.66ms",
+    "max": "72.07ms",
+    "mdev": "0.78ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Novosibirsk",
+    "Distance": "2812km",
+    "Average": "46.11ms",
+    "% of SOLf/o": "61.13%",
+    "min": "45.28ms",
+    "max": "47.29ms",
+    "mdev": "0.60ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Nuremberg",
+    "Distance": "1910km",
+    "Average": "41.20ms",
+    "% of SOLf/o": "46.59%",
+    "min": "40.53ms",
+    "max": "43.07ms",
+    "mdev": "0.57ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Oklahoma City",
+    "Distance": "9019km",
+    "Average": "178.95ms",
+    "% of SOLf/o": "50.67%",
+    "min": "178.03ms",
+    "max": "180.18ms",
+    "mdev": "0.72ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Orlando",
+    "Distance": "9017km",
+    "Average": "151.60ms",
+    "% of SOLf/o": "59.72%",
+    "min": "150.85ms",
+    "max": "152.84ms",
+    "mdev": "0.54ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Osaka",
+    "Distance": "7338km",
+    "Average": "318.74ms",
+    "% of SOLf/o": "23.08%",
+    "min": "317.71ms",
+    "max": "325.78ms",
+    "mdev": "1.53ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Oslo",
+    "Distance": "1644km",
+    "Average": "50.92ms",
+    "% of SOLf/o": "32.88%",
+    "min": "49.83ms",
+    "max": "54.62ms",
+    "mdev": "1.03ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Ottawa",
+    "Distance": "7160km",
+    "Average": "131.94ms",
+    "% of SOLf/o": "54.66%",
+    "min": "131.40ms",
+    "max": "132.76ms",
+    "mdev": "0.48ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Palermo",
+    "Distance": "2663km",
+    "Average": "85.90ms",
+    "% of SOLf/o": "31.33%",
+    "min": "84.91ms",
+    "max": "87.19ms",
+    "mdev": "0.65ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Panama",
+    "Distance": "10825km",
+    "Average": "176.46ms",
+    "% of SOLf/o": "61.51%",
+    "min": "174.70ms",
+    "max": "180.71ms",
+    "mdev": "1.45ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Paramaribo",
+    "Distance": "9648km",
+    "Average": "226.38ms",
+    "% of SOLf/o": "42.69%",
+    "min": "225.65ms",
+    "max": "229.07ms",
+    "mdev": "0.93ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Paris",
+    "Distance": "2486km",
+    "Average": "56.21ms",
+    "% of SOLf/o": "44.39%",
+    "min": "49.48ms",
+    "max": "104.38ms",
+    "mdev": "11.16ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Perth",
+    "Distance": "12222km",
+    "Average": "328.05ms",
+    "% of SOLf/o": "37.26%",
+    "min": "327.01ms",
+    "max": "337.65ms",
+    "mdev": "2.02ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Philadelphia",
+    "Distance": "7637km",
+    "Average": "128.89ms",
+    "% of SOLf/o": "59.66%",
+    "min": "127.89ms",
+    "max": "130.33ms",
+    "mdev": "0.63ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Phnom Penh",
+    "Distance": "7537km",
+    "Average": "239.47ms",
+    "% of SOLf/o": "31.54%",
+    "min": "238.77ms",
+    "max": "240.72ms",
+    "mdev": "0.52ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Phoenix",
+    "Distance": "9694km",
+    "Average": "175.42ms",
+    "% of SOLf/o": "55.39%",
+    "min": "174.66ms",
+    "max": "176.98ms",
+    "mdev": "0.61ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Piscataway",
+    "Distance": "7549km",
+    "Average": "138.73ms",
+    "% of SOLf/o": "54.70%",
+    "min": "138.13ms",
+    "max": "139.57ms",
+    "mdev": "0.43ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Pittsburgh",
+    "Distance": "7814km",
+    "Average": "139.64ms",
+    "% of SOLf/o": "56.22%",
+    "min": "138.72ms",
+    "max": "143.51ms",
+    "mdev": "1.00ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Portland",
+    "Distance": "8605km",
+    "Average": "182.46ms",
+    "% of SOLf/o": "47.28%",
+    "min": "181.87ms",
+    "max": "183.83ms",
+    "mdev": "0.64ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Prague",
+    "Distance": "1668km",
+    "Average": "67.71ms",
+    "% of SOLf/o": "24.90%",
+    "min": "67.17ms",
+    "max": "68.61ms",
+    "mdev": "0.48ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Pune",
+    "Distance": "5130km",
+    "Average": "214.07ms",
+    "% of SOLf/o": "23.97%",
+    "min": "205.79ms",
+    "max": "224.16ms",
+    "mdev": "4.78ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Quebec City",
+    "Distance": "6831km",
+    "Average": "140.76ms",
+    "% of SOLf/o": "48.79%",
+    "min": "139.11ms",
+    "max": "144.53ms",
+    "mdev": "1.26ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Quito",
+    "Distance": "11621km",
+    "Average": "208.51ms",
+    "% of SOLf/o": "55.87%",
+    "min": "207.91ms",
+    "max": "209.53ms",
+    "mdev": "0.72ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Raleigh",
+    "Distance": "8200km",
+    "Average": "136.31ms",
+    "% of SOLf/o": "60.29%",
+    "min": "135.51ms",
+    "max": "139.74ms",
+    "mdev": "0.97ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Redding",
+    "Distance": "9140km",
+    "Average": "209.81ms",
+    "% of SOLf/o": "43.73%",
+    "min": "209.08ms",
+    "max": "211.31ms",
+    "mdev": "0.58ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Reykjavik",
+    "Distance": "3308km",
+    "Average": "97.99ms",
+    "% of SOLf/o": "34.10%",
+    "min": "97.23ms",
+    "max": "99.33ms",
+    "mdev": "0.62ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Richmond",
+    "Distance": "7970km",
+    "Average": "123.70ms",
+    "% of SOLf/o": "64.80%",
+    "min": "122.77ms",
+    "max": "125.31ms",
+    "mdev": "0.70ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Riga",
+    "Distance": "841km",
+    "Average": "23.13ms",
+    "% of SOLf/o": "36.57%",
+    "min": "22.49ms",
+    "max": "24.35ms",
+    "mdev": "0.46ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Riyadh",
+    "Distance": "3539km",
+    "Average": "237.25ms",
+    "% of SOLf/o": "14.93%",
+    "min": "175.22ms",
+    "max": "373.91ms",
+    "mdev": "73.66ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Rome",
+    "Distance": "2375km",
+    "Average": "67.56ms",
+    "% of SOLf/o": "35.45%",
+    "min": "66.70ms",
+    "max": "71.64ms",
+    "mdev": "1.05ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Roseburg",
+    "Distance": "8867km",
+    "Average": "208.55ms",
+    "% of SOLf/o": "42.63%",
+    "min": "207.93ms",
+    "max": "209.54ms",
+    "mdev": "0.76ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Rotterdam",
+    "Distance": "2193km",
+    "Average": "43.87ms",
+    "% of SOLf/o": "51.00%",
+    "min": "43.06ms",
+    "max": "45.91ms",
+    "mdev": "0.59ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Roubaix",
+    "Distance": "2335km",
+    "Average": "52.67ms",
+    "% of SOLf/o": "44.90%",
+    "min": "51.86ms",
+    "max": "53.77ms",
+    "mdev": "0.48ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Sacramento",
+    "Distance": "9343km",
+    "Average": "202.95ms",
+    "% of SOLf/o": "46.25%",
+    "min": "202.23ms",
+    "max": "204.65ms",
+    "mdev": "0.71ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Salem",
+    "Distance": "7189km",
+    "Average": "119.51ms",
+    "% of SOLf/o": "60.41%",
+    "min": "118.92ms",
+    "max": "120.39ms",
+    "mdev": "0.58ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Salt Lake City",
+    "Distance": "8907km",
+    "Average": "185.55ms",
+    "% of SOLf/o": "48.15%",
+    "min": "184.77ms",
+    "max": "186.59ms",
+    "mdev": "0.51ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "San Antonio",
+    "Distance": "9673km",
+    "Average": "181.41ms",
+    "% of SOLf/o": "53.44%",
+    "min": "180.57ms",
+    "max": "182.33ms",
+    "mdev": "0.49ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "San Diego",
+    "Distance": "9893km",
+    "Average": "190.26ms",
+    "% of SOLf/o": "52.07%",
+    "min": "189.43ms",
+    "max": "191.85ms",
+    "mdev": "0.73ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "San Francisco",
+    "Distance": "9447km",
+    "Average": "193.93ms",
+    "% of SOLf/o": "48.95%",
+    "min": "193.37ms",
+    "max": "194.96ms",
+    "mdev": "0.67ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "San Jose",
+    "Distance": "9485km",
+    "Average": "201.02ms",
+    "% of SOLf/o": "47.19%",
+    "min": "200.35ms",
+    "max": "202.37ms",
+    "mdev": "0.55ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "San Juan",
+    "Distance": "9145km",
+    "Average": "196.79ms",
+    "% of SOLf/o": "46.66%",
+    "min": "190.64ms",
+    "max": "340.67ms",
+    "mdev": "26.82ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Santiago",
+    "Distance": "14154km",
+    "Average": "264.68ms",
+    "% of SOLf/o": "53.61%",
+    "min": "263.92ms",
+    "max": "266.07ms",
+    "mdev": "0.80ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Sao Paulo",
+    "Distance": "11809km",
+    "Average": "243.89ms",
+    "% of SOLf/o": "48.60%",
+    "min": "242.43ms",
+    "max": "259.36ms",
+    "mdev": "3.02ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Sapporo",
+    "Distance": "6914km",
+    "Average": "338.69ms",
+    "% of SOLf/o": "20.46%",
+    "min": "337.86ms",
+    "max": "339.81ms",
+    "mdev": "0.84ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Saskatoon",
+    "Distance": "7581km",
+    "Average": "201.81ms",
+    "% of SOLf/o": "37.72%",
+    "min": "200.96ms",
+    "max": "203.19ms",
+    "mdev": "0.72ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Savannah",
+    "Distance": "8662km",
+    "Average": "164.08ms",
+    "% of SOLf/o": "52.82%",
+    "min": "163.28ms",
+    "max": "170.54ms",
+    "mdev": "1.49ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Scranton",
+    "Distance": "7526km",
+    "Average": "127.03ms",
+    "% of SOLf/o": "59.26%",
+    "min": "126.11ms",
+    "max": "128.47ms",
+    "mdev": "0.75ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Seattle",
+    "Distance": "8373km",
+    "Average": "207.71ms",
+    "% of SOLf/o": "40.45%",
+    "min": "206.91ms",
+    "max": "208.84ms",
+    "mdev": "0.54ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Secaucus",
+    "Distance": "7509km",
+    "Average": "126.89ms",
+    "% of SOLf/o": "59.60%",
+    "min": "126.17ms",
+    "max": "128.82ms",
+    "mdev": "0.66ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Seoul",
+    "Distance": "6607km",
+    "Average": "290.00ms",
+    "% of SOLf/o": "22.86%",
+    "min": "284.63ms",
+    "max": "295.85ms",
+    "mdev": "5.02ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Shanghai",
+    "Distance": "6823km",
+    "Average": "130.18ms",
+    "% of SOLf/o": "52.48%",
+    "min": "129.54ms",
+    "max": "131.32ms",
+    "mdev": "0.64ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Shenzhen",
+    "Distance": "7115km",
+    "Average": "129.81ms",
+    "% of SOLf/o": "55.16%",
+    "min": "129.09ms",
+    "max": "130.54ms",
+    "mdev": "0.55ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Siauliai",
+    "Distance": "891km",
+    "Average": "29.12ms",
+    "% of SOLf/o": "30.72%",
+    "min": "28.39ms",
+    "max": "30.58ms",
+    "mdev": "0.51ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Singapore",
+    "Distance": "8417km",
+    "Average": "202.29ms",
+    "% of SOLf/o": "41.67%",
+    "min": "201.34ms",
+    "max": "203.33ms",
+    "mdev": "0.62ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Sofia",
+    "Distance": "1776km",
+    "Average": "76.07ms",
+    "% of SOLf/o": "23.37%",
+    "min": "75.02ms",
+    "max": "86.29ms",
+    "mdev": "2.01ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "South Bend",
+    "Distance": "7964km",
+    "Average": "149.13ms",
+    "% of SOLf/o": "53.45%",
+    "min": "148.54ms",
+    "max": "150.59ms",
+    "mdev": "0.69ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "St Louis",
+    "Distance": "8423km",
+    "Average": "166.79ms",
+    "% of SOLf/o": "50.74%",
+    "min": "166.23ms",
+    "max": "167.48ms",
+    "mdev": "0.39ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "St Petersburg",
+    "Distance": "636km",
+    "Average": "12.80ms",
+    "% of SOLf/o": "53.00%",
+    "min": "11.73ms",
+    "max": "14.53ms",
+    "mdev": "0.64ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Stamford",
+    "Distance": "7459km",
+    "Average": "121.64ms",
+    "% of SOLf/o": "61.64%",
+    "min": "120.82ms",
+    "max": "123.15ms",
+    "mdev": "0.68ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Stockholm",
+    "Distance": "1226km",
+    "Average": "19.50ms",
+    "% of SOLf/o": "64.53%",
+    "min": "18.86ms",
+    "max": "20.72ms",
+    "mdev": "0.40ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Strasbourg",
+    "Distance": "2167km",
+    "Average": "45.92ms",
+    "% of SOLf/o": "48.16%",
+    "min": "43.26ms",
+    "max": "52.34ms",
+    "mdev": "2.24ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Sydney",
+    "Distance": "14500km",
+    "Average": "293.33ms",
+    "% of SOLf/o": "49.49%",
+    "min": "292.08ms",
+    "max": "306.72ms",
+    "mdev": "2.63ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Syracuse",
+    "Distance": "7398km",
+    "Average": "123.84ms",
+    "% of SOLf/o": "60.15%",
+    "min": "123.10ms",
+    "max": "125.08ms",
+    "mdev": "0.51ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Taipei",
+    "Distance": "7361km",
+    "Average": "290.67ms",
+    "% of SOLf/o": "25.38%",
+    "min": "290.04ms",
+    "max": "292.08ms",
+    "mdev": "0.82ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Tallinn",
+    "Distance": "867km",
+    "Average": "46.99ms",
+    "% of SOLf/o": "18.85%",
+    "min": "46.31ms",
+    "max": "47.86ms",
+    "mdev": "0.38ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Tampa",
+    "Distance": "9126km",
+    "Average": "149.22ms",
+    "% of SOLf/o": "61.25%",
+    "min": "148.29ms",
+    "max": "150.72ms",
+    "mdev": "0.56ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Tbilisi",
+    "Distance": "1646km",
+    "Average": "86.53ms",
+    "% of SOLf/o": "19.14%",
+    "min": "85.32ms",
+    "max": "93.64ms",
+    "mdev": "1.48ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Tel Aviv",
+    "Distance": "2641km",
+    "Average": "101.86ms",
+    "% of SOLf/o": "26.15%",
+    "min": "101.22ms",
+    "max": "103.17ms",
+    "mdev": "0.52ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Tempe",
+    "Distance": "9689km",
+    "Average": "179.87ms",
+    "% of SOLf/o": "54.13%",
+    "min": "179.03ms",
+    "max": "181.80ms",
+    "mdev": "0.60ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "The Hague",
+    "Distance": "2196km",
+    "Average": "43.28ms",
+    "% of SOLf/o": "51.07%",
+    "min": "42.32ms",
+    "max": "46.90ms",
+    "mdev": "0.90ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Thessaloniki",
+    "Distance": "1993km",
+    "Average": "99.86ms",
+    "% of SOLf/o": "20.13%",
+    "min": "98.03ms",
+    "max": "104.07ms",
+    "mdev": "1.33ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Tirana",
+    "Distance": "2059km",
+    "Average": "70.88ms",
+    "% of SOLf/o": "29.41%",
+    "min": "70.13ms",
+    "max": "72.24ms",
+    "mdev": "0.57ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Tokyo",
+    "Distance": "7485km",
+    "Average": "220.04ms",
+    "% of SOLf/o": "34.02%",
+    "min": "218.91ms",
+    "max": "222.27ms",
+    "mdev": "0.80ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Toledo",
+    "Distance": "7855km",
+    "Average": "160.85ms",
+    "% of SOLf/o": "49.09%",
+    "min": "160.16ms",
+    "max": "161.63ms",
+    "mdev": "0.59ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Toronto",
+    "Distance": "7488km",
+    "Average": "137.11ms",
+    "% of SOLf/o": "54.66%",
+    "min": "135.95ms",
+    "max": "141.98ms",
+    "mdev": "1.32ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Tunis",
+    "Distance": "3245km",
+    "Average": "82.41ms",
+    "% of SOLf/o": "39.57%",
+    "min": "81.32ms",
+    "max": "85.25ms",
+    "mdev": "0.84ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Valencia",
+    "Distance": "3313km",
+    "Average": "88.47ms",
+    "% of SOLf/o": "37.65%",
+    "min": "87.68ms",
+    "max": "92.09ms",
+    "mdev": "0.85ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Valletta",
+    "Distance": "2815km",
+    "Average": "92.08ms",
+    "% of SOLf/o": "30.60%",
+    "min": "91.54ms",
+    "max": "93.07ms",
+    "mdev": "0.56ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Vancouver",
+    "Distance": "8205km",
+    "Average": "191.35ms",
+    "% of SOLf/o": "42.96%",
+    "min": "190.64ms",
+    "max": "192.34ms",
+    "mdev": "0.45ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Varna",
+    "Distance": "1557km",
+    "Average": "82.32ms",
+    "% of SOLf/o": "18.99%",
+    "min": "81.64ms",
+    "max": "83.80ms",
+    "mdev": "0.63ms",
+    "Last Checked": "2018-11-01 13:20:01"
+  },
+  {
+    "City": "Venice",
+    "Distance": "2075km",
+    "Average": "70.10ms",
+    "% of SOLf/o": "29.64%",
+    "min": "69.03ms",
+    "max": "75.61ms",
+    "mdev": "1.24ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  },
+  {
+    "City": "Vienna",
+    "Distance": "1670km",
+    "Average": "53.59ms",
+    "% of SOLf/o": "31.51%",
+    "min": "52.78ms",
+    "max": "54.78ms",
+    "mdev": "0.56ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  },
+  {
+    "City": "Vilnius",
+    "Distance": "790km",
+    "Average": "50.31ms",
+    "% of SOLf/o": "15.80%",
+    "min": "49.55ms",
+    "max": "51.30ms",
+    "mdev": "0.56ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  },
+  {
+    "City": "Vladivostok",
+    "Distance": "6419km",
+    "Average": "106.15ms",
+    "% of SOLf/o": "60.56%",
+    "min": "105.28ms",
+    "max": "108.01ms",
+    "mdev": "0.62ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  },
+  {
+    "City": "Warsaw",
+    "Distance": "1151km",
+    "Average": "52.18ms",
+    "% of SOLf/o": "22.13%",
+    "min": "51.53ms",
+    "max": "52.91ms",
+    "mdev": "0.46ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  },
+  {
+    "City": "Washington",
+    "Distance": "7833km",
+    "Average": "126.45ms",
+    "% of SOLf/o": "62.17%",
+    "min": "125.34ms",
+    "max": "127.70ms",
+    "mdev": "0.58ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  },
+  {
+    "City": "Wellington",
+    "Distance": "16552km",
+    "Average": "309.13ms",
+    "% of SOLf/o": "53.57%",
+    "min": "307.99ms",
+    "max": "311.21ms",
+    "mdev": "0.82ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  },
+  {
+    "City": "Westpoort",
+    "Distance": "2151km",
+    "Average": "43.80ms",
+    "% of SOLf/o": "50.02%",
+    "min": "41.75ms",
+    "max": "45.55ms",
+    "mdev": "1.10ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  },
+  {
+    "City": "Winnipeg",
+    "Distance": "7546km",
+    "Average": "208.39ms",
+    "% of SOLf/o": "36.28%",
+    "min": "207.69ms",
+    "max": "209.13ms",
+    "mdev": "0.51ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  },
+  {
+    "City": "Zagreb",
+    "Distance": "1867km",
+    "Average": "67.81ms",
+    "% of SOLf/o": "27.87%",
+    "min": "67.12ms",
+    "max": "69.07ms",
+    "mdev": "0.49ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  },
+  {
+    "City": "Zhangjiakou",
+    "Distance": "5636km",
+    "Average": "109.18ms",
+    "% of SOLf/o": "51.71%",
+    "min": "108.50ms",
+    "max": "110.09ms",
+    "mdev": "0.52ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  },
+  {
+    "City": "Zurich",
+    "Distance": "2194km",
+    "Average": "55.16ms",
+    "% of SOLf/o": "39.89%",
+    "min": "54.33ms",
+    "max": "56.84ms",
+    "mdev": "0.62ms",
+    "Last Checked": "2018-11-01 13:20:02"
+  }
+]
