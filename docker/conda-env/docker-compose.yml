@@ -1,0 +1,22 @@
+version: "3.2"
+
+services:
+  python-container:       
+    build: 
+      dockerfile: ./docker/Dockerfile-dev
+      context: ./
+      args:
+        - username=${USERNAME}
+    image: cryptosregistry.azurecr.io/conda
+    env_file:
+      - .env
+
+    ports:
+      - "8888:8888"
+    command: bash -c "/home/${USERNAME}/startup.sh"
+    volumes:
+      - ${NOTEBOOK_PATH}:/home/${USERNAME}/notebooks
+      - ${SRC_PATH}:/home/${USERNAME}/lib
+      - ${LOCAL_DATA_PATH}:/home/${USERNAME}/local-data
+      - ${GIT_DATA_PATH}:/home/${USERNAME}/git-data
+

@@ -1,0 +1,25 @@
+name: scibase                                                                   
+channels:                                                                    
+  - defaults
+  - conda-forge   
+  - bioconda                                                            
+dependencies:                                                                
+  - ipykernel
+  - snakemake
+  - alabaster
+  - cython
+  - numpy
+  - numpy-base
+  - numpydoc
+  - pandas
+  - pip
+  - python=3.6
+  - scipy
+  - seaborn
+  - sphinx
+  - sphinx_rtd_theme
+  - sphinxcontrib
+  - sphinxcontrib-websupport
+  - multiprocess
+  - pip:
+    - sphinxcontrib-fulltoc
