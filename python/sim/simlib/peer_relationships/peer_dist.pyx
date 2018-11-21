@@ -11,7 +11,7 @@ import itertools
 
 def getFilePathRoot():
     #return os.path.normpath("C:/Users/fran/PycharmProjects/Distributions/")
-    return os.path.normpath("/home/engr/Results/peer_dists/test/")
+    return os.path.normpath("/local-data/pineapple")
 
 
 def getPeerDistEvenFaster(params):
