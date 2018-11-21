@@ -21,26 +21,28 @@ SETUP:
 
 * Copy the .env file in simulation/docker/templates into simulation/docker/conda-env. Create a local folder outside the simulation repository where you want any results to be stored while you are working locally. Update the .env file so that the LOCAL_DATA_PATH variable points to your new folder.
 
-*sign in to atlas docker registry using
-'''sh
+* Sign in to atlas docker registry using
+'''bash
 docker login -u cryptosregistry cryptosregistry.azurecr.io
 '''
 
-*in simulation/docker/conda-env type
-'''sh
+* in simulation/docker/conda-env type
+'''bash
 docker-compose up
 '''
  to start the container. 
 
-*If it starts sucessfully it will eventually print an address for you to paste into your browser to access the Jupyter web application. 
+* If it starts sucessfully it will eventually print an address for you to paste into your browser to access the Jupyter web application. 
 
-
+In a Jupyter notebook you can use tab to autocomplete. This can help you to see what packages are already installed by typing 'import [tab]'.
 
 If you want to add a new python package to the docker environment you can edit the file simulation/docker/conda-env/docker/environment.yml. You will then need to rebuild the container using
-'''sh
+'''bash
 docker-compose up --build
 '''
 You will also need to push this to the docker registry using
-'''sh
+'''bash
 docker push cryptosregistry.azurecr.io/conda
 '''
+
+PS these two steps will take a loooong time. In the future I'll set the docker push to be triggered automatically when we push to master.
