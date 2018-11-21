@@ -13,7 +13,7 @@ RUN conda install -c bioconda snakemake -y
 COPY docker/environment.yml ${HOME}/envs/
 RUN conda env create -f ${HOME}/envs/environment.yml
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc
-RUN echo "/home/simuser/lib" >> /opt/conda/envs/scibase/lib/python3.6/site-packages/mylib.pth
+RUN echo "${HOME}/lib" >> /opt/conda/envs/scibase/lib/python3.6/site-packages/mylib.pth
 
 # switch to newly created user to avoid running container as root
 WORKDIR $HOME

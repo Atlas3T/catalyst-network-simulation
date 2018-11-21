@@ -1,21 +1,19 @@
 version: "3.2"
 
 services:
-  python:       
-    build: 
-      dockerfile: ./docker/Dockerfile-prod
-      context: ./
-    image: my_project_python # alternatively replace with your docker registry/dockerhub info (i.e. youruser/example_project_python:latest for dockerhub)
+  python-container::       
     
-    # uncomment the below two lines if you plan on running via docker-compose in production
-    #env_file: 
-    #  - .env_prod
+    image: cryptosregistry.azurecr.io/conda 
+    
+    env_file: 
+      - .env_prod
 
-    command: 
-      python /code/example.py
+    ports:
+      - "8888:8888"
 
-    # note - once in production I usually pull from an API or some other location, if you
-    # still expect to pull data from the file system then uncomment the below two lines and
-    # replace /real_data_location with the correct path
-    #volumes:
-    #  - /real_data_location:/data
+    command: bash -c "jupyter notebook --no-browser --ip=0.0.0.0"
+    volumes:
+      - ${NOTEBOOK_PATH}:/home/${USERNAME}/notebooks
+      - ${SRC_PATH}:/home/${USERNAME}/lib
+      - ${LOCAL_DATA_PATH}:/home/${USERNAME}/local-data
+      - ${GIT_DATA_PATH}:/home/${USERNAME}/git-data
