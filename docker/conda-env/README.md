@@ -27,14 +27,19 @@ for persisting results on your local machine while developing. This is not part 
 ```shell
 docker login -u cryptosregistry cryptosregistry.azurecr.io
 ```
-
+* Pull the container image using 
+```shell
+docker pull cryptosregistry.azurecr.io/conda
+```
 * In simulation/docker/conda-env type
 ```shell
 docker-compose up
 ```
  to start the container. 
 
-* If it starts sucessfully it will eventually print an address for you to paste into your browser to access the Jupyter web application. 
+* On starting sucessfully it will print an address for you to paste into your browser to access the Jupyter web application. 
+
+The container can be stopped by ctrl-c, and started again easily with ```docker-compose up```.
 
 ## Notes
 
