@@ -1,4 +1,4 @@
-##Intro
+## Intro
 
 This docker container provides a ubuntu os with a python environment activated. It will start a Jupyter web application served to your localhost so that you can create and run python notebooks through your browser http://jupyter.org/.
 
@@ -38,7 +38,7 @@ docker-compose up
 
 ## Notes
 
-### Seeing what python packages are installed
+### Seeing which python packages are installed
 In a Jupyter notebook you can use tab to autocomplete. This can help you to see what packages are already installed by typing
 ```python
 import [tab]
