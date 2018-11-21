@@ -1,0 +1,19 @@
+version: "3.2"
+
+services:
+  python-container::       
+    
+    image: cryptosregistry.azurecr.io/conda 
+    
+    env_file: 
+      - .env_prod
+
+    ports:
+      - "8888:8888"
+
+    command: bash -c "jupyter notebook --no-browser --ip=0.0.0.0"
+    volumes:
+      - ${NOTEBOOK_PATH}:/home/${USERNAME}/notebooks
+      - ${SRC_PATH}:/home/${USERNAME}/lib
+      - ${LOCAL_DATA_PATH}:/home/${USERNAME}/local-data
+      - ${GIT_DATA_PATH}:/home/${USERNAME}/git-data
