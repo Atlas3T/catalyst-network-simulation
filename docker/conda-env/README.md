@@ -1,4 +1,4 @@
-## Intro
+## Introduction
 
 This docker container provides a ubuntu os with a python environment activated. It will start a Jupyter web application served to your localhost so that you can create and run python notebooks through your browser http://jupyter.org/.
 
@@ -39,7 +39,7 @@ docker-compose up
 
 * On starting sucessfully it will print an address for you to paste into your browser to access the Jupyter web application. 
 
-The container can be stopped by ctrl-c, and started again easily with ```docker-compose up```.
+The container can be stopped by ctrl-c, and started again easily with `docker-compose up`.
 
 ## Notes
 
