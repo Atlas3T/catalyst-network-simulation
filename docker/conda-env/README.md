@@ -1,3 +1,5 @@
+##Intro
+
 This docker container provides a ubuntu os with a python environment activated. It will start a Jupyter web application served to your localhost so that you can create and run python notebooks through your browser http://jupyter.org/.
 
 Four local folders are mounted to the container's home directory. The files they contain can be accessed from within the container and any changes made from outside the container will be visible inside. NOTE any files saved inside the container will not persist when the container is stopped unless they are in one of these 4 folders. They are:
@@ -15,7 +17,7 @@ jupyter notebooks for prototyping code and creating reports.
 for persisting results on your local machine while developing. This is not part of the git repo, as we don't want to store large data files there. When your code is deployed to the server the results will be recreated and stored in the server's own local-data folder.
 
 
-SETUP:
+## Setup
 
 * Pull latest version of repository from master.
 
@@ -34,7 +36,19 @@ docker-compose up
 
 * If it starts sucessfully it will eventually print an address for you to paste into your browser to access the Jupyter web application. 
 
-In a Jupyter notebook you can use tab to autocomplete. This can help you to see what packages are already installed by typing 'import [tab]'.
+## Notes
+
+### Seeing what python packages are installed
+In a Jupyter notebook you can use tab to autocomplete. This can help you to see what packages are already installed by typing
+```python
+import [tab]
+```
+or 
+```python
+from simlib import [tab]
+```
+
+### Adding python packages to the environment
 
 If you want to add a new python package to the docker environment you can edit the file simulation/docker/conda-env/docker/environment.yml. You will then need to rebuild the container using
 ```shell
