@@ -1,7 +1,7 @@
 import time
 import propagation_time
 
-def main():
+def old_main():
     p=10
     x=10
     iterations = 100
@@ -13,14 +13,14 @@ def main():
 
 
 
-def old_main():
+def main():
     start = time.time()
-    N=1000000
+    N=1000
     p=10
     x=10
     iterations = 10
     
-    propagation_time.saveDisperseMessageDist(N,p,x,iterations)
+    propagation_time.generate_transaction_time_distribution(N,p,x,iterations)
     
     duration = time.time() - start
     print(duration)
