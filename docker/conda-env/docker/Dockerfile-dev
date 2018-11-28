@@ -6,6 +6,7 @@ RUN useradd --create-home --home-dir /home/${username} ${username}
 ENV HOME /home/${username}
 
 RUN apt-get update && apt-get install -y build-essential
+RUN apt-get install texlive-xetex -y
 
 RUN conda install nb_conda_kernels -y
 RUN conda install -c bioconda snakemake -y
