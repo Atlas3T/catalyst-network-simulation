@@ -6,7 +6,7 @@ from peer_relationships import peer_dist
 import latency_generator
 
 def getFilePathRoot():
-    return os.path.normpath("/home/engr/Results/")
+    return os.path.expanduser("~/local-data/")
 
 def getProbDistFilePath(N,p, x, i):
     return os.path.normpath(getFilePathRoot() + '/prob_dist_time/prob_dist_time_' + str(N) + '_' + str(p) + "_" + str(x)+ "_" + str(i))
@@ -61,7 +61,7 @@ def relay_single_transaction(peers,start_node):
             #peers are new edges
             new_edge_nodes=peers[current_node,:]
             l=latencies[current_node,:]
-            new_time_values = l[:]+ time_recieved
+            new_time_values = l[:]+ time_taken
 
             for it, edge_node in enumerate(new_edge_nodes):
                 #only add to upcoming_events if peer has not yet recieved transaction
