@@ -7,7 +7,7 @@ services:
       context: ./
       args:
         - username=${USERNAME}
-    image: cryptosregistry.azurecr.io/conda
+    image: adlnode.azurecr.io/conda
     env_file:
       - .env
 
