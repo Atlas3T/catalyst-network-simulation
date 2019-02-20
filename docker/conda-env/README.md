@@ -25,11 +25,11 @@ for persisting results on your local machine while developing. This is not part 
 
 * Sign in to atlas docker registry using
 ```shell
-docker login -u cryptosregistry cryptosregistry.azurecr.io
+docker login -u adlnode adlnode.azurecr.io
 ```
 * Pull the container image using 
 ```shell
-docker pull cryptosregistry.azurecr.io/conda
+docker pull adlnode.azurecr.io/conda
 ```
 * In simulation/docker/conda-env type
 ```shell
@@ -61,7 +61,7 @@ docker-compose up --build
 ```
 You will also need to push this to the docker registry using
 ```shell
-docker push cryptosregistry.azurecr.io/conda
+docker push adlnode.azurecr.io/conda
 ```
 
 PS these two steps will take a loooong time. In the future I'll set the docker push to be triggered automatically when we push to master.
