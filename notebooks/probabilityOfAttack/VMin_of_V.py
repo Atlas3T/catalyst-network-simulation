@@ -60,4 +60,4 @@ plt.hlines(0.000001, Vmin, V, colors='k', linestyles='dashed', label='0.000001% 
 plt.legend(loc='lower left')
 plt.title('Probability of attack vs VMin against 40% malicious nodes')
 plt.text(Vmin,y_text, textstr, fontsize=10, position=(1600, 6.737358984570953e-15),  bbox=dict(facecolor='none', edgecolor='red'))
-plt.savefig('Graphs/plot_cummulative_over_rangeVMin.png')
+plt.savefig('Graphs/VMin.png')

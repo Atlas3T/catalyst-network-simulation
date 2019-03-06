@@ -52,10 +52,10 @@ plt.hlines(0.000001, Vmin, V, colors='k', linestyles='dashed', label='0.00001% t
 plt.hlines(0.000000001, Vmin, V, colors='k', linestyles='-.', label='0.000000001% threshold')
 plt.title('Probability of attack with 40% bad nodes and vairying \\ no. of workers')
 plt.legend(loc='lower left')
-plt.ylim(0,1)
+
 textstr = '\n'.join((
     r'N = %.d' % (N, ),
     r'O = %.d' % (O, ),))
 y_text = 1000000*min(p1_V)
 plt.text(Vmin,y_text, textstr, fontsize=10)
-plt.savefig('Graphs/plot_cummulative_over_rangeV.png')
+plt.savefig('Graphs/variable_V.png')

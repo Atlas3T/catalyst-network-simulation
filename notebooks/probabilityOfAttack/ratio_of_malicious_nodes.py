@@ -35,15 +35,17 @@ def plot_cummulative_over_rangeO(rR,N,V):
 
 N = 10000
 V = 2000
-rR = [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5]
+rR = [0.2,0.25,0.3,0.35,0.4,0.45,0.5]
 Vmin = 500
 #Plot for {O}
 (p1_O,p2_O) = plot_cummulative_over_rangeO(rR,N,V)
 plt.plot(rR,p1_O, label='hypergeometric dist')
 plt.plot(rR, p2_O, label = 'binomial approx.')
 plt.yscale('log')
-plt.xlabel('Ratio (O/N)')
+plt.xlabel('Fraction of malicious nodes (O) in validation pool set N')
 plt.ylabel('Probability 51% attack')
-plt.title('Probability of attack for ratios of total malicious nodes')
+#plt.title('Probability of attack for ratios of total malicious nodes')
+plt.hlines(0.000001, 0.2, 0.5, colors='k', linestyles='dashed', label='0.00001% threshold')
+plt.hlines(0.000000001, 0.2, 0.5, colors='k', linestyles='-.', label='0.000000001% threshold')
 plt.legend(loc='center right')
-plt.savefig('Graphs/plot_cummulative_over_range.png')
+plt.savefig('Graphs/O_over_N.png')
