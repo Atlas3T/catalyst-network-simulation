@@ -56,4 +56,4 @@ textstr = '\n'.join((
     r'O = %.d' % (O, ),))
 y_text = 1000000*min(p1_V)
 plt.text(Vmin,y_text, textstr, fontsize=10)
-plt.savefig('Graphs/plot_cummulative_over_rangeV.pdf')
+plt.savefig('Graphs/plot_cummulative_over_rangeV.png')
