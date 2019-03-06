@@ -44,11 +44,6 @@ def plot_ratio_VMinOverN(rO,rN,thre):
         return (pH)
 
 
-N = 10000
-V = N*0.2
-
-
-
 proba_thre = 0.000001 #Will stay the same as this determines the 10-9
 rangeN = range(15000,100000,1000) #Will stay the same as this determines the range of N
 rO=0.2  

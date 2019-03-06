@@ -39,14 +39,8 @@ def plot_ratio_VoverN(rO,rN,thre):
                 #print(rVi,", prob --> ",proba_thre)
                 rVi = rVi + Vbin
             #print("--> ",V_thre/N) 
-            pH.append(V_thre/N)
+            pH.append(V_thre/rNi)
         return (pH)
-
-
-N = 10000
-V = 2000
-
-
 
 proba_thre = 0.000000001
 rangeN = range(5000,100000,1000)
