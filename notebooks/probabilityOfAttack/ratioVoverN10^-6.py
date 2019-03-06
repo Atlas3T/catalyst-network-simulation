@@ -18,6 +18,9 @@ from matplotlib.ticker import FormatStrFormatter
 #p: total number of malicious nodes selected for validation (malicious workers)
 #Vmin: mininim number of validating nodes (minimum hashes collected by a worker for a valid ratio r_i = m/V_i where V_min <= V_i <= V)
 
+#This plot describes O at 20%, 30%, 40% and 45% of vairying N values and the minimum V/N value needed to obtain 10^-6 security
+
+
 def plot_ratio_VoverN(rO,rN,thre):
         pH=[]
         for rNi in rN:
@@ -43,7 +46,7 @@ def plot_ratio_VoverN(rO,rN,thre):
 
 N = 10000
 V = 2000
-rR = [0.1,0.2,0.3,0.4,0.45]
+
 
 
 proba_thre = 0.000001
@@ -56,12 +59,12 @@ rO=0.4
 p1VoN_3 = plot_ratio_VoverN(rO,rangeN,proba_thre)
 rO=0.45
 p1VoN_4 = plot_ratio_VoverN(rO,rangeN,proba_thre)
-plt.plot(rangeN,p1VoN_1, label='20% malicious')
-plt.plot(rangeN,p1VoN_2, label='30% malicious')
-plt.plot(rangeN,p1VoN_3, label='40% malicious')
-plt.plot(rangeN,p1VoN_4, label='45% malicious')
+plt.plot(rangeN,p1VoN_1, label='20% malicious nodes')
+plt.plot(rangeN,p1VoN_2, label='30% malicious nodes')
+plt.plot(rangeN,p1VoN_3, label='40% malicious nodes')
+plt.plot(rangeN,p1VoN_4, label='45% malicious nodes')
 plt.title('V/N threshold needed for a probability of attack < $10^{-6}$')
-plt.xlabel('N')
-plt.ylabel('V/N (prob < $10^{-6}$)')
+plt.xlabel('N (total number of nodes)')
+plt.ylabel('Ratio of V/N for prob < $10^{-6}$')
 plt.legend(loc='center right')
 plt.savefig('Graphs/ratioVOverNRation10-6.png')

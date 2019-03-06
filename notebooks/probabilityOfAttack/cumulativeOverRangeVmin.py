@@ -18,11 +18,14 @@ from matplotlib.ticker import FormatStrFormatter
 #p: total number of malicious nodes selected for validation (malicious workers)
 #Vmin: mininim number of validating nodes (minimum hashes collected by a worker for a valid ratio r_i = m/V_i where V_min <= V_i <= V)
 
+#This generates a graph demostrating the minimum number (Vmin) of nodes that report the correct delta needed to generate acceptable security levels. 
+#
+
 def plot_cummulative_over_rangeVmin(rO,N,V,rVmin):
         pH=[]
         pB=[]
         O=N*rO
-        print("N, O, V : ",N,", ",O,", ",V,",. varying Vmin:")
+        #print("N, O, V : ",N,", ",O,", ",V,",. varying Vmin:")
     
         for rVi in rVmin:
             pmin = math.floor(rVi/2) + 1
@@ -52,8 +55,9 @@ plt.plot(rVmin, p2_Vm, label = 'binomial approx.')
 plt.yscale('log')
 plt.xlabel('Vmin')
 plt.ylabel('Probability 51% attack [%]')
-plt.hlines(0.00001, Vmin, V, colors='k', linestyles='dashed', label='0.00001% threshold')
+plt.hlines(0.000000001, Vmin, V, colors='k', linestyles='-.', label='0.000000001% threshold')
+plt.hlines(0.000001, Vmin, V, colors='k', linestyles='dashed', label='0.000001% threshold')
 plt.legend(loc='lower left')
-plt.title('Probability of attack vs VMin')
-plt.text(Vmin,y_text, textstr, fontsize=10, position=(1610, 6.737358984570953e-11),  bbox=dict(facecolor='none', edgecolor='red'))
+plt.title('Probability of attack vs VMin against 40% malicious nodes')
+plt.text(Vmin,y_text, textstr, fontsize=10, position=(1600, 6.737358984570953e-15),  bbox=dict(facecolor='none', edgecolor='red'))
 plt.savefig('Graphs/plot_cummulative_over_rangeVMin.png')

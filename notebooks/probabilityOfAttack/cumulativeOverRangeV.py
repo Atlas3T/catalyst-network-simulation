@@ -48,9 +48,11 @@ plt.plot(rV, p2_V, label = 'binomial approx.')
 plt.yscale('log')
 plt.xlabel('V')
 plt.ylabel('Probability 51% attack [%]')
-plt.hlines(0.00001, Vmin, V, colors='k', linestyles='dashed', label='0.00001% threshold')
+plt.hlines(0.000001, Vmin, V, colors='k', linestyles='dashed', label='0.00001% threshold')
+plt.hlines(0.000000001, Vmin, V, colors='k', linestyles='-.', label='0.000000001% threshold')
 plt.title('Probability of attack with 40% bad nodes and vairying \\ no. of workers')
 plt.legend(loc='lower left')
+plt.ylim(0,1)
 textstr = '\n'.join((
     r'N = %.d' % (N, ),
     r'O = %.d' % (O, ),))

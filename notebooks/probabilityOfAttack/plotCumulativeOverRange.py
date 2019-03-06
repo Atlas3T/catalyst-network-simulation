@@ -35,7 +35,7 @@ def plot_cummulative_over_rangeO(rR,N,V):
 
 N = 10000
 V = 2000
-rR = [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45]
+rR = [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5]
 Vmin = 500
 #Plot for {O}
 (p1_O,p2_O) = plot_cummulative_over_rangeO(rR,N,V)
@@ -45,5 +45,5 @@ plt.yscale('log')
 plt.xlabel('Ratio (O/N)')
 plt.ylabel('Probability 51% attack')
 plt.title('Probability of attack for ratios of total malicious nodes')
-plt.legend(loc='upper left')
+plt.legend(loc='center right')
 plt.savefig('Graphs/plot_cummulative_over_range.png')
