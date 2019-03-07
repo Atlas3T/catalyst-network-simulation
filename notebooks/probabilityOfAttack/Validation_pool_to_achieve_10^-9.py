@@ -5,9 +5,6 @@ import numpy as np
 import os
 import math
 from cycler import cycler
-#%matplotlib inline  
-#import matplotlib as mpl
-#mpl.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.ticker import FormatStrFormatter
@@ -23,10 +20,10 @@ from matplotlib.ticker import FormatStrFormatter
 
 def plot_ratio_VoverN(rO,rN,thre):
         pH=[]
-        for rNi in rN: #For each rangeN in range 5k - 100k
-            O=rNi*rO #O = Each range x the ratio of bad nodes specified 
-            print("N, O: ",rNi,", ",O,". Varying V to find proba ~ 10-9")
-            Vmin = math.floor(0.001*rNi) #Minumum value of V is 0.001 of the value of the range interval 
+        for Ni in rN: #For each rangeN in range 5k - 100k
+            O=Ni*rO #O = Each range x the ratio of bad nodes specified 
+            print("N, O: ",Ni,", ",O,". Varying V to find proba ~ 10-9")
+            Vmin = math.floor(0.001*Ni) #Minumum value of V is 0.001 of the value of the range interval 
             
             proba_thre = 1 
             rVi = Vmin #rVi is set to 0.001 of the value of the range interval 
@@ -34,12 +31,12 @@ def plot_ratio_VoverN(rO,rN,thre):
             V_thre = 0 
             while proba_thre > thre: #while value set on l32 > value set on l52 ...
                 p = math.floor(rVi/2) + 1 #math.floor rounds to the nearest value
-                proba_thre = hypergeom.sf(p, rNi, O, rVi)
+                proba_thre = hypergeom.sf(p, Ni, O, rVi)
                 V_thre = rVi
                 #print(rVi,", prob --> ",proba_thre)
                 rVi = rVi + Vbin
             #print("--> ",V_thre/N) 
-            pH.append(V_thre/rNi)
+            pH.append(V_thre/Ni)
         return (pH)
 
 proba_thre = 0.000000001
@@ -56,7 +53,6 @@ plt.plot(rangeN,p1VoN_1, label='20% malicious nodes')
 plt.plot(rangeN,p1VoN_2, label='30% malicious nodes')
 plt.plot(rangeN,p1VoN_3, label='40% malicious nodes')
 plt.plot(rangeN,p1VoN_4, label='45% malicious nodes')
-plt.title('V/N threshold needed for a probability of attack < $10^{-9}$')
 plt.xlabel('N (total number of nodes)')
 plt.ylabel('Ratio of V/N for prob < $10^{-9}$')
 plt.legend(loc='center right')

@@ -5,9 +5,6 @@ import numpy as np
 import os
 import math
 from cycler import cycler
-#%matplotlib inline  
-#import matplotlib as mpl
-#mpl.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.ticker import FormatStrFormatter
@@ -58,7 +55,6 @@ plt.plot(rangeN,p1VMinoN_1, label='20% malicious nodes')
 plt.plot(rangeN,p1VMinoN_2, label='30% malicious nodes') 
 plt.plot(rangeN,p1VMinoN_3, label='40% malicious nodes') 
 plt.plot(rangeN,p1VMinoN_4, label='45% malicious nodes') 
-plt.title('VMin/V threshold needed for a probability of attack < $10^{-6}$')
 plt.xlabel('N (total number of nodes)')
 plt.ylabel('Ratio of VMin/V for prob < $10^{-6}$')
 plt.legend(loc='center right')

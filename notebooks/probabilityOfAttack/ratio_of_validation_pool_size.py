@@ -5,13 +5,10 @@ import numpy as np
 import os
 import math
 from cycler import cycler
-#%matplotlib inline  
-#import matplotlib as mpl
-#mpl.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.ticker import FormatStrFormatter
-#np.set_printoptions(threshold=np.nan)
+
 
 #N: total number of nodes in pool (validators)
 #V: total number of working validators nodes (workers) 
@@ -34,9 +31,6 @@ def plot_cummulative_over_rangeV(rO,N,rV):
 
 N = 10000
 V = 2000
-rR = [0.1,0.2,0.3,0.4,0.45]
-Vmin = 500
-
 rR1 = 0.4
 O = math.floor(rR1*N)
 Vmin=500
@@ -50,12 +44,10 @@ plt.xlabel('V')
 plt.ylabel('Probability 51% attack [%]')
 plt.hlines(0.000001, Vmin, V, colors='k', linestyles='dashed', label='0.00001% threshold')
 plt.hlines(0.000000001, Vmin, V, colors='k', linestyles='-.', label='0.000000001% threshold')
-plt.title('Probability of attack with 40% bad nodes and vairying \\ no. of workers')
 plt.legend(loc='lower left')
-
 textstr = '\n'.join((
     r'N = %.d' % (N, ),
     r'O = %.d' % (O, ),))
 y_text = 1000000*min(p1_V)
-plt.text(Vmin,y_text, textstr, fontsize=10)
+plt.text(Vmin,y_text, textstr, fontsize=10,bbox=dict(facecolor='none', edgecolor='black'))
 plt.savefig('Graphs/variable_V.png')

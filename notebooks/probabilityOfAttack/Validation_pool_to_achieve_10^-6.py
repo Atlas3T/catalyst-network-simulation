@@ -5,9 +5,6 @@ import numpy as np
 import os
 import math
 from cycler import cycler
-#%matplotlib inline  
-#import matplotlib as mpl
-#mpl.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.ticker import FormatStrFormatter
@@ -25,10 +22,8 @@ def plot_ratio_VoverN(rO,rN,thre):
         pH=[]
         for rNi in rN:
             O=rNi*rO
-            print("N, O: ",rNi,", ",O,". Varying V to find proba ~ $10^-6$")
+            #print("N, O: ",rNi,", ",O,". Varying V to find proba ~ $10^-6$")
             Vmin = math.floor(0.001*rNi)
-            Vmax = math.floor(0.2*rNi)
-            rangeV = range(Vmin,Vmax,100)
             proba_thre = 1
             rVi = Vmin
             Vbin = 10
@@ -36,8 +31,9 @@ def plot_ratio_VoverN(rO,rN,thre):
             while proba_thre > thre:
                 p = math.floor(rVi/2) + 1
                 proba_thre = hypergeom.sf(p, rNi, O, rVi)
+
                 V_thre = rVi
-                #print(rVi,", prob --> ",proba_thre)
+                print(rVi,", prob --> ",proba_thre)
                 rVi = rVi + Vbin
             #print("--> ",V_thre/N) 
             pH.append(V_thre/rNi)
@@ -58,7 +54,6 @@ plt.plot(rangeN,p1VoN_1, label='20% malicious nodes')
 plt.plot(rangeN,p1VoN_2, label='30% malicious nodes')
 plt.plot(rangeN,p1VoN_3, label='40% malicious nodes')
 plt.plot(rangeN,p1VoN_4, label='45% malicious nodes')
-plt.title('V/N threshold needed for a probability of attack < $10^{-6}$')
 plt.xlabel('N (total number of nodes)')
 plt.ylabel('Ratio of V/N for prob < $10^{-6}$')
 plt.legend(loc='center right')
