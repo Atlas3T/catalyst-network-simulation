@@ -18,7 +18,7 @@ from matplotlib.ticker import FormatStrFormatter
 #This generates a graph demostrating the minimum number (Vmin) of nodes that report the correct delta needed to generate acceptable security levels. 
 
 
-def plot_cummulative_over_rangeVmin(rO,N,V,rVmin):
+def plot_cummulative_over_rangeVmin(rO,N,rVmin):
         pH=[]
         pB=[]
         O=N*rO
@@ -26,14 +26,14 @@ def plot_cummulative_over_rangeVmin(rO,N,V,rVmin):
         for rVi in rVmin:
             pmin = math.floor(rVi/2) + 1
             pH.append(hypergeom.sf(pmin, N, O, rVi))
-            print(O," --> ", hypergeom.sf(pmin, N, O, V))
-            pB.append(100*binom.sf(pmin,rVi,rO))
+            #print(O," --> ", hypergeom.sf(pmin, N, O, rVi))
+            pB.append(binom.sf(pmin,rVi,rO))
         return (pH,pB)
 
 N = 20000
 V = 4000
 rR1 = 0.4
-Vmin=500
+Vmin=100
 rVmin = range(Vmin, V+1, 10)
 O = math.floor(rR1*N)
 p1_Vmin = ""
@@ -43,14 +43,15 @@ textstr = '\n'.join((
     r'V = %.d' % (V, ),))
 y_text = 1000000*rR1
 #Plot for {Vmin}
-(p1_Vm,p2_Vm) = plot_cummulative_over_rangeVmin(rR1,N,V,rVmin)
+print("Generating graphs....")
+(p1_Vm,p2_Vm) = plot_cummulative_over_rangeVmin(rR1,N,rVmin)
 plt.plot(rVmin, p1_Vm, label='hypergeometric dist')
 plt.plot(rVmin, p2_Vm, label = 'binomial approx.')
 plt.yscale('log')
-plt.xlabel('Vmin')
-plt.ylabel('Probability 51% attack [%]')
+plt.xlabel('Vmin (Number of validator nodes from validation pool that succesfully generate a delta)')
+plt.ylabel('Probability 51% attack')
 plt.hlines(0.000000001, Vmin, V, colors='k', linestyles='-.', label='0.000000001% threshold')
 plt.hlines(0.000001, Vmin, V, colors='k', linestyles='dashed', label='0.000001% threshold')
 plt.legend(loc='lower left')
-plt.text(Vmin,y_text, textstr, fontsize=10, position=(550, 6.737358984570953e-31),  bbox=dict(facecolor='none', edgecolor='black'))
+plt.text(Vmin,y_text, textstr, fontsize=10, position=(150, 6.737358984570953e-31),  bbox=dict(facecolor='none', edgecolor='black'))
 plt.savefig('Graphs/VMin.png')

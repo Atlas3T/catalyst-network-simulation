@@ -25,31 +25,36 @@ def plot_cummulative_over_rangeO(rR,N,V):
             O=N*rRi
             pH.append(hypergeom.sf(p, N, O, V))
             print(O," --> ", hypergeom.sf(p, N, O, V))
-            pB.append(binom.sf(p,V,rRi))
-        return (pH,pB)
+        return (pH)
 
 
 N = 10000
 V = 2000
 rR = [0.3,0.35,0.4,0.45,0.5]
 #Plot for {O}
-(p1_O,p2_O) = plot_cummulative_over_rangeO(rR,N,V)
+p1_O = plot_cummulative_over_rangeO(rR,N,V)
+N = 2000
+V = 400
+p1_1 = plot_cummulative_over_rangeO(rR,N,V)
+N = 5000
+V = 1000
+p1_2 = plot_cummulative_over_rangeO(rR,N,V)
+N = 20000
+V = 4000
+p1_3 = plot_cummulative_over_rangeO(rR,N,V)
 
+plt.plot(rR,p1_1, label='hypergeometric dist. for 2000 nodes')
 
+plt.plot(rR,p1_2, label='hypergeometric dist. for 5000 nodes')
 
 plt.plot(rR,p1_O, label='hypergeometric dist. for 10000 nodes')
-plt.plot(rR, p2_O, label = 'binomial approx. for 10000 nodes.')
 
-textstr = '\n'.join((
-    r'N = %.d' % (N, ),
-    r'V = %.d' % (V, ),))
+plt.plot(rR,p1_3, label='hypergeometric dist. for 20000 nodes')
 
 plt.yscale('log')
 plt.xlabel('Fraction of malicious nodes (O) in validation pool set N')
 plt.ylabel('Probability 51% attack')
 plt.hlines(0.000001, 0.3, 0.5, colors='k', linestyles='dashed', label='0.00001% threshold')
 plt.hlines(0.000000001, 0.3, 0.5, colors='k', linestyles='-.', label='0.000000001% threshold')
-y_text = ""
-plt.text(N,V, textstr, fontsize=10, position=(0.385, 6.737358984570953e-72),  bbox=dict(facecolor='none', edgecolor='black'))
 plt.legend(loc='lower right',prop={'size': 9})
-plt.savefig('Graphs/O_over_N.png')
+plt.savefig('Graphs/O_over_Several_N.png')

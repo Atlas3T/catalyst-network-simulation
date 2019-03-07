@@ -22,7 +22,7 @@ def plot_ratio_VMinOverN(rO,rN,thre):
         pH=[]
         for rNi in rN: #Will stay the same as we want x axis to be over N
             O=rNi*rO #Will stay the same as we want to show vairying mallicious nodes
-            print("N, O: ",rNi,", ",O,". Varying V to find proba ~ $10^-9$") #Stays the same
+            #print("N, O: ",rNi,", ",O,". Varying V to find proba ~ $10^-9$") #Stays the same
             V = rNi*0.2 #Set the V to N ratio
             Vmin = math.floor(0.001*V)
             proba_thre = 1
@@ -43,19 +43,20 @@ def plot_ratio_VMinOverN(rO,rN,thre):
 
 proba_thre = 0.000000001
 rangeN = range(15000,100000,1000) #Will stay the same as this determines the range of N
-rO=0.2
-p1VMinoN_1 = plot_ratio_VMinOverN(rO,rangeN,proba_thre)
+print("Generating graphs....")
+#rO=0.2
+#p1VMinoN_1 = plot_ratio_VMinOverN(rO,rangeN,proba_thre)
 rO=0.3
 p1VMinoN_2 = plot_ratio_VMinOverN(rO,rangeN,proba_thre) 
 rO=0.4
 p1VMinoN_3 = plot_ratio_VMinOverN(rO,rangeN,proba_thre)
 rO=0.45
 p1VMinoN_4 = plot_ratio_VMinOverN(rO,rangeN,proba_thre) 
-plt.plot(rangeN,p1VMinoN_1, label='20% malicious nodes')
+#plt.plot(rangeN,p1VMinoN_1, label='20% malicious nodes')
 plt.plot(rangeN,p1VMinoN_2, label='30% malicious nodes')
 plt.plot(rangeN,p1VMinoN_3, label='40% malicious nodes')
 plt.plot(rangeN,p1VMinoN_4, label='45% malicious nodes')
 plt.xlabel('N (total number of nodes)')
 plt.ylabel('Ratio of VMin/Min for prob < $10^{-9}$')
-plt.legend(loc='center right')
+plt.legend(loc='upper right')
 plt.savefig('Graphs/VMin_for_10^-9.png')

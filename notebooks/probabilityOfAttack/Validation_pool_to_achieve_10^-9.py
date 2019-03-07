@@ -22,7 +22,7 @@ def plot_ratio_VoverN(rO,rN,thre):
         pH=[]
         for Ni in rN: #For each rangeN in range 5k - 100k
             O=Ni*rO #O = Each range x the ratio of bad nodes specified 
-            print("N, O: ",Ni,", ",O,". Varying V to find proba ~ 10-9")
+            #print("N, O: ",Ni,", ",O,". Varying V to find proba ~ 10-9")
             Vmin = math.floor(0.001*Ni) #Minumum value of V is 0.001 of the value of the range interval 
             
             proba_thre = 1 
@@ -41,19 +41,21 @@ def plot_ratio_VoverN(rO,rN,thre):
 
 proba_thre = 0.000000001
 rangeN = range(5000,100000,1000)
-rO=0.2
-p1VoN_1 = plot_ratio_VoverN(rO,rangeN,proba_thre)
+print("Generating graph....")
+#rO=0.2
+#p1VoN_1 = plot_ratio_VoverN(rO,rangeN,proba_thre)
 rO=0.3
 p1VoN_2 = plot_ratio_VoverN(rO,rangeN,proba_thre)
 rO=0.4
 p1VoN_3 = plot_ratio_VoverN(rO,rangeN,proba_thre)
 rO=0.45
 p1VoN_4 = plot_ratio_VoverN(rO,rangeN,proba_thre)
-plt.plot(rangeN,p1VoN_1, label='20% malicious nodes')
+#plt.plot(rangeN,p1VoN_1, label='20% malicious nodes')
+
 plt.plot(rangeN,p1VoN_2, label='30% malicious nodes')
 plt.plot(rangeN,p1VoN_3, label='40% malicious nodes')
 plt.plot(rangeN,p1VoN_4, label='45% malicious nodes')
 plt.xlabel('N (total number of nodes)')
 plt.ylabel('Ratio of V/N for prob < $10^{-9}$')
-plt.legend(loc='center right')
+plt.legend(loc='upper right')
 plt.savefig('Graphs/V_ratio_for_10^-9.png')
