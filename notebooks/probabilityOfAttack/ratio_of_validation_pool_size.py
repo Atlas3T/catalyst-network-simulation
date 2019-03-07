@@ -50,4 +50,4 @@ textstr = '\n'.join((
     r'O = %.d' % (O, ),))
 y_text = 1000000*min(p1_V)
 plt.text(Vmin,y_text, textstr, fontsize=10,bbox=dict(facecolor='none', edgecolor='black'))
-plt.savefig('Graphs/variable_V.png')
+plt.savefig('Graphs/graph_prob_vs_V_N10000_O_4000.png')

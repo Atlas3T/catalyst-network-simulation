@@ -52,4 +52,4 @@ plt.hlines(0.000000001, 0.3, 0.5, colors='k', linestyles='-.', label='0.00000000
 y_text = ""
 plt.text(N,V, textstr, fontsize=10, position=(0.385, 6.737358984570953e-72),  bbox=dict(facecolor='none', edgecolor='black'))
 plt.legend(loc='lower right',prop={'size': 9})
-plt.savefig('Graphs/O_over_N.png')
+plt.savefig('Graphs/graph_prob_vs_O_over_N_N10000_V2000_O_range_30_50.png')
