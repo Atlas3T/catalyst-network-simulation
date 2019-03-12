@@ -34,7 +34,7 @@ N = 20000
 V = 4000
 rR1 = 0.4
 Vmin=100
-rVmin = range(Vmin, V+1, 10)
+rVmin = range(Vmin, V+1, 5)
 O = math.floor(rR1*N)
 p1_Vmin = ""
 textstr = '\n'.join((
@@ -50,8 +50,8 @@ plt.plot(rVmin, p2_Vm, label = 'binomial approx.')
 plt.yscale('log')
 plt.xlabel('Vmin (Number of validator nodes from validation pool that succesfully generate a delta)')
 plt.ylabel('Probability 51% attack')
-plt.hlines(0.00000001, Vmin, V, colors='k', linestyles='-.', label='0.000000001% threshold')
-plt.hlines(0.00001, Vmin, V, colors='k', linestyles='dashed', label='0.000001% threshold')
+plt.hlines(0.000000001, Vmin, V, colors='k', linestyles='-.', label='0.00000001% threshold')
+plt.hlines(0.000001, Vmin, V, colors='k', linestyles='dashed', label='0.00001% threshold')
 plt.legend(loc='lower left')
 plt.text(Vmin,y_text, textstr, fontsize=10, position=(150, 6.737358984570953e-31),  bbox=dict(facecolor='none', edgecolor='black'))
 plt.savefig('Graphs/graph_prob_vs_VMin_N20000_V4000_O_8000.png')

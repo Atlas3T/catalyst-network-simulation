@@ -20,17 +20,18 @@ def plot_cummulative_over_rangeO(rR,N,V):
         pH=[]
         pB=[]
         p = math.floor(V/2) + 1
-        print("N, V: ",N,", ",V,". Varying O:")
+        #print("N, V: ",N,", ",V,". Varying O:")
         for rRi in rR:
             O=N*rRi
             pH.append(hypergeom.sf(p, N, O, V))
-            print(O," --> ", hypergeom.sf(p, N, O, V))
+            #print(O," --> ", hypergeom.sf(p, N, O, V))
         return (pH)
 
 
 N = 10000
 V = 2000
-rR = [0.3,0.35,0.4,0.45,0.5]
+rR = [0.3,0.32,0.36,0.38,0.4,0.42,0.44,0.46,0.48,0.5]
+print("Generating graphs....")
 #Plot for {O}
 p1_O = plot_cummulative_over_rangeO(rR,N,V)
 N = 2000
@@ -55,6 +56,6 @@ plt.yscale('log')
 plt.xlabel('Fraction of malicious nodes (O) in validation pool set N')
 plt.ylabel('Probability 51% attack')
 plt.hlines(0.000001, 0.3, 0.5, colors='k', linestyles='dashed', label='0.00001% threshold')
-plt.hlines(0.000000001, 0.3, 0.5, colors='k', linestyles='-.', label='0.000000001% threshold')
+plt.hlines(0.000000001, 0.3, 0.5, colors='k', linestyles='-.', label='0.00000001% threshold')
 plt.legend(loc='lower right',prop={'size': 9})
 plt.savefig('Graphs/graph_prob_vs_O_over_N_2000,_5000,_10000,_20000_V_is_20%_of_N_O_range_30_50.png')

@@ -27,7 +27,7 @@ def plot_ratio_VoverN(rO,rN,thre):
             
             proba_thre = 1 
             rVi = Vmin #rVi is set to 0.001 of the value of the range interval 
-            Vbin = 10 #bin size of 10 
+            Vbin = 5 #bin size of 10 
             V_thre = 0 
             while proba_thre > thre: #while value set on l32 > value set on l52 ...
                 p = math.floor(rVi/2) + 1 #math.floor rounds to the nearest value

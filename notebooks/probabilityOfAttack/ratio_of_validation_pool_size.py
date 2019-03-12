@@ -20,11 +20,11 @@ def plot_cummulative_over_rangeV(rO,N,rV):
         pH=[]
         pB=[]
         O=N*rO
-        print("N, O: ",N,", ",O,". Varying V:")
+        #print("N, O: ",N,", ",O,". Varying V:")
         for rVi in rV:
             p = math.floor(rVi/2) + 1
             pH.append(100*hypergeom.sf(p, N, O, rVi))
-            print(O," --> ", hypergeom.sf(p, N, O, rVi))
+            #print(O," --> ", hypergeom.sf(p, N, O, rVi))
             pB.append(100*binom.sf(p,rVi,rO))
         return (pH,pB)
 
@@ -35,6 +35,7 @@ rR1 = 0.4
 O = math.floor(rR1*N)
 Vmin=500
 rV = range(Vmin,V+1,50)
+print("Generating graphs....")
 #Plot for {V}
 (p1_V,p2_V) = plot_cummulative_over_rangeV(rR1,N,rV)
 plt.plot(rV,p1_V, label='hypergeometric dist')
@@ -43,7 +44,7 @@ plt.yscale('log')
 plt.xlabel('V')
 plt.ylabel('Probability 51% attack')
 plt.hlines(0.000001, Vmin, V, colors='k', linestyles='dashed', label='0.00001% threshold')
-plt.hlines(0.000000001, Vmin, V, colors='k', linestyles='-.', label='0.000000001% threshold')
+plt.hlines(0.000000001, Vmin, V, colors='k', linestyles='-.', label='0.00000001% threshold')
 plt.legend(loc='lower left')
 textstr = '\n'.join((
     r'N = %.d' % (N, ),

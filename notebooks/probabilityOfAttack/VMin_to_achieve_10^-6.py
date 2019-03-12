@@ -28,7 +28,7 @@ def plot_ratio_VMinOverN(rO,rN,thre):
             proba_thre = 1
             rVi = Vmin
 
-            Vbin = 10
+            Vbin = 5
             VMin_thre = 0
             while proba_thre > thre:
                 p = math.floor(rVi/2) + 1

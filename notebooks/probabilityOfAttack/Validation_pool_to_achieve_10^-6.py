@@ -26,7 +26,7 @@ def plot_ratio_VoverN(rO,rN,thre):
             Vmin = math.floor(0.001*rNi)
             proba_thre = 1
             rVi = Vmin
-            Vbin = 10
+            Vbin = 5
             V_thre = 0
             while proba_thre > thre:
                 p = math.floor(rVi/2) + 1
