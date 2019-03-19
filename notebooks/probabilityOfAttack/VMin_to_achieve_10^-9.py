@@ -53,6 +53,7 @@ p1VMinoN_3 = plot_ratio_VMinOverN(rO,rangeN,proba_thre)
 rO=0.45
 p1VMinoN_4 = plot_ratio_VMinOverN(rO,rangeN,proba_thre) 
 #plt.plot(rangeN,p1VMinoN_1, label='20% malicious nodes')
+
 plt.plot(rangeN,p1VMinoN_2, label='30% malicious nodes')
 plt.plot(rangeN,p1VMinoN_3, label='40% malicious nodes')
 plt.plot(rangeN,p1VMinoN_4, label='45% malicious nodes')
