@@ -1,3 +1,4 @@
+from Graph_gen import plot_cummulative_over_rangeV
 from scipy.stats import hypergeom
 from scipy.stats import binom
 from decimal import *
@@ -16,25 +17,17 @@ from matplotlib.ticker import FormatStrFormatter
 #p: total number of malicious nodes selected for validation (malicious workers)
 #Vmin: mininim number of validating nodes (minimum hashes collected by a worker for a valid ratio r_i = m/V_i where V_min <= V_i <= V)
 
-def plot_cummulative_over_rangeV(rO,N,rV):
-        pH=[]
-        pB=[]
-        O=N*rO
-        #print("N, O: ",N,", ",O,". Varying V:")
-        for rVi in rV:
-            p = math.floor(rVi/2) + 1
-            pH.append(100*hypergeom.sf(p, N, O, rVi))
-            #print(O," --> ", hypergeom.sf(p, N, O, rVi))
-            pB.append(100*binom.sf(p,rVi,rO))
-        return (pH,pB)
-
 
 N = 10000
-V = 2000
+VRatio = 0.2
+V = int(N*VRatio)
 rR1 = 0.4
 O = math.floor(rR1*N)
 Vmin=500
-rV = range(Vmin,V+1,50)
+binSize = 50
+rV = range(Vmin,V+binSize,binSize)
+top = rV[-1]
+bottom = rV[0]
 print("Generating graphs....")
 #Plot for {V}
 (p1_V,p2_V) = plot_cummulative_over_rangeV(rR1,N,rV)
@@ -42,13 +35,17 @@ plt.plot(rV,p1_V, label='hypergeometric dist')
 plt.plot(rV, p2_V, label = 'binomial approx.')
 plt.yscale('log')
 plt.xlabel('V')
+plt.xlim(bottom,top)
 plt.ylabel('Probability 51% attack')
-plt.hlines(0.000001, Vmin, V, colors='k', linestyles='dashed', label='0.00001% threshold')
-plt.hlines(0.000000001, Vmin, V, colors='k', linestyles='-.', label='0.00000001% threshold')
+thre_1 = 10**-6
+thre_2 = 10**-9
+plt.hlines(thre_1, Vmin, V, colors='k', linestyles='dashed', label='{} threshold'.format(thre_1))
+plt.hlines(thre_2, Vmin, V, colors='k', linestyles='-.', label='{} threshold'.format(thre_2))
 plt.legend(loc='lower left')
+plt.grid()
 textstr = '\n'.join((
     r'N = %.d' % (N, ),
     r'O = %.d' % (O, ),))
 y_text = 1000000*min(p1_V)
 plt.text(Vmin,y_text, textstr, fontsize=10,bbox=dict(facecolor='none', edgecolor='black'))
-plt.savefig('Graphs/graph_prob_vs_V_N10000_O_4000.png')
+plt.savefig('Graphs/graph_prob_vs_V_range{}-{}_N{}_O_{}.png'.format(bottom,top,V,N,O))
