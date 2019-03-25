@@ -53,4 +53,4 @@ plt.hlines(thre_2, 0, V, colors='k', linestyles='dashed', label='{}%'.format(thr
 plt.legend(loc='lower left')
 plt.grid()
 plt.text(Vmin,y_text, textstr, fontsize=10, position=(150, 6.737358984570953e-31),  bbox=dict(facecolor='none', edgecolor='black'))
-plt.savefig('Graphs/graph_prob_vs_VMin_range_{}_to {}_N_{}_Vratio_{}_O_ratio_{}.png'.format(bottom,top,N,V_ratio,rR1))
+plt.savefig('Graphs/VMin_of_V/graph_prob_vs_VMin_range_{}_to {}_N_{}_Vratio_{}_O_ratio_{}.png'.format(bottom,top,N,V_ratio,rR1))

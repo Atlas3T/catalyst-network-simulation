@@ -18,10 +18,10 @@ from matplotlib.ticker import FormatStrFormatter
 #Vmin: mininim number of validating nodes (minimum hashes collected by a worker for a valid ratio r_i = m/V_i where V_min <= V_i <= V)
 
 
-N = 10000
+N = 100000
 VRatio = 0.2
 V = int(N*VRatio)
-rR1 = 0.4
+rR1 = 0.45
 O = math.floor(rR1*N)
 Vmin=500
 binSize = 50
@@ -48,4 +48,4 @@ textstr = '\n'.join((
     r'O = %.d' % (O, ),))
 y_text = 1000000*min(p1_V)
 plt.text(Vmin,y_text, textstr, fontsize=10,bbox=dict(facecolor='none', edgecolor='black'))
-plt.savefig('Graphs/graph_prob_vs_V_range{}-{}_N{}_O_{}.png'.format(bottom,top,V,N,O))
+plt.savefig('Graphs/ratio_of_validation_pool_size/graph_prob_vs_V_range{}-{}_N{}_O_{}.png'.format(bottom,top,N,O))

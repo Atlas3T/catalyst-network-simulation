@@ -18,13 +18,14 @@ from matplotlib.ticker import FormatStrFormatter
 #x-axis: N
 #rangeN = [1000, 2000, 10000]
 #rangeN = [2000, 5000]
-rangeN = range(20000,101000,1000)
+NBin = 1000
+rangeN = range(1000,10000+NBin,NBin)
 #create stings for top and bottom of N range for labels
 top = rangeN[-1] 
 bottom = rangeN[0] 
 #y-axis: fraction O/N
 #curves: different ratio V/N
-rangeVoN = [0.02,0.05,0.1,0.2,0.3]
+rangeVoN = [0.1,0.2,0.5]
 #create string for VoN labels 
 strRangeVoN = '-'.join(str(e) for e in rangeVoN)
 #variables: probability threshold
@@ -49,4 +50,4 @@ plt.yticks(np.arange(0, 0.55, step=0.05))
 plt.xlabel('N (total worker pool size)')
 plt.ylabel('Max Ratio O/N for prob < {} for a succesful 51% attack'.format(prob_thre))
 plt.legend(title='Ratio V/N',loc='lower right')
-plt.savefig('Graphs/O-over-N-range-{}-{}-for-V-over-N-{}-at-prob-{}.png'.format(bottom,top,strRangeVoN,prob_thre))
+plt.savefig('Graphs/script_proba_thresholdO_N/O-over-N-range-{}-{}-for-V-over-N-{}-at-prob-{}.png'.format(bottom,top,strRangeVoN,prob_thre))

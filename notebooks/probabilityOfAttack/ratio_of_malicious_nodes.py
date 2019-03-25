@@ -45,4 +45,4 @@ y_text = ""
 plt.text(N,V, textstr, fontsize=10, position=(0.465, 6.737358984570953e-72),  bbox=dict(facecolor='none', edgecolor='black'))
 plt.legend(loc='lower right',prop={'size': 9})
 plt.grid()
-plt.savefig('Graphs/graph_prob_vs_O_over_N_N{}_V{}_O_range_{}_{}.png'.format(N,V,bottom,top))
+plt.savefig('Graphs/ratio_of_malicious_nodes/graph_prob_vs_O_over_N_N{}_V{}_O_range_{}_{}.png'.format(N,V,bottom,top))
