@@ -1,3 +1,4 @@
+from Graph_gen import plot_cummulative_over_rangeVmin
 from scipy.stats import hypergeom
 from scipy.stats import binom
 from decimal import *
@@ -18,23 +19,17 @@ from matplotlib.ticker import FormatStrFormatter
 #This generates a graph demostrating the minimum number (Vmin) of nodes that report the correct delta needed to generate acceptable security levels. 
 
 
-def plot_cummulative_over_rangeVmin(rO,N,rVmin):
-        pH=[]
-        pB=[]
-        O=N*rO
-    
-        for rVi in rVmin:
-            pmin = math.floor(rVi/2) + 1
-            pH.append(hypergeom.sf(pmin, N, O, rVi))
-            #print(O," --> ", hypergeom.sf(pmin, N, O, rVi))
-            pB.append(binom.sf(pmin,rVi,rO))
-        return (pH,pB)
+
 
 N = 20000
-V = 4000
+V_ratio = 0.2
+V = N*V_ratio
 rR1 = 0.4
 Vmin=100
-rVmin = range(Vmin, V+1, 5)
+bin_Size = 5
+rVmin = range(Vmin, int(V+bin_Size), bin_Size)
+top = rVmin[-1] 
+bottom = rVmin[0]
 O = math.floor(rR1*N)
 p1_Vmin = ""
 textstr = '\n'.join((
@@ -49,9 +44,13 @@ plt.plot(rVmin, p1_Vm, label='hypergeometric dist')
 plt.plot(rVmin, p2_Vm, label = 'binomial approx.')
 plt.yscale('log')
 plt.xlabel('Vmin (Number of validator nodes from validation pool that succesfully generate a delta)')
+plt.xlim(0,top)
 plt.ylabel('Probability 51% attack')
-plt.hlines(0.000000001, Vmin, V, colors='k', linestyles='-.', label='0.00000001% threshold')
-plt.hlines(0.000001, Vmin, V, colors='k', linestyles='dashed', label='0.00001% threshold')
+thre_1 = 10**-6
+thre_2 = 10**-9
+plt.hlines(thre_1, 0, V, colors='k', linestyles='-.', label='{}%'.format(thre_1))
+plt.hlines(thre_2, 0, V, colors='k', linestyles='dashed', label='{}%'.format(thre_2))
 plt.legend(loc='lower left')
+plt.grid()
 plt.text(Vmin,y_text, textstr, fontsize=10, position=(150, 6.737358984570953e-31),  bbox=dict(facecolor='none', edgecolor='black'))
-plt.savefig('Graphs/graph_prob_vs_VMin_N20000_V4000_O_8000.png')
+plt.savefig('Graphs/VMin_of_V/graph_prob_vs_VMin_range_{}_to {}_N_{}_Vratio_{}_O_ratio_{}.png'.format(bottom,top,N,V_ratio,rR1))
