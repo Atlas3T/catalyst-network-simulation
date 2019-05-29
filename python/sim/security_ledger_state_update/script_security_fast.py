@@ -1,151 +1,207 @@
 import numpy
 import random
 import math
+import argparse
+from itertools import chain
 
 
-def does_simulated_consensus_produce_correct_ln(P, ProportionProducersSameDelta, ProportionOfDeltaCollected,
-                                                ProportionProducersRecieveVote, ProportionProducersRecieveFinalVote):
+def get_list_producer_ids(num_producers, num_sample):
+    list_ids = numpy.zeros((num_producers, num_sample), int)
+    for i in range(num_producers):
+        list_ids[i, 0] = i
+        list_ids[i, 1:num_sample] = random.sample(list(chain(range(0, i), range(i + 1, num_producers))), num_sample - 1)
+    return list_ids
 
-    #K_n = NumDeltasSame: number of producers amongst P that generate the correct (dominant) ledger state update
-    #L_prod: list of K_n
-    #Typically 50%P < K_n < P [0.55,0.99]
-    ###Computation phase###
-    
-    NumDeltasSame=math.floor(ProportionProducersSameDelta*P)
-    
-    #IDs_prod: index is producer, value 1 if produces correct delta, 0 otherwise
-    IDs_prod = numpy.zeros(P,int)
-    IDs_prod[:NumDeltasSame] = 1  #1 1 1 1 1 .. 0 0 0 0 0
-    #L_prod is list of producers we want to be agreed at the end (list of producers who shoulqa`d recieve reward-1)
-    L_prod = [i for i in range(NumDeltasSame)] #1 2 3 4 5 6 ... K_n
-    
-    ###Voting phase 1#### (creation of L_j(prod) 
-    #K_j = NumDeltasCollected: number of h_k collected by a producer P_j
-    #NumDeltasCollected: a common K_j for any producer P_j
-    #K_j > K_min and (K^maj > K_threshold =? K^maj/K_j)
-    NumDeltasCollected=math.floor(ProportionOfDeltaCollected*P) #each producer P_j collected K_j NumDeltasCollected deltas in mempool during phase 1
-    K_min = math.floor(NumDeltasCollected*0.5)  #that is 50% of collected data, in reality K_min should depends on K_j and NumDeltasCollected > K_min
-    #V_n = NumVotesSame: number of producers amongst P that generate the correct (dominant) vote
-    #L_vote: list of V_n
-    L_vote = []
-    #P_IDs, each row contains index of which producer's deltas have been collected by each producer
-    #NOTE, producers should not be able to collect their delta, but should necessarily have their own delta 
-    P_IDs = numpy.zeros((P,NumDeltasCollected),int)
-    for i in range(P):
-        P_IDs[i,:]=random.sample(range(P),NumDeltasCollected)
-    #lj_prod = each row contains index of producers that P believes to have produced the most common delta, otherwise -1.
-    #lj_prod may certainly not be a complete representation of the list L_n(prod)
-    lj_prod=numpy.zeros((P,NumDeltasCollected),int)
-    #v = each row contains 1 if the producer believes he found a common delta, 0 otherwise
-    v=numpy.zeros((P), int)
-    for i in range(P):
-        #Question: Is it true that K^maj = numpy.count_nonzero(D[P_IDs[i,:]]==1)?
-        v[i]=1 if numpy.count_nonzero(IDs_prod[P_IDs[i,:]]==1) > K_min else 0
-        if v[i] == 1: #P_i found the correct common delta
-           L_vote.append(i)
-           for j in range(NumDeltasCollected):
-            if IDs_prod[P_IDs[i,j]]==1:
-                lj_prod[i,j] = P_IDs[i,j]
-            else:
-                lj_prod[i,j] = -1
-        else:
-            lj_prod[i,:] = -1
 
-    ####Voting phase 2### merge the L_k(prod) to create L_n(prod) which should include all the producers K_n
-    #Only if P_j has produced the right ledger state update, said otherwise P_j included in K_n
-    #V_j : number of v_k collected by a producer P_j
-    #NumVotesCollected: a common V_j for any producer P_j
-    NumVotesCollected=math.floor(ProportionProducersRecieveVote*P) #each producer P_j collected V_j NumVotesCollected votes in mempool during phase 2 (t < Delta t_v1)
-    #V_j > V_min (and V^maj > V_threshold)
-    V_min = math.floor(NumVotesCollected*0.5)  #that is 50% of collected data, in reality V_min should depends on V_j and NumVotesCollected > V_min
-    #L_n(prod) = Ln_prod: the final list of producers made by P_j
-    #Identifier of producer P_k is added to Ln_prod if it is incuded in 50%P of lists L_k(prod) verifying h_{Delta k} = h^maj_{Delta j}
-    Ln_prod=[]
+def get_list_producers_who_found_majority(num_producer, id_correct_producers, collected_data_ids, num_collected_data):
+    majority_found = numpy.zeros(num_producer, int)
+    for i in range(num_producer):
+        k_maj = numpy.count_nonzero(id_correct_producers[collected_data_ids[i, :]] == 1)
+        ratio_maj = k_maj/num_collected_data
+        ratio_threshold = 0.5 + 4 * math.sqrt(ratio_maj * (1 - ratio_maj) / num_collected_data)
+        majority_found[i] = 1 if ratio_maj > ratio_threshold else 0
+    return majority_found
 
-    #lj_prod_sampled = each producer collects NumVotesCollected = V_j lists lj_prod where each list is made of x < NumDeltasCollected identifiers  and merge to lj_prod_sampled
-    #lj_prod_sampled[i] gives a matric of vote collected and each vote the number of delta collected. 
-    lj_prod_sampled =numpy.zeros((NumDeltasSame,NumVotesCollected,NumDeltasCollected),int)
-    #P2_IDs, each row contains index of which producer's vote have been collected by each producer
-    P2_IDs = numpy.zeros((NumDeltasSame,NumVotesCollected),int)
-    for i in range(NumDeltasSame):
-        P2_IDs[i,:]=random.sample(range(P),NumVotesCollected)
-        
-    for i in range(NumDeltasSame):
-        #for j in range(NumVotesCollected):
-            #lj_prod_sampled[i,j,:]= lj_prod[P2_IDs[i,j],:]
-        lj_prod_sampled[i,:,:] = [lj_prod[P2_IDs[i,j],:] for j in range(NumVotesCollected)]
 
-    #for i in range(NumDeltasSame):
-    #   lj_prod_sampled[i,:,:]= lj_prod[numpy.random.choice(lj_prod.shape[0],NumVotesCollected,replace=False), :]
+def get_partial_list_ids_found(num_producer, id_correct_producers, collected_data_ids, num_collected_data):
 
-    #lj_vote1 = each row contains index of producers that P believes to have produced the correct vote, otherwise -1.
-    #lj_vote1 may certainly not be a complete representation of the list L_n(vote)
-    lj_vote1=numpy.zeros((NumDeltasSame,NumVotesCollected),int)
-    for i in range(NumDeltasSame):
-        #for each vote check if the number correct delta is greater than K_min
-        for k in range(NumVotesCollected):
-            if numpy.count_nonzero(IDs_prod[lj_prod_sampled[i,:,k]]==1) > K_min: 
-                lj_vote1[i,k] = P_IDs[i,k]
-            else:
-                lj_vote1[i,k] = - 1
-        unique, counts = numpy.unique(lj_prod_sampled[i], return_counts=True)
+    is_majority_found = get_list_producers_who_found_majority(num_producer, id_correct_producers, collected_data_ids,
+                                                           num_collected_data)
+
+    partial_list = numpy.zeros((num_producer, num_collected_data), int)
+    for i in range(num_producer):
+        partial_list[i, :] = -1
+        if is_majority_found[i] == 1:
+            for j in range(num_collected_data):
+                if id_correct_producers[collected_data_ids[i, j]] == 1:
+                    partial_list[i, j] = collected_data_ids[i, j]
+                else:
+                    partial_list[i, j] = -1
+    return partial_list
+
+
+def get_merged_list_ids(num_producer, sampled_lists, merging_threshold):
+    merged_list = []
+    for i in range(num_producer):
+        unique, counts = numpy.unique(sampled_lists[i], return_counts=True)
         correct_producers = dict(zip(unique, counts))
         l_temp = []
         for producer, count in correct_producers.items():
-            #Check that producer is a correct producer and appears in more than half of P lists
-            if count > P/2 and producer!=-1:
+            if count > merging_threshold and producer != -1:
                 l_temp.append(producer)
-        Ln_prod.append(l_temp)
-        
-    print("Ln_prod")
-    print(Ln_prod)
-    print("###############")
-    print("Lj_vote")
-    print(lj_vote1)
-    #Code verifies that Ln_prod = L_prod
-    runs = []
-    for i in range(NumDeltasSame):
-        runs.append(Ln_prod[i]==L_prod)
-        #print(i, " ", Ln_prod[i])
-    percentage_DeltasSame = numpy.count_nonzero(runs)/NumDeltasSame*100
-    print(percentage_DeltasSame,"% identical Ln(prod)")
-
-    #Each producer in NumDeltasSame brodacst lj_vote1. Each producer in P collect ProportionProducersRecieveFinalVote votes
-    NumFinalVotesCollected=math.floor(ProportionProducersRecieveFinalVote*P) #each producer P_j collected W_j NumVotesCollected votes in mempool during phase 2 (t < Delta t_v1)
-   
-    #lj_vote_sampled = each producer collects NumFinalVotesCollected = V_j lists lj_prod where each list is made of x < NumVotesCollected identifiers
-    #lj_vote_sampled[i] gives a matric of vote collected and each vote the number of delta collected. 
-    lj_vote_sampled =numpy.zeros((P,NumFinalVotesCollected,NumVotesCollected),int)
-    for i in range(P):
-       lj_vote_sampled[i,:,:]= lj_vote1[numpy.random.choice(lj_vote_sampled.shape[0],NumFinalVotesCollected,replace=False), :]
-
-    Ln_vote=[]
-    for i in range(P):
-        unique, counts = numpy.unique(lj_vote_sampled[i], return_counts=True)
-        correct_producers = dict(zip(unique, counts))
-        l_temp = []
-        for producer, count in correct_producers.items():
-            #Check that producer is a correct producer and appears in more than half of P lists
-            if count > P/2 and producer!=-1:
-                l_temp.append(producer)
-        Ln_vote.append(l_temp)
+        merged_list.append(l_temp)
+    return merged_list
 
 
-    runs2 = []
-    for i in range(P):
-        runs2.append(Ln_vote[i]==L_vote)
-        #print(i, " ", Ln_prod[i])
-    percentage_VoteSame = numpy.count_nonzero(runs2)/P*100
-    print(percentage_VoteSame,"% identical Ln(vote)")
+def get_ids_with_full_lists(num_producer, correct_list, lists_to_compare):
+    count_list_complete = []
+    for i in range(num_producer):
+        if lists_to_compare[i] == correct_list:
+            count_list_complete.append(i)
+    return count_list_complete
 
-    
-P = 10
-PropProducersSameDelta = 70 #Actual fraction of producers building the same delta P_n/P
-PropOfDeltaCollected = 85 #fraction of delta collected by each producer (same for all) K_j
-PropProducersRecieveVote = 85 #fraction of vote collected by each producer (same for all) V_j
-no_runs = 10 #for stat (10000 --> 2 digits in percent)
-runs = []
-for i in range(no_runs):
-    runs.append(does_simulated_consensus_produce_correct_ln(P,PropProducersSameDelta*0.01,PropOfDeltaCollected*0.01,PropProducersRecieveVote*0.01,PropProducersRecieveVote*0.01))
-    result = numpy.count_nonzero(runs)/no_runs*100
-    print(result, "% successful run for params(", P, ", ",PropProducersSameDelta,", ", PropOfDeltaCollected,", ", PropProducersRecieveVote, ")")
+
+def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collected_update, prop_collected_vote,
+                         prop_collected_final_vote):
+    """
+    This function checks how many producers manage to compile the correct lists Ln(prod) and Ln(vote)
+    :param num_of_producers: Number of producers (P)
+    :param prop_correct_producers: Fraction of producers who correctly build the dominant ledger state update (K_n/P)
+    :param prop_collected_update: Fraction of collected ledger state update per producer (K_j/P)
+    :param prop_collected_vote: Fraction of collected vote per producer (V_j/P)
+    :param prop_collected_final_vote: Fraction of collected final vote per producer (W_j/P)
+    :return: result (int, int) where the first is the fraction of producers among K_n having correctly built Ln(prod)
+    and the second is the fraction of producers among P having correctly built Ln(vote)
+    """
+    result = numpy.zeros(2, int)
+
+    # Range to experiment [0.55,0.99]
+    num_of_correct_updates = math.floor(prop_correct_producers * num_of_producers)
+
+    # Producers flag: 1 if associated to correct update, 0 otherwise
+    correct_update_flags = numpy.zeros(num_of_producers, int)
+    correct_update_flags[:num_of_correct_updates] = 1
+
+    # True list of correct producers (K_n)
+    correct_update_ids = [i for i in range(num_of_correct_updates)]
+
+    # K_j updates collected per producer. Range to experiment [0.75,0.99], use to determine k_min
+    num_of_collected_updates = math.floor(prop_collected_update*num_of_producers)
+
+    # List of producer ids associated to updates collected by producer
+    collected_update_ids = get_list_producer_ids(num_of_producers, num_of_collected_updates)
+
+    # List of id of producers who found a dominant update
+    majority_found = get_list_producers_who_found_majority(num_of_producers, correct_update_flags, collected_update_ids,
+                                                           num_of_collected_updates)
+
+    # List of producer ids associated to correct updates collected by producer, -1 otherwise
+    lj_prod = get_partial_list_ids_found(num_of_producers, correct_update_flags, collected_update_ids,
+                                         num_of_collected_updates)
+
+    # True list of correct voters
+    correct_vote_ids = []
+    for i in range(num_of_producers):
+        if majority_found[i] == 1:
+            correct_vote_ids.append(i)
+    correct_vote_ids.sort()
+
+    if len(correct_vote_ids) == 0:
+        print("No producer found a majority of same update: abort!")
+        return result
+
+    # V_j votes collected per producer. Range to experiment [0.75,0.99]. Use to determine V_min
+    num_of_collected_votes = math.floor(prop_collected_vote * num_of_producers)
+
+    # List of producer ids associated to votes collected by producer
+    collected_vote_ids = get_list_producer_ids(num_of_producers, num_of_collected_votes)
+    collected_vote_ids = collected_vote_ids[0:num_of_correct_updates, :]
+
+    # Set of lj_prod collected by each producer
+    lj_prod_sampled = numpy.zeros((num_of_correct_updates, num_of_collected_votes, num_of_collected_updates), int)
+    for i in range(num_of_correct_updates):
+        lj_prod_sampled[i, :, :] = [lj_prod[collected_vote_ids[i, j], :] for j in range(num_of_collected_votes)]
+
+    # List of producers associated to correct update merged by each producers (compare with correct_update_ids)
+    compare_correct_update_ids = get_merged_list_ids(num_of_correct_updates, lj_prod_sampled, num_of_producers/2)
+
+    producer_ids_full_list_prod = get_ids_with_full_lists(num_of_correct_updates, correct_update_ids,
+                                                          compare_correct_update_ids)
+
+    # percentage_correct_list_prod = len(producer_ids_full_list_prod)/num_of_producers
+    # print("{:10.3f} % identical Ln(prod)".format(percentage_correct_list_prod * 100))
+
+    # List of producer ids associated to correct vote collected by producer, -1 otherwise
+    lj_vote = numpy.zeros((num_of_correct_updates, num_of_collected_votes), int)
+    for i in range(num_of_correct_updates):
+        majority_i = get_list_producers_who_found_majority(num_of_collected_votes, correct_update_flags,
+                                                           lj_prod_sampled[i, :, :], num_of_collected_votes)
+        lj_vote[i, :] = [collected_vote_ids[i, k] if majority_i[k] == 1 else -1 for k in range(num_of_collected_votes)]
+
+    # W_j <=  num_of_correct_updates final votes collected per producer. Range to experiment [0.75,0.99]
+    num_of_collected_final_votes = math.floor(prop_collected_final_vote * num_of_correct_updates)
+
+    # Set of lj_vote collected by each producer
+    lj_vote_sampled = numpy.zeros((num_of_producers, num_of_collected_final_votes, num_of_collected_votes), int)
+    for i in range(num_of_producers):
+        lj_vote_sampled[i, :, :] = lj_vote[numpy.random.choice(lj_vote.shape[0], num_of_collected_final_votes,
+                                                               replace=False), :]
+
+    # Producer only merge if the producer originator of lj_vote had found the correct update
+
+    threshold_vote_list = len(correct_update_ids)/2
+
+    for i in range(num_of_correct_updates):
+        count_correct_list_update = 0
+        for j in range(num_of_collected_final_votes):
+            if j not in producer_ids_full_list_prod:
+                lj_vote_sampled[i, j, :] = -1
+            else:
+                count_correct_list_update += 1
+        if count_correct_list_update < threshold_vote_list:
+            lj_vote_sampled[i, :, :] = -1
+
+    compare_correct_vote_producer_ids = get_merged_list_ids(num_of_producers, lj_vote_sampled, threshold_vote_list)
+
+    producer_ids_full_list_vote = get_ids_with_full_lists(num_of_producers, correct_vote_ids,
+                                                          compare_correct_vote_producer_ids)
+
+    # percentage_correct_list_vote = len(producer_ids_full_list_vote)/num_of_producers
+    # print("{:10.3f} % identical Ln(vote)".format(percentage_correct_list_vote * 100))
+
+    result = [len(producer_ids_full_list_prod), len(producer_ids_full_list_vote)]
+
+    return result
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('--p', type=int, default=200, help='Number of producers')
+    parser.add_argument('--runs', type=int, default=10, help='Number of runs')
+    parser.add_argument('--producer', type=float, default=0.75, help='Proportion of correct producers')
+    parser.add_argument('--update', type=float, default=0.8, help='Proportion of collected updates per producer')
+    parser.add_argument('--vote', type=float, default=0.8, help='Proportion of collected votes per producer')
+    parser.add_argument('--final', type=float, default=0.8, help='Proportion of collected final votes')
+    return parser.parse_args()
+
+
+if __name__ == '__main__':
+    args = parse_args()
+
+    res = numpy.array([calculate_lists_rate(args.p, args.producer, args.update, args.vote, args.final)
+                       for _ in range(args.runs)])
+
+    print("Parameters: P = {}. {} runs \n propCorrectProducer = {} \n propCollectedUpdate{} \n propCollectedVote{} "
+          "\n propCollectedFinalVote \n ".format(args.p, args.runs, args.producer, args.update, args.vote, args.final))
+    print("############################")
+    print("Averages:")
+    print("{:10.3f} % producers issue correct Ln(prod)".format(numpy.mean(res[:, 0]) / args.p * 100))
+    print("{:10.3f} % producers issue correct Ln(vote)".format(numpy.mean(res[:, 1]) / args.p * 100))
+    print("############################")
+    print("Successful runs:")
+    print("{:10.3f} % runs with no missing data for Ln(prod)".format((1-numpy.count_nonzero(res[:, 0] - args.producer *
+                                                                                            args.p) / args.runs) * 100))
+    print("{:10.3f} % runs with no missing data for Ln(vote)".format((1-numpy.count_nonzero(res[:, 1] - args.p) /
+                                                                      args.runs) * 100))
+    print("############################")
+    print("{:10.3f} % successful runs".format(numpy.count_nonzero(res[:, 1] >= args.p/2) / args.runs * 100))
