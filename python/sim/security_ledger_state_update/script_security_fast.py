@@ -4,7 +4,6 @@ import math
 import argparse
 from itertools import chain
 
-
 def get_list_producer_ids(num_producers, num_sample):
     list_ids = numpy.zeros((num_producers, num_sample), int)
     for i in range(num_producers):
@@ -136,29 +135,21 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
     for i in range(num_of_correct_updates):
         majority_i = get_list_producers_who_found_majority(num_of_collected_votes, correct_update_flags,
                                                            lj_prod_sampled[i, :, :], num_of_collected_votes)
-        lj_vote[i, :] = [collected_vote_ids[i, k] if majority_i[k] == 1 else -1 for k in range(num_of_collected_votes)]
+
+        lj_vote[i, :] = [collected_vote_ids[i, k] if majority_i[k] == 1 and k in producer_ids_full_list_prod else -1
+                         for k in range(num_of_collected_votes)]
 
     # W_j <=  num_of_correct_updates final votes collected per producer. Range to experiment [0.75,0.99]
     num_of_collected_final_votes = math.floor(prop_collected_final_vote * num_of_correct_updates)
 
     # Set of lj_vote collected by each producer
     lj_vote_sampled = numpy.zeros((num_of_producers, num_of_collected_final_votes, num_of_collected_votes), int)
+    threshold_vote_list = len(correct_update_ids) / 2
+
     for i in range(num_of_producers):
         lj_vote_sampled[i, :, :] = lj_vote[numpy.random.choice(lj_vote.shape[0], num_of_collected_final_votes,
                                                                replace=False), :]
-
-    # Producer only merge if the producer originator of lj_vote had found the correct update
-
-    threshold_vote_list = len(correct_update_ids)/2
-
-    for i in range(num_of_correct_updates):
-        count_correct_list_update = 0
-        for j in range(num_of_collected_final_votes):
-            if j not in producer_ids_full_list_prod:
-                lj_vote_sampled[i, j, :] = -1
-            else:
-                count_correct_list_update += 1
-        if count_correct_list_update < threshold_vote_list:
+        if numpy.count_nonzero(lj_vote_sampled[i, :] != -1) < threshold_vote_list:
             lj_vote_sampled[i, :, :] = -1
 
     compare_correct_vote_producer_ids = get_merged_list_ids(num_of_producers, lj_vote_sampled, threshold_vote_list)
@@ -177,8 +168,8 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
 def parse_args():
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('--p', type=int, default=200, help='Number of producers')
-    parser.add_argument('--runs', type=int, default=10, help='Number of runs')
-    parser.add_argument('--producer', type=float, default=0.75, help='Proportion of correct producers')
+    parser.add_argument('--runs', type=int, default=50, help='Number of runs')
+    parser.add_argument('--producer', type=float, default=0.8, help='Proportion of correct producers')
     parser.add_argument('--update', type=float, default=0.8, help='Proportion of collected updates per producer')
     parser.add_argument('--vote', type=float, default=0.8, help='Proportion of collected votes per producer')
     parser.add_argument('--final', type=float, default=0.8, help='Proportion of collected final votes')
@@ -191,8 +182,9 @@ if __name__ == '__main__':
     res = numpy.array([calculate_lists_rate(args.p, args.producer, args.update, args.vote, args.final)
                        for _ in range(args.runs)])
 
-    print("Parameters: P = {}. {} runs \n propCorrectProducer = {} \n propCollectedUpdate{} \n propCollectedVote{} "
-          "\n propCollectedFinalVote \n ".format(args.p, args.runs, args.producer, args.update, args.vote, args.final))
+    print("Parameters: P = {}. {} runs \n propCorrectProducer = {} \n propCollectedUpdate = {} \n propCollectedVote "
+          "= {} \n propCollectedFinalVote = {}\n ".format(args.p, args.runs, args.producer, args.update, args.vote,
+                                                          args.final))
     print("############################")
     print("Averages:")
     print("{:10.3f} % producers issue correct Ln(prod)".format(numpy.mean(res[:, 0]) / args.p * 100))
@@ -204,4 +196,5 @@ if __name__ == '__main__':
     print("{:10.3f} % runs with no missing data for Ln(vote)".format((1-numpy.count_nonzero(res[:, 1] - args.p) /
                                                                       args.runs) * 100))
     print("############################")
-    print("{:10.3f} % successful runs".format(numpy.count_nonzero(res[:, 1] >= args.p/2) / args.runs * 100))
+    print("{:10.3f} % successful runs ( > 50% producers broadcast same update)".format(numpy.count_nonzero(
+        res[:, 1] > args.p/2) / args.runs * 100))
