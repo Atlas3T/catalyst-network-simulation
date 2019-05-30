@@ -58,6 +58,7 @@ def run_experiment(spec, step_producer, end_producer, step_prop, end_prop, runs,
 
     return list_tests_pass
 
+
 # Functions for output results
 def get_result_output(num_of_producers, prop_correct_producers, runs, results):
     avg_prod = numpy.mean(results[:, 0]) / num_of_producers
@@ -77,10 +78,30 @@ def get_result_output(num_of_producers, prop_correct_producers, runs, results):
 
 def print_result_output(spec, runs, output):
     print(f'Parameters: P = {spec["num_of_producers"]} ({runs} runs)')
-    print(f'PropCorrectProducer = {spec["prop_correct_producers"]*100}%')
-    print(f'PropCollectedUpdate = {spec["prop_collected_update"]*100}%')
-    print(f'PropCollectedVote = {spec["prop_collected_vote"]*100}%')
-    print(f'PropCollectedFinalVote = {spec["prop_collected_final_vote"]*100}%')
+    print(f'PropCorrectProducer = {spec["prop_correct_producers"] * 100}%')
+    print(f'PropCollectedUpdate = {spec["prop_collected_update"] * 100}%')
+    print(f'PropCollectedVote = {spec["prop_collected_vote"] * 100}%')
+    print(f'PropCollectedFinalVote = {spec["prop_collected_final_vote"] * 100}%')
+    print('############################')
+    print('Averages:')
+    print(f'{output["avg_prod"] * 100:10.3f} % producers issue correct Ln(prod)')
+    print(f'{output["avg_vote"] * 100:10.3f} % producers issue correct Ln(vote)')
+    print('Successful runs:')
+    print(f'{output["num_list100_prod"] * 100:10.3f} % runs with no missing data for Ln(prod)')
+    print(f'{output["num_list100_vote"] * 100:10.3f} % runs with no missing data for Ln(vote)')
+    print('Summary:')
+    print(f'{output["num_pass"] * 100:10.3f} % successful runs ( > 50% producers broadcast same update)')
+    print('############################')
+
+
+def print_result_output_simple(num_of_producers, prop_correct_producers, prop_collected_update, prop_collected_vote,
+                               prop_collected_final_vote, runs, output):
+
+    print(f'Parameters: P = {num_of_producers} ({runs} runs)')
+    print(f'PropCorrectProducer = {prop_correct_producers*100}%')
+    print(f'PropCollectedUpdate = {prop_collected_update*100}%')
+    print(f'PropCollectedVote = {prop_collected_vote*100}%')
+    print(f'PropCollectedFinalVote = {prop_collected_final_vote*100}%')
     print('############################')
     print('Averages:')
     print(f'{output["avg_prod"]*100:10.3f} % producers issue correct Ln(prod)')
@@ -299,7 +320,7 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('--p', type=int, default=200, help='Number of producers')
+    parser.add_argument('--p', type=int, default=100, help='Number of producers')
     parser.add_argument('--runs', type=int, default=10, help='Number of runs')
     parser.add_argument('--producer', type=float, default=0.8, help='Proportion of correct producers')
     parser.add_argument('--update', type=float, default=0.8, help='Proportion of collected updates per producer')
@@ -309,39 +330,41 @@ def parse_args():
 
 
 if __name__ == '__main__':
-    #args = parse_args()
-    #res = numpy.array([calculate_lists_rate(args.p, args.producer, args.update, args.vote, args.final)
-    #                   for _ in range(args.runs)])
 
-    spec = {
-        'num_of_producers': 100,
-        'prop_correct_producers': 0.75,
-        'prop_collected_update': 0.75,
-        'prop_collected_vote': 0.75,
-        'prop_collected_final_vote': 0.75
-    }
+    level_test = 2
 
-    #results = numpy.array([calculate_lists_rate(**spec) for _ in range(runs)])
+    if level_test == 0:
+        print(" No test selected")
 
-    #output = get_result_output(spec['num_of_producers'], spec['prop_correct_producers'], runs=runs, results=results)
+    if level_test == 1:
+        args = parse_args()
+        res = numpy.array([calculate_lists_rate(args.p, args.producer, args.update, args.vote, args.final)
+                           for _ in range(args.runs)])
+        output = get_result_output(args.p, args.producer, runs=args.runs, results=res)
+        print_result_output_simple(args.p, args.producer, args.update, args.vote, args.final, runs=args.runs,
+                                   output=output)
+    if level_test == 2:
+        spec = {
+            'num_of_producers': 100,
+            'prop_correct_producers': 0.75,
+            'prop_collected_update': 0.75,
+            'prop_collected_vote': 0.75,
+            'prop_collected_final_vote': 0.75
+        }
 
-    #print_result_output(spec, runs=runs, output=output)
+        step_producer = 100
+        end_producer = 501
+        step_prop = 0.1
+        end_prop = 0.96
 
-    #write_results_to_excel_file(spec, runs=runs, output=output)
+        spec_test = spec.copy()
+        runs_test = 10
+        list_pass_test = []
 
-    step_producer = 100
-    end_producer = 501
-    step_prop = 0.05
-    end_prop = 0.96
+        list_pass_test = run_experiment(spec_test, step_producer, end_producer, step_prop, end_prop, runs_test, [],
+                                        True)
 
-    spec_test = spec.copy()
-    runs_test = 10
-    list_pass_test = []
-
-    list_pass_test = run_experiment(spec_test, step_producer, end_producer, step_prop, end_prop, runs_test, [], True)
-
-    spec_full = spec.copy()
-    runs_full = 100
-    list_pass_full = run_experiment(spec_full, step_producer, end_producer, step_prop, end_prop, runs_full,
-                                    list_pass_test, False)
-
+        spec_full = spec.copy()
+        runs_full = 100
+        list_pass_full = run_experiment(spec_full, step_producer, end_producer, step_prop, end_prop, runs_full,
+                                        list_pass_test, False)
