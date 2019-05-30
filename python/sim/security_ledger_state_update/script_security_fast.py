@@ -331,7 +331,7 @@ def parse_args():
 
 if __name__ == '__main__':
 
-    level_test = 2
+    level_test = 0
 
     if level_test == 0:
         print(" No test selected")
