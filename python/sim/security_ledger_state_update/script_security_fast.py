@@ -7,9 +7,56 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment
 from openpyxl.utils import get_column_letter
-from openpyxl.styles import PatternFill
 import os.path
-import xlsxwriter
+
+
+def run_experiment(spec, step_producer, end_producer, step_prop, end_prop, runs, list_test, test):
+
+    list_tests_pass = []
+    i_loop = 0
+    start_producer = spec['num_of_producers']
+    start_prop = spec['prop_correct_producers']
+    for ind_p in range(start_producer, end_producer, step_producer):
+        spec['num_of_producers'] = ind_p
+        spec['prop_correct_producers'] = start_prop
+        while spec['prop_correct_producers'] < end_prop:
+            spec['prop_collected_update'] = start_prop
+            while spec['prop_collected_update'] < end_prop:
+                spec['prop_collected_vote'] = start_prop
+                while spec['prop_collected_vote'] < end_prop:
+                    spec['prop_collected_final_vote'] = start_prop
+                    while spec['prop_collected_final_vote'] < end_prop:
+                        if test is True or list_test[i_loop] == 1:
+                            results = numpy.array([calculate_lists_rate(**spec) for _ in range(runs)])
+                            num_pass = numpy.count_nonzero(results[:, 1] > ind_p / 2) / runs
+
+                            if test is True:
+                                if num_pass < 0.1:
+                                    list_tests_pass.append(0)
+                                else:
+                                    list_tests_pass.append(1)
+                                print("P = ", ind_p, ", prod = ", spec['prop_correct_producers'],
+                                      ", udpate = ", spec['prop_collected_update'],
+                                      ", vote = ", spec['prop_collected_vote'],
+                                      ", final vote = ", spec['prop_collected_final_vote'],
+                                      ", pass = ", list_tests_pass[i_loop])
+                            else:
+                                output = get_result_output(spec['num_of_producers'], spec['prop_correct_producers'],
+                                                           runs=runs, results=results)
+                                write_results_to_excel_file(spec, runs=runs, output=output)
+
+                                print("P = ", ind_p, ", prod = ", spec['prop_correct_producers'],
+                                      ", udpate = ", spec['prop_collected_update'],
+                                      ", vote = ", spec['prop_collected_vote'],
+                                      ", final vote = ", spec['prop_collected_final_vote'],
+                                      ", stored")
+                        i_loop += 1
+                        spec['prop_collected_final_vote'] += step_prop
+                    spec['prop_collected_vote'] += step_prop
+                spec['prop_collected_update'] += step_prop
+            spec['prop_correct_producers'] += step_prop
+
+    return list_tests_pass
 
 # Functions for output results
 def get_result_output(num_of_producers, prop_correct_producers, runs, results):
@@ -107,6 +154,7 @@ def get_list_producers_who_found_majority(num_producer, id_correct_producers, co
     for i in range(num_producer):
         k_maj = numpy.count_nonzero(id_correct_producers[collected_data_ids[i, :]] == 1)
         ratio_maj = k_maj/num_collected_data
+        #print(num_collected_data,", ",ratio_maj)
         ratio_threshold = 0.5 + 4.22 * math.sqrt(ratio_maj * (1 - ratio_maj) / num_collected_data)
         majority_found[i] = 1 if ratio_maj > ratio_threshold else 0
     return majority_found
@@ -221,7 +269,7 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
     lj_vote = numpy.zeros((num_of_correct_updates, num_of_collected_votes), int)
     for i in range(num_of_correct_updates):
         majority_i = get_list_producers_who_found_majority(num_of_collected_votes, correct_update_flags,
-                                                           lj_prod_sampled[i, :, :], num_of_collected_votes)
+                                                           lj_prod_sampled[i, :, :], num_of_collected_updates)
 
         lj_vote[i, :] = [collected_vote_ids[i, k] if majority_i[k] == 1 and k in producer_ids_full_list_prod else -1
                          for k in range(num_of_collected_votes)]
@@ -265,31 +313,35 @@ if __name__ == '__main__':
     #res = numpy.array([calculate_lists_rate(args.p, args.producer, args.update, args.vote, args.final)
     #                   for _ in range(args.runs)])
 
-    runs = 10
-
     spec = {
-        'num_of_producers': 200,
-        'prop_correct_producers': 0.8,
-        'prop_collected_update': 0.8,
-        'prop_collected_vote': 0.8,
-        'prop_collected_final_vote': 0.8
+        'num_of_producers': 100,
+        'prop_correct_producers': 0.75,
+        'prop_collected_update': 0.75,
+        'prop_collected_vote': 0.75,
+        'prop_collected_final_vote': 0.75
     }
 
-    # spec['prop_correct_producers'] += 0.1
+    #results = numpy.array([calculate_lists_rate(**spec) for _ in range(runs)])
 
-    results = numpy.array([calculate_lists_rate(**spec) for _ in range(runs)])
+    #output = get_result_output(spec['num_of_producers'], spec['prop_correct_producers'], runs=runs, results=results)
 
-    output = get_result_output(spec['num_of_producers'], spec['prop_correct_producers'], runs=runs, results=results)
+    #print_result_output(spec, runs=runs, output=output)
 
-    print_result_output(spec, runs=runs, output=output)
+    #write_results_to_excel_file(spec, runs=runs, output=output)
 
-    write_results_to_excel_file(spec, runs=runs, output=output)
+    step_producer = 100
+    end_producer = 501
+    step_prop = 0.05
+    end_prop = 0.96
 
+    spec_test = spec.copy()
+    runs_test = 10
+    list_pass_test = []
 
-'''
-p [ 100, 500], step 50
-producer 0.75, 0.8, 0.85, 0.9, 0.95
-try runs = 10
-if success run=1000
+    list_pass_test = run_experiment(spec_test, step_producer, end_producer, step_prop, end_prop, runs_test, [], True)
 
-'''
+    spec_full = spec.copy()
+    runs_full = 100
+    list_pass_full = run_experiment(spec_full, step_producer, end_producer, step_prop, end_prop, runs_full,
+                                    list_pass_test, False)
+
