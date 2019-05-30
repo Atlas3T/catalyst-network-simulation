@@ -3,7 +3,97 @@ import random
 import math
 import argparse
 from itertools import chain
+from openpyxl import Workbook
+from openpyxl import load_workbook
+from openpyxl.styles import Alignment
+from openpyxl.utils import get_column_letter
+from openpyxl.styles import PatternFill
+import os.path
+import xlsxwriter
 
+# Functions for output results
+def get_result_output(num_of_producers, prop_correct_producers, runs, results):
+    avg_prod = numpy.mean(results[:, 0]) / num_of_producers
+    avg_vote = numpy.mean(results[:, 1]) / num_of_producers
+    num_list100_prod = (1 - numpy.count_nonzero(results[:, 0] - prop_correct_producers * num_of_producers) / runs)
+    num_list100_vote = (1 - numpy.count_nonzero(results[:, 1] - num_of_producers) / runs)
+    num_pass = numpy.count_nonzero(results[:, 1] > num_of_producers / 2) / runs
+
+    return {
+        'avg_prod': avg_prod,
+        'avg_vote': avg_vote,
+        'num_list100_prod': num_list100_prod,
+        'num_list100_vote': num_list100_vote,
+        'num_pass': num_pass
+    }
+
+
+def print_result_output(spec, runs, output):
+    print(f'Parameters: P = {spec["num_of_producers"]} ({runs} runs)')
+    print(f'PropCorrectProducer = {spec["prop_correct_producers"]*100}%')
+    print(f'PropCollectedUpdate = {spec["prop_collected_update"]*100}%')
+    print(f'PropCollectedVote = {spec["prop_collected_vote"]*100}%')
+    print(f'PropCollectedFinalVote = {spec["prop_collected_final_vote"]*100}%')
+    print('############################')
+    print('Averages:')
+    print(f'{output["avg_prod"]*100:10.3f} % producers issue correct Ln(prod)')
+    print(f'{output["avg_vote"]*100:10.3f} % producers issue correct Ln(vote)')
+    print('Successful runs:')
+    print(f'{output["num_list100_prod"]*100:10.3f} % runs with no missing data for Ln(prod)')
+    print(f'{output["num_list100_vote"]*100:10.3f} % runs with no missing data for Ln(vote)')
+    print('Summary:')
+    print(f'{output["num_pass"]*100:10.3f} % successful runs ( > 50% producers broadcast same update)')
+    print('############################')
+
+
+def initiate_worksheet(workbook, sheet_title):
+    sheet_result = workbook.worksheets[workbook.index(workbook[sheet_title])]
+    ind_col = 1
+    if sheet_result['A1'].value is None:
+        name_cols = ['Total Producers', '% Correct Producers', '% Collected Updates', '% Collected Votes',
+                     '% Collected Final Votes', 'runs', 'Avg. % producers issue correct Ln(prod)',
+                     'Avg. % producers issue correct Ln(vote)', '% runs with no missing data for Ln(prod)',
+                     '% runs with no missing data for Ln(vote)',
+                     '% successful runs w/ > 50% producers broadcast same update']
+        for name_col in name_cols:
+            sheet_result.cell(row=1, column=ind_col).value = name_col
+            sheet_result.column_dimensions[get_column_letter(ind_col)].width = 20
+            sheet_result.cell(row=1, column=ind_col).alignment = Alignment(wrap_text=True)
+            ind_col += 1
+    return sheet_result
+
+
+def write_results_to_excel_file(spec, runs, output, path_name="Result_simulation_security_ledger_update.xlsx"):
+
+    wb = Workbook()
+    if os.path.isfile(path_name):
+        wb = load_workbook(path_name)
+
+    sheet_result_title = "P_" + str(spec['num_of_producers'])
+    if sheet_result_title not in wb.sheetnames:
+        wb.create_sheet(sheet_result_title)
+
+    sheet_result = initiate_worksheet(wb, sheet_result_title)
+    ind_col = 1
+    ind_row = 1
+    while sheet_result.cell(row=ind_row, column=ind_col).value is not None:
+        ind_row += 1
+    # parameters
+    for col_exc in spec:
+        sheet_result.cell(row=ind_row, column=ind_col).value = spec[col_exc]
+        ind_col += 1
+    # runs
+    sheet_result.cell(row=ind_row, column=ind_col).value = runs
+    ind_col += 1
+    # output
+    for col_out in output:
+        sheet_result.cell(row=ind_row, column=ind_col).value = output[col_out]
+        ind_col += 1
+
+    wb.save(path_name)
+
+
+# Functions for calculate_lists_rate
 def get_list_producer_ids(num_producers, num_sample):
     list_ids = numpy.zeros((num_producers, num_sample), int)
     for i in range(num_producers):
@@ -17,7 +107,7 @@ def get_list_producers_who_found_majority(num_producer, id_correct_producers, co
     for i in range(num_producer):
         k_maj = numpy.count_nonzero(id_correct_producers[collected_data_ids[i, :]] == 1)
         ratio_maj = k_maj/num_collected_data
-        ratio_threshold = 0.5 + 4 * math.sqrt(ratio_maj * (1 - ratio_maj) / num_collected_data)
+        ratio_threshold = 0.5 + 4.22 * math.sqrt(ratio_maj * (1 - ratio_maj) / num_collected_data)
         majority_found[i] = 1 if ratio_maj > ratio_threshold else 0
     return majority_found
 
@@ -127,9 +217,6 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
     producer_ids_full_list_prod = get_ids_with_full_lists(num_of_correct_updates, correct_update_ids,
                                                           compare_correct_update_ids)
 
-    # percentage_correct_list_prod = len(producer_ids_full_list_prod)/num_of_producers
-    # print("{:10.3f} % identical Ln(prod)".format(percentage_correct_list_prod * 100))
-
     # List of producer ids associated to correct vote collected by producer, -1 otherwise
     lj_vote = numpy.zeros((num_of_correct_updates, num_of_collected_votes), int)
     for i in range(num_of_correct_updates):
@@ -157,9 +244,6 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
     producer_ids_full_list_vote = get_ids_with_full_lists(num_of_producers, correct_vote_ids,
                                                           compare_correct_vote_producer_ids)
 
-    # percentage_correct_list_vote = len(producer_ids_full_list_vote)/num_of_producers
-    # print("{:10.3f} % identical Ln(vote)".format(percentage_correct_list_vote * 100))
-
     result = [len(producer_ids_full_list_prod), len(producer_ids_full_list_vote)]
 
     return result
@@ -168,7 +252,7 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
 def parse_args():
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('--p', type=int, default=200, help='Number of producers')
-    parser.add_argument('--runs', type=int, default=50, help='Number of runs')
+    parser.add_argument('--runs', type=int, default=10, help='Number of runs')
     parser.add_argument('--producer', type=float, default=0.8, help='Proportion of correct producers')
     parser.add_argument('--update', type=float, default=0.8, help='Proportion of collected updates per producer')
     parser.add_argument('--vote', type=float, default=0.8, help='Proportion of collected votes per producer')
@@ -177,24 +261,35 @@ def parse_args():
 
 
 if __name__ == '__main__':
-    args = parse_args()
+    #args = parse_args()
+    #res = numpy.array([calculate_lists_rate(args.p, args.producer, args.update, args.vote, args.final)
+    #                   for _ in range(args.runs)])
 
-    res = numpy.array([calculate_lists_rate(args.p, args.producer, args.update, args.vote, args.final)
-                       for _ in range(args.runs)])
+    runs = 10
 
-    print("Parameters: P = {}. {} runs \n propCorrectProducer = {} \n propCollectedUpdate = {} \n propCollectedVote "
-          "= {} \n propCollectedFinalVote = {}\n ".format(args.p, args.runs, args.producer, args.update, args.vote,
-                                                          args.final))
-    print("############################")
-    print("Averages:")
-    print("{:10.3f} % producers issue correct Ln(prod)".format(numpy.mean(res[:, 0]) / args.p * 100))
-    print("{:10.3f} % producers issue correct Ln(vote)".format(numpy.mean(res[:, 1]) / args.p * 100))
-    print("############################")
-    print("Successful runs:")
-    print("{:10.3f} % runs with no missing data for Ln(prod)".format((1-numpy.count_nonzero(res[:, 0] - args.producer *
-                                                                                            args.p) / args.runs) * 100))
-    print("{:10.3f} % runs with no missing data for Ln(vote)".format((1-numpy.count_nonzero(res[:, 1] - args.p) /
-                                                                      args.runs) * 100))
-    print("############################")
-    print("{:10.3f} % successful runs ( > 50% producers broadcast same update)".format(numpy.count_nonzero(
-        res[:, 1] > args.p/2) / args.runs * 100))
+    spec = {
+        'num_of_producers': 200,
+        'prop_correct_producers': 0.8,
+        'prop_collected_update': 0.8,
+        'prop_collected_vote': 0.8,
+        'prop_collected_final_vote': 0.8
+    }
+
+    # spec['prop_correct_producers'] += 0.1
+
+    results = numpy.array([calculate_lists_rate(**spec) for _ in range(runs)])
+
+    output = get_result_output(spec['num_of_producers'], spec['prop_correct_producers'], runs=runs, results=results)
+
+    print_result_output(spec, runs=runs, output=output)
+
+    write_results_to_excel_file(spec, runs=runs, output=output)
+
+
+'''
+p [ 100, 500], step 50
+producer 0.75, 0.8, 0.85, 0.9, 0.95
+try runs = 10
+if success run=1000
+
+'''
