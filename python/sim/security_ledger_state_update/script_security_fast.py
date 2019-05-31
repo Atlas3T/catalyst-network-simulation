@@ -10,10 +10,8 @@ from openpyxl.utils import get_column_letter
 import os.path
 
 
-def run_experiment(spec, step_producer, end_producer, step_prop, end_prop, runs, list_test, test):
+def run_experiment_grad(spec, step_producer, end_producer, step_prop, end_prop, runs_test, runs_full):
 
-    list_tests_pass = []
-    i_loop = 0
     start_producer = spec['num_of_producers']
     start_prop = spec['prop_correct_producers']
     for ind_p in range(start_producer, end_producer, step_producer):
@@ -26,37 +24,27 @@ def run_experiment(spec, step_producer, end_producer, step_prop, end_prop, runs,
                 while spec['prop_collected_vote'] < end_prop:
                     spec['prop_collected_final_vote'] = start_prop
                     while spec['prop_collected_final_vote'] < end_prop:
-                        if test is True or list_test[i_loop] == 1:
-                            results = numpy.array([calculate_lists_rate(**spec) for _ in range(runs)])
-                            num_pass = numpy.count_nonzero(results[:, 1] > ind_p / 2) / runs
+                        results_test = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_test)])
+                        test_pass = numpy.count_nonzero(results_test[:, 1] > ind_p / 2) / runs_test
+                        if test_pass > 0.2:
+                            results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
 
-                            if test is True:
-                                if num_pass < 0.1:
-                                    list_tests_pass.append(0)
-                                else:
-                                    list_tests_pass.append(1)
-                                print("P = ", ind_p, ", prod = ", spec['prop_correct_producers'],
-                                      ", udpate = ", spec['prop_collected_update'],
-                                      ", vote = ", spec['prop_collected_vote'],
-                                      ", final vote = ", spec['prop_collected_final_vote'],
-                                      ", pass = ", list_tests_pass[i_loop])
-                            else:
-                                output = get_result_output(spec['num_of_producers'], spec['prop_correct_producers'],
-                                                           runs=runs, results=results)
-                                write_results_to_excel_file(spec, runs=runs, output=output)
+                            results = numpy.concatenate((results_test, results_full))
+                            runs = runs_full + runs_test
+                            outputs = get_result_output(spec['num_of_producers'], spec['prop_correct_producers'],
+                                                       runs=runs, results=results)
+                            write_results_to_excel_file(spec, runs=runs, output=outputs)
 
-                                print("P = ", ind_p, ", prod = ", spec['prop_correct_producers'],
-                                      ", udpate = ", spec['prop_collected_update'],
-                                      ", vote = ", spec['prop_collected_vote'],
-                                      ", final vote = ", spec['prop_collected_final_vote'],
-                                      ", stored")
-                        i_loop += 1
+                            print("P = ", ind_p, ", prod = ", spec['prop_correct_producers'],
+                                  ", udpate = ", spec['prop_collected_update'],
+                                  ", vote = ", spec['prop_collected_vote'],
+                                  ", final vote = ", spec['prop_collected_final_vote'], ", stored")
                         spec['prop_collected_final_vote'] += step_prop
                     spec['prop_collected_vote'] += step_prop
                 spec['prop_collected_update'] += step_prop
             spec['prop_correct_producers'] += step_prop
 
-    return list_tests_pass
+    return True
 
 
 # Functions for output results
@@ -358,13 +346,8 @@ if __name__ == '__main__':
         end_prop = 0.96
 
         spec_test = spec.copy()
-        runs_test = 10
+        run_test = 5
+        run_full = 95
         list_pass_test = []
 
-        list_pass_test = run_experiment(spec_test, step_producer, end_producer, step_prop, end_prop, runs_test, [],
-                                        True)
-
-        spec_full = spec.copy()
-        runs_full = 100
-        list_pass_full = run_experiment(spec_full, step_producer, end_producer, step_prop, end_prop, runs_full,
-                                        list_pass_test, False)
+        complete = run_experiment_grad(spec_test, step_producer, end_producer, step_prop, end_prop, run_test, run_full)
