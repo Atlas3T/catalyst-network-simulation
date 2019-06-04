@@ -36,36 +36,57 @@ if __name__ == '__main__':
 
     #This function checks that both the excel file and the excel sheets can be opened#  
     filename = 'test.xlsx'
-    P_Value = "P_100"
-    if check_excel_sheets_readable(filename, P_Value) is not True:
+    node_p = "P_100"
+    if check_excel_sheets_readable(filename, node_p) is not True:
          print("abort")
          exit()
 
     #Here we extract the cells from the array
-    Full_Array = worksheet_to_array(filename,P_Value)
+    Full_Array = worksheet_to_array(filename,node_p)
     # print(Full_Array)
 
-    unique_a = np.unique(Full_Array[:,0], return_counts=False)
+    node_p_tree = Node(node_p)
+
+    unique_a = np.unique(Full_Array[:,0], return_counts=False) #Produces a list of unique I'Ds for first collumn
     print("a -- ", unique_a)
-    unique_a_it = unique_a[0]
-    for i in Full_Array: 
-        while Full_Array[i,0] == unique_a_it:
-            print(i, " ",Full_Array[i,0])
-        unique_a_it = Full_Array[i,0]
-        
+    ind_unique = 0 
+    unique_a_it_parent = unique_a[ind_unique]
+    parent_top_it = unique_a_it_parent #From those unique values it selects the first value from that list 
+    std_parent = "parent: " + parent_top_it
+    node_parent_top_it = Node("{}".format(std_parent), parent=node_p_tree) #Creates the top level i.e. p=100
+    # cretae the first child of the first parent
 
-    # Load work book, and sheet with "P_"+str(p) 
-    # example
-    udo = Node(P_Value)
-    marc = Node("Marc", parent=udo)
-    lian = Node("Lian", parent=marc)
-    dan = Node("Dan", parent=udo)
-    jet = Node("Jet", parent=dan)
-    jan = Node("Jan", parent=dan)
-    joe = Node("Joe", parent=dan)
+    unique_b = np.unique(Full_Array[:,1], return_counts=False) #Produces a list of unique I'Ds for first collumn
+    print("b -- ", unique_b)
+    ind_unique_child = 0 
+    unique_b_it_child = unique_b[ind_unique_child] #From those unique values it selects the first value from that list 
+    child_top_it = unique_b_it_child
+    std_child = "child: " + child_top_it 
+    node_child_top_it = Node("{}".format(std_child), parent=node_parent_top_it) #Creates the top level i.e. p=100
 
-    for pre, fill, node in RenderTree(udo):
-        print("%s%s" % (pre, node.name))
+    #create the parent node 1
+    for rowa in Full_Array: #for each row in the full array 
+        if rowa[0] == unique_a_it_parent: #if first row = 
+            #creatre a child 
+            ind_unique_child += 1
+            unique_b_it = unique_b[ind_unique_child]
+            child_top_it = unique_b_it_child
+            std_child = "parent: " + child_top_it
+            node_child_it  = Node("{}".format(std_parent), parent=node_parent_top_it)
+        else:
+            ind_unique += 1
+            unique_a_it = unique_a[ind_unique]
+            parent_top_it = unique_a_it
+            std_parent = "parent: " + parent_top_it
+            node_parent_top_it  = Node("{}".format(std_parent), parent=node_p_tree)
+            # create the first child
+       
+    for pre, fill, node in RenderTree(node_p_tree):
+        print("%s%s" % (pre, node.node_p_tree)) 
+
+    #    while Full_Array[i,0] == unique_a_it:
+    #        print(i, " ",Full_Array[i,0])
+    #    unique_a_it = Full_Array[i,0]
 
     #DotExporter(udo).to_picture("udo.png")
 
