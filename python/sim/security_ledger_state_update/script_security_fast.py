@@ -14,6 +14,7 @@ def run_experiment_grad(spec, step_producer, end_producer, step_prop, end_prop, 
 
     start_producer = spec['num_of_producers']
     start_prop = spec['prop_correct_producers']
+    full_pass = 0
     for ind_p in range(start_producer, end_producer, step_producer):
         spec['num_of_producers'] = ind_p
         spec['prop_correct_producers'] = start_prop
@@ -23,28 +24,29 @@ def run_experiment_grad(spec, step_producer, end_producer, step_prop, end_prop, 
                 spec['prop_collected_vote'] = start_prop
                 while spec['prop_collected_vote'] < end_prop:
                     spec['prop_collected_final_vote'] = start_prop
-                    while spec['prop_collected_final_vote'] < end_prop:
+                    while spec['prop_collected_final_vote'] < end_prop or full_pass < 1:
                         results_test = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_test)])
-                        test_pass = numpy.count_nonzero(results_test[:, 1] > ind_p / 2) / runs_test
+                        test_pass = numpy.count_nonzero(results_test[:, 1] > ind_p / 2) / results_test
                         if test_pass > 0.2:
                             results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
 
                             results = numpy.concatenate((results_test, results_full))
                             runs = runs_full + runs_test
                             outputs = get_result_output(spec['num_of_producers'], spec['prop_correct_producers'],
-                                                       runs=runs, results=results)
+                                                        runs=runs, results=results)
                             write_results_to_excel_file(spec, runs=runs, output=outputs)
 
-                            print("P = ", ind_p, ", prod = ", spec['prop_correct_producers'],
-                                  ", udpate = ", spec['prop_collected_update'],
-                                  ", vote = ", spec['prop_collected_vote'],
-                                  ", final vote = ", spec['prop_collected_final_vote'], ", stored")
+                            full_pass = (1 - numpy.count_nonzero(results[:, 1] - ind_p) / runs)
+                            print(f"P = {ind_p}, "
+                                  f"prod = {spec['prop_correct_producers']}, "
+                                  f"update = {spec['prop_collected_update']}, "
+                                  f"vote = {spec['prop_collected_vote']}, "
+                                  f"final vote = {spec['prop_collected_final_vote']}")
                         spec['prop_collected_final_vote'] += step_prop
                     spec['prop_collected_vote'] += step_prop
+                    full_pass = 0
                 spec['prop_collected_update'] += step_prop
             spec['prop_correct_producers'] += step_prop
-
-    return True
 
 
 # Functions for output results
@@ -350,4 +352,4 @@ if __name__ == '__main__':
         run_full = 95
         list_pass_test = []
 
-        complete = run_experiment_grad(spec_test, step_producer, end_producer, step_prop, end_prop, run_test, run_full)
+        run_experiment_grad(spec_test, step_producer, end_producer, step_prop, end_prop, run_test, run_full)
