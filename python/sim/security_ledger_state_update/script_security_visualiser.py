@@ -47,42 +47,90 @@ if __name__ == '__main__':
 
     node_p_tree = Node(node_p)
 
-    unique_a = np.unique(Full_Array[:,0], return_counts=False) #Produces a list of unique I'Ds for first collumn
-    print("a -- ", unique_a)
-    ind_unique = 0 
-    unique_a_it_parent = unique_a[ind_unique]
-    parent_top_it = unique_a_it_parent #From those unique values it selects the first value from that list 
-    std_parent = "parent: " + parent_top_it
-    node_parent_top_it = Node("{}".format(std_parent), parent=node_p_tree) #Creates the top level i.e. p=100
+    #C_n, C_min, V_min, U_min
+    unique_cn = np.unique(Full_Array[:,0], return_counts=False) #Produces a list of unique I'Ds for first collumn
+    print("Cn -- ", unique_cn)
+    unique_cn_id = 0 
+    unique_cn_val = unique_cn[unique_cn_id]
+    unique_cn_it = unique_cn_val #From those unique values it selects the first value from that list 
+    std_cn = "Cn: " + unique_cn_it
+    node_cn_it = Node("{}".format(std_cn), parent=node_p_tree) #Creates the top level i.e. p=100
     # cretae the first child of the first parent
 
-    unique_b = np.unique(Full_Array[:,1], return_counts=False) #Produces a list of unique I'Ds for first collumn
-    print("b -- ", unique_b)
-    ind_unique_child = 0 
-    unique_b_it_child = unique_b[ind_unique_child] #From those unique values it selects the first value from that list 
-    child_top_it = unique_b_it_child
-    std_child = "child: " + child_top_it 
-    node_child_top_it = Node("{}".format(std_child), parent=node_parent_top_it) #Creates the top level i.e. p=100
+    
+    unique_cmin = np.unique(Full_Array[Full_Array[:,0] == unique_cn[unique_cn_id],1], return_counts=False) #Produces a list of unique I'Ds for first collumn
+    print("Cmin -- ", unique_cmin)
+    unique_cmin_id = 0 
+    unique_cmin_val = unique_cmin[unique_cmin_id]
+    unique_cmin_it = unique_cmin_val #From those unique values it selects the first value from that list 
+    std_cmin = "Cmin: " + unique_cmin_it
+    node_cmin_it = Node("{}".format(std_cmin), parent=node_cn_it) #Creates the top level i.e. p=100
+
+    #unique_vmin = np.unique(Full_Array([(Full_Array[:,0] == unique_cn[unique_cn_id],1) and (Full_Array[:,1] == unique_cmin[unique_cmin_id]),2], return_counts=False))  #Produces a list of unique I'Ds for first collumn
+    unique_vmin = np.unique(Full_Array[Full_Array[:,1] == unique_cmin[unique_cmin_id],2], return_counts=False)
+    print("Vmin -- ", unique_vmin)
+    unique_vmin_id = 0 
+    #unique_vmin_val = unique_vmin[unique_vmin_id]
+    unique_vmin_val = unique_vmin[unique_vmin_id]
+    unique_vmin_it = unique_vmin_val #From those unique values it selects the first value from that list 
+    std_vmin = "Vmin: " + unique_vmin_it
+    node_vmin_it = Node("{}".format(std_vmin), parent=node_cmin_it) #Creates the top level i.e. p=100
+
 
     #create the parent node 1
     for rowa in Full_Array: #for each row in the full array 
-        if rowa[0] == unique_a_it_parent: #if first row = 
+
+        if rowa[0] == unique_cn_val:
+            if rowa[1] == unique_cmin_val: #if first row == to the parent ID
+                print("same")
+            
+            elif rowa[2] == unique_vmin_val:
+                print("same")
+            else:
+                unique_vmin_id += 1
+                unique_vmin_val = unique_vmin[unique_vmin_id]
+                unique_vmin_it = unique_vmin_val #From those unique values it selects the first value from that list 
+                std_vmin = "Vmin: " + unique_vmin_it
+                node_vmin_it = Node("{}".format(std_vmin), parent=node_cmin_it)
+                
+        elif rowa[0] == unique_cn_val: #if first row == to the parent ID
             #creatre a child 
-            ind_unique_child += 1
-            unique_b_it = unique_b[ind_unique_child]
-            child_top_it = unique_b_it_child
-            std_child = "parent: " + child_top_it
-            node_child_it  = Node("{}".format(std_parent), parent=node_parent_top_it)
+            if rowa[1] == unique_cmin_val:
+                print("same")
+            else:
+                unique_cmin_id += 1
+                unique_cmin_val = unique_cmin[unique_cmin_id]
+                unique_cmin_it = unique_cmin_val #From those unique values it selects the first value from that list 
+                std_cmin = "Cmin: " + unique_cmin_it
+                node_cmin_it = Node("{}".format(std_cmin), parent=node_cn_it) #Creates the top level i.e. p=100
         else:
-            ind_unique += 1
-            unique_a_it = unique_a[ind_unique]
-            parent_top_it = unique_a_it
-            std_parent = "parent: " + parent_top_it
-            node_parent_top_it  = Node("{}".format(std_parent), parent=node_p_tree)
-            # create the first child
+            unique_cn_id += 1
+            print(unique_cn_id)
+            unique_cn_val = unique_cn[unique_cn_id]
+            unique_cn_it = unique_cn_val
+            std_cn = "Cn: " + unique_cn_it
+            node_cn_it  = Node("{}".format(std_cn), parent=node_p_tree)
+
+            unique_cmin = np.unique(Full_Array[Full_Array[:,0] == unique_cn[unique_cn_id],1], return_counts=False) #Produces a list of unique I'Ds for first collumn
+            print("Cmin -- ", unique_cmin)
+            unique_cmin_id = 0 
+            unique_cmin_val = unique_cmin[unique_cmin_id]
+            unique_cmin_it = unique_cmin_val #From those unique values it selects the first value from that list 
+            std_cmin = "Cmin: " + unique_cmin_it
+            node_cmin_it = Node("{}".format(std_cmin), parent=node_cn_it) #Creates the top level i.e. p=100
+
+            
+            unique_vmin = np.unique(Full_Array[Full_Array[:,1] == unique_cmin[unique_cmin_id],2], return_counts=False)   #Produces a list of unique I'Ds for first collumn
+            print("Vmin -- ", unique_vmin)
+            unique_vmin_id = 0 
+            unique_vmin_val = unique_vmin[unique_vmin_id]
+            unique_vmin_it = unique_vmin_val #From those unique values it selects the first value from that list 
+            std_vmin = "Vmin: " + unique_vmin_it
+            node_vmin_it = Node("{}".format(std_vmin), parent=node_cmin_it) #Creates the top level i.e. p=100
+
        
     for pre, fill, node in RenderTree(node_p_tree):
-        print("%s%s" % (pre, node.node_p_tree)) 
+        print("%s%s" % (pre, node.name)) 
 
     #    while Full_Array[i,0] == unique_a_it:
     #        print(i, " ",Full_Array[i,0])
