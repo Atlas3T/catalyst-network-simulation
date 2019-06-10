@@ -14,8 +14,8 @@ def run_experiment_grad(spec, step_producer, end_producer, step_prop, end_prop, 
 
     start_producer = spec['num_of_producers']
     start_prop = spec['prop_correct_producers']
-    full_pass = 0
     for ind_p in range(start_producer, end_producer, step_producer):
+        list_pass_params = numpy.array([[1, 1, 1, 1]])
         spec['num_of_producers'] = ind_p
         spec['prop_correct_producers'] = start_prop
         while spec['prop_correct_producers'] < end_prop:
@@ -24,29 +24,71 @@ def run_experiment_grad(spec, step_producer, end_producer, step_prop, end_prop, 
                 spec['prop_collected_vote'] = start_prop
                 while spec['prop_collected_vote'] < end_prop:
                     spec['prop_collected_final_vote'] = start_prop
-                    while spec['prop_collected_final_vote'] < end_prop or full_pass < 1:
-                        results_test = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_test)])
-                        test_pass = numpy.count_nonzero(results_test[:, 1] > ind_p / 2) / results_test
-                        if test_pass > 0.2:
-                            results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
+                    while spec['prop_collected_final_vote'] < end_prop:
+                        list_temp_a = list_pass_params[
+                            (list_pass_params[:, 0] < spec['prop_correct_producers']) &
+                            (list_pass_params[:, 1] <= spec['prop_collected_update']) &
+                            (list_pass_params[:, 2] <= spec['prop_collected_vote']) &
+                            (list_pass_params[:, 3] <= spec['prop_collected_final_vote'])]
 
-                            results = numpy.concatenate((results_test, results_full))
-                            runs = runs_full + runs_test
-                            outputs = get_result_output(spec['num_of_producers'], spec['prop_correct_producers'],
-                                                        runs=runs, results=results)
-                            write_results_to_excel_file(spec, runs=runs, output=outputs)
+                        list_temp_b = list_pass_params[
+                            (list_pass_params[:, 0] == spec['prop_correct_producers']) &
+                            (list_pass_params[:, 1] < spec['prop_collected_update']) &
+                            (list_pass_params[:, 2] <= spec['prop_collected_vote']) &
+                            (list_pass_params[:, 3] <= spec['prop_collected_final_vote'])]
 
-                            full_pass = (1 - numpy.count_nonzero(results[:, 1] - ind_p) / runs)
-                            print(f"P = {ind_p}, "
-                                  f"prod = {spec['prop_correct_producers']}, "
-                                  f"update = {spec['prop_collected_update']}, "
-                                  f"vote = {spec['prop_collected_vote']}, "
-                                  f"final vote = {spec['prop_collected_final_vote']}")
+                        list_temp_c = list_pass_params[
+                            (list_pass_params[:, 0] == spec['prop_correct_producers']) &
+                            (list_pass_params[:, 1] == spec['prop_collected_update']) &
+                            (list_pass_params[:, 2] < spec['prop_collected_vote']) &
+                            (list_pass_params[:, 3] <= spec['prop_collected_final_vote'])]
+
+                        list_temp_d = list_pass_params[
+                            (list_pass_params[:, 0] == spec['prop_correct_producers']) &
+                            (list_pass_params[:, 1] == spec['prop_collected_update']) &
+                            (list_pass_params[:, 2] == spec['prop_collected_vote']) &
+                            (list_pass_params[:, 3] < spec['prop_collected_final_vote'])]
+
+                        if len(list_temp_a) == 0 and len(list_temp_b) == 0 and len(list_temp_c) == 0 \
+                                and len(list_temp_d) == 0:
+                            results_test = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_test)])
+                            test_pass = numpy.count_nonzero(results_test[:, 1] > ind_p / 2) / runs_test
+
+                            print("a=", spec['prop_correct_producers'], ", b=",
+                                  spec['prop_collected_update'], ", c=", spec['prop_collected_vote'],
+                                  ", d=", spec['prop_collected_final_vote'], " -->", test_pass)
+                            if test_pass > 0.2:
+                                results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
+
+                                results = numpy.concatenate((results_test, results_full))
+                                runs = runs_full + runs_test
+                                outputs = get_result_output(spec['num_of_producers'],
+                                                            spec['prop_correct_producers'],
+                                                            runs=runs, results=results)
+                                write_results_to_excel_file(spec, runs=runs, output=outputs,
+                                                            path_name="Result_simulation_security_500only.xlsx")
+                                full_pass = numpy.count_nonzero(results[:, 1] > ind_p / 2) / runs
+                                if numpy.count_nonzero(results[:, 1] > ind_p / 2) == runs:
+                                    set_params = [[spec['prop_correct_producers'],
+                                                  spec['prop_collected_update'],
+                                                  spec['prop_collected_vote'],
+                                                  spec['prop_collected_final_vote']]]
+                                    list_pass_params = numpy.concatenate((list_pass_params, set_params))
+                                    print(list_pass_params)
+                                print(f"P = {ind_p}, "
+                                      f"prod = {spec['prop_correct_producers']}, "
+                                      f"update = {spec['prop_collected_update']}, "
+                                      f"vote = {spec['prop_collected_vote']}, "
+                                      f"final vote = {spec['prop_collected_final_vote']} --> {full_pass}")
+
                         spec['prop_collected_final_vote'] += step_prop
+                        spec['prop_collected_final_vote'] = int(spec['prop_collected_final_vote']*10000)/10000
                     spec['prop_collected_vote'] += step_prop
-                    full_pass = 0
+                    spec['prop_collected_vote'] = int(spec['prop_collected_vote']*10000)/10000
                 spec['prop_collected_update'] += step_prop
+                spec['prop_collected_update'] = int(spec['prop_collected_update']*10000)/10000
             spec['prop_correct_producers'] += step_prop
+            spec['prop_correct_producers'] = int(spec['prop_correct_producers']*10000)/10000
 
 
 # Functions for output results
@@ -71,7 +113,7 @@ def print_result_output(spec, runs, output):
     print(f'PropCorrectProducer = {spec["prop_correct_producers"] * 100}%')
     print(f'PropCollectedUpdate = {spec["prop_collected_update"] * 100}%')
     print(f'PropCollectedVote = {spec["prop_collected_vote"] * 100}%')
-    print(f'PropCollectedFinalVote = {spec["prop_collected_final_vote"] * 100}%')
+    print(f'PropColl ectedFinalVote = {spec["prop_collected_final_vote"] * 100}%')
     print('############################')
     print('Averages:')
     print(f'{output["avg_prod"] * 100:10.3f} % producers issue correct Ln(prod)')
@@ -289,11 +331,13 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
     num_of_collected_final_votes = math.floor(prop_collected_final_vote * num_of_correct_updates)
 
     # Set of lj_vote collected by each producer
-    lj_vote_sampled = numpy.zeros((num_of_producers, num_of_collected_final_votes, num_of_collected_votes), int)
+    lj_vote_sampled = numpy.zeros((num_of_producers, min(num_of_collected_final_votes, num_of_collected_votes),
+                                   num_of_collected_votes), int)
     threshold_vote_list = len(correct_update_ids) / 2
 
     for i in range(num_of_producers):
-        lj_vote_sampled[i, :, :] = lj_vote[numpy.random.choice(lj_vote.shape[0], num_of_collected_final_votes,
+        lj_vote_sampled[i, :, :] = lj_vote[numpy.random.choice(lj_vote.shape[0], min(num_of_collected_final_votes,
+                                                                                     num_of_collected_votes),
                                                                replace=False), :]
         if numpy.count_nonzero(lj_vote_sampled[i, :] != -1) < threshold_vote_list:
             lj_vote_sampled[i, :, :] = -1
@@ -310,7 +354,7 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('--p', type=int, default=100, help='Number of producers')
+    parser.add_argument('--p', type=int, default=200, help='Number of producers')
     parser.add_argument('--runs', type=int, default=10, help='Number of runs')
     parser.add_argument('--producer', type=float, default=0.8, help='Proportion of correct producers')
     parser.add_argument('--update', type=float, default=0.8, help='Proportion of collected updates per producer')
@@ -321,7 +365,7 @@ def parse_args():
 
 if __name__ == '__main__':
 
-    level_test = 0
+    level_test = 2
 
     if level_test == 0:
         print(" No test selected")
@@ -335,16 +379,16 @@ if __name__ == '__main__':
                                    output=output)
     if level_test == 2:
         spec = {
-            'num_of_producers': 100,
+            'num_of_producers': 200,
             'prop_correct_producers': 0.75,
             'prop_collected_update': 0.75,
             'prop_collected_vote': 0.75,
             'prop_collected_final_vote': 0.75
         }
 
-        step_producer = 100
+        step_producer = 300
         end_producer = 501
-        step_prop = 0.1
+        step_prop = 0.05
         end_prop = 0.96
 
         spec_test = spec.copy()
@@ -353,3 +397,5 @@ if __name__ == '__main__':
         list_pass_test = []
 
         run_experiment_grad(spec_test, step_producer, end_producer, step_prop, end_prop, run_test, run_full)
+
+
