@@ -21,33 +21,33 @@ def run_experiment_grad(spec, step_producer, end_producer, step_prop, end_prop, 
         while spec['prop_correct_producers'] < end_prop:
             spec['prop_collected_update'] = start_prop
             while spec['prop_collected_update'] < end_prop:
-                spec['prop_collected_vote'] = start_prop
-                while spec['prop_collected_vote'] < end_prop:
-                    spec['prop_collected_final_vote'] = start_prop
-                    while spec['prop_collected_final_vote'] < end_prop:
+                spec['prop_collected_candidate'] = start_prop
+                while spec['prop_collected_candidate'] < end_prop:
+                    spec['prop_collected_vote'] = start_prop
+                    while spec['prop_collected_vote'] < end_prop:
                         list_temp_a = list_pass_params[
                             (list_pass_params[:, 0] < spec['prop_correct_producers']) &
                             (list_pass_params[:, 1] <= spec['prop_collected_update']) &
-                            (list_pass_params[:, 2] <= spec['prop_collected_vote']) &
-                            (list_pass_params[:, 3] <= spec['prop_collected_final_vote'])]
+                            (list_pass_params[:, 2] <= spec['prop_collected_candidate']) &
+                            (list_pass_params[:, 3] <= spec['prop_collected_vote'])]
 
                         list_temp_b = list_pass_params[
                             (list_pass_params[:, 0] == spec['prop_correct_producers']) &
                             (list_pass_params[:, 1] < spec['prop_collected_update']) &
-                            (list_pass_params[:, 2] <= spec['prop_collected_vote']) &
-                            (list_pass_params[:, 3] <= spec['prop_collected_final_vote'])]
+                            (list_pass_params[:, 2] <= spec['prop_collected_candidate']) &
+                            (list_pass_params[:, 3] <= spec['prop_collected_vote'])]
 
                         list_temp_c = list_pass_params[
                             (list_pass_params[:, 0] == spec['prop_correct_producers']) &
                             (list_pass_params[:, 1] == spec['prop_collected_update']) &
-                            (list_pass_params[:, 2] < spec['prop_collected_vote']) &
-                            (list_pass_params[:, 3] <= spec['prop_collected_final_vote'])]
+                            (list_pass_params[:, 2] < spec['prop_collected_candidate']) &
+                            (list_pass_params[:, 3] <= spec['prop_collected_vote'])]
 
                         list_temp_d = list_pass_params[
                             (list_pass_params[:, 0] == spec['prop_correct_producers']) &
                             (list_pass_params[:, 1] == spec['prop_collected_update']) &
-                            (list_pass_params[:, 2] == spec['prop_collected_vote']) &
-                            (list_pass_params[:, 3] < spec['prop_collected_final_vote'])]
+                            (list_pass_params[:, 2] == spec['prop_collected_candidate']) &
+                            (list_pass_params[:, 3] < spec['prop_collected_vote'])]
 
                         if len(list_temp_a) == 0 and len(list_temp_b) == 0 and len(list_temp_c) == 0 \
                                 and len(list_temp_d) == 0:
@@ -55,8 +55,8 @@ def run_experiment_grad(spec, step_producer, end_producer, step_prop, end_prop, 
                             test_pass = numpy.count_nonzero(results_test[:, 1] > ind_p / 2) / runs_test
 
                             print("a=", spec['prop_correct_producers'], ", b=",
-                                  spec['prop_collected_update'], ", c=", spec['prop_collected_vote'],
-                                  ", d=", spec['prop_collected_final_vote'], " -->", test_pass)
+                                  spec['prop_collected_update'], ", c=", spec['prop_collected_candidate'],
+                                  ", d=", spec['prop_collected_vote'], " -->", test_pass)
                             if test_pass > 0.2:
                                 results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
 
@@ -66,25 +66,25 @@ def run_experiment_grad(spec, step_producer, end_producer, step_prop, end_prop, 
                                                             spec['prop_correct_producers'],
                                                             runs=runs, results=results)
                                 write_results_to_excel_file(spec, runs=runs, output=outputs,
-                                                            path_name="Result_simulation_security_500only.xlsx")
+                                                            path_name="Result_simulation_security_bla.xlsx")
                                 full_pass = numpy.count_nonzero(results[:, 1] > ind_p / 2) / runs
                                 if numpy.count_nonzero(results[:, 1] > ind_p / 2) == runs:
                                     set_params = [[spec['prop_correct_producers'],
                                                   spec['prop_collected_update'],
-                                                  spec['prop_collected_vote'],
-                                                  spec['prop_collected_final_vote']]]
+                                                  spec['prop_collected_candidate'],
+                                                  spec['prop_collected_vote']]]
                                     list_pass_params = numpy.concatenate((list_pass_params, set_params))
                                     print(list_pass_params)
                                 print(f"P = {ind_p}, "
                                       f"prod = {spec['prop_correct_producers']}, "
                                       f"update = {spec['prop_collected_update']}, "
-                                      f"vote = {spec['prop_collected_vote']}, "
-                                      f"final vote = {spec['prop_collected_final_vote']} --> {full_pass}")
+                                      f"vote = {spec['prop_collected_candidate']}, "
+                                      f"final vote = {spec['prop_collected_vote']} --> {full_pass}")
 
-                        spec['prop_collected_final_vote'] += step_prop
-                        spec['prop_collected_final_vote'] = int(spec['prop_collected_final_vote']*10000)/10000
-                    spec['prop_collected_vote'] += step_prop
-                    spec['prop_collected_vote'] = int(spec['prop_collected_vote']*10000)/10000
+                        spec['prop_collected_vote'] += step_prop
+                        spec['prop_collected_vote'] = int(spec['prop_collected_vote']*10000)/10000
+                    spec['prop_collected_candidate'] += step_prop
+                    spec['prop_collected_candidate'] = int(spec['prop_collected_candidate']*10000)/10000
                 spec['prop_collected_update'] += step_prop
                 spec['prop_collected_update'] = int(spec['prop_collected_update']*10000)/10000
             spec['prop_correct_producers'] += step_prop
@@ -112,8 +112,8 @@ def print_result_output(spec, runs, output):
     print(f'Parameters: P = {spec["num_of_producers"]} ({runs} runs)')
     print(f'PropCorrectProducer = {spec["prop_correct_producers"] * 100}%')
     print(f'PropCollectedUpdate = {spec["prop_collected_update"] * 100}%')
+    print(f'PropCollectedCandidate = {spec["prop_collected_candidate"] * 100}%')
     print(f'PropCollectedVote = {spec["prop_collected_vote"] * 100}%')
-    print(f'PropColl ectedFinalVote = {spec["prop_collected_final_vote"] * 100}%')
     print('############################')
     print('Averages:')
     print(f'{output["avg_prod"] * 100:10.3f} % producers issue correct Ln(prod)')
@@ -126,14 +126,14 @@ def print_result_output(spec, runs, output):
     print('############################')
 
 
-def print_result_output_simple(num_of_producers, prop_correct_producers, prop_collected_update, prop_collected_vote,
-                               prop_collected_final_vote, runs, output):
+def print_result_output_simple(num_of_producers, prop_correct_producers, prop_collected_update, prop_collected_candidate,
+                               prop_collected_vote, runs, output):
 
     print(f'Parameters: P = {num_of_producers} ({runs} runs)')
     print(f'PropCorrectProducer = {prop_correct_producers*100}%')
     print(f'PropCollectedUpdate = {prop_collected_update*100}%')
+    print(f'PropCollectedCandidate = {prop_collected_candidate*100}%')
     print(f'PropCollectedVote = {prop_collected_vote*100}%')
-    print(f'PropCollectedFinalVote = {prop_collected_final_vote*100}%')
     print('############################')
     print('Averages:')
     print(f'{output["avg_prod"]*100:10.3f} % producers issue correct Ln(prod)')
@@ -259,7 +259,7 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
     :param prop_correct_producers: Fraction of producers who correctly build the dominant ledger state update (C_n/P)
     :param prop_collected_update: Fraction of collected ledger state update per producer (C_j/P)
     :param prop_collected_candidate: Fraction of collected candidate per producer (V_j/P)
-    :param  : Fraction of collected vote per producer (U_j/C_n)
+    :param prop_collected_vote: Fraction of collected vote per producer (U_j/C_n)
     :return: result (int, int) where the first is the fraction of producers among K_n having correctly built Ln(prod)
     and the second is the fraction of producers among P having correctly built Ln(vote)
     """
@@ -301,16 +301,16 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
         return result
 
     # V_j votes collected per producer. Range to experiment [0.75,0.99]. Use to determine V_min
-    num_of_collected_votes = math.floor(prop_collected_candidate * num_of_producers)
+    num_of_collected_candidate = math.floor(prop_collected_candidate * num_of_producers)
 
     # List of producer ids associated to votes collected by producer
-    collected_vote_ids = get_list_producer_ids(num_of_producers, num_of_collected_votes)
+    collected_vote_ids = get_list_producer_ids(num_of_producers, num_of_collected_candidate)
     collected_vote_ids = collected_vote_ids[0:num_of_correct_updates, :]
 
     # Set of lj_prod collected by each producer
-    lj_prod_sampled = numpy.zeros((num_of_correct_updates, num_of_collected_votes, num_of_collected_updates), int)
+    lj_prod_sampled = numpy.zeros((num_of_correct_updates, num_of_collected_candidate, num_of_collected_updates), int)
     for i in range(num_of_correct_updates):
-        lj_prod_sampled[i, :, :] = [lj_prod[collected_vote_ids[i, j], :] for j in range(num_of_collected_votes)]
+        lj_prod_sampled[i, :, :] = [lj_prod[collected_vote_ids[i, j], :] for j in range(num_of_collected_candidate)]
 
     # List of producers associated to correct update merged by each producers (compare with correct_update_ids)
     compare_correct_update_ids = get_merged_list_ids(num_of_correct_updates, lj_prod_sampled, num_of_producers/2)
@@ -319,25 +319,25 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
                                                           compare_correct_update_ids)
 
     # List of producer ids associated to correct vote collected by producer, -1 otherwise
-    lj_vote = numpy.zeros((num_of_correct_updates, num_of_collected_votes), int)
+    lj_vote = numpy.zeros((num_of_correct_updates, num_of_collected_candidate), int)
     for i in range(num_of_correct_updates):
-        majority_i = get_list_producers_who_found_majority(num_of_collected_votes, correct_update_flags,
+        majority_i = get_list_producers_who_found_majority(num_of_collected_candidate, correct_update_flags,
                                                            lj_prod_sampled[i, :, :], num_of_collected_updates)
 
         lj_vote[i, :] = [collected_vote_ids[i, k] if majority_i[k] == 1 and k in producer_ids_full_list_prod else -1
-                         for k in range(num_of_collected_votes)]
+                         for k in range(num_of_collected_candidate)]
 
     # U_j <=  num_of_correct_updates final votes collected per producer. Range to experiment [0.75,0.99]
-    num_of_collected_final_votes = math.floor(prop_collected_vote * num_of_correct_updates)
+    num_of_collected_votes = math.floor(prop_collected_vote * num_of_correct_updates)
 
     # Set of lj_vote collected by each producer
-    lj_vote_sampled = numpy.zeros((num_of_producers, min(num_of_collected_final_votes, num_of_collected_votes),
-                                   num_of_collected_votes), int)
+    lj_vote_sampled = numpy.zeros((num_of_producers, min(num_of_collected_votes, num_of_collected_candidate),
+                                   num_of_collected_candidate), int)
     threshold_vote_list = len(correct_update_ids) / 2
 
     for i in range(num_of_producers):
-        lj_vote_sampled[i, :, :] = lj_vote[numpy.random.choice(lj_vote.shape[0], min(num_of_collected_final_votes,
-                                                                                     num_of_collected_votes),
+        lj_vote_sampled[i, :, :] = lj_vote[numpy.random.choice(lj_vote.shape[0], min(num_of_collected_votes,
+                                                                                     num_of_collected_candidate),
                                                                replace=False), :]
         if numpy.count_nonzero(lj_vote_sampled[i, :] != -1) < threshold_vote_list:
             lj_vote_sampled[i, :, :] = -1
@@ -358,8 +358,8 @@ def parse_args():
     parser.add_argument('--runs', type=int, default=10, help='Number of runs')
     parser.add_argument('--producer', type=float, default=0.8, help='Proportion of correct producers')
     parser.add_argument('--update', type=float, default=0.8, help='Proportion of collected updates per producer')
-    parser.add_argument('--vote', type=float, default=0.8, help='Proportion of collected votes per producer')
-    parser.add_argument('--final', type=float, default=0.8, help='Proportion of collected final votes')
+    parser.add_argument('--candidate', type=float, default=0.8, help='Proportion of collected candidate per producer')
+    parser.add_argument('--vote', type=float, default=0.8, help='Proportion of collected votes')
     return parser.parse_args()
 
 
@@ -372,18 +372,18 @@ if __name__ == '__main__':
 
     if level_test == 1:
         args = parse_args()
-        res = numpy.array([calculate_lists_rate(args.p, args.producer, args.update, args.vote, args.final)
+        res = numpy.array([calculate_lists_rate(args.p, args.producer, args.update, args.candidate, args.vote)
                            for _ in range(args.runs)])
         output = get_result_output(args.p, args.producer, runs=args.runs, results=res)
-        print_result_output_simple(args.p, args.producer, args.update, args.vote, args.final, runs=args.runs,
+        print_result_output_simple(args.p, args.producer, args.update, args.candidate, args.vote, runs=args.runs,
                                    output=output)
     if level_test == 2:
         spec = {
             'num_of_producers': 200,
             'prop_correct_producers': 0.75,
             'prop_collected_update': 0.75,
-            'prop_collected_vote': 0.75,
-            'prop_collected_final_vote': 0.75
+            'prop_collected_candidate': 0.75,
+            'prop_collected_vote': 0.75
         }
 
         step_producer = 300
