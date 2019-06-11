@@ -251,15 +251,15 @@ def get_ids_with_full_lists(num_producer, correct_list, lists_to_compare):
     return count_list_complete
 
 
-def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collected_update, prop_collected_vote,
-                         prop_collected_final_vote):
+def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collected_update, prop_collected_candidate,
+                         prop_collected_vote):
     """
     This function checks how many producers manage to compile the correct lists Ln(prod) and Ln(vote)
     :param num_of_producers: Number of producers (P)
-    :param prop_correct_producers: Fraction of producers who correctly build the dominant ledger state update (K_n/P)
-    :param prop_collected_update: Fraction of collected ledger state update per producer (K_j/P)
-    :param prop_collected_vote: Fraction of collected vote per producer (V_j/P)
-    :param prop_collected_final_vote: Fraction of collected final vote per producer (W_j/P)
+    :param prop_correct_producers: Fraction of producers who correctly build the dominant ledger state update (C_n/P)
+    :param prop_collected_update: Fraction of collected ledger state update per producer (C_j/P)
+    :param prop_collected_candidate: Fraction of collected candidate per producer (V_j/P)
+    :param  : Fraction of collected vote per producer (U_j/C_n)
     :return: result (int, int) where the first is the fraction of producers among K_n having correctly built Ln(prod)
     and the second is the fraction of producers among P having correctly built Ln(vote)
     """
@@ -301,7 +301,7 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
         return result
 
     # V_j votes collected per producer. Range to experiment [0.75,0.99]. Use to determine V_min
-    num_of_collected_votes = math.floor(prop_collected_vote * num_of_producers)
+    num_of_collected_votes = math.floor(prop_collected_candidate * num_of_producers)
 
     # List of producer ids associated to votes collected by producer
     collected_vote_ids = get_list_producer_ids(num_of_producers, num_of_collected_votes)
@@ -327,8 +327,8 @@ def calculate_lists_rate(num_of_producers, prop_correct_producers, prop_collecte
         lj_vote[i, :] = [collected_vote_ids[i, k] if majority_i[k] == 1 and k in producer_ids_full_list_prod else -1
                          for k in range(num_of_collected_votes)]
 
-    # W_j <=  num_of_correct_updates final votes collected per producer. Range to experiment [0.75,0.99]
-    num_of_collected_final_votes = math.floor(prop_collected_final_vote * num_of_correct_updates)
+    # U_j <=  num_of_correct_updates final votes collected per producer. Range to experiment [0.75,0.99]
+    num_of_collected_final_votes = math.floor(prop_collected_vote * num_of_correct_updates)
 
     # Set of lj_vote collected by each producer
     lj_vote_sampled = numpy.zeros((num_of_producers, min(num_of_collected_final_votes, num_of_collected_votes),
