@@ -10,6 +10,60 @@ from openpyxl.utils import get_column_letter
 import os.path
 
 
+def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, runs_test, runs_full):
+    start_producer = spec['num_of_producers']
+    start_sce = spec['prop_correct_producers']
+    start_prop = spec['prop_collected_update']
+    for ind_p in range(start_producer, end_producer, step_producer):
+        spec['num_of_producers'] = ind_p
+        spec['prop_correct_producers'] = start_sce
+        while spec['prop_correct_producers'] < end_sce:
+
+            spec['prop_collected_update'] = start_prop
+            spec['prop_collected_candidate'] = start_prop
+            spec['prop_collected_vote'] = start_prop
+            prob_it = 0
+            while spec['prop_collected_update'] < end_prop:
+                results_test = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_test)])
+                test_pass = numpy.count_nonzero(results_test[:, 1] > ind_p / 2) / runs_test
+
+                print("P = ",ind_p, ", a=", spec['prop_correct_producers'], ", b=",
+                        spec['prop_collected_update'], ", c=", spec['prop_collected_candidate'],
+                        ", d=", spec['prop_collected_vote'], " -->", test_pass)
+                if test_pass >= 0.4:
+                    results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
+                    results = numpy.concatenate((results_test, results_full))
+                    runs = runs_full + runs_test
+                    outputs = get_result_output(spec['num_of_producers'],
+                                                spec['prop_correct_producers'],
+                                                runs=runs, results=results)
+                    write_results_to_excel_file(spec, runs=runs, output=outputs,
+                                                path_name="Result_simulation_security_hist.xlsx")
+                    prob_it = numpy.count_nonzero(results[:, 1] > ind_p / 2) / runs
+                    print(f"P = {ind_p}, "
+                            f"prod = {spec['prop_correct_producers']}, "
+                            f"update = {spec['prop_collected_update']}, "
+                            f"vote = {spec['prop_collected_candidate']}, "
+                            f"final vote = {spec['prop_collected_vote']} --> {prob_it}")
+                    
+                spec['prop_collected_update'] *= 100
+                spec['prop_collected_update'] += step_prop*100
+                spec['prop_collected_update'] /= 100
+                #spec['prop_collected_update'] = int(spec['prop_collected_update']*10000)/10000
+                spec['prop_collected_candidate'] = spec['prop_collected_update']
+                spec['prop_collected_vote'] = spec['prop_collected_update']
+
+                if prob_it > 0.999:
+                    spec['prop_collected_update'] = end_prop
+                    spec['prop_collected_candidate'] = spec['prop_collected_update']
+                    spec['prop_collected_vote'] = spec['prop_collected_update']
+        
+            #spec['prop_correct_producers'] += step_sce
+            spec['prop_correct_producers'] *= 100
+            spec['prop_correct_producers'] += step_sce*100
+            spec['prop_correct_producers'] /= 100
+            spec['prop_correct_producers'] = int(spec['prop_correct_producers']*10000)/10000
+                     
 def run_experiment_grad(spec, step_producer, end_producer, step_prop, end_prop, runs_test, runs_full):
 
     start_producer = spec['num_of_producers']
@@ -365,7 +419,7 @@ def parse_args():
 
 if __name__ == '__main__':
 
-    level_test = 2
+    level_test = 3
 
     if level_test == 0:
         print(" No test selected")
@@ -398,4 +452,28 @@ if __name__ == '__main__':
 
         run_experiment_grad(spec_test, step_producer, end_producer, step_prop, end_prop, run_test, run_full)
 
+    if level_test == 3:
+        spec = {
+            'num_of_producers': 100,
+            'prop_correct_producers': 0.7,
+            'prop_collected_update': 0.75,
+            'prop_collected_candidate': 0.75,
+            'prop_collected_vote': 0.75
+        }
 
+        step_producer = 100
+        end_producer = 501
+        step_sce = 0.1
+        end_sce = 0.90
+        step_prop = 0.05
+        end_prop = 0.96
+
+        spec_test = spec.copy()
+        run_test = 5
+        run_full = 45
+        list_pass_test = []
+
+        run_experiment_hist(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full)
+
+
+      
