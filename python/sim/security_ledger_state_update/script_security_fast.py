@@ -462,15 +462,15 @@ if __name__ == '__main__':
         }
 
         step_producer = 100
-        end_producer = 501
+        end_producer = 1001
         step_sce = 0.1
-        end_sce = 0.90
-        step_prop = 0.05
+        end_sce = 0.91
+        step_prop = 0.01
         end_prop = 0.96
 
         spec_test = spec.copy()
         run_test = 5
-        run_full = 45
+        run_full = 95
         list_pass_test = []
 
         run_experiment_hist(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full)

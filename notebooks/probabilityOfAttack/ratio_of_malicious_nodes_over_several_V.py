@@ -42,4 +42,5 @@ plt.hlines(thre_1, bottom, top, colors='k', linestyles='dashed', label='{} thres
 plt.hlines(thre_2, bottom, top, colors='k', linestyles='-.', label='{} threshold'.format(thre_2))
 plt.legend(loc='lower left',prop={'size': 9})
 plt.grid()
-plt.savefig('Graphs/ratio_of_malicious_nodes_over_several_V/graph_prob_vs_O_over_N_{}_V_is_{}_of_N_O_range_{}_{}.png'.format(N,strRangeN,bottom,top))
+#plt.savefig('Graphs/ratio_of_malicious_nodes_over_several_V/graph_prob_vs_O_over_N_{}_V_is_{}_of_N_O_range_{}_{}.png'.format(N,strRangeN,bottom,top))
+plt.show

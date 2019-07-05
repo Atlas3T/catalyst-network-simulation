@@ -8,6 +8,7 @@ import math
 from cycler import cycler
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
+from itertools import cycle
 from matplotlib.ticker import FormatStrFormatter
 
 #N: total number of nodes in pool (validators)
@@ -22,12 +23,12 @@ from matplotlib.ticker import FormatStrFormatter
 #\50, 100, 500, 1000, 2000
 
 proba_thre = 10**-9
-lowV = 500
+lowV = 200
 binN = 1000
-rangeN = range(50000,100000+binN,binN) #Will stay the same as this determines the range of N 0, 10000 and 10000 to 50000, 50000 to 100000
+rangeN = range(2000,20000+binN,binN) #Will stay the same as this determines the range of N 0, 10000 and 10000 to 50000, 50000 to 100000
 top = rangeN[-1] 
 bottom = rangeN[0] 
-Ovalues = [200,300,400,450]
+Ovalues = [300,400,450]
 #create string for VoN labels 
 strRangeO = '-'.join(str(e) for e in Ovalues)
 print("Generating graphs....")
@@ -47,21 +48,23 @@ for rO in Ovalues:
 max_y_axis = round(max_y,1)
 step_y_axis = max_y_axis * 0.1
 #print("y max : ",max_y)
+lines = ["-","--","-.",":"]
+linecycler = cycle(lines)
 for ind_curve in range(0,len(Ovalues)):
     fO = 0.1*Ovalues[ind_curve]
-    plt.plot(range_curves[ind_curve],curves[ind_curve],label='{}%'.format(fO))
+    plt.plot(range_curves[ind_curve],curves[ind_curve],label='{}%'.format(fO), color='k',linestyle = next(linecycler))
 #s=''
 #textstr = '\n'.join((
 #    r'lowV = %.d' % (lowV, ),))
 #plt.text(lowV,s, textstr, fontsize=10, position=(7800, 0.33),  bbox=dict(facecolor='none', edgecolor='black'))
 top2 = top/10
-plt.grid()
-plt.ylim(0,max_y_axis) #may have to be increased for higher thresholds
-plt.yticks(np.arange(0, max_y_axis, step=step_y_axis)) #may have to be increased for higher thresholds
+
+plt.ylim(0,0.7) #may have to be increased for higher thresholds
+plt.yticks(np.arange(0, 0.8, step=0.1)) #may have to be increased for higher thresholds
 plt.xticks(np.arange(bottom-top2, top+top2, step=top2))
 plt.xlim(bottom,top)
-plt.xlabel('N (tpool of workers)')
-plt.ylabel('min(V/N) for prob < {}'.format(proba_thre))
-plt.legend(title=(' V $\geq$ {} \n Percentage O/N:'.format(lowV)),loc='upper right')
+plt.xlabel('N')
+plt.ylabel('min(P/N) for $p_{51}$ < $10^{-9}$')
+plt.legend(title=(' P $\geq$ {} \n Percentage O/N:'.format(lowV)),loc='upper right')
 plt.savefig('Graphs/Validation_pool_to_achieve_threshold/graph_V_over_N_at_prob_{}vs_N_for_range_{}_to_{}_O_at_{}_minV_at_{}.png'.format(proba_thre,bottom,top,strRangeO,lowV))
 

@@ -193,16 +193,18 @@ def plot_multiple_cummulative_over_rangeO(rR,N,V):
             #print(V,", ",O," --> ", hypergeom.pmf(p, N, O, V))
         return (pH)
 
-def plot_cummulative_over_rangeV(rO,N,rV):
+def plot_cummulative_over_rangeV(rO,r1,N,rV):
         pH=[]
         pB=[]
         O=N*rO
+        O2=N*r1
         #print("N, O: ",N,", ",O,". Varying V:")
         for rVi in rV:
             p = math.floor(rVi/2) + 1
             pH.append(100*hypergeom.sf(p, N, O, rVi))
+            pB.append(100*hypergeom.sf(p, N, O2, rVi))
             #print(O," --> ", hypergeom.sf(p, N, O, rVi))
-            pB.append(100*binom.sf(p,rVi,rO))
+            #pB.append(100*binom.sf(p,rVi,rO))
         return (pH,pB)        
 
 def plot_cummulative_over_rangeVmin(rO,N,rVmin):
