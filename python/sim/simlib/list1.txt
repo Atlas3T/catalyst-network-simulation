@@ -1,0 +1,6 @@
+London; 0.2
+Hong Kong; 0.3
+Zurich; 0.1
+Los Angeles; 0.2
+Geneva
+

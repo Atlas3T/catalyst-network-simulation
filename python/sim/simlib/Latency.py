@@ -33,7 +33,7 @@ try:
     count_subplots = 1
     for i in range (0,4):
         # 1.- list of cities to test
-        cities = ['London', 'Adelade','Paris','Moscow','Aukland','Barcelona','Budapest','Cardiff','Cincinnati','Copenhagen','Detroit','Dublin','Ho Chi Minh City','Hanoi','Lisbon','Los Angeles','Madrid','Manchester','Miami','New Delhi','Pittsburgh','Quito','Pune','Sapporo','Shanghai','Zhangjiakou','Wellington','Vladivostok']
+        cities = ['London', 'Adelade','Paris','Moscow','Aukland','Barcelona','Budapest','Cardiff','Cincinnati','Copenhagen','Detroit','Dublin','Ho Chi Minh City','Hanoi','Hong Kong''Lisbon','Los Angeles','Madrid','Manchester','Miami','New Delhi','Pittsburgh','Quito','Pune','Sapporo','Shanghai','Zhangjiakou','Wellington','Vladivostok']
         # 2.- Create two nodes and rdm associate a town (to mean randomly select two towns for 1 dist)
         town1 = random.choice(cities)
         cities.remove(town1)

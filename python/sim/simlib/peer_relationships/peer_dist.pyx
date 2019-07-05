@@ -11,7 +11,7 @@ import itertools
 
 def getFilePathRoot():
     #return os.path.normpath("C:/Users/fran/PycharmProjects/Distributions/")
-    return os.path.expanduser("~/local-data/peers/")
+    return os.path.normpath("/home/simuser/local-data/")
 
 
 def getPeerDistEvenFaster(params):
@@ -97,7 +97,7 @@ def isValid(peers,N,p):
 
 
 def getPeerDistFilePath(N,p,i):
-    return os.path.normpath(getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(i))
+    return os.path.normpath(getFilePathRoot() + '/peer_dist_' + str(N) + '_' + str(p) + "_" + str(i) + '.mat')
 
 
 def savePeerDist(N,p,peers,i):
@@ -106,11 +106,15 @@ def savePeerDist(N,p,peers,i):
     scipy.io.savemat(fileName, {"peers" : peers}, appendmat=True)
     print("saved " + str(fileName) + " in " + str(time.time()-start) + "secs.")
 
+def verifyFilePath(N,p,i):
+    fileName = getPeerDistFilePath(N, p, i-1)
+    return os.path.isfile(fileName)
+
 def loadPeerDist(N,p,i):
-        fileName = getPeerDistFilePath(N, p, i)
-        contents = scipy.io.loadmat(fileName, appendmat=True)
-        peers = contents['peers']
-        return peers
+    fileName = getPeerDistFilePath(N, p, i-1)
+    contents = scipy.io.loadmat(fileName, appendmat=True)
+    peers = contents['peers']
+    return peers
 
 def create_peers(N,p,i):
 
