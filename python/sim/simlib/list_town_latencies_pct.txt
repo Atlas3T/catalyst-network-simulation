@@ -1,0 +1,4 @@
+Barcelona; 0.4
+Paris; 0.2
+Moscow
+

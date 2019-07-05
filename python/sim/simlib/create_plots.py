@@ -8,9 +8,11 @@ import seaborn as sns
 import latency_generator
 import propagation_time
 import math
+import post_processing
 from matplotlib.ticker import ScalarFormatter
 
 def main():
+   
     #list = [100, 500, 1000, 5000, 10000, 50000, 100000, 500000,1000000]
     #plot_propagation_hops(list)
 
@@ -19,23 +21,23 @@ def main():
     plot_profile_set_latency(120)
     
     #plot_latency_set_prob(95)
-
+    
     #list = [100,1000,10000,100000,1000000]
     #plot_propagation_time(list)
 
 
-
-
+'''
 
 
 def plot_propagation_hops(listofN):
+    
     p = 10
     i = 10
     n = 100
     lines = []
     plt.figure()
     for (N) in listofN:
-        x=propagation_hops.loadDisperseMessageDist(N,p,i,n)
+        x=propagation_hops.load_transaction_hop_distribution(N,p,i,n)
         lines += plt.plot(x[0, :], numpy.cumsum(x[1, :]), label = "{} nodes".format(N))
     labels = [l.get_label() for l in lines]
     plt.legend(lines, labels,title = 'Network size')
@@ -44,6 +46,8 @@ def plot_propagation_hops(listofN):
     plt.title('Probability distribution of transaction path length')
     plotfolder = os.path.normpath(getPlotsFolder() + '/propagation_dist_hops.pdf')
     plt.savefig(plotfolder)
+
+
 
 def plot_propagation_time(listofN):
     p = 10
@@ -61,11 +65,14 @@ def plot_propagation_time(listofN):
     plotfolder = os.path.normpath(getPlotsFolder() + '/propagation_dist_time_all' + str(N) + '.pdf')
     snsplot.figure.savefig(plotfolder)
 
-def plot_profile_set_latency(ms):
-    p=10
-    x=10
-    iterations=100
-    profile = propagation_time.load_p_u_c_l(ms,p,x,iterations)
+'''
+
+
+def plot_profile_set_latency(ms): #set to 120 in main
+    p=10 #no. of peers
+    x=10 #how many different peer distributions the data has looped over
+    iterations=100 
+    profile = post_processing.load_p_u_c_l(ms,p,x,iterations)  #SEE POST PROCESSING
     plt.figure()
     newlist = [(elem1, elem2*100) for elem1, elem2 in profile]
     fig, ax1 = plt.subplots()
@@ -82,13 +89,15 @@ def plot_profile_set_latency(ms):
     plotfolder = os.path.normpath(getPlotsFolder() + '/profile_latency_' + str(ms) + 'ms.pdf')
     plt.savefig(plotfolder)
 
-    
+# p = no. of peers
+# x = how many different peer distributions the data has looped over
 
+'''
 def plot_latency_set_prob(prob):
     p=10
     x=10
     iterations=100
-    profile = propagation_time.load_l_a_c_p(prob,p,x,iterations)
+    profile = post_processing.load_l_a_c_p(prob,p,x,iterations) #where this is loading from is wrong in post processing
     plt.figure()
     newlist = [(elem2, elem1) for elem1, elem2 in profile]
     fig, ax = plt.subplots()
@@ -113,10 +122,12 @@ def plot_latency_dist():
     plotfolder = os.path.normpath(getPlotsFolder() + '/latency_dist.pdf')
     snsplot.figure.savefig(getPlotsFolder() + '/latency_distribution.pdf')
 
+'''
 
 def getPlotsFolder():
     #return os.path.normpath("C:/Users/fran/PycharmProjects/Distributions/")
-    return os.path.normpath("/home/engr/Results/plots/")
+    return os.path.normpath("/home/simuser/engr/Results/plots/")
 
 if __name__ == '__main__':
     main()
+ 

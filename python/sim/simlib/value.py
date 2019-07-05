@@ -1,6 +1,8 @@
 import json
 import random
 
+
+
 # 1 LOAD JSON FILE
 
 #with open('../../../JSON/Cities.json') as data_file:
@@ -17,7 +19,7 @@ try:
 
     print town1
 
-    path_json_file = "../../../JSON/"
+    path_json_file = "../../../git-data/JSON/"
     path_json_file += town1
     path_json_file += ".json"
     dataset_town1 = json.loads(open(path_json_file).read())
