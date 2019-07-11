@@ -8,9 +8,12 @@ from openpyxl import load_workbook
 from openpyxl.styles import Alignment
 from openpyxl.utils import get_column_letter
 import os.path
+import time
+import multiprocessing as mp
 
 
 def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, runs_test, runs_full):
+    start_time = time.time()
     start_producer = spec['num_of_producers']
     start_sce = spec['prop_correct_producers']
     start_prop = spec['prop_collected_update']
@@ -29,9 +32,10 @@ def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, st
 
                 print("P = ",ind_p, ", a=", spec['prop_correct_producers'], ", b=",
                         spec['prop_collected_update'], ", c=", spec['prop_collected_candidate'],
-                        ", d=", spec['prop_collected_vote'], " -->", test_pass)
-                if test_pass >= 0.4:
+                        ", d=", spec['prop_collected_vote'], " -->", test_pass, time.time() - start_time)
+                if test_pass >= 0.6:
                     results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
+
                     results = numpy.concatenate((results_test, results_full))
                     runs = runs_full + runs_test
                     outputs = get_result_output(spec['num_of_producers'],
@@ -461,19 +465,47 @@ if __name__ == '__main__':
             'prop_collected_vote': 0.75
         }
 
+        pool = mp.Pool(processes=2)
+
+
         step_producer = 100
         end_producer = 1001
         step_sce = 0.1
         end_sce = 0.91
         step_prop = 0.01
         end_prop = 0.96
-
+        
         spec_test = spec.copy()
         run_test = 5
         run_full = 95
         list_pass_test = []
-
         run_experiment_hist(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full)
 
+
+    if level_test == 4: #This test is the same as above but allows multiprocessing
+        spec = {
+            'num_of_producers': 100,
+            'prop_correct_producers': 0.7,
+            'prop_collected_update': 0.75,
+            'prop_collected_candidate': 0.75,
+            'prop_collected_vote': 0.75
+        }
+
+        pool = mp.Pool(processes=2)
+
+
+        step_producer = 100
+        end_producer = 201
+        step_sce = 0.1
+        end_sce = 0.91
+        step_prop = 0.01
+        end_prop = 0.96
+        
+        spec_test = spec.copy()
+        run_test = 5
+        run_full = 95
+        list_pass_test = []
+        for num in range(5):
+            mp.Process(target=run_experiment_hist, args=(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full)).start()            
 
       

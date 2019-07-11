@@ -1,17 +1,21 @@
 from peer_relationships import peer_dist
-from peer_relationships import latencies_dist
+#from peer_relationships import latencies_dist
 import propagation_hops
 import numpy
 import propagation_time
 import latency_cities_generator
 
-def run_quick_simulation():
-    #1.0 generate file (1 file per case), 10 peers 
-    listN = [1000,10000]
-    p = 10
-    peer_iterations = 1# number of different peer distributions to run simulation over
+def get_itter_list_peers():
+    peer_iterations = 1 # number of different peer distributions to run simulation over
     start_node_iterations = 3
-    #Does not work for other iteration
+    listN = [
+        1000,10000
+        ]
+    p = 10
+    return peer_iterations, start_node_iterations, listN, p
+
+
+def build_list_peers(listN,p):
     listPeers=[]
     for it_N in listN:
         if not peer_dist.verifyFilePath(it_N,p,peer_iterations):
@@ -24,15 +28,13 @@ def run_quick_simulation():
             #load the peers from the exisiting files
             peers_tmp = peer_dist.loadPeerDist(it_N,p,peer_iterations)
             print(peers_tmp)
-            listPeers.append(peers_tmp)
-            
-    #2.0 find the latencies
-    file_latencies = 'list1.txt'
-    #2.1 generate latencies file name
-    filename = latency_cities_generator.get_latencies_filename(file_latencies)
+            listPeers.append(peers_tmp) 
+    return listPeers
 
+
+def build_list_latencies(file_latencies, filename, listPeers,listN):
     listLatencies=[]
-    #2.2 check if .mat latencies file exit, if not generate
+    
     for it_N in range(len(listN)):
         if not latencies_dist.verifyFilePath(listN[it_N],p,filename):
             print("could not find the file {} - Generating it......".format(filename))
@@ -45,20 +47,45 @@ def run_quick_simulation():
             latencies_tmp = latencies_dist.loadLatenciesDist(listN[it_N],p,filename)
             print(latencies_tmp)
             listLatencies.append(latencies_tmp)
+    return listLatencies
 
-    print("Up to here - all loaded!")
+
+def build_list_time_dist(filename, listLatencies, listPeers,listN):
     listTimeDist=[]
-    #3.0 check if .mat time dist file exit, if not generate
+    
     for it_N in range(len(listN)):
-        if not propagation_time.isProbDistFile(listN[it_N], p, start_node_iterations,filename):
+        if not propagation_time.isProbDistFile(listN[it_N], p, 
+                                               start_node_iterations,filename):
+            
             print("could not find the file {} - Generating it......".format(filename))
-            propagation_time.get_transaction_time_distribution(listN[it_N], p, listPeers[it_N],start_node_iterations,filename,listLatencies[it_N])
+
+            propagation_time.get_transaction_time_distribution(
+                listN[it_N], p, listPeers[it_N],
+                start_node_iterations,filename,listLatencies[it_N])
+
             time_dist_tmp = propagation_time.load_transaction_time_distributionBis(listN[it_N], p, start_node_iterations,filename)
             listTimeDist.append(time_dist_tmp[0])
         else:
             time_dist_tmp = propagation_time.load_transaction_time_distributionBis(listN[it_N], p, start_node_iterations,filename)
             #print(time_dist_tmp[0])
             listTimeDist.append(time_dist_tmp[0])
+    return listTimeDist
+
+def run_quick_simulation():
+    #1.0 generate file (1 file per case), 10 peers 
+    listN = [] 
+    peer_iterations, start_node_iterations, listN, p = get_itter_list_peers()
+    #Does not work for other iteration
+    listPeers = build_list_peers(listN,p)       
+    #2.0 find the latencies
+    file_latencies = 'list1.txt'
+    #2.1 generate latencies file name
+    filename = latency_cities_generator.get_latencies_filename(file_latencies,listN)
+    #2.2 check if .mat latencies file exit, if not generate
+    listLatencies = build_list_latencies(file_latencies, filename, listPeers,listN)
+    print("Up to here - all loaded!")
+        #3.0 check if .mat time dist file exit, if not generate
+    listTimeDist = build_list_time_dist(filename, listLatencies, listPeers)
               
     #4.0 Test distribution 
     '''percentage = 0.5
