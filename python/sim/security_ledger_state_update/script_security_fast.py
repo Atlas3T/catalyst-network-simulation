@@ -1,6 +1,7 @@
 import numpy
 import random
 import math
+import shutil
 import argparse
 from itertools import chain
 from openpyxl import Workbook
@@ -12,6 +13,8 @@ import time
 from random import randint
 from time import sleep
 import multiprocessing as mp
+import glob 
+import pandas as pd
 import zipfile
 
 
@@ -38,28 +41,25 @@ def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, st
                         spec['prop_collected_update'], ", c=", spec['prop_collected_candidate'],
                         ", d=", spec['prop_collected_vote'], " -->", test_pass, "-->", process_id)
                 if test_pass >= 0.6:
-                    try:
-                        results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
+                 
+                    results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
 
-                        results = numpy.concatenate((results_test, results_full))
-                        runs = runs_full + runs_test
-                        outputs = get_result_output(spec['num_of_producers'],
-                                                    spec['prop_correct_producers'],
-                                                    runs=runs, results=results)
-                        write_results_to_excel_file(spec, runs=runs, output=outputs, process_id=process_id,
-                                                    path_name="Result_simulation_security_hist.xlsx") #If this fails we need to retry 
+                    results = numpy.concatenate((results_test, results_full))
+                    runs = runs_full + runs_test
+                    outputs = get_result_output(spec['num_of_producers'],
+                                                spec['prop_correct_producers'],
+                                                runs=runs, results=results)
+                    pid = str(os.getpid())
+                    path_name = "excel/Result_simulation_security_ledger_update" + pid + ".xlsx"
+                    write_results_to_excel_file(spec, runs=runs, output=outputs, process_id=process_id,
+                                                path_name=path_name) #If this fails we need to retry 
                         
-                        prob_it = numpy.count_nonzero(results[:, 1] > ind_p / 2) / runs
-                        print(f"P = {ind_p}, "
-                                f"prod = {spec['prop_correct_producers']}, "
-                                f"update = {spec['prop_collected_update']}, "
-                                f"vote = {spec['prop_collected_candidate']}, "
-                                f"final vote = {spec['prop_collected_vote']} --> {prob_it}")
-                    except (PermissionError, zipfile.BadZipFile): #This prevents an error during multiprocessor computation where multiple processes are trying to access the xlsx file at the same time. 
-                        rand_sleep =randint(10,100)
-                        sleep(rand_sleep)
-                        print("Failed access --> Retrying after ", rand_sleep)
-                        continue
+                    prob_it = numpy.count_nonzero(results[:, 1] > ind_p / 2) / runs
+                    print(f"P = {ind_p}, "
+                            f"prod = {spec['prop_correct_producers']}, "
+                            f"update = {spec['prop_collected_update']}, "
+                            f"vote = {spec['prop_collected_candidate']}, "
+                            f"final vote = {spec['prop_collected_vote']} --> {prob_it}")
                    
                 spec['prop_collected_update'] *= 100
                 spec['prop_collected_update'] += step_prop*100
@@ -178,25 +178,7 @@ def get_result_output(num_of_producers, prop_correct_producers, runs, results):
     }
 
 
-def print_result_output(spec, runs, output):
-    print(f'Parameters: P = {spec["num_of_producers"]} ({runs} runs)')
-    print(f'PropCorrectProducer = {spec["prop_correct_producers"] * 100}%')
-    print(f'PropCollectedUpdate = {spec["prop_collected_update"] * 100}%')
-    print(f'PropCollectedCandidate = {spec["prop_collected_candidate"] * 100}%')
-    print(f'PropCollectedVote = {spec["prop_collected_vote"] * 100}%')
-    print('############################')
-    print('Averages:')
-    print(f'{output["avg_prod"] * 100:10.3f} % producers issue correct Ln(prod)')
-    print(f'{output["avg_vote"] * 100:10.3f} % producers issue correct Ln(vote)')
-    print('Successful runs:')
-    print(f'{output["num_list100_prod"] * 100:10.3f} % runs with no missing data for Ln(prod)')
-    print(f'{output["num_list100_vote"] * 100:10.3f} % runs with no missing data for Ln(vote)')
-    print('Summary:')
-    print(f'{output["num_pass"] * 100:10.3f} % successful runs ( > 50% producers broadcast same update)')
-    print('############################')
-
-
-def print_result_output_simple(num_of_producers, prop_correct_producers, prop_collected_update, prop_collected_candidate,
+def print_result_output(num_of_producers, prop_correct_producers, prop_collected_update, prop_collected_candidate,
                                prop_collected_vote, runs, output):
 
     print(f'Parameters: P = {num_of_producers} ({runs} runs)')
@@ -224,7 +206,7 @@ def initiate_worksheet(workbook, sheet_title):
                      '% Collected Final Votes', 'runs', 'Avg. % producers issue correct Ln(prod)',
                      'Avg. % producers issue correct Ln(vote)', '% runs with no missing data for Ln(prod)',
                      '% runs with no missing data for Ln(vote)',
-                     '% successful runs w/ > 50% producers broadcast same update']
+                     '% successful runs w/ > 50% producers broadcast same update','ID of process that carried out work (Ignore for single runs)']
         for name_col in name_cols:
             sheet_result.cell(row=1, column=ind_col).value = name_col
             sheet_result.column_dimensions[get_column_letter(ind_col)].width = 20
@@ -233,8 +215,12 @@ def initiate_worksheet(workbook, sheet_title):
     return sheet_result
 
 
-def write_results_to_excel_file(spec, runs, output, process_id, path_name="Result_simulation_security_ledger_update.xlsx"):
 
+
+
+def write_results_to_excel_file(spec, runs, output, process_id, path_name):
+
+    
     wb = Workbook()
     if os.path.isfile(path_name):
         wb = load_workbook(path_name)
@@ -260,6 +246,7 @@ def write_results_to_excel_file(spec, runs, output, process_id, path_name="Resul
     for col_out in output:
         sheet_result.cell(row=ind_row, column=ind_col).value = output[col_out]
         ind_col += 1
+    #processID
     sheet_result.cell(row=ind_row, column=ind_col).value = process_id
     ind_col += 1
    
@@ -462,6 +449,37 @@ def setup_spec():
     spec, spec_test, step_producer, 
     step_prop, step_sce)
 
+
+def combine_excel_files(end_producer, step_producer, spec):
+    glob.glob("excel/*.xlsx")
+    all_data = pd.DataFrame()
+    start_producer = spec['num_of_producers']
+    
+    for f in glob.glob("excel/*.xlsx"):
+        for ind_p in range(start_producer, end_producer, step_producer):
+            ind_p_str = str(ind_p)
+            sheetID = str(ind_p_str)
+            df = pd.read_excel(f, "P_" + sheetID)
+            all_data = all_data.append(df,ignore_index=True) 
+    print(all_data)    
+    all_data.to_excel("output.xlsx")
+
+
+def move_old_excel():
+    timestr = get_time()
+    os.rename('excel','old_excel/excel_'+timestr)
+    os.mkdir('excel')
+    
+
+def run_multiprocessing(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full):
+    for num in range(2):
+        mp.Process(target=run_experiment_hist, args=(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full)).start()
+
+
+def get_time():
+    return time.strftime("%Y%m%d-%H%M%S")
+
+
 if __name__ == '__main__':
     
     step_producer = 0
@@ -479,7 +497,7 @@ if __name__ == '__main__':
     
     
     level_test = 4
-
+    
     if level_test == 0:
         print(" No test selected")
 
@@ -491,7 +509,7 @@ if __name__ == '__main__':
         output = get_result_output(args.p, args.producer, 
                                    runs=args.runs, results=res)
 
-        print_result_output_simple(args.p, args.producer, 
+        print_result_output(args.p, args.producer, 
                                    args.update, args.candidate, 
                                    args.vote, runs=args.runs,
                                    output=output)
@@ -503,21 +521,36 @@ if __name__ == '__main__':
 
         run_experiment_grad(spec_test, step_producer, end_producer, step_prop, end_prop, run_test, run_full)
 
-    if level_test == 3:
+    if level_test == 3: 
         (end_producer, end_prop, end_sce, 
         list_pass_test, run_full, run_test, 
         spec, spec_test, step_producer, 
         step_prop, step_sce) = setup_spec()
-        run_experiment_hist(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full)
 
+        move_old_excel()
+
+        run_experiment_hist(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full)
+        timestr = get_time()
+        os.rename('excel','level_3_single_runs/excel_'+timestr) # Saves individual file to its own folder under 'level_3_single_runs'
+        os.mkdir('excel')
 
     if level_test == 4: #This test is the same as above but allows multiprocessing
         (end_producer, end_prop, end_sce, 
         list_pass_test, run_full, run_test, 
         spec, spec_test, step_producer, 
         step_prop, step_sce) = setup_spec()
+        
+        #Removes any old excel files from previous runs of the script 
+        move_old_files = mp.Process(target=move_old_excel,args=()) 
+        move_old_files.start()
+        move_old_files.join()
+        
+        #Runs the multiprocessing of the run_experiment_hist
+        run_multiprocessing_runs = mp.Process(target=run_multiprocessing, args=(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full))
+        run_multiprocessing_runs.start()
+        run_multiprocessing_runs.join()
 
-        for num in range(30):
-            mp.Process(target=run_experiment_hist, args=(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full)).start()            
-
-      
+        combine_excel = mp.Process(combine_excel_files(end_producer, step_producer, spec))    
+        print("Combining excel files") 
+        combine_excel.start()
+        combine_excel.join()
