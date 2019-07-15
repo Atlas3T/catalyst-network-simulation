@@ -9,10 +9,14 @@ from openpyxl.styles import Alignment
 from openpyxl.utils import get_column_letter
 import os.path
 import time
+from random import randint
+from time import sleep
 import multiprocessing as mp
+import zipfile
 
 
 def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, runs_test, runs_full):
+    process_id = os.getpid()
     start_time = time.time()
     start_producer = spec['num_of_producers']
     start_sce = spec['prop_correct_producers']
@@ -29,27 +33,34 @@ def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, st
             while spec['prop_collected_update'] < end_prop:
                 results_test = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_test)])
                 test_pass = numpy.count_nonzero(results_test[:, 1] > ind_p / 2) / runs_test
-
+              
                 print("P = ",ind_p, ", a=", spec['prop_correct_producers'], ", b=",
                         spec['prop_collected_update'], ", c=", spec['prop_collected_candidate'],
-                        ", d=", spec['prop_collected_vote'], " -->", test_pass, time.time() - start_time)
+                        ", d=", spec['prop_collected_vote'], " -->", test_pass, "-->", process_id)
                 if test_pass >= 0.6:
-                    results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
+                    try:
+                        results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
 
-                    results = numpy.concatenate((results_test, results_full))
-                    runs = runs_full + runs_test
-                    outputs = get_result_output(spec['num_of_producers'],
-                                                spec['prop_correct_producers'],
-                                                runs=runs, results=results)
-                    write_results_to_excel_file(spec, runs=runs, output=outputs,
-                                                path_name="Result_simulation_security_hist.xlsx")
-                    prob_it = numpy.count_nonzero(results[:, 1] > ind_p / 2) / runs
-                    print(f"P = {ind_p}, "
-                            f"prod = {spec['prop_correct_producers']}, "
-                            f"update = {spec['prop_collected_update']}, "
-                            f"vote = {spec['prop_collected_candidate']}, "
-                            f"final vote = {spec['prop_collected_vote']} --> {prob_it}")
-                    
+                        results = numpy.concatenate((results_test, results_full))
+                        runs = runs_full + runs_test
+                        outputs = get_result_output(spec['num_of_producers'],
+                                                    spec['prop_correct_producers'],
+                                                    runs=runs, results=results)
+                        write_results_to_excel_file(spec, runs=runs, output=outputs, process_id=process_id,
+                                                    path_name="Result_simulation_security_hist.xlsx") #If this fails we need to retry 
+                        
+                        prob_it = numpy.count_nonzero(results[:, 1] > ind_p / 2) / runs
+                        print(f"P = {ind_p}, "
+                                f"prod = {spec['prop_correct_producers']}, "
+                                f"update = {spec['prop_collected_update']}, "
+                                f"vote = {spec['prop_collected_candidate']}, "
+                                f"final vote = {spec['prop_collected_vote']} --> {prob_it}")
+                    except (PermissionError, zipfile.BadZipFile): #This prevents an error during multiprocessor computation where multiple processes are trying to access the xlsx file at the same time. 
+                        rand_sleep =randint(10,100)
+                        sleep(rand_sleep)
+                        print("Failed access --> Retrying after ", rand_sleep)
+                        continue
+                   
                 spec['prop_collected_update'] *= 100
                 spec['prop_collected_update'] += step_prop*100
                 spec['prop_collected_update'] /= 100
@@ -67,6 +78,7 @@ def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, st
             spec['prop_correct_producers'] += step_sce*100
             spec['prop_correct_producers'] /= 100
             spec['prop_correct_producers'] = int(spec['prop_correct_producers']*10000)/10000
+            
                      
 def run_experiment_grad(spec, step_producer, end_producer, step_prop, end_prop, runs_test, runs_full):
 
@@ -221,13 +233,14 @@ def initiate_worksheet(workbook, sheet_title):
     return sheet_result
 
 
-def write_results_to_excel_file(spec, runs, output, path_name="Result_simulation_security_ledger_update.xlsx"):
+def write_results_to_excel_file(spec, runs, output, process_id, path_name="Result_simulation_security_ledger_update.xlsx"):
 
     wb = Workbook()
     if os.path.isfile(path_name):
         wb = load_workbook(path_name)
 
     sheet_result_title = "P_" + str(spec['num_of_producers'])
+    #+  + "_"
     if sheet_result_title not in wb.sheetnames:
         wb.create_sheet(sheet_result_title)
 
@@ -247,6 +260,9 @@ def write_results_to_excel_file(spec, runs, output, path_name="Result_simulation
     for col_out in output:
         sheet_result.cell(row=ind_row, column=ind_col).value = output[col_out]
         ind_col += 1
+    sheet_result.cell(row=ind_row, column=ind_col).value = process_id
+    ind_col += 1
+   
 
     wb.save(path_name)
 
@@ -421,91 +437,87 @@ def parse_args():
     return parser.parse_args()
 
 
-if __name__ == '__main__':
+def setup_spec():
+    spec = {
+        'num_of_producers': 100,
+        'prop_correct_producers': 0.7,
+        'prop_collected_update': 0.75,
+        'prop_collected_candidate': 0.75,
+        'prop_collected_vote': 0.75
+    }
+    step_producer = 100
+    end_producer = 101
+    step_sce = 0.1
+    end_sce = 0.91
+    step_prop = 0.01
+    end_prop = 0.96
+    
+    spec_test = spec.copy()
+    run_test = 5
+    run_full = 95
+    list_pass_test = []
 
-    level_test = 3
+    return (end_producer, end_prop, end_sce, 
+    list_pass_test, run_full, run_test, 
+    spec, spec_test, step_producer, 
+    step_prop, step_sce)
+
+if __name__ == '__main__':
+    
+    step_producer = 0
+    end_producer = 0
+    step_sce = 0
+    end_sce = 0
+    step_prop = 0
+    end_prop = 0
+    
+    spec_test = {}
+    run_test = 0
+    run_full = 0
+    list_pass_test = 0
+    spec = {}
+    
+    
+    level_test = 4
 
     if level_test == 0:
         print(" No test selected")
 
     if level_test == 1:
         args = parse_args()
-        res = numpy.array([calculate_lists_rate(args.p, args.producer, args.update, args.candidate, args.vote)
+        res = numpy.array([calculate_lists_rate(args.p, args.producer, args.update, 
+                                                args.candidate, args.vote)
                            for _ in range(args.runs)])
-        output = get_result_output(args.p, args.producer, runs=args.runs, results=res)
-        print_result_output_simple(args.p, args.producer, args.update, args.candidate, args.vote, runs=args.runs,
+        output = get_result_output(args.p, args.producer, 
+                                   runs=args.runs, results=res)
+
+        print_result_output_simple(args.p, args.producer, 
+                                   args.update, args.candidate, 
+                                   args.vote, runs=args.runs,
                                    output=output)
     if level_test == 2:
-        spec = {
-            'num_of_producers': 200,
-            'prop_correct_producers': 0.75,
-            'prop_collected_update': 0.75,
-            'prop_collected_candidate': 0.75,
-            'prop_collected_vote': 0.75
-        }
-
-        step_producer = 300
-        end_producer = 501
-        step_prop = 0.05
-        end_prop = 0.96
-
-        spec_test = spec.copy()
-        run_test = 5
-        run_full = 95
-        list_pass_test = []
+        end_producer, end_prop, end_sce, 
+        list_pass_test, run_full, run_test, 
+        spec, spec_test, step_producer, 
+        step_prop, step_sce = setup_spec()
 
         run_experiment_grad(spec_test, step_producer, end_producer, step_prop, end_prop, run_test, run_full)
 
     if level_test == 3:
-        spec = {
-            'num_of_producers': 100,
-            'prop_correct_producers': 0.7,
-            'prop_collected_update': 0.75,
-            'prop_collected_candidate': 0.75,
-            'prop_collected_vote': 0.75
-        }
-
-        pool = mp.Pool(processes=2)
-
-
-        step_producer = 100
-        end_producer = 1001
-        step_sce = 0.1
-        end_sce = 0.91
-        step_prop = 0.01
-        end_prop = 0.96
-        
-        spec_test = spec.copy()
-        run_test = 5
-        run_full = 95
-        list_pass_test = []
+        (end_producer, end_prop, end_sce, 
+        list_pass_test, run_full, run_test, 
+        spec, spec_test, step_producer, 
+        step_prop, step_sce) = setup_spec()
         run_experiment_hist(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full)
 
 
     if level_test == 4: #This test is the same as above but allows multiprocessing
-        spec = {
-            'num_of_producers': 100,
-            'prop_correct_producers': 0.7,
-            'prop_collected_update': 0.75,
-            'prop_collected_candidate': 0.75,
-            'prop_collected_vote': 0.75
-        }
+        (end_producer, end_prop, end_sce, 
+        list_pass_test, run_full, run_test, 
+        spec, spec_test, step_producer, 
+        step_prop, step_sce) = setup_spec()
 
-        pool = mp.Pool(processes=2)
-
-
-        step_producer = 100
-        end_producer = 201
-        step_sce = 0.1
-        end_sce = 0.91
-        step_prop = 0.01
-        end_prop = 0.96
-        
-        spec_test = spec.copy()
-        run_test = 5
-        run_full = 95
-        list_pass_test = []
-        for num in range(5):
+        for num in range(30):
             mp.Process(target=run_experiment_hist, args=(spec_test, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, run_test, run_full)).start()            
 
       
