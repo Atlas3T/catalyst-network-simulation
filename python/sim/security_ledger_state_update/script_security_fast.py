@@ -18,6 +18,28 @@ import pandas as pd
 import zipfile
 
 
+def if_test_pass(ind_p, process_id, results_test, runs_full, runs_test, spec):
+    results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
+    
+    results = numpy.concatenate((results_test, results_full))
+    runs = runs_full + runs_test
+    outputs = get_result_output(spec['num_of_producers'],
+                                spec['prop_correct_producers'],
+                                runs=runs, results=results)
+    pid = str(os.getpid())
+    path_name = "excel/Result_simulation_security_ledger_update" + pid + ".xlsx"
+    write_results_to_excel_file(spec, runs=runs, output=outputs, process_id=process_id,
+                                path_name=path_name) #If this fails we need to retry 
+        
+    prob_it = numpy.count_nonzero(results[:, 1] > ind_p / 2) / runs
+    print(f"P = {ind_p}, "
+            f"prod = {spec['prop_correct_producers']}, "
+            f"update = {spec['prop_collected_update']}, "
+            f"vote = {spec['prop_collected_candidate']}, "
+            f"final vote = {spec['prop_collected_vote']} --> {prob_it}")
+    return prob_it
+
+
 def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, runs_test, runs_full):
     process_id = os.getpid()
     start_time = time.time()
@@ -36,30 +58,13 @@ def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, st
             while spec['prop_collected_update'] < end_prop:
                 results_test = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_test)])
                 test_pass = numpy.count_nonzero(results_test[:, 1] > ind_p / 2) / runs_test
-              
+                
                 print("P = ",ind_p, ", a=", spec['prop_correct_producers'], ", b=",
                         spec['prop_collected_update'], ", c=", spec['prop_collected_candidate'],
                         ", d=", spec['prop_collected_vote'], " -->", test_pass, "-->", process_id)
                 if test_pass >= 0.6:
                  
-                    results_full = numpy.array([calculate_lists_rate(**spec) for _ in range(runs_full)])
-
-                    results = numpy.concatenate((results_test, results_full))
-                    runs = runs_full + runs_test
-                    outputs = get_result_output(spec['num_of_producers'],
-                                                spec['prop_correct_producers'],
-                                                runs=runs, results=results)
-                    pid = str(os.getpid())
-                    path_name = "excel/Result_simulation_security_ledger_update" + pid + ".xlsx"
-                    write_results_to_excel_file(spec, runs=runs, output=outputs, process_id=process_id,
-                                                path_name=path_name) #If this fails we need to retry 
-                        
-                    prob_it = numpy.count_nonzero(results[:, 1] > ind_p / 2) / runs
-                    print(f"P = {ind_p}, "
-                            f"prod = {spec['prop_correct_producers']}, "
-                            f"update = {spec['prop_collected_update']}, "
-                            f"vote = {spec['prop_collected_candidate']}, "
-                            f"final vote = {spec['prop_collected_vote']} --> {prob_it}")
+                    prob_it = if_test_pass(ind_p, process_id, results_test, runs_full, runs_test, spec)
                    
                 spec['prop_collected_update'] *= 100
                 spec['prop_collected_update'] += step_prop*100
@@ -427,13 +432,13 @@ def parse_args():
 def setup_spec():
     spec = {
         'num_of_producers': 100,
-        'prop_correct_producers': 0.7,
-        'prop_collected_update': 0.75,
-        'prop_collected_candidate': 0.75,
-        'prop_collected_vote': 0.75
+        'prop_correct_producers': 0.9,
+        'prop_collected_update': 0.85,
+        'prop_collected_candidate': 0.85,
+        'prop_collected_vote': 0.85
     }
     step_producer = 100
-    end_producer = 101
+    end_producer = 201
     step_sce = 0.1
     end_sce = 0.91
     step_prop = 0.01
@@ -441,7 +446,7 @@ def setup_spec():
     
     spec_test = spec.copy()
     run_test = 5
-    run_full = 95
+    run_full = 5
     list_pass_test = []
 
     return (end_producer, end_prop, end_sce, 
@@ -461,10 +466,12 @@ def combine_excel_files(end_producer, step_producer, spec):
             sheetID = str(ind_p_str)
             df = pd.read_excel(f, "P_" + sheetID)
             all_data = all_data.append(df,ignore_index=True) 
-    print(all_data)    
-    all_data.to_excel("output.xlsx")
+        
+    
+    print(all_data['Total Producers'](index=False))
+    all_data.to_excel("output.xlsx", sheet_name="P_"+all_data['Total Producers'].to_string(index=False))
 
-
+     
 def move_old_excel():
     timestr = get_time()
     os.rename('excel','old_excel/excel_'+timestr)
