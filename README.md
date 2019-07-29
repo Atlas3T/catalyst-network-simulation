@@ -10,8 +10,6 @@ We split this project into three parts:
 All of these simulations aim to allow the demonstration of the optimum parameters to be chosen when deploying the consensus mechanism demonstrated at [Insert link to Catalyst Consensus Paper]. We also demonstrate the accepted malicious node levels ($O$) that can be allowed in our network without fear of negative concequence for the network.
 Message propagation and latency times 
 
-## Build status
-
 ## Code style
  
 ## Screenshots
@@ -24,22 +22,20 @@ Message propagation and latency times
 
 ## Installation
 
-## API Reference
+This test suite requires the installation of several modules for python. It was primerally built using python 3.6. 
+
+esult (click "Generate" to refresh) Copy to clipboard
+|Module|Install Command|
+|---|---|
+|	|	|
+
 
 ## Tests
 
-
 ## How to use?
-
 
 ## Contribute
 
-[contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md)
-
 ## Credits
 
-#### Anything else that seems useful
-
 ## License
-
-MIT © [Yourname]()
