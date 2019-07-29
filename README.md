@@ -24,9 +24,9 @@ Message propagation and latency times
 
 This test suite requires the installation of several modules for python. It was primerally built using python 3.6. 
 
-|Module|Install Command|
-|---|---|
-|	|	|
+|Module|Install Command|Function|Link|
+|---|---|---|---|
+|Numpy|`pip install numpy`|	|https://numpy.org/ |
 
 
 ## Tests
