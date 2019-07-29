@@ -29,7 +29,11 @@ This test suite requires the installation of several modules for python. It was 
 |Numpy|`pip install numpy`|	|https://numpy.org/ |
 |Matplotlib|`pip install matplotlib`|	|https://matplotlib.org/ |
 |Pybloom Live|`pip install pybloom-live`|Forked project from pybloom. Is used to generate bloom filters in python when looking at compressed data structures|https://github.com/joseph-fox/python-bloomfilter |
-
+|zlib|	|	|https://www.zlib.net/	|
+|glob|`pip install glob`|	|https://docs.python.org/3/library/glob.html |
+|openpyxl|`pip install openpyxl`|	|https://openpyxl.readthedocs.io/en/stable/ |
+|xlrd|`pip install xlrd`|	| http://www.python-excel.org/ |
+|xlsx writer|`pip install XlsxWriter`|	|https://github.com/jmcnamara/XlsxWriter |
 
 ## Tests
 
