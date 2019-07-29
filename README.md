@@ -24,7 +24,6 @@ Message propagation and latency times
 
 This test suite requires the installation of several modules for python. It was primerally built using python 3.6. 
 
-esult (click "Generate" to refresh) Copy to clipboard
 |Module|Install Command|
 |---|---|
 |	|	|
