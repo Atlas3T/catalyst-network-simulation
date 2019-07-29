@@ -27,6 +27,8 @@ This test suite requires the installation of several modules for python. It was 
 |Module|Install Command|Function|Link|
 |---|---|---|---|
 |Numpy|`pip install numpy`|	|https://numpy.org/ |
+|Matplotlib|`pip install matplotlib`|	|https://matplotlib.org/ |
+|Pybloom Live|`pip install pybloom-live`|Forked project from pybloom. Is used to generate bloom filters in python when looking at compressed data structures|https://github.com/joseph-fox/python-bloomfilter |
 
 
 ## Tests
