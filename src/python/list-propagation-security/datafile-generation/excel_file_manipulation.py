@@ -9,7 +9,6 @@ from openpyxl.utils import get_column_letter
 import xlrd
 
 
-
 def write_results_to_excel_file(spec, runs, output, process_id, path_name):
     """
     This function generates the excel files from the data created. 
@@ -80,6 +79,13 @@ def combine_excel_files(end_producer, step_producer, spec):
     glob.glob("excel/*.xlsx")
     timestr = get_time()
     start_producer = spec['num_of_producers']
+    try:
+        if not os.listdir('merged-excel-docs'):
+            print('Folder empty no need to remove files')
+            os.mkdir('merged-excel-docs')
+    except FileNotFoundError:
+        os.mkdir('merged-excel-docs')
+
     writer = pd.ExcelWriter('merged-excel-docs/combined-result'+ timestr +'.xlsx', engine='xlsxwriter')
     for ind_p in range(start_producer, end_producer, step_producer):
         all_data = pd.DataFrame()
@@ -98,10 +104,24 @@ def move_old_excel():
     These old files can still be accessed and are used by combine_global_output_file
     """
     timestr = get_time()
-    if not os.listdir('excel'):
-        print('Folder empty no need to remove files')
-    else:
-        os.rename('excel','old_excel/excel_'+timestr) and os.mkdir('excel')
+
+    try:
+        if not os.listdir('old_excel'):
+            print('Folder empty no need to remove files')
+    except FileNotFoundError:
+        os.mkdir('old_excel')
+
+    print("passing here")
+    try:
+        if not os.listdir('excel'):
+            print('Folder empty no need to remove files')
+        else:
+            os.rename('excel','old_excel/excel_'+timestr)
+            os.mkdir('excel')
+            print("created folder")
+    except FileNotFoundError:
+        os.mkdir('excel')
+        print("created folder within exception")
 
 
 def get_time():
@@ -136,7 +156,6 @@ def combine_global_output_file(end_producer, step_producer, spec):
         all_data.to_excel(writer, sheet_name="P_" + sheetID) 
     writer.save()
     
-        
 
 def generate_postprocessed_files():
     """
