@@ -10,6 +10,9 @@ We split this project into three parts:
 All of these simulations aim to allow the demonstration of the optimum parameters to be chosen when deploying the consensus mechanism demonstrated at [Insert link to Catalyst Consensus Paper]. We also demonstrate the accepted malicious node levels ($O$) that can be allowed in our network without fear of negative concequence for the network.
 Message propagation and latency times 
 
+### Security from 51% attack.
+We focus on the parameters of the Catalyst consensus mechanism and how these parameters influence our vulnerability to a 51% attack from a malicious entity. The 
+
 ## Code style
  
 ## Screenshots

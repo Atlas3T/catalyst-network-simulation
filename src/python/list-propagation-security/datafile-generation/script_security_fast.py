@@ -4,13 +4,54 @@ import get_lists as gl
 import argparse
 import os.path
 import multiprocessing as mp
+import create_bfs as bf 
+
+
+def calculate_prop_collected_votes(total_no_prod, prop_correct_producer, prop_collected_quantities, prop_collected_candidates):
+    """
+    This function uses the bloom filters in order to calculat the proportion of collected votes.
+    Prop collected votes can thereby in theory not be higher than the value for correct producers 
+    """
+    value_prop_collected_vote = 0
+    total_prop_collected_vote = 0
+    prob_false_positive = 0.001 #this is the false posative ratio for the bloom filter used. 
+
+    producers_id = [i for i in range(0, total_no_prod)]
+
+    num_correct_producers = int(prop_correct_producer * total_no_prod)
+
+    num_collected_quantities = int(prop_collected_quantities * total_no_prod)
+
+    num_collected_candidates = int(prop_collected_candidates * total_no_prod)
+
+    list_of_collected_votes = bf.create_bfs(producers_id, 
+                                            prob_false_positive, 
+                                            num_collected_quantities, 
+                                            total_no_prod, 
+                                            num_collected_candidates, 
+                                            num_correct_producers)
+
+    
+    for i in list_of_collected_votes:
+        ratio = float(i[0] / total_no_prod)
+        value_prop_collected_vote += ratio
+    total_prop_collected_vote =  value_prop_collected_vote / total_no_prod
+    print(total_prop_collected_vote)
+    
+     
+    print ('Success')
+
+    return total_prop_collected_vote
 
 
 def if_test_pass(ind_p, process_id, results_test, runs_full, runs_test, spec):
+
+    
     results_full = numpy.array([gl.calculate_lists_rate(**spec) for _ in range(runs_full)])
     
     results = numpy.concatenate((results_test, results_full))
     runs = runs_full + runs_test
+    
     outputs = get_result_output(spec['num_of_producers'],
                                 spec['prop_correct_producers'],
                                 spec['prop_collected_votes'],
@@ -31,6 +72,8 @@ def if_test_pass(ind_p, process_id, results_test, runs_full, runs_test, spec):
 def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, step_prop, end_prop, runs_test, runs_full):
     process_id = os.getpid()
 
+
+
     start_producer = spec['num_of_producers']
     start_sce = spec['prop_correct_producers']
     start_prop = spec['prop_collected_quantities']
@@ -41,7 +84,10 @@ def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, st
 
             spec['prop_collected_quantities'] = start_prop
             spec['prop_collected_candidates'] = start_prop
-            spec['prop_collected_votes'] = start_prop
+            spec['prop_collected_votes'] = calculate_prop_collected_votes(ind_p, 
+                                                                          spec['prop_correct_producers'], 
+                                                                          spec['prop_collected_quantities'], 
+                                                                          spec['prop_collected_candidates'])
             prob_it = 0
             while spec['prop_collected_quantities'] < end_prop:
                 results_test = numpy.array([gl.calculate_lists_rate(**spec) for _ in range(runs_test)])
@@ -59,7 +105,10 @@ def run_experiment_hist(spec, step_producer, end_producer, step_sce, end_sce, st
                 spec['prop_collected_quantities'] += step_prop*100
                 spec['prop_collected_quantities'] /= 100
                 spec['prop_collected_candidates'] = spec['prop_collected_quantities']
-                spec['prop_collected_votes'] = spec['prop_collected_quantities']
+                spec['prop_collected_votes'] = calculate_prop_collected_votes(ind_p, 
+                                                                          spec['prop_correct_producers'], 
+                                                                          spec['prop_collected_quantities'], 
+                                                                          spec['prop_collected_candidates'])
 
                 '''
                 if prob_it > 0.999:
@@ -178,6 +227,8 @@ def get_result_output(num_of_producers, prop_correct_producers, prop_collected_v
     num_pass = numpy.count_nonzero(results[:, 1] > num_of_producers / 2) 
     num_equal_Cn = numpy.count_nonzero(results[:, 1] == (prop_correct_producers * num_of_producers)) 
 
+
+
     return {
         'avg_prod': avg_prod,
         'avg_vote': avg_vote,
@@ -225,7 +276,7 @@ def setup_spec():
         'prop_correct_producers': 0.75,
         'prop_collected_quantities': 0.75,
         'prop_collected_candidates': 0.75,
-        'prop_collected_votes': 0.75
+        'prop_collected_votes': 0.75 #this needs to be removed and calculated through bloom filters 
     }
     step_producer = 100
     end_producer = 301

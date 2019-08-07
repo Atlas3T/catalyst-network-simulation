@@ -18,8 +18,10 @@ if __name__ == '__main__':
         'prop_correct_producers': 0.75,
         'prop_collected_quantities': 0.75,
         'prop_collected_candidates': 0.75,
-        'prop_collected_votes': 0.75
+        'prop_collected_votes': 0.75 #this needs to be determined by the bloom filters 
     }
+
+
 
     step_producer = 100
     end_producer = 201
